@@ -5,8 +5,8 @@
  */
 
 :root {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
+	--accent: #BAC3FF;
+	--accent-dark: #6A7DE8;
 	--black: 15, 18, 25;
 	--gray: 96, 115, 159;
 	--gray-light: 229, 233, 240;
@@ -40,14 +40,18 @@ body {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
-	font-size: 20px;
+	font-size: 16px;
 	line-height: 1.7;
+	display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 main {
 	width: 720px;
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;
+	flex: 1;
 }
 h1,
 h2,
@@ -60,26 +64,26 @@ h6 {
 	line-height: 1.2;
 }
 h1 {
-	font-size: 3.052em;
+	font-size: 1.6em;
 }
 h2 {
-	font-size: 2.441em;
+	font-size: 1.441em;
 }
 h3 {
-	font-size: 1.953em;
+	font-size: 0.953em;
 }
 h4 {
-	font-size: 1.563em;
+	font-size: 0.563em;
 }
 h5 {
-	font-size: 1.25em;
+	font-size: 0.25em;
 }
 strong,
 b {
-	font-weight: 700;
+	font-weight: 600;
 }
 a {
-	color: var(--accent);
+	color: var(--accent-dark);
 }
 a:hover {
 	color: var(--accent);
@@ -132,7 +136,7 @@ hr {
 		font-size: 18px;
 	}
 	main {
-		padding: 1em;
+		padding: 2em 1em 1em;
 	}
 }
 
@@ -152,4 +156,92 @@ hr {
 	clip-path: inset(50%);
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+
+.pastel-btn {
+	/* ── Size — edit these ── */
+	--btn-padding-y: 0.5rem;
+	--btn-padding-x: 1.75rem;
+	--btn-font-size: 1rem;
+
+	/* ── Pastel colors — edit these ── */
+	--btn-bg: #c8f0e0;
+	--btn-border: #7ecdb0;
+	--btn-text: #2d5a47;
+
+	/* ── Hover — edit these ── */
+	--btn-bg-hover: #a8e6cf;
+	--btn-border-hover: #5bb898;
+	--btn-text-hover: #1e4032;
+	--btn-shadow-hover: 0 4px 14px rgba(94, 184, 152, 0.35);
+
+	display: inline-block;
+	margin: 0.5rem 0 0rem;
+	padding: var(--btn-padding-y) var(--btn-padding-x);
+	font-size: var(--btn-font-size);
+	font-weight: 600;
+	font-family: inherit;
+	line-height: 1.2;
+	text-decoration: none;
+	color: var(--btn-text);
+	background-color: var(--btn-bg);
+	border: 3px solid var(--btn-border);
+	border-radius: 12px;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease,
+		color 0.2s ease,
+		transform 0.15s ease,
+		box-shadow 0.2s ease;
+}
+
+.pastel-btn:hover {
+	color: var(--btn-text-hover);
+	background-color: var(--btn-bg-hover);
+	border-color: var(--btn-border-hover);
+	box-shadow: var(--btn-shadow-hover);
+	transform: translateY(-2px);
+}
+
+.pastel-btn:active {
+	transform: translateY(0);
+	box-shadow: none;
+}
+
+.container {
+    width: 720px;
+    max-width: calc(100% - 2em);
+    margin: auto;
+    padding: 0 1em; /* Padding kiri-kanan disamakan dengan main */
+}
+
+.update-card {
+	border-radius: 12px;
+	padding: 0.1rem 0;
+	margin: 0;
+	list-style: none; 
+}
+.update-item {
+	margin: 0;
+}
+.update-link {
+	display: flex;
+	align-items: baseline;
+	gap: 1.25rem;
+	padding: 0.5rem 0.5rem 0rem;
+	text-decoration: none;
+	color: #4a5568;
+	transition: background-color 0.2s ease;
+}
+.update-link:hover {
+	background-color: #f8fafc;
+	color: #6A7DE8;
+}
+.update-icon {
+	font-size: 1rem;
+	flex-shrink: 0;
+}
+.update-title {
+	font-size: 1rem;
+	font-weight: 600;
 }

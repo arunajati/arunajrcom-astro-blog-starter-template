@@ -32,8 +32,7 @@ nama@email.com,email2@email.com
 
 Tambahkan repository secrets di GitHub:
 
-- `CLOUDFLARE_API_KEY`
-- `CLOUDFLARE_EMAIL`
+- `CLOUDFLARE_API_TOKEN`
 - `CLOUDFLARE_ACCOUNT_ID`
 
 Setelah itu, setiap push ke branch `main` akan menjalankan build dan deploy otomatis.

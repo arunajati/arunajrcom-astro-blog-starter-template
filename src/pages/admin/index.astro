@@ -48,6 +48,21 @@ import BaseHead from "../../components/BaseHead.astro";
 				max-height: calc(100vh - 160px);
 				overflow: auto;
 			}
+			.filter-row {
+				display: flex;
+				gap: 0.5rem;
+				padding: 0.75rem 1rem;
+				border-bottom: 1px solid rgb(var(--gray-light));
+			}
+			.filter-button {
+				padding: 0.45rem 0.7rem;
+				background: #eef2f7;
+				color: rgb(var(--gray-dark));
+			}
+			.filter-button.is-active {
+				background: var(--accent-dark);
+				color: #fff;
+			}
 			.post-button {
 				padding: 0.9rem 1rem;
 				border: 0;
@@ -70,6 +85,22 @@ import BaseHead from "../../components/BaseHead.astro";
 				margin-top: 0.2rem;
 				color: rgb(var(--gray));
 				font-size: 0.85rem;
+			}
+			.badge {
+				display: inline-flex;
+				align-items: center;
+				width: max-content;
+				margin-top: 0.45rem;
+				border-radius: 999px;
+				padding: 0.15rem 0.5rem;
+				background: #e7f8ee;
+				color: #17663a;
+				font-size: 0.76rem;
+				font-weight: 700;
+			}
+			.badge.is-draft {
+				background: #fff2d6;
+				color: #8a4b00;
 			}
 			.editor-form {
 				display: grid;
@@ -170,6 +201,11 @@ import BaseHead from "../../components/BaseHead.astro";
 						<h1>CMS Blog</h1>
 						<button id="newPostButton" type="button">Post Baru</button>
 					</div>
+					<div class="filter-row" aria-label="Filter post">
+						<button class="filter-button is-active" type="button" data-filter="all">All</button>
+						<button class="filter-button" type="button" data-filter="draft">Draft</button>
+						<button class="filter-button" type="button" data-filter="published">Published</button>
+					</div>
 					<div id="postList" class="post-list" aria-live="polite"></div>
 				</aside>
 
@@ -180,6 +216,7 @@ import BaseHead from "../../components/BaseHead.astro";
 					</div>
 					<form id="editorForm" class="editor-form">
 						<input id="sha" type="hidden" />
+						<input id="status" type="hidden" value="draft" />
 						<div class="field-grid">
 							<label>
 								Judul
@@ -217,9 +254,10 @@ import BaseHead from "../../components/BaseHead.astro";
 							<textarea id="body" required></textarea>
 						</label>
 						<div class="button-row">
-							<button id="saveButton" type="submit">Publish</button>
+							<button id="draftButton" type="button">Save Draft</button>
+							<button id="publishButton" type="submit">Publish</button>
 							<button id="previewButton" class="secondary" type="button">Preview</button>
-							<p id="status" class="status"></p>
+							<p id="statusMessage" class="status"></p>
 						</div>
 						<iframe id="preview" class="preview" sandbox="" title="Preview artikel"></iframe>
 					</form>
@@ -232,6 +270,8 @@ import BaseHead from "../../components/BaseHead.astro";
 				posts: [],
 				currentSlug: "",
 				isNew: true,
+				filter: "all",
+				nextStatus: "published",
 			};
 
 			const elements = {
@@ -241,6 +281,7 @@ import BaseHead from "../../components/BaseHead.astro";
 				editorForm: document.getElementById("editorForm"),
 				editorTitle: document.getElementById("editorTitle"),
 				status: document.getElementById("status"),
+				statusMessage: document.getElementById("statusMessage"),
 				sha: document.getElementById("sha"),
 				title: document.getElementById("title"),
 				slug: document.getElementById("slug"),
@@ -254,18 +295,27 @@ import BaseHead from "../../components/BaseHead.astro";
 				insertHeadingButton: document.getElementById("insertHeadingButton"),
 				insertParagraphButton: document.getElementById("insertParagraphButton"),
 				previewButton: document.getElementById("previewButton"),
-				saveButton: document.getElementById("saveButton"),
+				draftButton: document.getElementById("draftButton"),
+				publishButton: document.getElementById("publishButton"),
+				filterButtons: document.querySelectorAll("[data-filter]"),
 			};
 
 			elements.newPostButton.addEventListener("click", () => newPost());
 			elements.refreshButton.addEventListener("click", () => loadPosts());
 			elements.editorForm.addEventListener("submit", (event) => savePost(event));
+			elements.draftButton.addEventListener("click", () => saveDraft());
 			elements.previewButton.addEventListener("click", () => renderPreview());
 			elements.imageUpload.addEventListener("change", () => uploadImage());
 			elements.insertHeadingButton.addEventListener("click", () => insertText("\\n<h2>Judul Bagian</h2>\\n"));
 			elements.insertParagraphButton.addEventListener("click", () => insertText("\\n<p>Isi paragraf.</p>\\n"));
 			elements.title.addEventListener("input", () => {
 				if (state.isNew) elements.slug.value = slugify(elements.title.value);
+			});
+			elements.filterButtons.forEach((button) => {
+				button.addEventListener("click", () => {
+					state.filter = button.dataset.filter;
+					renderPostList();
+				});
 			});
 
 			loadPosts();
@@ -281,13 +331,29 @@ import BaseHead from "../../components/BaseHead.astro";
 
 			function renderPostList() {
 				elements.postList.innerHTML = "";
-				for (const post of state.posts) {
+				elements.filterButtons.forEach((button) => {
+					button.classList.toggle("is-active", button.dataset.filter === state.filter);
+				});
+
+				const filteredPosts = state.posts.filter((post) => {
+					return state.filter === "all" || post.status === state.filter;
+				});
+
+				for (const post of filteredPosts) {
 					const button = document.createElement("button");
 					button.type = "button";
 					button.className = `post-button${post.slug === state.currentSlug ? " is-active" : ""}`;
-					button.innerHTML = `<strong>${escapeHtml(post.title)}</strong><span>${escapeHtml(post.pubDate)} - ${escapeHtml(post.slug)}</span>`;
+					const badgeClass = post.status === "draft" ? "badge is-draft" : "badge";
+					button.innerHTML = `<strong>${escapeHtml(post.title)}</strong><span>${escapeHtml(post.pubDate)} - ${escapeHtml(post.slug)}</span><span class="${badgeClass}">${escapeHtml(post.status)}</span>`;
 					button.addEventListener("click", () => loadPost(post.slug));
 					elements.postList.append(button);
+				}
+
+				if (filteredPosts.length === 0) {
+					const empty = document.createElement("div");
+					empty.className = "post-button";
+					empty.textContent = "Tidak ada post untuk filter ini.";
+					elements.postList.append(empty);
 				}
 			}
 
@@ -308,6 +374,7 @@ import BaseHead from "../../components/BaseHead.astro";
 						updatedDate: "",
 						heroImage: "",
 						body: "<h2>Judul Bagian</h2>\\n\\n<p>Tulis artikel di sini.</p>",
+						status: "draft",
 						sha: "",
 					},
 					true,
@@ -320,6 +387,7 @@ import BaseHead from "../../components/BaseHead.astro";
 				state.isNew = isNew;
 				elements.editorTitle.textContent = isNew ? "Post Baru" : "Edit Post";
 				elements.sha.value = post.sha || "";
+				elements.status.value = post.status || "published";
 				elements.title.value = post.title || "";
 				elements.slug.value = post.slug || "";
 				elements.slug.disabled = !isNew;
@@ -334,11 +402,23 @@ import BaseHead from "../../components/BaseHead.astro";
 
 			async function savePost(event) {
 				event.preventDefault();
-				elements.saveButton.disabled = true;
-				setStatus("Menyimpan ke GitHub...");
+				state.nextStatus = "published";
+				await submitPost();
+			}
+
+			async function saveDraft() {
+				state.nextStatus = "draft";
+				await submitPost();
+			}
+
+			async function submitPost() {
+				elements.draftButton.disabled = true;
+				elements.publishButton.disabled = true;
+				setStatus(state.nextStatus === "draft" ? "Menyimpan draft..." : "Publish ke GitHub...");
 
 				try {
 					const payload = formPayload();
+					payload.status = state.nextStatus;
 					const url = state.isNew
 						? "/api/admin/posts"
 						: `/api/admin/posts/${encodeURIComponent(state.currentSlug)}`;
@@ -350,11 +430,16 @@ import BaseHead from "../../components/BaseHead.astro";
 					});
 					fillForm(data.post, false);
 					await loadPosts();
-					setStatus("Tersimpan. Deploy otomatis akan berjalan dari GitHub.");
+					setStatus(
+						state.nextStatus === "draft"
+							? "Draft tersimpan. Artikel tidak tampil publik."
+							: "Published. Deploy otomatis akan berjalan dari GitHub.",
+					);
 				} catch (error) {
 					setStatus(error.message, true);
 				} finally {
-					elements.saveButton.disabled = false;
+					elements.draftButton.disabled = false;
+					elements.publishButton.disabled = false;
 				}
 			}
 
@@ -390,6 +475,7 @@ import BaseHead from "../../components/BaseHead.astro";
 					pubDate: elements.pubDate.value,
 					updatedDate: elements.updatedDate.value,
 					heroImage: elements.heroImage.value,
+					status: elements.status.value || "draft",
 					body: elements.body.value,
 				};
 			}
@@ -411,7 +497,7 @@ import BaseHead from "../../components/BaseHead.astro";
 						</head>
 						<body>
 							${image}
-							<p>${escapeHtml(payload.pubDate)}</p>
+							<p>${escapeHtml(payload.pubDate)} - ${escapeHtml(payload.status)}</p>
 							<h1>${escapeHtml(payload.title || "Judul artikel")}</h1>
 							<p>${escapeHtml(payload.description || "")}</p>
 							<hr>
@@ -440,8 +526,8 @@ import BaseHead from "../../components/BaseHead.astro";
 			}
 
 			function setStatus(message, isError = false) {
-				elements.status.textContent = message;
-				elements.status.classList.toggle("is-error", isError);
+				elements.statusMessage.textContent = message;
+				elements.statusMessage.classList.toggle("is-error", isError);
 			}
 
 			function slugify(value) {

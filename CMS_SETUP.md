@@ -32,7 +32,8 @@ nama@email.com,email2@email.com
 
 Tambahkan repository secrets di GitHub:
 
-- `CLOUDFLARE_API_TOKEN`
+- `CLOUDFLARE_API_KEY`
+- `CLOUDFLARE_EMAIL`
 - `CLOUDFLARE_ACCOUNT_ID`
 
 Setelah itu, setiap push ke branch `main` akan menjalankan build dan deploy otomatis.
@@ -43,6 +44,7 @@ Setelah itu, setiap push ke branch `main` akan menjalankan build dan deploy otom
 2. Login lewat Cloudflare Access.
 3. Pilih artikel atau buat post baru.
 4. Isi judul, slug, tanggal, deskripsi, gambar, dan isi artikel.
-5. Klik `Publish`.
+5. Klik `Save Draft` untuk menyimpan tanpa tampil publik.
+6. Klik `Publish` untuk menampilkan artikel di website setelah deploy.
 
 CMS akan membuat commit ke GitHub. GitHub Actions lalu deploy otomatis ke Cloudflare.

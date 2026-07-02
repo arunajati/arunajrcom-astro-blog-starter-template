@@ -34,15 +34,15 @@ const { title, active = "posts" } = Astro.props;
 			}
 
 			main {
-				width: 1180px;
+				width: 1240px;
 				max-width: calc(100% - 2rem);
-				padding: 2rem 1rem;
+				padding: 2.4rem 1rem;
 			}
 
 			.admin-shell {
 				display: grid;
-				grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
-				gap: 1rem;
+				grid-template-columns: minmax(230px, 275px) minmax(0, 1fr);
+				gap: 1.5rem;
 			}
 
 			.admin-panel {
@@ -58,7 +58,7 @@ const { title, active = "posts" } = Astro.props;
 			}
 
 			.brand-block {
-				padding: 1rem 1rem 0.85rem;
+				padding: 1.35rem 1.35rem 1.15rem;
 				border-bottom: 1px solid var(--cms-line);
 			}
 
@@ -82,7 +82,7 @@ const { title, active = "posts" } = Astro.props;
 			}
 
 			.nav-group {
-				padding: 0.75rem;
+				padding: 1rem;
 			}
 
 			.nav-title {
@@ -100,7 +100,7 @@ const { title, active = "posts" } = Astro.props;
 				align-items: center;
 				justify-content: space-between;
 				border-radius: 9px;
-				padding: 0.58rem 0.7rem;
+				padding: 0.7rem 0.8rem;
 				color: var(--cms-text);
 				text-decoration: none;
 				font-weight: 500;
@@ -117,7 +117,7 @@ const { title, active = "posts" } = Astro.props;
 				align-items: center;
 				justify-content: space-between;
 				gap: 1rem;
-				padding: 1rem 1.1rem;
+				padding: 1.35rem 1.5rem;
 				border-bottom: 1px solid var(--cms-line);
 			}
 
@@ -191,6 +191,7 @@ const { title, active = "posts" } = Astro.props;
 
 				.admin-shell {
 					grid-template-columns: 1fr;
+					gap: 1rem;
 				}
 			}
 		</style>

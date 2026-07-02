@@ -8,7 +8,7 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 			<h2>All Posts</h2>
 			<p class="page-subtitle">Daftar artikel untuk edit, cek status, dan publish workflow.</p>
 		</div>
-		<a class="button" href="/admin/posts/new">Add New</a>
+		<a class="button" href="/admin/posts/new">Add New Post</a>
 	</div>
 
 	<div class="posts-page">
@@ -18,7 +18,7 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 				<button class="filter-button" type="button" data-filter="draft">Draft</button>
 				<button class="filter-button" type="button" data-filter="published">Published</button>
 			</div>
-			<button id="refreshButton" class="ghost" type="button">Refresh</button>
+			<button id="refreshButton" class="secondary" type="button">Refresh</button>
 		</div>
 		<p id="statusMessage" class="status">Memuat daftar post...</p>
 		<div class="table-wrap">
@@ -28,7 +28,6 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 						<th>Title</th>
 						<th>Status</th>
 						<th>Publish Date</th>
-						<th>Slug</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -40,8 +39,8 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 	<style>
 		.posts-page {
 			display: grid;
-			gap: 1rem;
-			padding: 1.1rem;
+			gap: 1.25rem;
+			padding: 1.5rem;
 		}
 
 		.toolbar {
@@ -80,17 +79,39 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 		}
 
 		table {
+			table-layout: fixed;
 			width: 100%;
 			border-collapse: collapse;
-			min-width: 760px;
+			min-width: 680px;
+		}
+
+		th:first-child,
+		td:first-child {
+			width: 62%;
+		}
+
+		th:nth-child(2),
+		td:nth-child(2) {
+			width: 120px;
+		}
+
+		th:nth-child(3),
+		td:nth-child(3) {
+			width: 120px;
+		}
+
+		th:last-child,
+		td:last-child {
+			width: 92px;
+			text-align: right;
 		}
 
 		th,
 		td {
 			border-bottom: 1px solid var(--cms-line);
-			padding: 0.85rem;
+			padding: 0.95rem 1rem;
 			text-align: left;
-			vertical-align: top;
+			vertical-align: middle;
 		}
 
 		th {
@@ -111,6 +132,16 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 			color: var(--cms-text);
 			font-weight: 600;
 			line-height: 1.35;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		.row-description {
+			display: block;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
 		}
 
 		@media (max-width: 720px) {
@@ -169,11 +200,10 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 				tr.innerHTML = `
 					<td>
 						<span class="post-title">${escapeHtml(post.title)}</span>
-						<span class="post-meta">${escapeHtml(post.description || "")}</span>
+						<span class="post-meta row-description">${escapeHtml(post.description || "")}</span>
 					</td>
 					<td><span class="${badgeClass}">${escapeHtml(post.status)}</span></td>
-					<td>${escapeHtml(post.pubDate)}</td>
-					<td><span class="post-meta">${escapeHtml(post.slug)}</span></td>
+					<td>${formatShortDate(post.pubDate)}</td>
 					<td><a class="button secondary" href="/admin/posts/edit?slug=${encodeURIComponent(post.slug)}">Edit</a></td>
 				`;
 				rows.append(tr);
@@ -181,9 +211,18 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 
 			if (posts.length === 0) {
 				const tr = document.createElement("tr");
-				tr.innerHTML = `<td colspan="5">Tidak ada post untuk filter ini.</td>`;
+				tr.innerHTML = `<td colspan="4">Tidak ada post untuk filter ini.</td>`;
 				rows.append(tr);
 			}
+		}
+
+		function formatShortDate(value) {
+			const date = new Date(value);
+			if (Number.isNaN(date.valueOf())) return escapeHtml(value);
+			const day = String(date.getUTCDate()).padStart(2, "0");
+			const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+			const year = String(date.getUTCFullYear()).slice(-2);
+			return `${day}/${month}/${year}`;
 		}
 
 		async function requestJson(url, options) {

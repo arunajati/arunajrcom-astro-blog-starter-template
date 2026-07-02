@@ -1,0 +1,465 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+---
+
+<!doctype html>
+<html lang="id">
+	<head>
+		<BaseHead title="CMS Blog - Aruna JR" description="CMS internal untuk mengelola artikel blog Aruna JR." />
+		<style>
+			body {
+				background: #f6f7fb;
+			}
+			main {
+				width: 1180px;
+				max-width: calc(100% - 2rem);
+				padding: 2rem 1rem;
+			}
+			.admin-shell {
+				display: grid;
+				grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+				gap: 1rem;
+			}
+			.admin-panel {
+				background: #fff;
+				border: 1px solid rgb(var(--gray-light));
+				border-radius: 8px;
+				box-shadow: 0 10px 30px rgba(var(--gray), 12%);
+			}
+			.admin-sidebar {
+				overflow: hidden;
+			}
+			.admin-toolbar,
+			.editor-toolbar {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 0.75rem;
+				padding: 1rem;
+				border-bottom: 1px solid rgb(var(--gray-light));
+			}
+			.admin-toolbar h1,
+			.editor-toolbar h2 {
+				margin: 0;
+				font-size: 1.1rem;
+			}
+			.post-list {
+				display: grid;
+				max-height: calc(100vh - 160px);
+				overflow: auto;
+			}
+			.post-button {
+				padding: 0.9rem 1rem;
+				border: 0;
+				border-bottom: 1px solid rgb(var(--gray-light));
+				background: transparent;
+				color: rgb(var(--gray-dark));
+				text-align: left;
+				cursor: pointer;
+			}
+			.post-button:hover,
+			.post-button.is-active {
+				background: #f1f4ff;
+			}
+			.post-button strong {
+				display: block;
+				color: rgb(var(--black));
+			}
+			.post-button span {
+				display: block;
+				margin-top: 0.2rem;
+				color: rgb(var(--gray));
+				font-size: 0.85rem;
+			}
+			.editor-form {
+				display: grid;
+				gap: 1rem;
+				padding: 1rem;
+			}
+			.field-grid {
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 1rem;
+			}
+			label {
+				display: grid;
+				gap: 0.35rem;
+				color: rgb(var(--gray-dark));
+				font-weight: 700;
+			}
+			input,
+			textarea {
+				box-sizing: border-box;
+				width: 100%;
+				border: 1px solid rgb(var(--gray-light));
+				border-radius: 8px;
+				padding: 0.7rem 0.8rem;
+				background: #fff;
+				color: rgb(var(--gray-dark));
+				font: inherit;
+			}
+			textarea {
+				min-height: 360px;
+				resize: vertical;
+				font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+				font-size: 0.92rem;
+				line-height: 1.6;
+			}
+			.button-row {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				gap: 0.75rem;
+			}
+			button,
+			.file-button {
+				border: 0;
+				border-radius: 8px;
+				padding: 0.7rem 0.95rem;
+				background: var(--accent-dark);
+				color: #fff;
+				font: inherit;
+				font-weight: 700;
+				cursor: pointer;
+			}
+			button.secondary,
+			.file-button {
+				background: rgb(var(--gray-dark));
+			}
+			button.ghost {
+				background: transparent;
+				color: var(--accent-dark);
+			}
+			button:disabled {
+				opacity: 0.55;
+				cursor: not-allowed;
+			}
+			input[type="file"] {
+				display: none;
+			}
+			.status {
+				min-height: 1.5rem;
+				color: rgb(var(--gray));
+			}
+			.status.is-error {
+				color: #b42318;
+			}
+			.preview {
+				width: 100%;
+				min-height: 420px;
+				border: 1px solid rgb(var(--gray-light));
+				border-radius: 8px;
+				background: #fff;
+			}
+			@media (max-width: 900px) {
+				.admin-shell,
+				.field-grid {
+					grid-template-columns: 1fr;
+				}
+				.post-list {
+					max-height: 280px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<div class="admin-shell">
+				<aside class="admin-panel admin-sidebar">
+					<div class="admin-toolbar">
+						<h1>CMS Blog</h1>
+						<button id="newPostButton" type="button">Post Baru</button>
+					</div>
+					<div id="postList" class="post-list" aria-live="polite"></div>
+				</aside>
+
+				<section class="admin-panel">
+					<div class="editor-toolbar">
+						<h2 id="editorTitle">Editor Post</h2>
+						<button id="refreshButton" class="ghost" type="button">Refresh</button>
+					</div>
+					<form id="editorForm" class="editor-form">
+						<input id="sha" type="hidden" />
+						<div class="field-grid">
+							<label>
+								Judul
+								<input id="title" required />
+							</label>
+							<label>
+								Slug
+								<input id="slug" required pattern="[a-z0-9-]+" />
+							</label>
+							<label>
+								Tanggal publish
+								<input id="pubDate" required placeholder="2026-07-02" />
+							</label>
+							<label>
+								Tanggal update
+								<input id="updatedDate" placeholder="2026-07-02" />
+							</label>
+						</div>
+						<label>
+							Deskripsi
+							<input id="description" required />
+						</label>
+						<label>
+							Hero image
+							<input id="heroImage" placeholder="/foto-profile-ls.webp" />
+						</label>
+						<div class="button-row">
+							<label class="file-button" for="imageUpload">Upload Gambar</label>
+							<input id="imageUpload" type="file" accept="image/jpeg,image/png,image/webp" />
+							<button id="insertHeadingButton" class="secondary" type="button">Tambah H2</button>
+							<button id="insertParagraphButton" class="secondary" type="button">Tambah Paragraf</button>
+						</div>
+						<label>
+							Isi artikel
+							<textarea id="body" required></textarea>
+						</label>
+						<div class="button-row">
+							<button id="saveButton" type="submit">Publish</button>
+							<button id="previewButton" class="secondary" type="button">Preview</button>
+							<p id="status" class="status"></p>
+						</div>
+						<iframe id="preview" class="preview" sandbox="" title="Preview artikel"></iframe>
+					</form>
+				</section>
+			</div>
+		</main>
+
+		<script>
+			const state = {
+				posts: [],
+				currentSlug: "",
+				isNew: true,
+			};
+
+			const elements = {
+				postList: document.getElementById("postList"),
+				newPostButton: document.getElementById("newPostButton"),
+				refreshButton: document.getElementById("refreshButton"),
+				editorForm: document.getElementById("editorForm"),
+				editorTitle: document.getElementById("editorTitle"),
+				status: document.getElementById("status"),
+				sha: document.getElementById("sha"),
+				title: document.getElementById("title"),
+				slug: document.getElementById("slug"),
+				pubDate: document.getElementById("pubDate"),
+				updatedDate: document.getElementById("updatedDate"),
+				description: document.getElementById("description"),
+				heroImage: document.getElementById("heroImage"),
+				body: document.getElementById("body"),
+				preview: document.getElementById("preview"),
+				imageUpload: document.getElementById("imageUpload"),
+				insertHeadingButton: document.getElementById("insertHeadingButton"),
+				insertParagraphButton: document.getElementById("insertParagraphButton"),
+				previewButton: document.getElementById("previewButton"),
+				saveButton: document.getElementById("saveButton"),
+			};
+
+			elements.newPostButton.addEventListener("click", () => newPost());
+			elements.refreshButton.addEventListener("click", () => loadPosts());
+			elements.editorForm.addEventListener("submit", (event) => savePost(event));
+			elements.previewButton.addEventListener("click", () => renderPreview());
+			elements.imageUpload.addEventListener("change", () => uploadImage());
+			elements.insertHeadingButton.addEventListener("click", () => insertText("\\n<h2>Judul Bagian</h2>\\n"));
+			elements.insertParagraphButton.addEventListener("click", () => insertText("\\n<p>Isi paragraf.</p>\\n"));
+			elements.title.addEventListener("input", () => {
+				if (state.isNew) elements.slug.value = slugify(elements.title.value);
+			});
+
+			loadPosts();
+			newPost();
+
+			async function loadPosts() {
+				setStatus("Memuat daftar post...");
+				const data = await requestJson("/api/admin/posts");
+				state.posts = data.posts || [];
+				renderPostList();
+				setStatus("Daftar post siap.");
+			}
+
+			function renderPostList() {
+				elements.postList.innerHTML = "";
+				for (const post of state.posts) {
+					const button = document.createElement("button");
+					button.type = "button";
+					button.className = `post-button${post.slug === state.currentSlug ? " is-active" : ""}`;
+					button.innerHTML = `<strong>${escapeHtml(post.title)}</strong><span>${escapeHtml(post.pubDate)} - ${escapeHtml(post.slug)}</span>`;
+					button.addEventListener("click", () => loadPost(post.slug));
+					elements.postList.append(button);
+				}
+			}
+
+			async function loadPost(slug) {
+				setStatus("Memuat post...");
+				const data = await requestJson(`/api/admin/posts/${encodeURIComponent(slug)}`);
+				fillForm(data.post, false);
+				setStatus("Post siap diedit.");
+			}
+
+			function newPost() {
+				fillForm(
+					{
+						slug: "",
+						title: "",
+						description: "",
+						pubDate: new Date().toISOString().slice(0, 10),
+						updatedDate: "",
+						heroImage: "",
+						body: "<h2>Judul Bagian</h2>\\n\\n<p>Tulis artikel di sini.</p>",
+						sha: "",
+					},
+					true,
+				);
+				setStatus("Post baru siap diisi.");
+			}
+
+			function fillForm(post, isNew) {
+				state.currentSlug = post.slug || "";
+				state.isNew = isNew;
+				elements.editorTitle.textContent = isNew ? "Post Baru" : "Edit Post";
+				elements.sha.value = post.sha || "";
+				elements.title.value = post.title || "";
+				elements.slug.value = post.slug || "";
+				elements.slug.disabled = !isNew;
+				elements.pubDate.value = post.pubDate || "";
+				elements.updatedDate.value = post.updatedDate || "";
+				elements.description.value = post.description || "";
+				elements.heroImage.value = post.heroImage || "";
+				elements.body.value = post.body || "";
+				renderPostList();
+				renderPreview();
+			}
+
+			async function savePost(event) {
+				event.preventDefault();
+				elements.saveButton.disabled = true;
+				setStatus("Menyimpan ke GitHub...");
+
+				try {
+					const payload = formPayload();
+					const url = state.isNew
+						? "/api/admin/posts"
+						: `/api/admin/posts/${encodeURIComponent(state.currentSlug)}`;
+					const method = state.isNew ? "POST" : "PUT";
+					const data = await requestJson(url, {
+						method,
+						headers: { "content-type": "application/json" },
+						body: JSON.stringify(payload),
+					});
+					fillForm(data.post, false);
+					await loadPosts();
+					setStatus("Tersimpan. Deploy otomatis akan berjalan dari GitHub.");
+				} catch (error) {
+					setStatus(error.message, true);
+				} finally {
+					elements.saveButton.disabled = false;
+				}
+			}
+
+			async function uploadImage() {
+				const file = elements.imageUpload.files[0];
+				if (!file) return;
+
+				const formData = new FormData();
+				formData.set("file", file);
+				setStatus("Mengupload gambar...");
+
+				try {
+					const data = await requestJson("/api/admin/uploads", {
+						method: "POST",
+						body: formData,
+					});
+					elements.heroImage.value = data.upload.path;
+					insertText(`\\n<img src="${data.upload.path}" alt="">\\n`);
+					setStatus("Gambar berhasil diupload.");
+				} catch (error) {
+					setStatus(error.message, true);
+				} finally {
+					elements.imageUpload.value = "";
+				}
+			}
+
+			function formPayload() {
+				return {
+					sha: elements.sha.value,
+					title: elements.title.value,
+					slug: elements.slug.value,
+					description: elements.description.value,
+					pubDate: elements.pubDate.value,
+					updatedDate: elements.updatedDate.value,
+					heroImage: elements.heroImage.value,
+					body: elements.body.value,
+				};
+			}
+
+			function renderPreview() {
+				const payload = formPayload();
+				const image = payload.heroImage
+					? `<img src="${escapeHtml(payload.heroImage)}" alt="" style="max-width:100%;border-radius:8px;">`
+					: "";
+				elements.preview.srcdoc = `<!doctype html>
+					<html lang="id">
+						<head>
+							<meta charset="utf-8">
+							<style>
+								body{font-family:Arial,sans-serif;line-height:1.7;padding:24px;color:#222}
+								h1{line-height:1.2}
+								img{height:auto}
+							</style>
+						</head>
+						<body>
+							${image}
+							<p>${escapeHtml(payload.pubDate)}</p>
+							<h1>${escapeHtml(payload.title || "Judul artikel")}</h1>
+							<p>${escapeHtml(payload.description || "")}</p>
+							<hr>
+							${payload.body}
+						</body>
+					</html>`;
+			}
+
+			function insertText(text) {
+				const start = elements.body.selectionStart;
+				const end = elements.body.selectionEnd;
+				const current = elements.body.value;
+				elements.body.value = `${current.slice(0, start)}${text}${current.slice(end)}`;
+				elements.body.focus();
+				elements.body.selectionStart = start + text.length;
+				elements.body.selectionEnd = start + text.length;
+			}
+
+			async function requestJson(url, options) {
+				const response = await fetch(url, options);
+				const data = await response.json().catch(() => ({}));
+				if (!response.ok) {
+					throw new Error(data.error || "Request CMS gagal.");
+				}
+				return data;
+			}
+
+			function setStatus(message, isError = false) {
+				elements.status.textContent = message;
+				elements.status.classList.toggle("is-error", isError);
+			}
+
+			function slugify(value) {
+				return value
+					.toLowerCase()
+					.normalize("NFKD")
+					.replace(/[\\u0300-\\u036f]/g, "")
+					.replace(/[^a-z0-9]+/g, "-")
+					.replace(/^-+|-+$/g, "");
+			}
+
+			function escapeHtml(value) {
+				return String(value || "")
+					.replace(/&/g, "&amp;")
+					.replace(/</g, "&lt;")
+					.replace(/>/g, "&gt;")
+					.replace(/"/g, "&quot;");
+			}
+		</script>
+	</body>
+</html>

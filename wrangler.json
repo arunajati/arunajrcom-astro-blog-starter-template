@@ -7,6 +7,11 @@
 		"directory": "./dist",
 		"binding": "ASSETS"
 	},
+	"vars": {
+		"CMS_GITHUB_OWNER": "arunajati",
+		"CMS_GITHUB_REPO": "arunajrcom-astro-blog-starter-template",
+		"CMS_GITHUB_BRANCH": "main"
+	},
 	"observability": {
 		"enabled": true
 	},

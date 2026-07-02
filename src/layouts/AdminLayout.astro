@@ -135,31 +135,59 @@ const { title, active = "posts" } = Astro.props;
 				align-items: center;
 				justify-content: center;
 				border: 0;
-				border-radius: 9px;
-				padding: 0.72rem 0.95rem;
+				border-radius: 10px;
+				padding: 0.52rem 0.78rem;
 				background: var(--cms-blue);
 				color: #fff;
 				font: inherit;
-				font-weight: 600;
+				font-size: 0.9rem;
+				font-weight: 520;
+				line-height: 1.2;
 				text-decoration: none;
 				cursor: pointer;
+				box-shadow: 0 8px 18px rgba(79, 101, 232, 0.16);
 			}
 
 			button.secondary,
 			:global(.button.secondary),
 			:global(.file-button) {
 				background: var(--cms-dark);
+				box-shadow: 0 8px 18px rgba(32, 40, 58, 0.14);
 			}
 
 			button.ghost,
 			:global(.button.ghost) {
-				background: transparent;
-				color: var(--cms-blue);
+				border: 1px solid var(--cms-line);
+				background: #fff;
+				color: var(--cms-text);
+				box-shadow: none;
+			}
+
+			:global(.button.primary) {
+				padding: 0.64rem 0.95rem;
+				background: var(--cms-blue);
+				font-size: 0.95rem;
+				font-weight: 560;
+			}
+
+			:global(.button.compact),
+			button.compact {
+				border-radius: 9px;
+				padding: 0.42rem 0.62rem;
+				font-size: 0.84rem;
+				font-weight: 520;
+			}
+
+			button:hover,
+			:global(.button:hover),
+			:global(.file-button:hover) {
+				transform: translateY(-1px);
 			}
 
 			button:disabled {
 				opacity: 0.55;
 				cursor: not-allowed;
+				transform: none;
 			}
 
 			:global(.badge) {

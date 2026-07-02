@@ -8,7 +8,7 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 			<h2>All Posts</h2>
 			<p class="page-subtitle">Daftar artikel untuk edit, cek status, dan publish workflow.</p>
 		</div>
-		<a class="button" href="/admin/posts/new">Add New Post</a>
+		<a class="button primary" href="/admin/posts/new">Add New Post</a>
 	</div>
 
 	<div class="posts-page">
@@ -18,7 +18,7 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 				<button class="filter-button" type="button" data-filter="draft">Draft</button>
 				<button class="filter-button" type="button" data-filter="published">Published</button>
 			</div>
-			<button id="refreshButton" class="secondary" type="button">Refresh</button>
+			<button id="refreshButton" class="ghost compact" type="button">Refresh</button>
 		</div>
 		<p id="statusMessage" class="status">Memuat daftar post...</p>
 		<div class="table-wrap">
@@ -59,11 +59,12 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 		:global(.filter-button) {
 			border: 1px solid transparent;
 			border-radius: 999px;
-			padding: 0.4rem 0.66rem;
+			padding: 0.34rem 0.58rem;
 			background: #f1f5f9;
 			color: var(--cms-muted);
-			font-size: 0.86rem;
+			font-size: 0.82rem;
 			font-weight: 500;
+			box-shadow: none;
 		}
 
 		:global(.filter-button.is-active) {
@@ -204,7 +205,7 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 					</td>
 					<td><span class="${badgeClass}">${escapeHtml(post.status)}</span></td>
 					<td>${formatShortDate(post.pubDate)}</td>
-					<td><a class="button secondary" href="/admin/posts/edit?slug=${encodeURIComponent(post.slug)}">Edit</a></td>
+					<td><a class="button secondary compact" href="/admin/posts/edit?slug=${encodeURIComponent(post.slug)}">Edit</a></td>
 				`;
 				rows.append(tr);
 			}

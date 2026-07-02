@@ -34,6 +34,9 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 				<tbody id="postRows"></tbody>
 			</table>
 		</div>
+		<div class="load-more-row">
+			<button id="loadMoreButton" class="ghost compact load-more-button" type="button" hidden>Load more</button>
+		</div>
 	</div>
 
 	<style>
@@ -145,6 +148,25 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 			white-space: nowrap;
 		}
 
+		:global(.load-more-row) {
+			display: flex;
+			justify-content: center;
+			padding-top: 0.1rem;
+		}
+
+		:global(.load-more-button) {
+			min-width: 168px;
+			padding-inline: 1rem;
+			border-color: #c7d2fe;
+			background: #fff;
+			color: var(--cms-blue);
+			box-shadow: none;
+		}
+
+		:global(.load-more-button:hover) {
+			background: var(--cms-blue-soft);
+		}
+
 		@media (max-width: 720px) {
 			.toolbar,
 			:global(.page-header) {
@@ -156,20 +178,28 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 
 	<script>
 		const API_BASE = "/admin/api";
+		const PAGE_SIZE = 10;
 		const state = {
 			posts: [],
 			filter: "all",
+			visibleCount: PAGE_SIZE,
 		};
 
 		const rows = document.getElementById("postRows");
 		const statusMessage = document.getElementById("statusMessage");
 		const refreshButton = document.getElementById("refreshButton");
+		const loadMoreButton = document.getElementById("loadMoreButton");
 		const filterButtons = document.querySelectorAll("[data-filter]");
 
 		refreshButton.addEventListener("click", () => loadPosts());
+		loadMoreButton.addEventListener("click", () => {
+			state.visibleCount += PAGE_SIZE;
+			renderPosts();
+		});
 		filterButtons.forEach((button) => {
 			button.addEventListener("click", () => {
 				state.filter = button.dataset.filter;
+				state.visibleCount = PAGE_SIZE;
 				renderPosts();
 			});
 		});
@@ -181,6 +211,7 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 				setStatus("Memuat daftar post...");
 				const data = await requestJson(`${API_BASE}/posts`);
 				state.posts = data.posts || [];
+				state.visibleCount = PAGE_SIZE;
 				renderPosts();
 				setStatus(`${state.posts.length} post siap dikelola.`);
 			} catch (error) {
@@ -195,7 +226,8 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 			});
 
 			const posts = state.posts.filter((post) => state.filter === "all" || post.status === state.filter);
-			for (const post of posts) {
+			const visiblePosts = posts.slice(0, state.visibleCount);
+			for (const post of visiblePosts) {
 				const tr = document.createElement("tr");
 				const badgeClass = post.status === "draft" ? "badge is-draft" : "badge";
 				tr.innerHTML = `
@@ -215,6 +247,12 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 				tr.innerHTML = `<td colspan="4">Tidak ada post untuk filter ini.</td>`;
 				rows.append(tr);
 			}
+
+			const hasMore = posts.length > visiblePosts.length;
+			loadMoreButton.hidden = !hasMore;
+			loadMoreButton.textContent = hasMore
+				? `Load more (${posts.length - visiblePosts.length} left)`
+				: "Load more";
 		}
 
 		function formatShortDate(value) {

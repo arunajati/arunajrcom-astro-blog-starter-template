@@ -407,7 +407,7 @@ const { mode } = Astro.props;
 			});
 			elements.heroImage.value = data.upload.path;
 			if (!elements.seoImage.value) elements.seoImage.value = data.upload.path;
-			insertText(`\\n<img src="${data.upload.path}" alt="">\\n`);
+			insertText(`\\n<img src="${data.upload.path}" alt="${escapeAttribute(elements.title.value || "Aruna JR")}">\\n`);
 			clearSelectedImage();
 			setStatus("Gambar berhasil diupload. Hero image dan SEO image sudah diperbarui.");
 		} catch (error) {
@@ -490,5 +490,9 @@ const { mode } = Astro.props;
 		if (bytes < 1024) return `${bytes} B`;
 		if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`;
 		return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+	}
+
+	function escapeAttribute(value) {
+		return String(value || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;");
 	}
 </script>

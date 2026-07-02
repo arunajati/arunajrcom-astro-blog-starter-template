@@ -249,6 +249,7 @@ function parsePost(path: string, content: string, sha: string): CmsPost {
 }
 
 function renderPost(input: CmsPostInput) {
+	const body = normalizeImageAlts(input.body.trim(), input.seoTitle || input.title);
 	const lines = [
 		"---",
 		`title: ${quoteYaml(input.title)}`,
@@ -263,7 +264,7 @@ function renderPost(input: CmsPostInput) {
 	if (input.heroImage) lines.push(`heroImage: ${quoteYaml(input.heroImage)}`);
 	lines.push(`status: ${quoteYaml(normalizeStatus(input.status))}`);
 
-	lines.push("---", "", input.body.trim(), "");
+	lines.push("---", "", body, "");
 	return lines.join("\n");
 }
 
@@ -327,6 +328,26 @@ function parseCsv(value?: string) {
 
 function normalizeStatus(value?: string): CmsPostStatus {
 	return value === "draft" ? "draft" : "published";
+}
+
+function normalizeImageAlts(body: string, fallbackAlt: string) {
+	return body.replace(/<img\b[^>]*>/gi, (tag) => {
+		const altMatch = tag.match(/\salt\s*=\s*(["'])(.*?)\1/i);
+		if (altMatch && altMatch[2].trim()) {
+			return tag;
+		}
+
+		const alt = quoteAttribute(fallbackAlt || "Aruna JR");
+		if (altMatch) {
+			return tag.replace(altMatch[0], ` alt=${alt}`);
+		}
+
+		return tag.replace(/>$/, ` alt=${alt}>`);
+	});
+}
+
+function quoteAttribute(value: string) {
+	return `"${String(value || "").replace(/"/g, "&quot;")}"`;
 }
 
 async function readGitHubFile(env: CmsEnv, path: string) {

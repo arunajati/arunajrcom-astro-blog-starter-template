@@ -149,10 +149,16 @@ const { title, active = "posts" } = Astro.props;
 			}
 
 			:global(button.secondary),
-			:global(.button.secondary),
-			:global(.file-button) {
+			:global(.button.secondary) {
 				background: var(--cms-dark);
 				box-shadow: 0 8px 18px rgba(32, 40, 58, 0.14);
+			}
+
+			:global(.file-button) {
+				border: 1px solid #c7d2fe;
+				background: var(--cms-blue-soft);
+				color: var(--cms-blue);
+				box-shadow: none;
 			}
 
 			:global(button.ghost),
@@ -176,6 +182,14 @@ const { title, active = "posts" } = Astro.props;
 				padding: 0.42rem 0.62rem;
 				font-size: 0.84rem;
 				font-weight: 520;
+			}
+
+			:global(button.soft),
+			:global(.button.soft) {
+				border: 1px solid var(--cms-line);
+				background: #f8faff;
+				color: var(--cms-text);
+				box-shadow: none;
 			}
 
 			:global(button:hover),

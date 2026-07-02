@@ -37,26 +37,26 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 	</div>
 
 	<style>
-		.posts-page {
+		:global(.posts-page) {
 			display: grid;
 			gap: 1.25rem;
 			padding: 1.5rem;
 		}
 
-		.toolbar {
+		:global(.toolbar) {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
 			gap: 1rem;
 		}
 
-		.filter-row {
+		:global(.filter-row) {
 			display: flex;
 			flex-wrap: wrap;
 			gap: 0.45rem;
 		}
 
-		.filter-button {
+		:global(.filter-button) {
 			border: 1px solid transparent;
 			border-radius: 999px;
 			padding: 0.4rem 0.66rem;
@@ -66,55 +66,55 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 			font-weight: 500;
 		}
 
-		.filter-button.is-active {
+		:global(.filter-button.is-active) {
 			border-color: #c7d2fe;
 			background: var(--cms-blue-soft);
 			color: var(--cms-blue);
 		}
 
-		.table-wrap {
+		:global(.table-wrap) {
 			overflow: auto;
 			border: 1px solid var(--cms-line);
 			border-radius: 12px;
 		}
 
-		table {
+		:global(table) {
 			table-layout: fixed;
 			width: 100%;
 			border-collapse: collapse;
 			min-width: 680px;
 		}
 
-		th:first-child,
-		td:first-child {
+		:global(th:first-child),
+		:global(td:first-child) {
 			width: 62%;
 		}
 
-		th:nth-child(2),
-		td:nth-child(2) {
+		:global(th:nth-child(2)),
+		:global(td:nth-child(2)) {
 			width: 120px;
 		}
 
-		th:nth-child(3),
-		td:nth-child(3) {
+		:global(th:nth-child(3)),
+		:global(td:nth-child(3)) {
 			width: 120px;
 		}
 
-		th:last-child,
-		td:last-child {
+		:global(th:last-child),
+		:global(td:last-child) {
 			width: 92px;
 			text-align: right;
 		}
 
-		th,
-		td {
+		:global(th),
+		:global(td) {
 			border-bottom: 1px solid var(--cms-line);
 			padding: 0.95rem 1rem;
 			text-align: left;
 			vertical-align: middle;
 		}
 
-		th {
+		:global(th) {
 			background: #f8faff;
 			color: var(--cms-muted);
 			font-size: 0.78rem;
@@ -123,11 +123,11 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 			text-transform: uppercase;
 		}
 
-		tr:last-child td {
+		:global(tr:last-child td) {
 			border-bottom: 0;
 		}
 
-		.post-title {
+		:global(.post-title) {
 			display: block;
 			color: var(--cms-text);
 			font-weight: 600;
@@ -137,7 +137,7 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 			white-space: nowrap;
 		}
 
-		.row-description {
+		:global(.row-description) {
 			display: block;
 			overflow: hidden;
 			text-overflow: ellipsis;
@@ -146,7 +146,7 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 
 		@media (max-width: 720px) {
 			.toolbar,
-			.page-header {
+			:global(.page-header) {
 				align-items: flex-start;
 				flex-direction: column;
 			}
@@ -219,9 +219,15 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 		function formatShortDate(value) {
 			const date = new Date(value);
 			if (Number.isNaN(date.valueOf())) return escapeHtml(value);
-			const day = String(date.getUTCDate()).padStart(2, "0");
-			const month = String(date.getUTCMonth() + 1).padStart(2, "0");
-			const year = String(date.getUTCFullYear()).slice(-2);
+			const parts = new Intl.DateTimeFormat("en-GB", {
+				day: "2-digit",
+				month: "2-digit",
+				year: "2-digit",
+				timeZone: "Asia/Jakarta",
+			}).formatToParts(date);
+			const day = parts.find((part) => part.type === "day")?.value || "";
+			const month = parts.find((part) => part.type === "month")?.value || "";
+			const year = parts.find((part) => part.type === "year")?.value || "";
 			return `${day}/${month}/${year}`;
 		}
 

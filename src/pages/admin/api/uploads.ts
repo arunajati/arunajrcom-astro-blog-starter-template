@@ -24,7 +24,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
 			return jsonResponse({ error: "File gambar wajib diisi." }, { status: 400 });
 		}
 
-		const upload = await uploadImage(env, file, admin.email);
+		const upload = await uploadImage(env, file, admin.email, String(form.get("slug") || ""));
 		return jsonResponse({ upload }, { status: 201 });
 	} catch (error) {
 		return handleCmsError(error);

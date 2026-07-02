@@ -14,6 +14,7 @@ export type CmsPostInput = {
 	updatedDate?: string;
 	heroImage?: string;
 	status?: CmsPostStatus;
+	category?: string;
 	body: string;
 	sha?: string;
 };
@@ -150,7 +151,7 @@ export async function updatePost(env: CmsEnv, slug: string, input: CmsPostInput,
 	return getPost(env, currentSlug);
 }
 
-export async function uploadImage(env: CmsEnv, file: File, authorEmail: string) {
+export async function uploadImage(env: CmsEnv, file: File, authorEmail: string, fileSlug?: string) {
 	if (!file || file.size === 0) {
 		throw new CmsError(400, "File gambar wajib diisi.");
 	}
@@ -167,7 +168,7 @@ export async function uploadImage(env: CmsEnv, file: File, authorEmail: string) 
 	const now = new Date();
 	const year = String(now.getUTCFullYear());
 	const month = String(now.getUTCMonth() + 1).padStart(2, "0");
-	const name = file.name.replace(/\.[^.]+$/, "");
+	const name = fileSlug || file.name.replace(/\.[^.]+$/, "");
 	const safeName = normalizeSlug(name || "image");
 	const filename = `${Date.now()}-${safeName}.${extension}`;
 	const publicPath = `/uploads/blog/${year}/${month}/${filename}`;
@@ -191,6 +192,7 @@ function validatePostInput(input: CmsPostInput): CmsPostInput {
 	const heroImage = input.heroImage?.trim();
 	const body = input.body?.trim();
 	const status = normalizeStatus(input.status);
+	const category = normalizeCategory(input.category);
 
 	if (!title) throw new CmsError(400, "Judul wajib diisi.");
 	if (!description) throw new CmsError(400, "Deskripsi wajib diisi.");
@@ -210,6 +212,7 @@ function validatePostInput(input: CmsPostInput): CmsPostInput {
 		updatedDate,
 		heroImage,
 		status,
+		category,
 		body,
 		sha: input.sha,
 	};
@@ -230,6 +233,7 @@ function parsePost(path: string, content: string, sha: string): CmsPost {
 		updatedDate: data.updatedDate,
 		heroImage: data.heroImage,
 		status: normalizeStatus(data.status),
+		category: normalizeCategory(data.category),
 		body: match[2].trim(),
 		path,
 		sha,
@@ -247,6 +251,7 @@ function renderPost(input: CmsPostInput) {
 	if (input.updatedDate) lines.push(`updatedDate: ${quoteYaml(input.updatedDate)}`);
 	if (input.heroImage) lines.push(`heroImage: ${quoteYaml(input.heroImage)}`);
 	lines.push(`status: ${quoteYaml(normalizeStatus(input.status))}`);
+	lines.push(`category: ${quoteYaml(normalizeCategory(input.category))}`);
 
 	lines.push("---", "", input.body.trim(), "");
 	return lines.join("\n");
@@ -312,6 +317,11 @@ function parseCsv(value?: string) {
 
 function normalizeStatus(value?: string): CmsPostStatus {
 	return value === "draft" ? "draft" : "published";
+}
+
+function normalizeCategory(value?: string) {
+	const category = value?.trim();
+	return category || "Uncategorized";
 }
 
 async function readGitHubFile(env: CmsEnv, path: string) {

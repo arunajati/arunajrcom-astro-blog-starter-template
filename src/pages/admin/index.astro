@@ -7,85 +7,181 @@ import BaseHead from "../../components/BaseHead.astro";
 	<head>
 		<BaseHead title="CMS Blog - Aruna JR" description="CMS internal untuk mengelola artikel blog Aruna JR." />
 		<style>
-			body {
-				background: #f6f7fb;
+			:root {
+				--cms-bg: #f4f6fb;
+				--cms-panel: #ffffff;
+				--cms-line: #dbe2ee;
+				--cms-muted: #64748b;
+				--cms-text: #172033;
+				--cms-dark: #20283a;
+				--cms-blue: #4f65e8;
+				--cms-blue-soft: #eef2ff;
+				--cms-green: #177245;
+				--cms-yellow: #8a4b00;
 			}
+
+			body {
+				background: var(--cms-bg);
+				color: var(--cms-text);
+			}
+
 			main {
 				width: 1180px;
 				max-width: calc(100% - 2rem);
 				padding: 2rem 1rem;
 			}
+
 			.admin-shell {
 				display: grid;
-				grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+				grid-template-columns: minmax(230px, 280px) minmax(0, 1fr);
 				gap: 1rem;
 			}
+
 			.admin-panel {
-				background: #fff;
-				border: 1px solid rgb(var(--gray-light));
-				border-radius: 8px;
-				box-shadow: 0 10px 30px rgba(var(--gray), 12%);
+				background: var(--cms-panel);
+				border: 1px solid var(--cms-line);
+				border-radius: 12px;
+				box-shadow: 0 14px 36px rgba(31, 41, 55, 0.08);
 			}
+
 			.admin-sidebar {
+				align-self: start;
 				overflow: hidden;
 			}
-			.admin-toolbar,
-			.editor-toolbar {
+
+			.brand-block {
+				padding: 1rem 1rem 0.85rem;
+				border-bottom: 1px solid var(--cms-line);
+			}
+
+			.brand-block h1,
+			.editor-toolbar h2 {
+				margin: 0;
+				font-size: 1rem;
+				line-height: 1.3;
+				font-weight: 650;
+				letter-spacing: -0.01em;
+			}
+
+			.brand-block p,
+			.editor-toolbar p,
+			.form-hint,
+			.status,
+			.upload-meta {
+				margin: 0.25rem 0 0;
+				color: var(--cms-muted);
+				font-size: 0.86rem;
+				line-height: 1.5;
+			}
+
+			.nav-group {
+				padding: 0.75rem;
+				border-bottom: 1px solid var(--cms-line);
+			}
+
+			.nav-title {
+				display: block;
+				margin: 0 0 0.45rem;
+				color: var(--cms-muted);
+				font-size: 0.78rem;
+				font-weight: 650;
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+			}
+
+			.nav-button,
+			.post-button,
+			button,
+			.file-button {
+				font: inherit;
+				cursor: pointer;
+			}
+
+			.nav-button {
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
-				gap: 0.75rem;
-				padding: 1rem;
-				border-bottom: 1px solid rgb(var(--gray-light));
+				width: 100%;
+				border: 0;
+				border-radius: 9px;
+				padding: 0.58rem 0.7rem;
+				background: transparent;
+				color: var(--cms-text);
+				text-align: left;
+				font-weight: 500;
 			}
-			.admin-toolbar h1,
-			.editor-toolbar h2 {
-				margin: 0;
-				font-size: 1.1rem;
+
+			.nav-button:hover,
+			.nav-button.is-active {
+				background: var(--cms-blue-soft);
+				color: var(--cms-blue);
 			}
-			.post-list {
-				display: grid;
-				max-height: calc(100vh - 160px);
-				overflow: auto;
+
+			.nav-button span {
+				color: var(--cms-muted);
+				font-size: 0.8rem;
+				font-weight: 500;
 			}
+
 			.filter-row {
 				display: flex;
-				gap: 0.5rem;
-				padding: 0.75rem 1rem;
-				border-bottom: 1px solid rgb(var(--gray-light));
+				flex-wrap: wrap;
+				gap: 0.45rem;
+				padding: 0.75rem;
+				border-bottom: 1px solid var(--cms-line);
 			}
+
 			.filter-button {
-				padding: 0.45rem 0.7rem;
-				background: #eef2f7;
-				color: rgb(var(--gray-dark));
+				border: 1px solid transparent;
+				border-radius: 999px;
+				padding: 0.4rem 0.66rem;
+				background: #f1f5f9;
+				color: var(--cms-muted);
+				font-size: 0.86rem;
+				font-weight: 500;
 			}
+
 			.filter-button.is-active {
-				background: var(--accent-dark);
-				color: #fff;
+				border-color: #c7d2fe;
+				background: var(--cms-blue-soft);
+				color: var(--cms-blue);
 			}
+
+			.post-list {
+				display: grid;
+				max-height: calc(100vh - 275px);
+				overflow: auto;
+			}
+
 			.post-button {
-				padding: 0.9rem 1rem;
 				border: 0;
-				border-bottom: 1px solid rgb(var(--gray-light));
+				border-bottom: 1px solid var(--cms-line);
+				padding: 0.85rem 1rem;
 				background: transparent;
-				color: rgb(var(--gray-dark));
+				color: var(--cms-text);
 				text-align: left;
-				cursor: pointer;
 			}
+
 			.post-button:hover,
 			.post-button.is-active {
-				background: #f1f4ff;
+				background: #f8faff;
 			}
-			.post-button strong {
+
+			.post-title {
 				display: block;
-				color: rgb(var(--black));
+				font-size: 0.96rem;
+				font-weight: 600;
+				line-height: 1.35;
 			}
-			.post-button span {
+
+			.post-meta {
 				display: block;
-				margin-top: 0.2rem;
-				color: rgb(var(--gray));
-				font-size: 0.85rem;
+				margin-top: 0.25rem;
+				color: var(--cms-muted);
+				font-size: 0.82rem;
+				line-height: 1.45;
 			}
+
 			.badge {
 				display: inline-flex;
 				align-items: center;
@@ -94,101 +190,179 @@ import BaseHead from "../../components/BaseHead.astro";
 				border-radius: 999px;
 				padding: 0.15rem 0.5rem;
 				background: #e7f8ee;
-				color: #17663a;
-				font-size: 0.76rem;
-				font-weight: 700;
+				color: var(--cms-green);
+				font-size: 0.74rem;
+				font-weight: 650;
 			}
+
 			.badge.is-draft {
 				background: #fff2d6;
-				color: #8a4b00;
+				color: var(--cms-yellow);
 			}
-			.editor-form {
+
+			.editor-toolbar {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 1rem;
+				padding: 1rem 1.1rem;
+				border-bottom: 1px solid var(--cms-line);
+			}
+
+			.editor-form,
+			.category-view {
 				display: grid;
 				gap: 1rem;
-				padding: 1rem;
+				padding: 1.1rem;
 			}
+
 			.field-grid {
 				display: grid;
 				grid-template-columns: repeat(2, minmax(0, 1fr));
 				gap: 1rem;
 			}
+
 			label {
 				display: grid;
-				gap: 0.35rem;
-				color: rgb(var(--gray-dark));
-				font-weight: 700;
+				gap: 0.38rem;
+				color: var(--cms-dark);
+				font-size: 0.9rem;
+				font-weight: 600;
 			}
+
 			input,
 			textarea {
 				box-sizing: border-box;
 				width: 100%;
-				border: 1px solid rgb(var(--gray-light));
-				border-radius: 8px;
-				padding: 0.7rem 0.8rem;
+				border: 1px solid var(--cms-line);
+				border-radius: 9px;
+				padding: 0.72rem 0.82rem;
 				background: #fff;
-				color: rgb(var(--gray-dark));
+				color: var(--cms-text);
 				font: inherit;
+				font-weight: 400;
 			}
+
+			input:focus,
+			textarea:focus {
+				border-color: #9aa8ff;
+				box-shadow: 0 0 0 3px rgba(79, 101, 232, 0.12);
+				outline: 0;
+			}
+
 			textarea {
-				min-height: 360px;
+				min-height: 430px;
 				resize: vertical;
 				font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 				font-size: 0.92rem;
-				line-height: 1.6;
+				line-height: 1.7;
 			}
+
 			.button-row {
 				display: flex;
 				flex-wrap: wrap;
 				align-items: center;
-				gap: 0.75rem;
+				gap: 0.65rem;
 			}
+
 			button,
 			.file-button {
 				border: 0;
-				border-radius: 8px;
-				padding: 0.7rem 0.95rem;
-				background: var(--accent-dark);
+				border-radius: 9px;
+				padding: 0.68rem 0.9rem;
+				background: var(--cms-blue);
 				color: #fff;
-				font: inherit;
-				font-weight: 700;
-				cursor: pointer;
+				font-weight: 600;
 			}
+
 			button.secondary,
 			.file-button {
-				background: rgb(var(--gray-dark));
+				background: var(--cms-dark);
 			}
+
 			button.ghost {
 				background: transparent;
-				color: var(--accent-dark);
+				color: var(--cms-blue);
 			}
+
 			button:disabled {
 				opacity: 0.55;
 				cursor: not-allowed;
 			}
+
 			input[type="file"] {
 				display: none;
 			}
+
+			.upload-box {
+				display: none;
+				grid-template-columns: 120px minmax(0, 1fr);
+				gap: 1rem;
+				align-items: start;
+				border: 1px solid var(--cms-line);
+				border-radius: 12px;
+				padding: 0.85rem;
+				background: #f8faff;
+			}
+
+			.upload-box.is-visible {
+				display: grid;
+			}
+
+			.upload-preview {
+				aspect-ratio: 4 / 3;
+				width: 100%;
+				border: 1px solid var(--cms-line);
+				border-radius: 10px;
+				background: #fff;
+				object-fit: cover;
+			}
+
 			.status {
 				min-height: 1.5rem;
-				color: rgb(var(--gray));
 			}
+
 			.status.is-error {
 				color: #b42318;
 			}
-			.preview {
-				width: 100%;
-				min-height: 420px;
-				border: 1px solid rgb(var(--gray-light));
-				border-radius: 8px;
+
+			.category-view[hidden],
+			.editor-form[hidden] {
+				display: none;
+			}
+
+			.category-list {
+				display: grid;
+				gap: 0.65rem;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			.category-list li {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				border: 1px solid var(--cms-line);
+				border-radius: 10px;
+				padding: 0.75rem 0.85rem;
 				background: #fff;
 			}
+
 			@media (max-width: 900px) {
+				main {
+					max-width: calc(100% - 1rem);
+					padding: 1rem 0.5rem;
+				}
+
 				.admin-shell,
-				.field-grid {
+				.field-grid,
+				.upload-box {
 					grid-template-columns: 1fr;
 				}
+
 				.post-list {
-					max-height: 280px;
+					max-height: 300px;
 				}
 			}
 		</style>
@@ -197,10 +371,16 @@ import BaseHead from "../../components/BaseHead.astro";
 		<main>
 			<div class="admin-shell">
 				<aside class="admin-panel admin-sidebar">
-					<div class="admin-toolbar">
+					<div class="brand-block">
 						<h1>CMS Blog</h1>
-						<button id="newPostButton" type="button">Post Baru</button>
+						<p>Kelola artikel arunajr.com</p>
 					</div>
+					<nav class="nav-group" aria-label="Menu admin">
+						<span class="nav-title">Posts</span>
+						<button id="allPostsNav" class="nav-button is-active" type="button">All Posts <span id="postCount">0</span></button>
+						<button id="addNewNav" class="nav-button" type="button">Add New</button>
+						<button id="categoriesNav" class="nav-button" type="button">Categories <span id="categoryCount">0</span></button>
+					</nav>
 					<div class="filter-row" aria-label="Filter post">
 						<button class="filter-button is-active" type="button" data-filter="all">All</button>
 						<button class="filter-button" type="button" data-filter="draft">Draft</button>
@@ -211,7 +391,10 @@ import BaseHead from "../../components/BaseHead.astro";
 
 				<section class="admin-panel">
 					<div class="editor-toolbar">
-						<h2 id="editorTitle">Editor Post</h2>
+						<div>
+							<h2 id="editorTitle">Editor Post</h2>
+							<p id="editorSubtitle">Tulis, simpan draft, lalu publish saat siap.</p>
+						</div>
 						<button id="refreshButton" class="ghost" type="button">Refresh</button>
 					</div>
 					<form id="editorForm" class="editor-form">
@@ -235,19 +418,41 @@ import BaseHead from "../../components/BaseHead.astro";
 								<input id="updatedDate" placeholder="2026-07-02" />
 							</label>
 						</div>
+						<div class="field-grid">
+							<label>
+								Kategori
+								<input id="category" list="categoryOptions" placeholder="Uncategorized" />
+								<datalist id="categoryOptions"></datalist>
+							</label>
+							<label>
+								Hero image
+								<input id="heroImage" placeholder="/foto-profile-ls.webp" />
+							</label>
+						</div>
 						<label>
 							Deskripsi
 							<input id="description" required />
-						</label>
-						<label>
-							Hero image
-							<input id="heroImage" placeholder="/foto-profile-ls.webp" />
+							<span class="form-hint">Ringkasan pendek untuk SEO dan daftar artikel.</span>
 						</label>
 						<div class="button-row">
-							<label class="file-button" for="imageUpload">Upload Gambar</label>
+							<label class="file-button" for="imageUpload">Pilih Gambar</label>
 							<input id="imageUpload" type="file" accept="image/jpeg,image/png,image/webp" />
 							<button id="insertHeadingButton" class="secondary" type="button">Tambah H2</button>
 							<button id="insertParagraphButton" class="secondary" type="button">Tambah Paragraf</button>
+						</div>
+						<div id="uploadBox" class="upload-box">
+							<img id="imagePreview" class="upload-preview" alt="Preview gambar yang dipilih" />
+							<div>
+								<label>
+									Slug file gambar
+									<input id="imageFileSlug" pattern="[a-z0-9-]+" />
+								</label>
+								<p id="uploadMeta" class="upload-meta"></p>
+								<div class="button-row" style="margin-top: 0.75rem;">
+									<button id="uploadButton" type="button">Upload Gambar</button>
+									<button id="clearImageButton" class="ghost" type="button">Batal</button>
+								</div>
+							</div>
 						</div>
 						<label>
 							Isi artikel
@@ -256,30 +461,48 @@ import BaseHead from "../../components/BaseHead.astro";
 						<div class="button-row">
 							<button id="draftButton" type="button">Save Draft</button>
 							<button id="publishButton" type="submit">Publish</button>
-							<button id="previewButton" class="secondary" type="button">Preview</button>
+							<button id="previewButton" class="secondary" type="button">Preview di Tab Baru</button>
 							<p id="statusMessage" class="status"></p>
 						</div>
-						<iframe id="preview" class="preview" sandbox="" title="Preview artikel"></iframe>
 					</form>
+					<section id="categoryView" class="category-view" hidden>
+						<div>
+							<h2 style="margin:0;font-size:1.25rem;">Categories</h2>
+							<p class="form-hint">Kategori dibuat otomatis dari field kategori di setiap post.</p>
+						</div>
+						<ul id="categoryList" class="category-list"></ul>
+					</section>
 				</section>
 			</div>
 		</main>
 
 		<script>
+			const API_BASE = "/admin/api";
+			const PREVIEW_STORAGE_KEY = "arunajr-cms-preview-post";
+
 			const state = {
 				posts: [],
 				currentSlug: "",
 				isNew: true,
 				filter: "all",
 				nextStatus: "published",
+				selectedImageUrl: "",
 			};
 
 			const elements = {
 				postList: document.getElementById("postList"),
-				newPostButton: document.getElementById("newPostButton"),
+				postCount: document.getElementById("postCount"),
+				categoryCount: document.getElementById("categoryCount"),
+				allPostsNav: document.getElementById("allPostsNav"),
+				addNewNav: document.getElementById("addNewNav"),
+				categoriesNav: document.getElementById("categoriesNav"),
 				refreshButton: document.getElementById("refreshButton"),
 				editorForm: document.getElementById("editorForm"),
+				categoryView: document.getElementById("categoryView"),
+				categoryList: document.getElementById("categoryList"),
+				categoryOptions: document.getElementById("categoryOptions"),
 				editorTitle: document.getElementById("editorTitle"),
+				editorSubtitle: document.getElementById("editorSubtitle"),
 				status: document.getElementById("status"),
 				statusMessage: document.getElementById("statusMessage"),
 				sha: document.getElementById("sha"),
@@ -287,11 +510,17 @@ import BaseHead from "../../components/BaseHead.astro";
 				slug: document.getElementById("slug"),
 				pubDate: document.getElementById("pubDate"),
 				updatedDate: document.getElementById("updatedDate"),
+				category: document.getElementById("category"),
 				description: document.getElementById("description"),
 				heroImage: document.getElementById("heroImage"),
 				body: document.getElementById("body"),
-				preview: document.getElementById("preview"),
 				imageUpload: document.getElementById("imageUpload"),
+				uploadBox: document.getElementById("uploadBox"),
+				imagePreview: document.getElementById("imagePreview"),
+				imageFileSlug: document.getElementById("imageFileSlug"),
+				uploadMeta: document.getElementById("uploadMeta"),
+				uploadButton: document.getElementById("uploadButton"),
+				clearImageButton: document.getElementById("clearImageButton"),
 				insertHeadingButton: document.getElementById("insertHeadingButton"),
 				insertParagraphButton: document.getElementById("insertParagraphButton"),
 				previewButton: document.getElementById("previewButton"),
@@ -300,12 +529,16 @@ import BaseHead from "../../components/BaseHead.astro";
 				filterButtons: document.querySelectorAll("[data-filter]"),
 			};
 
-			elements.newPostButton.addEventListener("click", () => newPost());
+			elements.allPostsNav.addEventListener("click", () => showEditor());
+			elements.addNewNav.addEventListener("click", () => newPost());
+			elements.categoriesNav.addEventListener("click", () => showCategories());
 			elements.refreshButton.addEventListener("click", () => loadPosts());
 			elements.editorForm.addEventListener("submit", (event) => savePost(event));
 			elements.draftButton.addEventListener("click", () => saveDraft());
-			elements.previewButton.addEventListener("click", () => renderPreview());
-			elements.imageUpload.addEventListener("change", () => uploadImage());
+			elements.previewButton.addEventListener("click", () => openPreview());
+			elements.imageUpload.addEventListener("change", () => prepareImageUpload());
+			elements.uploadButton.addEventListener("click", () => uploadImage());
+			elements.clearImageButton.addEventListener("click", () => clearSelectedImage());
 			elements.insertHeadingButton.addEventListener("click", () => insertText("\\n<h2>Judul Bagian</h2>\\n"));
 			elements.insertParagraphButton.addEventListener("click", () => insertText("\\n<p>Isi paragraf.</p>\\n"));
 			elements.title.addEventListener("input", () => {
@@ -322,15 +555,21 @@ import BaseHead from "../../components/BaseHead.astro";
 			newPost();
 
 			async function loadPosts() {
-				setStatus("Memuat daftar post...");
-				const data = await requestJson("/api/admin/posts");
-				state.posts = data.posts || [];
-				renderPostList();
-				setStatus("Daftar post siap.");
+				try {
+					setStatus("Memuat daftar post...");
+					const data = await requestJson(`${API_BASE}/posts`);
+					state.posts = data.posts || [];
+					renderPostList();
+					renderCategories();
+					setStatus("Daftar post siap.");
+				} catch (error) {
+					setStatus(error.message, true);
+				}
 			}
 
 			function renderPostList() {
 				elements.postList.innerHTML = "";
+				elements.postCount.textContent = String(state.posts.length);
 				elements.filterButtons.forEach((button) => {
 					button.classList.toggle("is-active", button.dataset.filter === state.filter);
 				});
@@ -344,7 +583,11 @@ import BaseHead from "../../components/BaseHead.astro";
 					button.type = "button";
 					button.className = `post-button${post.slug === state.currentSlug ? " is-active" : ""}`;
 					const badgeClass = post.status === "draft" ? "badge is-draft" : "badge";
-					button.innerHTML = `<strong>${escapeHtml(post.title)}</strong><span>${escapeHtml(post.pubDate)} - ${escapeHtml(post.slug)}</span><span class="${badgeClass}">${escapeHtml(post.status)}</span>`;
+					button.innerHTML = `
+						<span class="post-title">${escapeHtml(post.title)}</span>
+						<span class="post-meta">${escapeHtml(post.pubDate)} · ${escapeHtml(post.category || "Uncategorized")} · ${escapeHtml(post.slug)}</span>
+						<span class="${badgeClass}">${escapeHtml(post.status)}</span>
+					`;
 					button.addEventListener("click", () => loadPost(post.slug));
 					elements.postList.append(button);
 				}
@@ -357,14 +600,49 @@ import BaseHead from "../../components/BaseHead.astro";
 				}
 			}
 
+			function renderCategories() {
+				const categories = categoryStats();
+				elements.categoryCount.textContent = String(categories.length);
+				elements.categoryOptions.innerHTML = "";
+				elements.categoryList.innerHTML = "";
+
+				for (const category of categories) {
+					const option = document.createElement("option");
+					option.value = category.name;
+					elements.categoryOptions.append(option);
+
+					const item = document.createElement("li");
+					item.innerHTML = `<span>${escapeHtml(category.name)}</span><span class="post-meta">${category.count} post</span>`;
+					elements.categoryList.append(item);
+				}
+			}
+
+			function categoryStats() {
+				const counts = new Map();
+				for (const post of state.posts) {
+					const category = post.category || "Uncategorized";
+					counts.set(category, (counts.get(category) || 0) + 1);
+				}
+				if (counts.size === 0) counts.set("Uncategorized", 0);
+				return [...counts.entries()]
+					.map(([name, count]) => ({ name, count }))
+					.sort((a, b) => a.name.localeCompare(b.name));
+			}
+
 			async function loadPost(slug) {
-				setStatus("Memuat post...");
-				const data = await requestJson(`/api/admin/posts/${encodeURIComponent(slug)}`);
-				fillForm(data.post, false);
-				setStatus("Post siap diedit.");
+				try {
+					showEditor();
+					setStatus("Memuat post...");
+					const data = await requestJson(`${API_BASE}/posts/${encodeURIComponent(slug)}`);
+					fillForm(data.post, false);
+					setStatus("Post siap diedit.");
+				} catch (error) {
+					setStatus(error.message, true);
+				}
 			}
 
 			function newPost() {
+				showEditor();
 				fillForm(
 					{
 						slug: "",
@@ -372,6 +650,7 @@ import BaseHead from "../../components/BaseHead.astro";
 						description: "",
 						pubDate: new Date().toISOString().slice(0, 10),
 						updatedDate: "",
+						category: "Uncategorized",
 						heroImage: "",
 						body: "<h2>Judul Bagian</h2>\\n\\n<p>Tulis artikel di sini.</p>",
 						status: "draft",
@@ -385,7 +664,10 @@ import BaseHead from "../../components/BaseHead.astro";
 			function fillForm(post, isNew) {
 				state.currentSlug = post.slug || "";
 				state.isNew = isNew;
-				elements.editorTitle.textContent = isNew ? "Post Baru" : "Edit Post";
+				elements.editorTitle.textContent = isNew ? "Add New Post" : "Edit Post";
+				elements.editorSubtitle.textContent = isNew
+					? "Tulis draft baru, lalu publish saat siap."
+					: `Sedang mengedit: ${post.slug}`;
 				elements.sha.value = post.sha || "";
 				elements.status.value = post.status || "published";
 				elements.title.value = post.title || "";
@@ -393,11 +675,28 @@ import BaseHead from "../../components/BaseHead.astro";
 				elements.slug.disabled = !isNew;
 				elements.pubDate.value = post.pubDate || "";
 				elements.updatedDate.value = post.updatedDate || "";
+				elements.category.value = post.category || "Uncategorized";
 				elements.description.value = post.description || "";
 				elements.heroImage.value = post.heroImage || "";
 				elements.body.value = post.body || "";
+				clearSelectedImage();
 				renderPostList();
-				renderPreview();
+			}
+
+			function showEditor() {
+				elements.editorForm.hidden = false;
+				elements.categoryView.hidden = true;
+				elements.allPostsNav.classList.add("is-active");
+				elements.addNewNav.classList.toggle("is-active", state.isNew);
+				elements.categoriesNav.classList.remove("is-active");
+			}
+
+			function showCategories() {
+				elements.editorForm.hidden = true;
+				elements.categoryView.hidden = false;
+				elements.allPostsNav.classList.remove("is-active");
+				elements.addNewNav.classList.remove("is-active");
+				elements.categoriesNav.classList.add("is-active");
 			}
 
 			async function savePost(event) {
@@ -420,8 +719,8 @@ import BaseHead from "../../components/BaseHead.astro";
 					const payload = formPayload();
 					payload.status = state.nextStatus;
 					const url = state.isNew
-						? "/api/admin/posts"
-						: `/api/admin/posts/${encodeURIComponent(state.currentSlug)}`;
+						? `${API_BASE}/posts`
+						: `${API_BASE}/posts/${encodeURIComponent(state.currentSlug)}`;
 					const method = state.isNew ? "POST" : "PUT";
 					const data = await requestJson(url, {
 						method,
@@ -443,27 +742,56 @@ import BaseHead from "../../components/BaseHead.astro";
 				}
 			}
 
+			function prepareImageUpload() {
+				const file = elements.imageUpload.files[0];
+				if (!file) {
+					clearSelectedImage();
+					return;
+				}
+
+				if (state.selectedImageUrl) URL.revokeObjectURL(state.selectedImageUrl);
+				state.selectedImageUrl = URL.createObjectURL(file);
+				elements.imagePreview.src = state.selectedImageUrl;
+				elements.imageFileSlug.value = slugify(file.name.replace(/\.[^.]+$/, "")) || "image";
+				elements.uploadMeta.textContent = `${file.name} · ${formatBytes(file.size)}`;
+				elements.uploadBox.classList.add("is-visible");
+				setStatus("Gambar siap diupload. Cek thumbnail dan slug file dulu.");
+			}
+
 			async function uploadImage() {
 				const file = elements.imageUpload.files[0];
 				if (!file) return;
 
 				const formData = new FormData();
 				formData.set("file", file);
+				formData.set("slug", elements.imageFileSlug.value);
+				elements.uploadButton.disabled = true;
 				setStatus("Mengupload gambar...");
 
 				try {
-					const data = await requestJson("/api/admin/uploads", {
+					const data = await requestJson(`${API_BASE}/uploads`, {
 						method: "POST",
 						body: formData,
 					});
 					elements.heroImage.value = data.upload.path;
 					insertText(`\\n<img src="${data.upload.path}" alt="">\\n`);
-					setStatus("Gambar berhasil diupload.");
+					clearSelectedImage();
+					setStatus("Gambar berhasil diupload dan path hero image sudah diperbarui.");
 				} catch (error) {
 					setStatus(error.message, true);
 				} finally {
-					elements.imageUpload.value = "";
+					elements.uploadButton.disabled = false;
 				}
+			}
+
+			function clearSelectedImage() {
+				if (state.selectedImageUrl) URL.revokeObjectURL(state.selectedImageUrl);
+				state.selectedImageUrl = "";
+				elements.imageUpload.value = "";
+				elements.imagePreview.removeAttribute("src");
+				elements.imageFileSlug.value = "";
+				elements.uploadMeta.textContent = "";
+				elements.uploadBox.classList.remove("is-visible");
 			}
 
 			function formPayload() {
@@ -474,36 +802,16 @@ import BaseHead from "../../components/BaseHead.astro";
 					description: elements.description.value,
 					pubDate: elements.pubDate.value,
 					updatedDate: elements.updatedDate.value,
+					category: elements.category.value || "Uncategorized",
 					heroImage: elements.heroImage.value,
 					status: elements.status.value || "draft",
 					body: elements.body.value,
 				};
 			}
 
-			function renderPreview() {
-				const payload = formPayload();
-				const image = payload.heroImage
-					? `<img src="${escapeHtml(payload.heroImage)}" alt="" style="max-width:100%;border-radius:8px;">`
-					: "";
-				elements.preview.srcdoc = `<!doctype html>
-					<html lang="id">
-						<head>
-							<meta charset="utf-8">
-							<style>
-								body{font-family:Arial,sans-serif;line-height:1.7;padding:24px;color:#222}
-								h1{line-height:1.2}
-								img{height:auto}
-							</style>
-						</head>
-						<body>
-							${image}
-							<p>${escapeHtml(payload.pubDate)} - ${escapeHtml(payload.status)}</p>
-							<h1>${escapeHtml(payload.title || "Judul artikel")}</h1>
-							<p>${escapeHtml(payload.description || "")}</p>
-							<hr>
-							${payload.body}
-						</body>
-					</html>`;
+			function openPreview() {
+				localStorage.setItem(PREVIEW_STORAGE_KEY, JSON.stringify(formPayload()));
+				window.open("/admin/preview", "_blank", "noopener");
 			}
 
 			function insertText(text) {
@@ -517,10 +825,19 @@ import BaseHead from "../../components/BaseHead.astro";
 			}
 
 			async function requestJson(url, options) {
-				const response = await fetch(url, options);
+				let response;
+				try {
+					response = await fetch(url, {
+						credentials: "same-origin",
+						...options,
+					});
+				} catch {
+					throw new Error("Gagal terhubung ke CMS. Coba refresh halaman admin.");
+				}
+
 				const data = await response.json().catch(() => ({}));
 				if (!response.ok) {
-					throw new Error(data.error || "Request CMS gagal.");
+					throw new Error(data.error || "Request CMS gagal. Coba login ulang ke admin.");
 				}
 				return data;
 			}
@@ -537,6 +854,12 @@ import BaseHead from "../../components/BaseHead.astro";
 					.replace(/[\\u0300-\\u036f]/g, "")
 					.replace(/[^a-z0-9]+/g, "-")
 					.replace(/^-+|-+$/g, "");
+			}
+
+			function formatBytes(bytes) {
+				if (bytes < 1024) return `${bytes} B`;
+				if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`;
+				return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 			}
 
 			function escapeHtml(value) {

@@ -5,8 +5,8 @@ import {
 	jsonResponse,
 	requireAdmin,
 	updatePost,
-	type CmsPostInput,
 	type CmsEnv,
+	type CmsPostInput,
 } from "../../../../lib/cms";
 
 function envFromLocals(locals: App.Locals) {

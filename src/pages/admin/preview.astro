@@ -1,0 +1,116 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+---
+
+<!doctype html>
+<html lang="id">
+	<head>
+		<BaseHead title="Preview Artikel - Aruna JR" description="Preview artikel CMS Aruna JR." />
+		<style>
+			body {
+				background: #fff;
+			}
+
+			main {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+			}
+
+			.preview-note {
+				margin: 2rem auto 1.5rem;
+				border: 1px solid rgb(var(--gray-light));
+				border-radius: 999px;
+				padding: 0.45rem 0.8rem;
+				width: max-content;
+				max-width: 100%;
+				background: #f6f7fb;
+				color: rgb(var(--gray));
+				font-size: 0.9rem;
+			}
+
+			.hero-image {
+				display: none;
+				width: 100%;
+				max-height: 510px;
+				object-fit: cover;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+			}
+
+			.hero-image.is-visible {
+				display: block;
+			}
+
+			.article-header {
+				margin: 0 auto 1rem;
+				padding: 1em 0;
+				text-align: center;
+				line-height: 1;
+			}
+
+			.article-date {
+				margin: 0 0 0.35rem;
+				color: rgb(var(--gray));
+				font-size: 1rem;
+			}
+
+			.article-header h1 {
+				margin: 0 0 0.5em 0;
+			}
+
+			.article-body {
+				width: 100%;
+				max-width: 100%;
+				margin: auto;
+				padding: 1em 0;
+				box-sizing: border-box;
+				color: rgb(var(--gray-dark));
+			}
+
+			.article-body img {
+				max-width: 100%;
+				height: auto;
+				border-radius: 10px;
+			}
+
+			.article-body h2 {
+				margin-top: 2rem;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<p class="preview-note">Preview CMS. Belum tampil publik sampai dipublish.</p>
+			<img id="heroImage" class="hero-image" alt="" />
+			<header class="article-header">
+				<p id="dateText" class="article-date"></p>
+				<h1 id="titleText">Preview artikel</h1>
+				<hr />
+			</header>
+			<article id="bodyContent" class="article-body"></article>
+		</main>
+		<Footer />
+
+		<script>
+			const raw = localStorage.getItem("arunajr-cms-preview-post");
+			const post = raw ? JSON.parse(raw) : {};
+			const heroImage = document.getElementById("heroImage");
+			const dateText = document.getElementById("dateText");
+			const titleText = document.getElementById("titleText");
+			const bodyContent = document.getElementById("bodyContent");
+
+			if (post.heroImage) {
+				heroImage.src = post.heroImage;
+				heroImage.classList.add("is-visible");
+			}
+
+			dateText.textContent = [post.pubDate, post.status || "draft"].filter(Boolean).join(" - ");
+			titleText.textContent = post.title || "Preview artikel";
+			bodyContent.innerHTML = post.body || "<p>Belum ada isi artikel.</p>";
+		</script>
+	</body>
+</html>

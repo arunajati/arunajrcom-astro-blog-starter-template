@@ -1,8 +1,9 @@
 ---
 title: "Apa itu AsisFlow dan Apa Tujuan Dibuatnya?"
-description: "Lorem ipsum dolor sit amet"
+description: "Dari sini kebiasaan saya mencari cara untuk mengotomatisasi pekerjaan dimulai."
 pubDate: "Jun 02 2026"
 heroImage: "/tentang-asisflow.webp"
+status: "published"
 ---
 
 <h2>Semuanya Berawal dari Rasa Malas</h2>

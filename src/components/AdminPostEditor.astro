@@ -38,6 +38,10 @@ const { mode } = Astro.props;
 		<label>
 			Hero image
 			<input id="heroImage" placeholder="/foto-profile-ls.webp" />
+			<div class="button-row hero-image-actions">
+				<label class="file-button" for="imageUpload">Pilih Gambar</label>
+				<input id="imageUpload" type="file" accept="image/jpeg,image/png,image/webp" />
+			</div>
 		</label>
 	</section>
 
@@ -63,8 +67,6 @@ const { mode } = Astro.props;
 	<section class="form-section">
 		<h3>Gambar dan Isi</h3>
 		<div class="button-row">
-			<label class="file-button" for="imageUpload">Pilih Gambar</label>
-			<input id="imageUpload" type="file" accept="image/jpeg,image/png,image/webp" />
 			<button id="insertHeadingButton" class="soft" type="button">Tambah H2</button>
 			<button id="insertParagraphButton" class="soft" type="button">Tambah Paragraf</button>
 		</div>
@@ -166,6 +168,10 @@ const { mode } = Astro.props;
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 0.65rem;
+	}
+
+	.hero-image-actions {
+		padding-top: 0.25rem;
 	}
 
 	input[type="file"] {

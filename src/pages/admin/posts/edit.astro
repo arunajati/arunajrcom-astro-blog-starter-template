@@ -1,0 +1,14 @@
+---
+import AdminPostEditor from "../../../components/AdminPostEditor.astro";
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+---
+
+<AdminLayout title="Edit Post" active="posts">
+	<div class="page-header">
+		<div>
+			<h2>Edit Post</h2>
+			<p class="page-subtitle">Perbarui artikel, SEO metadata, gambar, draft, atau publish status.</p>
+		</div>
+	</div>
+	<AdminPostEditor mode="edit" />
+</AdminLayout>

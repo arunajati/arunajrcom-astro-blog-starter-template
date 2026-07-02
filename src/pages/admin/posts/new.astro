@@ -1,0 +1,14 @@
+---
+import AdminPostEditor from "../../../components/AdminPostEditor.astro";
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+---
+
+<AdminLayout title="Add New Post" active="new">
+	<div class="page-header">
+		<div>
+			<h2>Add New Post</h2>
+			<p class="page-subtitle">Tulis artikel baru, lengkapi SEO metadata, lalu simpan sebagai draft atau publish.</p>
+		</div>
+	</div>
+	<AdminPostEditor mode="new" />
+</AdminLayout>

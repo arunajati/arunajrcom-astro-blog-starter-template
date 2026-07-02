@@ -1,0 +1,494 @@
+---
+interface Props {
+	mode: "new" | "edit";
+}
+
+const { mode } = Astro.props;
+---
+
+<form id="editorForm" class="editor-form" data-mode={mode}>
+	<input id="sha" type="hidden" />
+	<input id="status" type="hidden" value="draft" />
+
+	<section class="form-section">
+		<h3>Konten Artikel</h3>
+		<div class="field-grid">
+			<label>
+				Judul artikel
+				<input id="title" required />
+			</label>
+			<label>
+				Slug URL
+				<input id="slug" required pattern="[a-z0-9-]+" />
+			</label>
+			<label>
+				Tanggal publish
+				<input id="pubDate" required placeholder="2026-07-02" />
+			</label>
+			<label>
+				Tanggal update
+				<input id="updatedDate" placeholder="2026-07-02" />
+			</label>
+		</div>
+		<label>
+			Ringkasan artikel
+			<input id="description" required />
+			<span class="form-hint">Dipakai untuk daftar artikel dan fallback SEO jika SEO description kosong.</span>
+		</label>
+		<label>
+			Hero image
+			<input id="heroImage" placeholder="/foto-profile-ls.webp" />
+		</label>
+	</section>
+
+	<section class="form-section">
+		<h3>SEO Metadata</h3>
+		<div class="field-grid">
+			<label>
+				SEO title
+				<input id="seoTitle" maxlength="70" placeholder="Kosongkan jika sama dengan judul artikel" />
+			</label>
+			<label>
+				SEO image
+				<input id="seoImage" placeholder="Kosongkan jika sama dengan hero image" />
+			</label>
+		</div>
+		<label>
+			SEO description
+			<input id="seoDescription" maxlength="160" placeholder="Kosongkan jika sama dengan ringkasan artikel" />
+			<span class="form-hint">Saran panjang: 120-160 karakter.</span>
+		</label>
+	</section>
+
+	<section class="form-section">
+		<h3>Gambar dan Isi</h3>
+		<div class="button-row">
+			<label class="file-button" for="imageUpload">Pilih Gambar</label>
+			<input id="imageUpload" type="file" accept="image/jpeg,image/png,image/webp" />
+			<button id="insertHeadingButton" class="secondary" type="button">Tambah H2</button>
+			<button id="insertParagraphButton" class="secondary" type="button">Tambah Paragraf</button>
+		</div>
+		<div id="uploadBox" class="upload-box">
+			<img id="imagePreview" class="upload-preview" alt="Preview gambar yang dipilih" />
+			<div>
+				<label>
+					Slug file gambar
+					<input id="imageFileSlug" pattern="[a-z0-9-]+" />
+				</label>
+				<p id="uploadMeta" class="upload-meta"></p>
+				<div class="button-row" style="margin-top: 0.75rem;">
+					<button id="uploadButton" type="button">Upload Gambar</button>
+					<button id="clearImageButton" class="ghost" type="button">Batal</button>
+				</div>
+			</div>
+		</div>
+		<label>
+			Isi artikel
+			<textarea id="body" required></textarea>
+		</label>
+	</section>
+
+	<div class="button-row action-row">
+		<button id="draftButton" type="button">Save Draft</button>
+		<button id="publishButton" type="submit">Publish</button>
+		<button id="previewButton" class="secondary" type="button">Preview di Tab Baru</button>
+		<a class="button ghost" href="/admin/posts">Kembali ke All Posts</a>
+		<p id="statusMessage" class="status"></p>
+	</div>
+</form>
+
+<style>
+	.editor-form {
+		display: grid;
+		gap: 1rem;
+		padding: 1.1rem;
+	}
+
+	.form-section {
+		display: grid;
+		gap: 1rem;
+		border: 1px solid var(--cms-line);
+		border-radius: 12px;
+		padding: 1rem;
+		background: #fff;
+	}
+
+	.form-section h3 {
+		margin: 0;
+		font-size: 1rem;
+		font-weight: 650;
+	}
+
+	.field-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+	}
+
+	label {
+		display: grid;
+		gap: 0.38rem;
+		color: var(--cms-dark);
+		font-size: 0.9rem;
+		font-weight: 600;
+	}
+
+	input,
+	textarea {
+		box-sizing: border-box;
+		width: 100%;
+		border: 1px solid var(--cms-line);
+		border-radius: 9px;
+		padding: 0.72rem 0.82rem;
+		background: #fff;
+		color: var(--cms-text);
+		font: inherit;
+		font-weight: 400;
+	}
+
+	input:focus,
+	textarea:focus {
+		border-color: #9aa8ff;
+		box-shadow: 0 0 0 3px rgba(79, 101, 232, 0.12);
+		outline: 0;
+	}
+
+	textarea {
+		min-height: 430px;
+		resize: vertical;
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+		font-size: 0.92rem;
+		line-height: 1.7;
+	}
+
+	.button-row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.65rem;
+	}
+
+	input[type="file"] {
+		display: none;
+	}
+
+	.upload-box {
+		display: none;
+		grid-template-columns: 120px minmax(0, 1fr);
+		gap: 1rem;
+		align-items: start;
+		border: 1px solid var(--cms-line);
+		border-radius: 12px;
+		padding: 0.85rem;
+		background: #f8faff;
+	}
+
+	.upload-box.is-visible {
+		display: grid;
+	}
+
+	.upload-preview {
+		aspect-ratio: 4 / 3;
+		width: 100%;
+		border: 1px solid var(--cms-line);
+		border-radius: 10px;
+		background: #fff;
+		object-fit: cover;
+	}
+
+	.action-row {
+		position: sticky;
+		bottom: 1rem;
+		border: 1px solid var(--cms-line);
+		border-radius: 12px;
+		padding: 0.85rem;
+		background: rgba(255, 255, 255, 0.96);
+		box-shadow: 0 10px 24px rgba(31, 41, 55, 0.08);
+	}
+
+	@media (max-width: 760px) {
+		.field-grid,
+		.upload-box {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
+
+<script>
+	const API_BASE = "/admin/api";
+	const PREVIEW_STORAGE_KEY = "arunajr-cms-preview-post";
+
+	const state = {
+		currentSlug: "",
+		isNew: true,
+		nextStatus: "published",
+		selectedImageUrl: "",
+	};
+
+	const elements = {
+		form: document.getElementById("editorForm"),
+		status: document.getElementById("status"),
+		statusMessage: document.getElementById("statusMessage"),
+		sha: document.getElementById("sha"),
+		title: document.getElementById("title"),
+		slug: document.getElementById("slug"),
+		pubDate: document.getElementById("pubDate"),
+		updatedDate: document.getElementById("updatedDate"),
+		description: document.getElementById("description"),
+		seoTitle: document.getElementById("seoTitle"),
+		seoDescription: document.getElementById("seoDescription"),
+		seoImage: document.getElementById("seoImage"),
+		heroImage: document.getElementById("heroImage"),
+		body: document.getElementById("body"),
+		imageUpload: document.getElementById("imageUpload"),
+		uploadBox: document.getElementById("uploadBox"),
+		imagePreview: document.getElementById("imagePreview"),
+		imageFileSlug: document.getElementById("imageFileSlug"),
+		uploadMeta: document.getElementById("uploadMeta"),
+		uploadButton: document.getElementById("uploadButton"),
+		clearImageButton: document.getElementById("clearImageButton"),
+		insertHeadingButton: document.getElementById("insertHeadingButton"),
+		insertParagraphButton: document.getElementById("insertParagraphButton"),
+		previewButton: document.getElementById("previewButton"),
+		draftButton: document.getElementById("draftButton"),
+		publishButton: document.getElementById("publishButton"),
+	};
+
+	elements.form.addEventListener("submit", (event) => savePost(event));
+	elements.draftButton.addEventListener("click", () => saveDraft());
+	elements.previewButton.addEventListener("click", () => openPreview());
+	elements.imageUpload.addEventListener("change", () => prepareImageUpload());
+	elements.uploadButton.addEventListener("click", () => uploadImage());
+	elements.clearImageButton.addEventListener("click", () => clearSelectedImage());
+	elements.insertHeadingButton.addEventListener("click", () => insertText("\\n<h2>Judul Bagian</h2>\\n"));
+	elements.insertParagraphButton.addEventListener("click", () => insertText("\\n<p>Isi paragraf.</p>\\n"));
+	elements.title.addEventListener("input", () => {
+		if (state.isNew) elements.slug.value = slugify(elements.title.value);
+	});
+
+	initEditor();
+
+	async function initEditor() {
+		const mode = elements.form.dataset.mode;
+		const slug = new URLSearchParams(window.location.search).get("slug") || "";
+
+		if (mode === "edit") {
+			if (!slug) {
+				setStatus("Slug post tidak ditemukan. Kembali ke All Posts lalu pilih Edit.", true);
+				return;
+			}
+			await loadPost(slug);
+			return;
+		}
+
+		fillForm(
+			{
+				slug: "",
+				title: "",
+				description: "",
+				seoTitle: "",
+				seoDescription: "",
+				seoImage: "",
+				pubDate: new Date().toISOString().slice(0, 10),
+				updatedDate: "",
+				heroImage: "",
+				body: "<h2>Judul Bagian</h2>\\n\\n<p>Tulis artikel di sini.</p>",
+				status: "draft",
+				sha: "",
+			},
+			true,
+		);
+		setStatus("Post baru siap diisi.");
+	}
+
+	async function loadPost(slug) {
+		try {
+			setStatus("Memuat post...");
+			const data = await requestJson(`${API_BASE}/posts/${encodeURIComponent(slug)}`);
+			fillForm(data.post, false);
+			setStatus("Post siap diedit.");
+		} catch (error) {
+			setStatus(error.message, true);
+		}
+	}
+
+	function fillForm(post, isNew) {
+		state.currentSlug = post.slug || "";
+		state.isNew = isNew;
+		elements.sha.value = post.sha || "";
+		elements.status.value = post.status || "published";
+		elements.title.value = post.title || "";
+		elements.slug.value = post.slug || "";
+		elements.slug.disabled = !isNew;
+		elements.pubDate.value = post.pubDate || "";
+		elements.updatedDate.value = post.updatedDate || "";
+		elements.description.value = post.description || "";
+		elements.seoTitle.value = post.seoTitle || "";
+		elements.seoDescription.value = post.seoDescription || "";
+		elements.seoImage.value = post.seoImage || "";
+		elements.heroImage.value = post.heroImage || "";
+		elements.body.value = post.body || "";
+		clearSelectedImage();
+	}
+
+	async function savePost(event) {
+		event.preventDefault();
+		state.nextStatus = "published";
+		await submitPost();
+	}
+
+	async function saveDraft() {
+		state.nextStatus = "draft";
+		await submitPost();
+	}
+
+	async function submitPost() {
+		elements.draftButton.disabled = true;
+		elements.publishButton.disabled = true;
+		setStatus(state.nextStatus === "draft" ? "Menyimpan draft..." : "Publish ke GitHub...");
+
+		try {
+			const payload = formPayload();
+			payload.status = state.nextStatus;
+			const url = state.isNew
+				? `${API_BASE}/posts`
+				: `${API_BASE}/posts/${encodeURIComponent(state.currentSlug)}`;
+			const method = state.isNew ? "POST" : "PUT";
+			const data = await requestJson(url, {
+				method,
+				headers: { "content-type": "application/json" },
+				body: JSON.stringify(payload),
+			});
+			fillForm(data.post, false);
+			if (state.isNew) window.history.replaceState({}, "", `/admin/posts/edit?slug=${encodeURIComponent(data.post.slug)}`);
+			setStatus(
+				state.nextStatus === "draft"
+					? "Draft tersimpan. Artikel tidak tampil publik."
+					: "Published. Deploy otomatis akan berjalan dari GitHub.",
+			);
+		} catch (error) {
+			setStatus(error.message, true);
+		} finally {
+			elements.draftButton.disabled = false;
+			elements.publishButton.disabled = false;
+		}
+	}
+
+	function prepareImageUpload() {
+		const file = elements.imageUpload.files[0];
+		if (!file) {
+			clearSelectedImage();
+			return;
+		}
+
+		if (state.selectedImageUrl) URL.revokeObjectURL(state.selectedImageUrl);
+		state.selectedImageUrl = URL.createObjectURL(file);
+		elements.imagePreview.src = state.selectedImageUrl;
+		elements.imageFileSlug.value = slugify(file.name.replace(/\.[^.]+$/, "")) || "image";
+		elements.uploadMeta.textContent = `${file.name} · ${formatBytes(file.size)}`;
+		elements.uploadBox.classList.add("is-visible");
+		setStatus("Gambar siap diupload. Cek thumbnail dan slug file dulu.");
+	}
+
+	async function uploadImage() {
+		const file = elements.imageUpload.files[0];
+		if (!file) return;
+
+		const formData = new FormData();
+		formData.set("file", file);
+		formData.set("slug", elements.imageFileSlug.value);
+		elements.uploadButton.disabled = true;
+		setStatus("Mengupload gambar...");
+
+		try {
+			const data = await requestJson(`${API_BASE}/uploads`, {
+				method: "POST",
+				body: formData,
+			});
+			elements.heroImage.value = data.upload.path;
+			if (!elements.seoImage.value) elements.seoImage.value = data.upload.path;
+			insertText(`\\n<img src="${data.upload.path}" alt="">\\n`);
+			clearSelectedImage();
+			setStatus("Gambar berhasil diupload. Hero image dan SEO image sudah diperbarui.");
+		} catch (error) {
+			setStatus(error.message, true);
+		} finally {
+			elements.uploadButton.disabled = false;
+		}
+	}
+
+	function clearSelectedImage() {
+		if (state.selectedImageUrl) URL.revokeObjectURL(state.selectedImageUrl);
+		state.selectedImageUrl = "";
+		elements.imageUpload.value = "";
+		elements.imagePreview.removeAttribute("src");
+		elements.imageFileSlug.value = "";
+		elements.uploadMeta.textContent = "";
+		elements.uploadBox.classList.remove("is-visible");
+	}
+
+	function formPayload() {
+		return {
+			sha: elements.sha.value,
+			title: elements.title.value,
+			slug: elements.slug.value,
+			description: elements.description.value,
+			seoTitle: elements.seoTitle.value,
+			seoDescription: elements.seoDescription.value,
+			seoImage: elements.seoImage.value,
+			pubDate: elements.pubDate.value,
+			updatedDate: elements.updatedDate.value,
+			heroImage: elements.heroImage.value,
+			status: elements.status.value || "draft",
+			body: elements.body.value,
+		};
+	}
+
+	function openPreview() {
+		localStorage.setItem(PREVIEW_STORAGE_KEY, JSON.stringify(formPayload()));
+		window.open("/admin/preview", "_blank", "noopener");
+	}
+
+	function insertText(text) {
+		const start = elements.body.selectionStart;
+		const end = elements.body.selectionEnd;
+		const current = elements.body.value;
+		elements.body.value = `${current.slice(0, start)}${text}${current.slice(end)}`;
+		elements.body.focus();
+		elements.body.selectionStart = start + text.length;
+		elements.body.selectionEnd = start + text.length;
+	}
+
+	async function requestJson(url, options) {
+		let response;
+		try {
+			response = await fetch(url, { credentials: "same-origin", ...options });
+		} catch {
+			throw new Error("Gagal terhubung ke CMS. Coba refresh halaman admin.");
+		}
+
+		const data = await response.json().catch(() => ({}));
+		if (!response.ok) throw new Error(data.error || "Request CMS gagal. Coba login ulang ke admin.");
+		return data;
+	}
+
+	function setStatus(message, isError = false) {
+		elements.statusMessage.textContent = message;
+		elements.statusMessage.classList.toggle("is-error", isError);
+	}
+
+	function slugify(value) {
+		return value
+			.toLowerCase()
+			.normalize("NFKD")
+			.replace(/[\\u0300-\\u036f]/g, "")
+			.replace(/[^a-z0-9]+/g, "-")
+			.replace(/^-+|-+$/g, "");
+	}
+
+	function formatBytes(bytes) {
+		if (bytes < 1024) return `${bytes} B`;
+		if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`;
+		return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+	}
+</script>

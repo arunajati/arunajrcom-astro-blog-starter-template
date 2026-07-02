@@ -10,11 +10,13 @@ export type CmsPostInput = {
 	slug: string;
 	title: string;
 	description: string;
+	seoTitle?: string;
+	seoDescription?: string;
+	seoImage?: string;
 	pubDate: string;
 	updatedDate?: string;
 	heroImage?: string;
 	status?: CmsPostStatus;
-	category?: string;
 	body: string;
 	sha?: string;
 };
@@ -187,12 +189,14 @@ function validatePostInput(input: CmsPostInput): CmsPostInput {
 	const slug = normalizeSlug(input.slug);
 	const title = input.title?.trim();
 	const description = input.description?.trim();
+	const seoTitle = input.seoTitle?.trim();
+	const seoDescription = input.seoDescription?.trim();
+	const seoImage = input.seoImage?.trim();
 	const pubDate = input.pubDate?.trim();
 	const updatedDate = input.updatedDate?.trim();
 	const heroImage = input.heroImage?.trim();
 	const body = input.body?.trim();
 	const status = normalizeStatus(input.status);
-	const category = normalizeCategory(input.category);
 
 	if (!title) throw new CmsError(400, "Judul wajib diisi.");
 	if (!description) throw new CmsError(400, "Deskripsi wajib diisi.");
@@ -208,11 +212,13 @@ function validatePostInput(input: CmsPostInput): CmsPostInput {
 		slug,
 		title,
 		description,
+		seoTitle,
+		seoDescription,
+		seoImage,
 		pubDate,
 		updatedDate,
 		heroImage,
 		status,
-		category,
 		body,
 		sha: input.sha,
 	};
@@ -229,11 +235,13 @@ function parsePost(path: string, content: string, sha: string): CmsPost {
 		slug: slugFromPath(path),
 		title: data.title || "",
 		description: data.description || "",
+		seoTitle: data.seoTitle,
+		seoDescription: data.seoDescription,
+		seoImage: data.seoImage,
 		pubDate: data.pubDate || "",
 		updatedDate: data.updatedDate,
 		heroImage: data.heroImage,
 		status: normalizeStatus(data.status),
-		category: normalizeCategory(data.category),
 		body: match[2].trim(),
 		path,
 		sha,
@@ -248,10 +256,12 @@ function renderPost(input: CmsPostInput) {
 		`pubDate: ${quoteYaml(input.pubDate)}`,
 	];
 
+	if (input.seoTitle) lines.push(`seoTitle: ${quoteYaml(input.seoTitle)}`);
+	if (input.seoDescription) lines.push(`seoDescription: ${quoteYaml(input.seoDescription)}`);
+	if (input.seoImage) lines.push(`seoImage: ${quoteYaml(input.seoImage)}`);
 	if (input.updatedDate) lines.push(`updatedDate: ${quoteYaml(input.updatedDate)}`);
 	if (input.heroImage) lines.push(`heroImage: ${quoteYaml(input.heroImage)}`);
 	lines.push(`status: ${quoteYaml(normalizeStatus(input.status))}`);
-	lines.push(`category: ${quoteYaml(normalizeCategory(input.category))}`);
 
 	lines.push("---", "", input.body.trim(), "");
 	return lines.join("\n");
@@ -317,11 +327,6 @@ function parseCsv(value?: string) {
 
 function normalizeStatus(value?: string): CmsPostStatus {
 	return value === "draft" ? "draft" : "published";
-}
-
-function normalizeCategory(value?: string) {
-	const category = value?.trim();
-	return category || "Uncategorized";
 }
 
 async function readGitHubFile(env: CmsEnv, path: string) {

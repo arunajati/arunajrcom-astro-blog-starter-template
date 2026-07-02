@@ -1,0 +1,215 @@
+---
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+---
+
+<AdminLayout title="All Posts" active="posts">
+	<div class="page-header">
+		<div>
+			<h2>All Posts</h2>
+			<p class="page-subtitle">Daftar artikel untuk edit, cek status, dan publish workflow.</p>
+		</div>
+		<a class="button" href="/admin/posts/new">Add New</a>
+	</div>
+
+	<div class="posts-page">
+		<div class="toolbar">
+			<div class="filter-row" aria-label="Filter post">
+				<button class="filter-button is-active" type="button" data-filter="all">All</button>
+				<button class="filter-button" type="button" data-filter="draft">Draft</button>
+				<button class="filter-button" type="button" data-filter="published">Published</button>
+			</div>
+			<button id="refreshButton" class="ghost" type="button">Refresh</button>
+		</div>
+		<p id="statusMessage" class="status">Memuat daftar post...</p>
+		<div class="table-wrap">
+			<table>
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Status</th>
+						<th>Publish Date</th>
+						<th>Slug</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody id="postRows"></tbody>
+			</table>
+		</div>
+	</div>
+
+	<style>
+		.posts-page {
+			display: grid;
+			gap: 1rem;
+			padding: 1.1rem;
+		}
+
+		.toolbar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1rem;
+		}
+
+		.filter-row {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.45rem;
+		}
+
+		.filter-button {
+			border: 1px solid transparent;
+			border-radius: 999px;
+			padding: 0.4rem 0.66rem;
+			background: #f1f5f9;
+			color: var(--cms-muted);
+			font-size: 0.86rem;
+			font-weight: 500;
+		}
+
+		.filter-button.is-active {
+			border-color: #c7d2fe;
+			background: var(--cms-blue-soft);
+			color: var(--cms-blue);
+		}
+
+		.table-wrap {
+			overflow: auto;
+			border: 1px solid var(--cms-line);
+			border-radius: 12px;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			min-width: 760px;
+		}
+
+		th,
+		td {
+			border-bottom: 1px solid var(--cms-line);
+			padding: 0.85rem;
+			text-align: left;
+			vertical-align: top;
+		}
+
+		th {
+			background: #f8faff;
+			color: var(--cms-muted);
+			font-size: 0.78rem;
+			font-weight: 650;
+			letter-spacing: 0.04em;
+			text-transform: uppercase;
+		}
+
+		tr:last-child td {
+			border-bottom: 0;
+		}
+
+		.post-title {
+			display: block;
+			color: var(--cms-text);
+			font-weight: 600;
+			line-height: 1.35;
+		}
+
+		@media (max-width: 720px) {
+			.toolbar,
+			.page-header {
+				align-items: flex-start;
+				flex-direction: column;
+			}
+		}
+	</style>
+
+	<script>
+		const API_BASE = "/admin/api";
+		const state = {
+			posts: [],
+			filter: "all",
+		};
+
+		const rows = document.getElementById("postRows");
+		const statusMessage = document.getElementById("statusMessage");
+		const refreshButton = document.getElementById("refreshButton");
+		const filterButtons = document.querySelectorAll("[data-filter]");
+
+		refreshButton.addEventListener("click", () => loadPosts());
+		filterButtons.forEach((button) => {
+			button.addEventListener("click", () => {
+				state.filter = button.dataset.filter;
+				renderPosts();
+			});
+		});
+
+		loadPosts();
+
+		async function loadPosts() {
+			try {
+				setStatus("Memuat daftar post...");
+				const data = await requestJson(`${API_BASE}/posts`);
+				state.posts = data.posts || [];
+				renderPosts();
+				setStatus(`${state.posts.length} post siap dikelola.`);
+			} catch (error) {
+				setStatus(error.message, true);
+			}
+		}
+
+		function renderPosts() {
+			rows.innerHTML = "";
+			filterButtons.forEach((button) => {
+				button.classList.toggle("is-active", button.dataset.filter === state.filter);
+			});
+
+			const posts = state.posts.filter((post) => state.filter === "all" || post.status === state.filter);
+			for (const post of posts) {
+				const tr = document.createElement("tr");
+				const badgeClass = post.status === "draft" ? "badge is-draft" : "badge";
+				tr.innerHTML = `
+					<td>
+						<span class="post-title">${escapeHtml(post.title)}</span>
+						<span class="post-meta">${escapeHtml(post.description || "")}</span>
+					</td>
+					<td><span class="${badgeClass}">${escapeHtml(post.status)}</span></td>
+					<td>${escapeHtml(post.pubDate)}</td>
+					<td><span class="post-meta">${escapeHtml(post.slug)}</span></td>
+					<td><a class="button secondary" href="/admin/posts/edit?slug=${encodeURIComponent(post.slug)}">Edit</a></td>
+				`;
+				rows.append(tr);
+			}
+
+			if (posts.length === 0) {
+				const tr = document.createElement("tr");
+				tr.innerHTML = `<td colspan="5">Tidak ada post untuk filter ini.</td>`;
+				rows.append(tr);
+			}
+		}
+
+		async function requestJson(url, options) {
+			let response;
+			try {
+				response = await fetch(url, { credentials: "same-origin", ...options });
+			} catch {
+				throw new Error("Gagal terhubung ke CMS. Coba refresh halaman admin.");
+			}
+
+			const data = await response.json().catch(() => ({}));
+			if (!response.ok) throw new Error(data.error || "Request CMS gagal. Coba login ulang ke admin.");
+			return data;
+		}
+
+		function setStatus(message, isError = false) {
+			statusMessage.textContent = message;
+			statusMessage.classList.toggle("is-error", isError);
+		}
+
+		function escapeHtml(value) {
+			return String(value || "")
+				.replace(/&/g, "&amp;")
+				.replace(/</g, "&lt;")
+				.replace(/>/g, "&gt;")
+				.replace(/"/g, "&quot;");
+		}
+	</script>
+</AdminLayout>

@@ -1,0 +1,26 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+
+export const prerender = false;
+
+Astro.response.status = 404;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="404 Not Found - Aruna JR" description="Halaman tidak ditemukan." />
+	</head>
+	<body>
+		<Header />
+		<main style="text-align: center;">
+			<img src="/favicon.webp" alt="404 Not Found - Aruna JR" width="100" style="margin-bottom: 2rem;" />
+			<h1>404</h1>
+			<p>Halaman tidak ditemukan.</p>
+			<p><a href="/">Kembali ke halaman utama</a></p>
+		</main>
+		<Footer />
+	</body>
+</html>

@@ -66,9 +66,35 @@ const { mode } = Astro.props;
 
 	<section class="form-section">
 		<h3>Gambar dan Isi</h3>
-		<div class="button-row">
-			<button id="insertHeadingButton" class="soft" type="button">Tambah H2</button>
-			<button id="insertParagraphButton" class="soft" type="button">Tambah Paragraf</button>
+		<div class="button-row editor-toolbar">
+			<button id="insertHeadingButton" class="soft" type="button">Heading</button>
+			<button id="insertParagraphButton" class="soft" type="button">Paragraph</button>
+			<button id="openLinkButton" class="soft" type="button">Link</button>
+			<button id="openImageButton" class="soft" type="button">Image</button>
+		</div>
+		<div id="linkPanel" class="link-panel">
+			<div class="field-grid">
+				<label>
+					Link text
+					<input id="linkText" placeholder="Teks link" />
+				</label>
+				<label>
+					URL
+					<input id="linkUrl" placeholder="https://example.com atau /halaman/" />
+				</label>
+			</div>
+			<div class="button-row">
+				<label class="checkbox-field">
+					<input id="linkNewWindow" type="checkbox" />
+					<span>Open in new window</span>
+				</label>
+				<label class="checkbox-field">
+					<input id="linkNoFollow" type="checkbox" />
+					<span>nofollow</span>
+				</label>
+				<button id="insertLinkButton" type="button">Insert Link</button>
+				<button id="cancelLinkButton" class="ghost" type="button">Cancel</button>
+			</div>
 		</div>
 		<div id="uploadBox" class="upload-box">
 			<img id="imagePreview" class="upload-preview" alt="Preview gambar yang dipilih" />
@@ -174,6 +200,36 @@ const { mode } = Astro.props;
 		padding-top: 0.25rem;
 	}
 
+	.editor-toolbar {
+		align-items: stretch;
+	}
+
+	.link-panel {
+		display: none;
+		gap: 1rem;
+		border: 1px solid var(--cms-line);
+		border-radius: 12px;
+		padding: 0.9rem;
+		background: #f8faff;
+	}
+
+	.link-panel.is-visible {
+		display: grid;
+	}
+
+	.checkbox-field {
+		display: flex;
+		align-items: center;
+		gap: 0.45rem;
+		font-size: 0.86rem;
+		font-weight: 500;
+	}
+
+	.checkbox-field input {
+		width: 18px;
+		height: 18px;
+	}
+
 	input[type="file"] {
 		display: none;
 	}
@@ -230,6 +286,8 @@ const { mode } = Astro.props;
 		nextStatus: "published",
 		selectedImageUrl: "",
 		slugTouched: false,
+		bodySelectionStart: 0,
+		bodySelectionEnd: 0,
 	};
 
 	const elements = {
@@ -256,6 +314,15 @@ const { mode } = Astro.props;
 		clearImageButton: document.getElementById("clearImageButton"),
 		insertHeadingButton: document.getElementById("insertHeadingButton"),
 		insertParagraphButton: document.getElementById("insertParagraphButton"),
+		openLinkButton: document.getElementById("openLinkButton"),
+		openImageButton: document.getElementById("openImageButton"),
+		linkPanel: document.getElementById("linkPanel"),
+		linkText: document.getElementById("linkText"),
+		linkUrl: document.getElementById("linkUrl"),
+		linkNewWindow: document.getElementById("linkNewWindow"),
+		linkNoFollow: document.getElementById("linkNoFollow"),
+		insertLinkButton: document.getElementById("insertLinkButton"),
+		cancelLinkButton: document.getElementById("cancelLinkButton"),
 		previewButton: document.getElementById("previewButton"),
 		draftButton: document.getElementById("draftButton"),
 		publishButton: document.getElementById("publishButton"),
@@ -269,6 +336,13 @@ const { mode } = Astro.props;
 	elements.clearImageButton.addEventListener("click", () => clearSelectedImage());
 	elements.insertHeadingButton.addEventListener("click", () => insertText("\n<h2>Judul Bagian</h2>\n"));
 	elements.insertParagraphButton.addEventListener("click", () => insertText("\n<p>Isi paragraf.</p>\n"));
+	elements.openLinkButton.addEventListener("click", () => openLinkPanel());
+	elements.openImageButton.addEventListener("click", () => {
+		rememberBodySelection();
+		elements.imageUpload.click();
+	});
+	elements.insertLinkButton.addEventListener("click", () => insertLink());
+	elements.cancelLinkButton.addEventListener("click", () => closeLinkPanel());
 	elements.title.addEventListener("input", () => {
 		if (state.isNew && !state.slugTouched) elements.slug.value = slugify(elements.title.value);
 	});
@@ -405,6 +479,50 @@ const { mode } = Astro.props;
 		setStatus("Gambar siap diupload. Cek thumbnail dan slug file dulu.");
 	}
 
+	function openLinkPanel() {
+		rememberBodySelection();
+		const selectedText = selectedBodyText();
+		elements.linkText.value = selectedText || "";
+		elements.linkUrl.value = "";
+		elements.linkNewWindow.checked = false;
+		elements.linkNoFollow.checked = false;
+		elements.linkPanel.classList.add("is-visible");
+		elements.linkText.focus();
+		setStatus("Isi detail link lalu klik Insert Link.");
+	}
+
+	function closeLinkPanel() {
+		elements.linkPanel.classList.remove("is-visible");
+		elements.linkText.value = "";
+		elements.linkUrl.value = "";
+		elements.linkNewWindow.checked = false;
+		elements.linkNoFollow.checked = false;
+	}
+
+	function insertLink() {
+		const text = elements.linkText.value.trim() || selectedBodyText() || "Teks link";
+		const url = elements.linkUrl.value.trim();
+		if (!url) {
+			setStatus("URL link wajib diisi.", true);
+			elements.linkUrl.focus();
+			return;
+		}
+
+		const rel = [];
+		const target = elements.linkNewWindow.checked ? ` target="_blank"` : "";
+		if (elements.linkNewWindow.checked) rel.push("noopener", "noreferrer");
+		if (elements.linkNoFollow.checked) rel.push("nofollow");
+		const relAttribute = rel.length ? ` rel="${rel.join(" ")}"` : "";
+
+		insertText(
+			`<a href="${escapeAttribute(url)}"${target}${relAttribute}>${escapeHtml(text)}</a>`,
+			state.bodySelectionStart,
+			state.bodySelectionEnd,
+		);
+		closeLinkPanel();
+		setStatus("Link berhasil ditambahkan.");
+	}
+
 	async function uploadImage() {
 		const file = elements.imageUpload.files[0];
 		if (!file) return;
@@ -420,11 +538,16 @@ const { mode } = Astro.props;
 				method: "POST",
 				body: formData,
 			});
-			elements.heroImage.value = data.upload.path;
-			if (!elements.seoImage.value) elements.seoImage.value = data.upload.path;
-			insertText(`\n<img src="${data.upload.path}" alt="${escapeAttribute(elements.title.value || "Aruna JR")}">\n`);
+			const hadHeroImage = Boolean(elements.heroImage.value);
+			if (!hadHeroImage) elements.heroImage.value = data.upload.path;
+			if (!elements.seoImage.value && !hadHeroImage) elements.seoImage.value = data.upload.path;
+			insertText(
+				`\n<img src="${data.upload.path}" alt="${escapeAttribute(elements.title.value || "Aruna JR")}">\n`,
+				state.bodySelectionStart,
+				state.bodySelectionEnd,
+			);
 			clearSelectedImage();
-			setStatus("Gambar berhasil diupload. Hero image dan SEO image sudah diperbarui.");
+			setStatus("Gambar berhasil diupload dan ditambahkan ke artikel.");
 		} catch (error) {
 			setStatus(error.message, true);
 		} finally {
@@ -464,14 +587,23 @@ const { mode } = Astro.props;
 		window.open("/admin/preview", "_blank", "noopener");
 	}
 
-	function insertText(text) {
-		const start = elements.body.selectionStart;
-		const end = elements.body.selectionEnd;
+	function rememberBodySelection() {
+		state.bodySelectionStart = elements.body.selectionStart;
+		state.bodySelectionEnd = elements.body.selectionEnd;
+	}
+
+	function insertText(text, selectionStart = elements.body.selectionStart, selectionEnd = elements.body.selectionEnd) {
+		const start = selectionStart;
+		const end = selectionEnd;
 		const current = elements.body.value;
 		elements.body.value = `${current.slice(0, start)}${text}${current.slice(end)}`;
 		elements.body.focus();
 		elements.body.selectionStart = start + text.length;
 		elements.body.selectionEnd = start + text.length;
+	}
+
+	function selectedBodyText() {
+		return elements.body.value.slice(elements.body.selectionStart, elements.body.selectionEnd).trim();
 	}
 
 	async function requestJson(url, options) {
@@ -509,6 +641,13 @@ const { mode } = Astro.props;
 	}
 
 	function escapeAttribute(value) {
-		return String(value || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+		return escapeHtml(value).replace(/"/g, "&quot;");
+	}
+
+	function escapeHtml(value) {
+		return String(value || "")
+			.replace(/&/g, "&amp;")
+			.replace(/</g, "&lt;")
+			.replace(/>/g, "&gt;");
 	}
 </script>

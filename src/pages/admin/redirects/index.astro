@@ -1,0 +1,423 @@
+---
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+---
+
+<AdminLayout title="Redirects" active="redirects">
+	<div class="page-header">
+		<div>
+			<h2>Redirects</h2>
+			<p class="page-subtitle">Kelola URL lama yang perlu diarahkan ke URL baru.</p>
+		</div>
+		<button id="newRedirectButton" class="button primary" type="button">Add Redirect</button>
+	</div>
+
+	<div class="redirects-page">
+		<form id="redirectForm" class="redirect-form">
+			<input id="redirectId" type="hidden" />
+			<div class="field-grid">
+				<label>
+					From URL
+					<input id="fromUrl" required placeholder="/blog/url-lama/" />
+				</label>
+				<label>
+					To URL
+					<input id="toUrl" required placeholder="/blog/url-baru/" />
+				</label>
+				<label>
+					Type
+					<select id="statusCode">
+						<option value="301">301 Permanent</option>
+						<option value="302">302 Temporary</option>
+					</select>
+				</label>
+				<label class="checkbox-field">
+					<input id="enabled" type="checkbox" checked />
+					<span>Redirect aktif</span>
+				</label>
+			</div>
+			<div class="button-row">
+				<button id="saveButton" type="submit">Save Redirect</button>
+				<button id="cancelButton" class="ghost" type="button">Cancel</button>
+				<p id="statusMessage" class="status">Memuat redirect...</p>
+			</div>
+		</form>
+
+		<div class="table-wrap">
+			<table>
+				<thead>
+					<tr>
+						<th>From</th>
+						<th>To</th>
+						<th>Type</th>
+						<th>Status</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody id="redirectRows"></tbody>
+			</table>
+		</div>
+	</div>
+
+	<style>
+		:global(.redirects-page) {
+			display: grid;
+			gap: 1.25rem;
+			padding: 1.5rem;
+		}
+
+		:global(.redirect-form) {
+			display: grid;
+			gap: 1rem;
+			border: 1px solid var(--cms-line);
+			border-radius: 12px;
+			padding: 1rem;
+			background: #fff;
+		}
+
+		:global(.field-grid) {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 1rem;
+		}
+
+		:global(label) {
+			display: grid;
+			gap: 0.38rem;
+			color: var(--cms-dark);
+			font-size: 0.9rem;
+			font-weight: 600;
+		}
+
+		:global(input),
+		:global(select) {
+			box-sizing: border-box;
+			width: 100%;
+			border: 1px solid var(--cms-line);
+			border-radius: 9px;
+			padding: 0.72rem 0.82rem;
+			background: #fff;
+			color: var(--cms-text);
+			font: inherit;
+			font-weight: 400;
+		}
+
+		:global(input:focus),
+		:global(select:focus) {
+			border-color: #9aa8ff;
+			box-shadow: 0 0 0 3px rgba(79, 101, 232, 0.12);
+			outline: 0;
+		}
+
+		:global(.checkbox-field) {
+			display: flex;
+			align-items: center;
+			gap: 0.55rem;
+			padding-top: 1.65rem;
+		}
+
+		:global(.checkbox-field input) {
+			width: 18px;
+			height: 18px;
+		}
+
+		:global(.button-row) {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 0.65rem;
+		}
+
+		:global(.table-wrap) {
+			overflow: auto;
+			border: 1px solid var(--cms-line);
+			border-radius: 12px;
+		}
+
+		:global(table) {
+			table-layout: fixed;
+			width: 100%;
+			border-collapse: collapse;
+			min-width: 820px;
+		}
+
+		:global(th:first-child),
+		:global(td:first-child),
+		:global(th:nth-child(2)),
+		:global(td:nth-child(2)) {
+			width: 30%;
+		}
+
+		:global(th:nth-child(3)),
+		:global(td:nth-child(3)),
+		:global(th:nth-child(4)),
+		:global(td:nth-child(4)) {
+			width: 110px;
+		}
+
+		:global(th:last-child),
+		:global(td:last-child) {
+			width: 190px;
+			text-align: right;
+		}
+
+		:global(th),
+		:global(td) {
+			border-bottom: 1px solid var(--cms-line);
+			padding: 0.95rem 1rem;
+			text-align: left;
+			vertical-align: middle;
+		}
+
+		:global(th) {
+			background: #f8faff;
+			color: var(--cms-muted);
+			font-size: 0.78rem;
+			font-weight: 650;
+			letter-spacing: 0.04em;
+			text-transform: uppercase;
+		}
+
+		:global(tr:last-child td) {
+			border-bottom: 0;
+		}
+
+		:global(.url-text) {
+			display: block;
+			overflow: hidden;
+			color: var(--cms-text);
+			font-size: 0.9rem;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		:global(.row-actions) {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+			gap: 0.4rem;
+		}
+
+		:global(.danger) {
+			border: 1px solid #fecaca;
+			background: #fff;
+			color: var(--cms-red);
+			box-shadow: none;
+		}
+
+		@media (max-width: 760px) {
+			:global(.field-grid),
+			:global(.page-header) {
+				align-items: flex-start;
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+
+	<script>
+		const API_BASE = "/admin/api";
+		const state = {
+			redirects: [],
+			editingId: "",
+		};
+
+		const form = document.getElementById("redirectForm");
+		const redirectId = document.getElementById("redirectId");
+		const fromUrl = document.getElementById("fromUrl");
+		const toUrl = document.getElementById("toUrl");
+		const statusCode = document.getElementById("statusCode");
+		const enabled = document.getElementById("enabled");
+		const rows = document.getElementById("redirectRows");
+		const statusMessage = document.getElementById("statusMessage");
+		const saveButton = document.getElementById("saveButton");
+		const cancelButton = document.getElementById("cancelButton");
+		const newRedirectButton = document.getElementById("newRedirectButton");
+
+		form.addEventListener("submit", (event) => saveRedirect(event));
+		cancelButton.addEventListener("click", () => resetForm());
+		newRedirectButton.addEventListener("click", () => resetForm(true));
+
+		loadRedirects();
+
+		async function loadRedirects() {
+			try {
+				setStatus("Memuat redirect...");
+				const data = await requestJson(`${API_BASE}/redirects`);
+				state.redirects = data.redirects || [];
+				renderRedirects();
+				setStatus(`${state.redirects.length} redirect siap dikelola.`);
+			} catch (error) {
+				setStatus(error.message, true);
+			}
+		}
+
+		async function saveRedirect(event) {
+			event.preventDefault();
+			saveButton.disabled = true;
+			setStatus(state.editingId ? "Menyimpan perubahan..." : "Membuat redirect...");
+
+			try {
+				const payload = formPayload();
+				const url = state.editingId
+					? `${API_BASE}/redirects/${encodeURIComponent(state.editingId)}`
+					: `${API_BASE}/redirects`;
+				const method = state.editingId ? "PUT" : "POST";
+				const data = await requestJson(url, {
+					method,
+					headers: { "content-type": "application/json" },
+					body: JSON.stringify(payload),
+				});
+				state.redirects = data.redirects || state.redirects;
+				renderRedirects();
+				resetForm();
+				setStatus("Redirect tersimpan. Deploy otomatis akan berjalan dari GitHub.");
+			} catch (error) {
+				setStatus(error.message, true);
+			} finally {
+				saveButton.disabled = false;
+			}
+		}
+
+		function renderRedirects() {
+			rows.innerHTML = "";
+
+			for (const redirect of state.redirects) {
+				const tr = document.createElement("tr");
+				const badgeClass = redirect.enabled ? "badge" : "badge is-draft";
+				tr.innerHTML = `
+					<td><span class="url-text" title="${escapeHtml(redirect.from)}">${escapeHtml(redirect.from)}</span></td>
+					<td><span class="url-text" title="${escapeHtml(redirect.to)}">${escapeHtml(redirect.to)}</span></td>
+					<td>${escapeHtml(redirect.statusCode)}</td>
+					<td><span class="${badgeClass}">${redirect.enabled ? "active" : "inactive"}</span></td>
+					<td>
+						<div class="row-actions">
+							<button class="ghost compact" type="button" data-action="toggle" data-id="${escapeHtml(redirect.id)}">
+								${redirect.enabled ? "Disable" : "Enable"}
+							</button>
+							<button class="secondary compact" type="button" data-action="edit" data-id="${escapeHtml(redirect.id)}">Edit</button>
+							<button class="danger compact" type="button" data-action="delete" data-id="${escapeHtml(redirect.id)}">Delete</button>
+						</div>
+					</td>
+				`;
+				rows.append(tr);
+			}
+
+			if (state.redirects.length === 0) {
+				const tr = document.createElement("tr");
+				tr.innerHTML = `<td colspan="5">Belum ada redirect.</td>`;
+				rows.append(tr);
+			}
+
+			rows.querySelectorAll("[data-action]").forEach((button) => {
+				button.addEventListener("click", () => handleRowAction(button.dataset.action, button.dataset.id));
+			});
+		}
+
+		async function handleRowAction(action, id) {
+			const redirect = state.redirects.find((item) => item.id === id);
+			if (!redirect) return;
+
+			if (action === "edit") {
+				fillForm(redirect);
+				return;
+			}
+
+			if (action === "toggle") {
+				await updateRedirect(redirect.id, { ...redirect, enabled: !redirect.enabled });
+				return;
+			}
+
+			if (action === "delete" && window.confirm(`Hapus redirect ${redirect.from}?`)) {
+				await deleteRedirect(redirect.id);
+			}
+		}
+
+		async function updateRedirect(id, payload) {
+			try {
+				setStatus("Menyimpan redirect...");
+				const data = await requestJson(`${API_BASE}/redirects/${encodeURIComponent(id)}`, {
+					method: "PUT",
+					headers: { "content-type": "application/json" },
+					body: JSON.stringify(payload),
+				});
+				state.redirects = data.redirects || state.redirects;
+				renderRedirects();
+				setStatus("Redirect tersimpan. Deploy otomatis akan berjalan dari GitHub.");
+			} catch (error) {
+				setStatus(error.message, true);
+			}
+		}
+
+		async function deleteRedirect(id) {
+			try {
+				setStatus("Menghapus redirect...");
+				const data = await requestJson(`${API_BASE}/redirects/${encodeURIComponent(id)}`, {
+					method: "DELETE",
+				});
+				state.redirects = data.redirects || [];
+				renderRedirects();
+				resetForm();
+				setStatus("Redirect dihapus. Deploy otomatis akan berjalan dari GitHub.");
+			} catch (error) {
+				setStatus(error.message, true);
+			}
+		}
+
+		function fillForm(redirect) {
+			state.editingId = redirect.id;
+			redirectId.value = redirect.id;
+			fromUrl.value = redirect.from;
+			toUrl.value = redirect.to;
+			statusCode.value = String(redirect.statusCode || 301);
+			enabled.checked = redirect.enabled !== false;
+			saveButton.textContent = "Update Redirect";
+			setStatus("Redirect siap diedit.");
+			fromUrl.focus();
+		}
+
+		function resetForm(focus = false) {
+			state.editingId = "";
+			redirectId.value = "";
+			fromUrl.value = "";
+			toUrl.value = "";
+			statusCode.value = "301";
+			enabled.checked = true;
+			saveButton.textContent = "Save Redirect";
+			if (focus) fromUrl.focus();
+		}
+
+		function formPayload() {
+			return {
+				from: fromUrl.value,
+				to: toUrl.value,
+				statusCode: Number(statusCode.value),
+				enabled: enabled.checked,
+			};
+		}
+
+		async function requestJson(url, options) {
+			let response;
+			try {
+				response = await fetch(url, { credentials: "same-origin", ...options });
+			} catch {
+				throw new Error("Gagal terhubung ke CMS. Coba refresh halaman admin.");
+			}
+
+			const data = await response.json().catch(() => ({}));
+			if (!response.ok) throw new Error(data.error || "Request CMS gagal. Coba login ulang ke admin.");
+			return data;
+		}
+
+		function setStatus(message, isError = false) {
+			statusMessage.textContent = message;
+			statusMessage.classList.toggle("is-error", isError);
+		}
+
+		function escapeHtml(value) {
+			return String(value || "")
+				.replace(/&/g, "&amp;")
+				.replace(/</g, "&lt;")
+				.replace(/>/g, "&gt;")
+				.replace(/"/g, "&quot;");
+		}
+	</script>
+</AdminLayout>

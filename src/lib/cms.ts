@@ -28,6 +28,27 @@ export type CmsPost = CmsPostInput & {
 	sha: string;
 };
 
+export type CmsRedirectStatusCode = 301 | 302;
+
+export type CmsRedirectInput = {
+	from: string;
+	to: string;
+	statusCode?: CmsRedirectStatusCode;
+	enabled?: boolean;
+};
+
+export type CmsRedirect = CmsRedirectInput & {
+	id: string;
+	statusCode: CmsRedirectStatusCode;
+	enabled: boolean;
+	updatedAt: string;
+};
+
+export type CmsRedirectState = {
+	redirects: CmsRedirect[];
+	sha: string;
+};
+
 export class CmsError extends Error {
 	status: number;
 
@@ -38,6 +59,7 @@ export class CmsError extends Error {
 }
 
 const BLOG_DIR = "src/content/blog";
+const REDIRECTS_FILE = "src/data/redirects.json";
 const DEFAULT_OWNER = "arunajati";
 const DEFAULT_REPO = "arunajrcom-astro-blog-starter-template";
 const DEFAULT_BRANCH = "main";
@@ -204,6 +226,55 @@ export async function uploadImage(env: CmsEnv, file: File, authorEmail: string, 
 	});
 
 	return { path: publicPath };
+}
+
+export async function listRedirects(env: CmsEnv): Promise<CmsRedirectState> {
+	const content = await readGitHubFile(env, REDIRECTS_FILE);
+	return {
+		redirects: parseRedirects(content.content),
+		sha: content.sha,
+	};
+}
+
+export async function createRedirect(env: CmsEnv, input: CmsRedirectInput, authorEmail: string) {
+	const state = await listRedirects(env);
+	const redirect = normalizeRedirectInput(input, {
+		id: crypto.randomUUID(),
+		updatedAt: new Date().toISOString(),
+	});
+
+	ensureRedirectFromIsUnique(state.redirects, redirect.from);
+	const redirects = sortRedirects([...state.redirects, redirect]);
+	await writeRedirects(env, redirects, state.sha, `cms: create redirect ${redirect.from}`, authorEmail);
+	return { redirect, redirects };
+}
+
+export async function updateRedirect(env: CmsEnv, id: string, input: CmsRedirectInput, authorEmail: string) {
+	const state = await listRedirects(env);
+	const index = state.redirects.findIndex((redirect) => redirect.id === id);
+	if (index === -1) throw new CmsError(404, "Redirect tidak ditemukan.");
+
+	const redirect = normalizeRedirectInput(input, {
+		id,
+		updatedAt: new Date().toISOString(),
+	});
+	ensureRedirectFromIsUnique(state.redirects, redirect.from, id);
+
+	const redirects = [...state.redirects];
+	redirects[index] = redirect;
+	const sortedRedirects = sortRedirects(redirects);
+	await writeRedirects(env, sortedRedirects, state.sha, `cms: update redirect ${redirect.from}`, authorEmail);
+	return { redirect, redirects: sortedRedirects };
+}
+
+export async function deleteRedirect(env: CmsEnv, id: string, authorEmail: string) {
+	const state = await listRedirects(env);
+	const redirect = state.redirects.find((item) => item.id === id);
+	if (!redirect) throw new CmsError(404, "Redirect tidak ditemukan.");
+
+	const redirects = state.redirects.filter((item) => item.id !== id);
+	await writeRedirects(env, redirects, state.sha, `cms: delete redirect ${redirect.from}`, authorEmail);
+	return { redirects };
 }
 
 function validatePostInput(input: CmsPostInput): CmsPostInput {
@@ -391,6 +462,121 @@ function extractFirstImageSrc(body: string) {
 	}
 
 	return "";
+}
+
+function parseRedirects(content: string) {
+	try {
+		const data = JSON.parse(content) as { redirects?: CmsRedirect[] };
+		if (!Array.isArray(data.redirects)) return [];
+		return sortRedirects(
+			data.redirects.map((redirect) =>
+				normalizeRedirectInput(redirect, {
+					id: redirect.id,
+					updatedAt: redirect.updatedAt,
+				}),
+			),
+		);
+	} catch {
+		throw new CmsError(500, "Format redirects.json tidak valid.");
+	}
+}
+
+function normalizeRedirectInput(
+	input: CmsRedirectInput & { id?: string; updatedAt?: string },
+	options: { id?: string; updatedAt?: string } = {},
+): CmsRedirect {
+	const from = normalizeRedirectFrom(input.from);
+	const to = normalizeRedirectTo(input.to);
+	const statusCode = input.statusCode === 302 ? 302 : 301;
+	const id = options.id || input.id || crypto.randomUUID();
+	const updatedAt = options.updatedAt || input.updatedAt || new Date().toISOString();
+
+	if (normalizeComparableUrl(from) === normalizeComparableUrl(to)) {
+		throw new CmsError(400, "From URL dan To URL tidak boleh sama.");
+	}
+
+	return {
+		id,
+		from,
+		to,
+		statusCode,
+		enabled: input.enabled !== false,
+		updatedAt,
+	};
+}
+
+function normalizeRedirectFrom(value: string) {
+	const path = normalizeInternalPath(value, "From URL");
+	if (path.includes("?")) {
+		throw new CmsError(400, "From URL tidak boleh memakai query string.");
+	}
+	const blockedPrefixes = ["/admin", "/admin/api", "/_astro", "/uploads"];
+	if (blockedPrefixes.some((prefix) => path === prefix || path.startsWith(`${prefix}/`))) {
+		throw new CmsError(400, "From URL tidak boleh memakai area sistem.");
+	}
+	return path;
+}
+
+function normalizeRedirectTo(value: string) {
+	const trimmed = value?.trim();
+	if (!trimmed) throw new CmsError(400, "To URL wajib diisi.");
+
+	if (/^https?:\/\//i.test(trimmed)) {
+		try {
+			return new URL(trimmed).toString();
+		} catch {
+			throw new CmsError(400, "To URL tidak valid.");
+		}
+	}
+
+	return normalizeInternalPath(trimmed, "To URL");
+}
+
+function normalizeInternalPath(value: string, label: string) {
+	const trimmed = value?.trim();
+	if (!trimmed) throw new CmsError(400, `${label} wajib diisi.`);
+	if (!trimmed.startsWith("/") || trimmed.startsWith("//")) {
+		throw new CmsError(400, `${label} harus berupa path internal, contoh /blog/url-lama/.`);
+	}
+	if (trimmed.includes("#")) {
+		throw new CmsError(400, `${label} tidak boleh memakai anchor #.`);
+	}
+
+	const [path, query = ""] = trimmed.split("?");
+	const cleanPath = path.replace(/\/{2,}/g, "/").replace(/\/$/, "") || "/";
+	const normalizedPath = cleanPath === "/" ? "/" : `${cleanPath}/`;
+	return query ? `${normalizedPath}?${query}` : normalizedPath;
+}
+
+function normalizeComparableUrl(value: string) {
+	return value.replace(/\/$/, "");
+}
+
+function ensureRedirectFromIsUnique(redirects: CmsRedirect[], from: string, currentId?: string) {
+	const duplicate = redirects.find(
+		(redirect) => redirect.id !== currentId && normalizeComparableUrl(redirect.from) === normalizeComparableUrl(from),
+	);
+	if (duplicate) {
+		throw new CmsError(409, "From URL sudah dipakai redirect lain.");
+	}
+}
+
+function sortRedirects(redirects: CmsRedirect[]) {
+	return [...redirects].sort((a, b) => a.from.localeCompare(b.from));
+}
+
+async function writeRedirects(
+	env: CmsEnv,
+	redirects: CmsRedirect[],
+	sha: string,
+	message: string,
+	authorEmail: string,
+) {
+	await writeGitHubFile(env, REDIRECTS_FILE, `${JSON.stringify({ redirects }, null, 2)}\n`, {
+		message,
+		sha,
+		authorEmail,
+	});
 }
 
 async function readGitHubFile(env: CmsEnv, path: string) {

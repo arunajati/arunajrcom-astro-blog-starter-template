@@ -3,7 +3,7 @@ import BaseHead from "../components/BaseHead.astro";
 
 interface Props {
 	title: string;
-	active?: "posts" | "new";
+	active?: "posts" | "new" | "redirects";
 }
 
 const { title, active = "posts" } = Astro.props;
@@ -250,6 +250,10 @@ const { title, active = "posts" } = Astro.props;
 						<span class="nav-title">Posts</span>
 						<a class={`nav-link${active === "posts" ? " is-active" : ""}`} href="/admin/posts">All Posts</a>
 						<a class={`nav-link${active === "new" ? " is-active" : ""}`} href="/admin/posts/new">Add New</a>
+					</nav>
+					<nav class="nav-group" aria-label="Menu redirect">
+						<span class="nav-title">Redirects</span>
+						<a class={`nav-link${active === "redirects" ? " is-active" : ""}`} href="/admin/redirects">All Redirects</a>
 					</nav>
 				</aside>
 				<section class="admin-panel">

@@ -1,0 +1,12 @@
+{
+  "redirects": [
+    {
+      "id": "article-slug-pengeluaran-typo",
+      "from": "/blog/cara-mencatat-pengelaran-harian-otomatis-dari-iphone-ke-google-sheets/",
+      "to": "/blog/cara-mencatat-pengeluaran-harian-otomatis-dari-iphone-ke-google-sheets/",
+      "statusCode": 301,
+      "enabled": true,
+      "updatedAt": "2026-07-03T11:37:00.000Z"
+    }
+  ]
+}

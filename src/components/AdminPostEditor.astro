@@ -229,6 +229,7 @@ const { mode } = Astro.props;
 		isNew: true,
 		nextStatus: "published",
 		selectedImageUrl: "",
+		slugTouched: false,
 	};
 
 	const elements = {
@@ -266,10 +267,13 @@ const { mode } = Astro.props;
 	elements.imageUpload.addEventListener("change", () => prepareImageUpload());
 	elements.uploadButton.addEventListener("click", () => uploadImage());
 	elements.clearImageButton.addEventListener("click", () => clearSelectedImage());
-	elements.insertHeadingButton.addEventListener("click", () => insertText("\\n<h2>Judul Bagian</h2>\\n"));
-	elements.insertParagraphButton.addEventListener("click", () => insertText("\\n<p>Isi paragraf.</p>\\n"));
+	elements.insertHeadingButton.addEventListener("click", () => insertText("\n<h2>Judul Bagian</h2>\n"));
+	elements.insertParagraphButton.addEventListener("click", () => insertText("\n<p>Isi paragraf.</p>\n"));
 	elements.title.addEventListener("input", () => {
-		if (state.isNew) elements.slug.value = slugify(elements.title.value);
+		if (state.isNew && !state.slugTouched) elements.slug.value = slugify(elements.title.value);
+	});
+	elements.slug.addEventListener("input", () => {
+		state.slugTouched = true;
 	});
 
 	initEditor();
@@ -298,7 +302,7 @@ const { mode } = Astro.props;
 				pubDate: new Date().toISOString().slice(0, 10),
 				updatedDate: "",
 				heroImage: "",
-				body: "<h2>Judul Bagian</h2>\\n\\n<p>Tulis artikel di sini.</p>",
+				body: "<h2>Judul Bagian</h2>\n\n<p>Tulis artikel di sini.</p>",
 				status: "draft",
 				sha: "",
 			},
@@ -321,11 +325,12 @@ const { mode } = Astro.props;
 	function fillForm(post, isNew) {
 		state.currentSlug = post.slug || "";
 		state.isNew = isNew;
+		state.slugTouched = !isNew;
 		elements.sha.value = post.sha || "";
 		elements.status.value = post.status || "published";
 		elements.title.value = post.title || "";
 		elements.slug.value = post.slug || "";
-		elements.slug.disabled = !isNew;
+		elements.slug.disabled = false;
 		elements.pubDate.value = post.pubDate || "";
 		elements.updatedDate.value = post.updatedDate || "";
 		elements.description.value = post.description || "";
@@ -356,6 +361,8 @@ const { mode } = Astro.props;
 		try {
 			const payload = formPayload();
 			payload.status = state.nextStatus;
+			const previousSlug = state.currentSlug;
+			const wasNew = state.isNew;
 			const url = state.isNew
 				? `${API_BASE}/posts`
 				: `${API_BASE}/posts/${encodeURIComponent(state.currentSlug)}`;
@@ -366,7 +373,9 @@ const { mode } = Astro.props;
 				body: JSON.stringify(payload),
 			});
 			fillForm(data.post, false);
-			if (state.isNew) window.history.replaceState({}, "", `/admin/posts/edit?slug=${encodeURIComponent(data.post.slug)}`);
+			if (wasNew || data.post.slug !== previousSlug) {
+				window.history.replaceState({}, "", `/admin/posts/edit?slug=${encodeURIComponent(data.post.slug)}`);
+			}
 			setStatus(
 				state.nextStatus === "draft"
 					? "Draft tersimpan. Artikel tidak tampil publik."
@@ -413,7 +422,7 @@ const { mode } = Astro.props;
 			});
 			elements.heroImage.value = data.upload.path;
 			if (!elements.seoImage.value) elements.seoImage.value = data.upload.path;
-			insertText(`\\n<img src="${data.upload.path}" alt="${escapeAttribute(elements.title.value || "Aruna JR")}">\\n`);
+			insertText(`\n<img src="${data.upload.path}" alt="${escapeAttribute(elements.title.value || "Aruna JR")}">\n`);
 			clearSelectedImage();
 			setStatus("Gambar berhasil diupload. Hero image dan SEO image sudah diperbarui.");
 		} catch (error) {
@@ -486,8 +495,9 @@ const { mode } = Astro.props;
 	function slugify(value) {
 		return value
 			.toLowerCase()
+			.trim()
 			.normalize("NFKD")
-			.replace(/[\\u0300-\\u036f]/g, "")
+			.replace(/[\u0300-\u036f]/g, "")
 			.replace(/[^a-z0-9]+/g, "-")
 			.replace(/^-+|-+$/g, "");
 	}

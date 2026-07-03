@@ -32,4 +32,6 @@ status: "published"
 
 <p>Mencatat pengeluaran harian lewat iOS Shortcut ke Google Sheets adalah cara simpel dan efisien untuk membangun kebiasaan finansial yang konsisten tanpa ribet. Berikut tutorial dalam video yang dapat diikuti dengan mudah.</p>
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/kl0Zco26w0Q?si=Bd6faeJ8tKb7B4yi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>\n<img src="/uploads/blog/2026/07/1783077644194-cara-mencatat-pengeluaran-harian-otomatis-dari-iphone-ke-google-sheets.webp" alt="Cara Mencatat Pengeluaran Harian Otomatis dari iPhone ke Google Sheets">\n
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/kl0Zco26w0Q?si=Bd6faeJ8tKb7B4yi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<img src="/uploads/blog/2026/07/1783077644194-cara-mencatat-pengeluaran-harian-otomatis-dari-iphone-ke-google-sheets.webp" alt="Cara Mencatat Pengeluaran Harian Otomatis dari iPhone ke Google Sheets">

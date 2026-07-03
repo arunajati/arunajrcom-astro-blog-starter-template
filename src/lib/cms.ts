@@ -137,20 +137,41 @@ export async function createPost(env: CmsEnv, input: CmsPostInput, authorEmail: 
 
 export async function updatePost(env: CmsEnv, slug: string, input: CmsPostInput, authorEmail: string) {
 	const currentSlug = normalizeSlug(slug);
-	const normalized = validatePostInput({ ...input, slug: currentSlug });
-	const path = postPath(currentSlug);
+	const normalized = validatePostInput(input);
+	const nextSlug = normalized.slug;
+	const currentPath = postPath(currentSlug);
+	const nextPath = postPath(nextSlug);
 
 	if (!input.sha) {
 		throw new CmsError(409, "Data artikel perlu dimuat ulang sebelum disimpan.");
 	}
 
-	await writeGitHubFile(env, path, renderPost(normalized), {
-		message: `cms: update ${currentSlug}`,
-		sha: input.sha,
-		authorEmail,
-	});
+	if (nextSlug !== currentSlug) {
+		await readGitHubFile(env, nextPath).then(
+			() => {
+				throw new CmsError(409, "Slug baru sudah dipakai artikel lain.");
+			},
+			(error) => {
+				if (!(error instanceof CmsError) || error.status !== 404) throw error;
+			},
+		);
+	}
 
-	return getPost(env, currentSlug);
+	if (nextSlug === currentSlug) {
+		await writeGitHubFile(env, nextPath, renderPost(normalized), {
+			message: `cms: update ${currentSlug}`,
+			sha: input.sha,
+			authorEmail,
+		});
+	} else {
+		await writeGitHubFile(env, nextPath, renderPost(normalized), {
+			message: `cms: rename ${currentSlug} to ${nextSlug}`,
+			authorEmail,
+		});
+		await deleteGitHubFile(env, currentPath, input.sha, authorEmail);
+	}
+
+	return getPost(env, nextSlug);
 }
 
 export async function uploadImage(env: CmsEnv, file: File, authorEmail: string, fileSlug?: string) {
@@ -250,6 +271,7 @@ function parsePost(path: string, content: string, sha: string): CmsPost {
 
 function renderPost(input: CmsPostInput) {
 	const body = normalizeImageAlts(input.body.trim(), input.seoTitle || input.title);
+	const heroImage = resolvePostHeroImage({ heroImage: input.heroImage, body });
 	const lines = [
 		"---",
 		`title: ${quoteYaml(input.title)}`,
@@ -261,7 +283,7 @@ function renderPost(input: CmsPostInput) {
 	if (input.seoDescription) lines.push(`seoDescription: ${quoteYaml(input.seoDescription)}`);
 	if (input.seoImage) lines.push(`seoImage: ${quoteYaml(input.seoImage)}`);
 	if (input.updatedDate) lines.push(`updatedDate: ${quoteYaml(input.updatedDate)}`);
-	if (input.heroImage) lines.push(`heroImage: ${quoteYaml(input.heroImage)}`);
+	if (heroImage) lines.push(`heroImage: ${quoteYaml(heroImage)}`);
 	lines.push(`status: ${quoteYaml(normalizeStatus(input.status))}`);
 
 	lines.push("---", "", body, "");
@@ -306,6 +328,13 @@ export function normalizeSlug(value: string) {
 	return slug;
 }
 
+export function resolvePostHeroImage(input: Pick<CmsPostInput, "heroImage" | "body">) {
+	const explicitHero = input.heroImage?.trim();
+	if (explicitHero) return explicitHero;
+
+	return extractFirstImageSrc(input.body) || "";
+}
+
 function postPath(slug: string) {
 	return `${BLOG_DIR}/${slug}.md`;
 }
@@ -348,6 +377,20 @@ function normalizeImageAlts(body: string, fallbackAlt: string) {
 
 function quoteAttribute(value: string) {
 	return `"${String(value || "").replace(/"/g, "&quot;")}"`;
+}
+
+function extractFirstImageSrc(body: string) {
+	const htmlMatch = body.match(/<img\b[^>]*\bsrc\s*=\s*(["'])(.*?)\1/i);
+	if (htmlMatch?.[2]?.trim()) {
+		return htmlMatch[2].trim();
+	}
+
+	const markdownMatch = body.match(/!\[[^\]]*]\(([^)\s]+)(?:\s+"[^"]*")?\)/);
+	if (markdownMatch?.[1]?.trim()) {
+		return markdownMatch[1].trim();
+	}
+
+	return "";
 }
 
 async function readGitHubFile(env: CmsEnv, path: string) {
@@ -430,6 +473,25 @@ async function githubRequest<T>(
 	}
 
 	return response.json() as Promise<T>;
+}
+
+async function deleteGitHubFile(env: CmsEnv, path: string, sha: string, authorEmail: string) {
+	await githubRequest(env, path, {
+		method: "DELETE",
+		body: {
+			message: `cms: delete old article ${path}`,
+			sha,
+			branch: githubBranch(env),
+			committer: {
+				name: "Aruna JR CMS",
+				email: authorEmail,
+			},
+			author: {
+				name: "Aruna JR CMS",
+				email: authorEmail,
+			},
+		},
+	});
 }
 
 function githubOwner(env: CmsEnv) {

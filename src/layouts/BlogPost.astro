@@ -4,16 +4,18 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
+import { resolvePostHeroImage } from '../lib/cms';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, seoTitle, seoDescription, seoImage, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, seoTitle, seoDescription, seoImage, pubDate, updatedDate, heroImage, body } = Astro.props;
 const heroAlt = seoTitle || title;
+const resolvedHeroImage = resolvePostHeroImage({ heroImage, body: body || '' });
 ---
 
 <html lang="en">
 	<head>
-		<BaseHead title={seoTitle || title} description={seoDescription || description} image={seoImage || heroImage} />
+		<BaseHead title={seoTitle || title} description={seoDescription || description} image={seoImage || resolvedHeroImage} />
 		<style>
 			main {
 				width: 720px;
@@ -62,7 +64,7 @@ const heroAlt = seoTitle || title;
 		<main>
 			<article>
 				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt={heroAlt} />}
+					{resolvedHeroImage && <img width={1020} height={510} src={resolvedHeroImage} alt={heroAlt} />}
 				</div>
 				<div class="prose">
 					<div class="title">

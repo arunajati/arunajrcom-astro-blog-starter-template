@@ -288,6 +288,7 @@ const { mode } = Astro.props;
 		slugTouched: false,
 		bodySelectionStart: 0,
 		bodySelectionEnd: 0,
+		temporaryUploads: [],
 	};
 
 	const elements = {
@@ -413,6 +414,7 @@ const { mode } = Astro.props;
 		elements.seoImage.value = post.seoImage || "";
 		elements.heroImage.value = post.heroImage || "";
 		elements.body.value = post.body || "";
+		state.temporaryUploads = [];
 		clearSelectedImage();
 	}
 
@@ -541,13 +543,14 @@ const { mode } = Astro.props;
 			const hadHeroImage = Boolean(elements.heroImage.value);
 			if (!hadHeroImage) elements.heroImage.value = data.upload.path;
 			if (!elements.seoImage.value && !hadHeroImage) elements.seoImage.value = data.upload.path;
+			if (data.upload.temporary) state.temporaryUploads.push(data.upload.path);
 			insertText(
 				`\n<img src="${data.upload.path}" alt="${escapeAttribute(elements.title.value || "Aruna JR")}">\n`,
 				state.bodySelectionStart,
 				state.bodySelectionEnd,
 			);
 			clearSelectedImage();
-			setStatus("Gambar berhasil diupload dan ditambahkan ke artikel.");
+			setStatus("Gambar temporary ditambahkan. Save Draft atau Publish agar gambar tersimpan permanen.");
 		} catch (error) {
 			setStatus(error.message, true);
 		} finally {
@@ -579,6 +582,7 @@ const { mode } = Astro.props;
 			heroImage: elements.heroImage.value,
 			status: elements.status.value || "draft",
 			body: elements.body.value,
+			temporaryUploads: state.temporaryUploads,
 		};
 	}
 

@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import {
+	deletePost,
 	getPost,
 	handleCmsError,
 	jsonResponse,
@@ -33,6 +34,17 @@ export const PUT: APIRoute = async ({ request, locals, params }) => {
 		const input = (await request.json()) as CmsPostInput;
 		const post = await updatePost(env, params.slug || "", input, admin.email);
 		return jsonResponse({ post });
+	} catch (error) {
+		return handleCmsError(error);
+	}
+};
+
+export const DELETE: APIRoute = async ({ request, locals, params }) => {
+	try {
+		const env = envFromLocals(locals);
+		const admin = requireAdmin(request, env);
+		const data = await deletePost(env, params.slug || "", admin.email);
+		return jsonResponse(data);
 	} catch (error) {
 		return handleCmsError(error);
 	}

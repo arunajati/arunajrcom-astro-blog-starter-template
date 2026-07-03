@@ -106,7 +106,7 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 
 		:global(th:last-child),
 		:global(td:last-child) {
-			width: 92px;
+			width: 160px;
 			text-align: right;
 		}
 
@@ -146,6 +146,18 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
+		}
+
+		:global(.row-actions) {
+			display: inline-flex;
+			justify-content: flex-end;
+			gap: 0.45rem;
+		}
+
+		:global(.danger) {
+			background: #fee2e2;
+			color: var(--cms-red);
+			box-shadow: none;
 		}
 
 		:global(.load-more-row) {
@@ -192,6 +204,7 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 		const filterButtons = document.querySelectorAll("[data-filter]");
 
 		refreshButton.addEventListener("click", () => loadPosts());
+		rows.addEventListener("click", (event) => handlePostAction(event));
 		loadMoreButton.addEventListener("click", () => {
 			state.visibleCount += PAGE_SIZE;
 			renderPosts();
@@ -237,7 +250,12 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 					</td>
 					<td><span class="${badgeClass}">${escapeHtml(post.status)}</span></td>
 					<td>${formatShortDate(post.pubDate)}</td>
-					<td><a class="button secondary compact" href="/admin/posts/edit?slug=${encodeURIComponent(post.slug)}">Edit</a></td>
+					<td>
+						<span class="row-actions">
+							<a class="button secondary compact" href="/admin/posts/edit?slug=${encodeURIComponent(post.slug)}">Edit</a>
+							<button class="danger compact" type="button" data-action="delete" data-slug="${escapeHtml(post.slug)}" data-title="${escapeHtml(post.title)}">Delete</button>
+						</span>
+					</td>
 				`;
 				rows.append(tr);
 			}
@@ -253,6 +271,30 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
 			loadMoreButton.textContent = hasMore
 				? `Load more (${posts.length - visiblePosts.length} left)`
 				: "Load more";
+		}
+
+		async function handlePostAction(event) {
+			const button = event.target.closest("[data-action='delete']");
+			if (!button) return;
+
+			const slug = button.dataset.slug || "";
+			const title = button.dataset.title || slug;
+			if (!window.confirm(`Hapus post "${title}" dan gambar yang hanya dipakai post ini?`)) return;
+
+			button.disabled = true;
+			try {
+				setStatus("Menghapus post...");
+				const data = await requestJson(`${API_BASE}/posts/${encodeURIComponent(slug)}`, {
+					method: "DELETE",
+				});
+				state.posts = state.posts.filter((post) => post.slug !== slug);
+				renderPosts();
+				setStatus(`Post dihapus. ${data.removedImages || 0} gambar unik ikut dibersihkan.`);
+			} catch (error) {
+				setStatus(error.message, true);
+			} finally {
+				button.disabled = false;
+			}
 		}
 
 		function formatShortDate(value) {

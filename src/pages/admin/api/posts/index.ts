@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import {
+	cleanupTemporaryUploads,
 	createPost,
 	handleCmsError,
 	jsonResponse,
@@ -18,7 +19,8 @@ export const prerender = false;
 export const GET: APIRoute = async ({ request, locals }) => {
 	try {
 		const env = envFromLocals(locals);
-		requireAdmin(request, env);
+		const admin = requireAdmin(request, env);
+		await cleanupTemporaryUploads(env, admin.email);
 		const posts = await listPosts(env);
 		return jsonResponse({ posts });
 	} catch (error) {

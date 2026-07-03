@@ -19,6 +19,7 @@ export type CmsPostInput = {
 	status?: CmsPostStatus;
 	body: string;
 	sha?: string;
+	temporaryUploads?: string[];
 };
 
 export type CmsPostStatus = "draft" | "published";
@@ -60,11 +61,16 @@ export class CmsError extends Error {
 
 const BLOG_DIR = "src/content/blog";
 const REDIRECTS_FILE = "src/data/redirects.json";
+const PUBLIC_UPLOADS_DIR = "public/uploads/blog";
+const PUBLIC_TEMP_UPLOADS_DIR = "public/uploads/tmp/blog";
+const MANAGED_UPLOAD_PREFIX = "/uploads/blog/";
+const TEMP_UPLOAD_PREFIX = "/uploads/tmp/blog/";
 const SITE_HOSTS = new Set(["arunajr.com", "www.arunajr.com"]);
 const DEFAULT_OWNER = "arunajati";
 const DEFAULT_REPO = "arunajrcom-astro-blog-starter-template";
 const DEFAULT_BRANCH = "main";
 const MAX_IMAGE_BYTES = 2 * 1024 * 1024;
+const TEMP_UPLOAD_MAX_AGE_MS = 24 * 60 * 60 * 1000;
 const ALLOWED_IMAGE_TYPES = new Map([
 	["image/jpeg", "jpg"],
 	["image/png", "png"],
@@ -130,6 +136,31 @@ export async function listPosts(env: CmsEnv): Promise<CmsPost[]> {
 	return posts.sort((a, b) => dateValue(b.pubDate) - dateValue(a.pubDate));
 }
 
+export async function cleanupTemporaryUploads(env: CmsEnv, authorEmail: string, maxAgeMs = TEMP_UPLOAD_MAX_AGE_MS) {
+	const uploads = await listTemporaryUploadFiles(env);
+	if (uploads.length === 0) return { deleted: 0 };
+
+	const referenced = collectPostImageRefs(await listPosts(env));
+	const cutoff = Date.now() - maxAgeMs;
+	const deletions = uploads.filter((upload) => {
+		const publicPath = publicPathFromRepoPath(upload.path);
+		return uploadUploadedAt(publicPath) < cutoff && !referenced.has(publicPath);
+	});
+
+	if (deletions.length === 0) return { deleted: 0 };
+
+	await commitGitHubChanges(
+		env,
+		deletions.map((upload) => ({ path: upload.path, content: null })),
+		{
+			message: `cms: cleanup ${deletions.length} temporary upload${deletions.length === 1 ? "" : "s"}`,
+			authorEmail,
+		},
+	);
+
+	return { deleted: deletions.length };
+}
+
 export async function getPost(env: CmsEnv, slug: string): Promise<CmsPost> {
 	const safeSlug = normalizeSlug(slug);
 	const path = postPath(safeSlug);
@@ -150,12 +181,13 @@ export async function createPost(env: CmsEnv, input: CmsPostInput, authorEmail: 
 		}
 	}
 
-	await writeGitHubFile(env, path, renderPost(normalized), {
-		message: `cms: publish ${normalized.slug}`,
+	const prepared = await preparePostMedia(env, normalized, input.temporaryUploads || [], new Set());
+	await commitGitHubChanges(env, [{ path, content: renderPost(prepared.post) }, ...prepared.changes], {
+		message: `cms: publish ${prepared.post.slug}`,
 		authorEmail,
 	});
 
-	return getPost(env, normalized.slug);
+	return getPost(env, prepared.post.slug);
 }
 
 export async function updatePost(env: CmsEnv, slug: string, input: CmsPostInput, authorEmail: string) {
@@ -169,6 +201,11 @@ export async function updatePost(env: CmsEnv, slug: string, input: CmsPostInput,
 		throw new CmsError(409, "Data artikel perlu dimuat ulang sebelum disimpan.");
 	}
 
+	const currentPost = await getPost(env, currentSlug);
+	if (currentPost.sha !== input.sha) {
+		throw new CmsError(409, "Konten berubah. Muat ulang sebelum menyimpan.");
+	}
+
 	if (nextSlug !== currentSlug) {
 		await readGitHubFile(env, nextPath).then(
 			() => {
@@ -180,21 +217,29 @@ export async function updatePost(env: CmsEnv, slug: string, input: CmsPostInput,
 		);
 	}
 
+	const prepared = await preparePostMedia(
+		env,
+		normalized,
+		input.temporaryUploads || [],
+		collectPostImageRefs([currentPost]),
+		currentPath,
+	);
+	const changes: GitHubTreeChange[] = [{ path: nextPath, content: renderPost(prepared.post) }, ...prepared.changes];
+
 	if (nextSlug === currentSlug) {
-		await writeGitHubFile(env, nextPath, renderPost(normalized), {
+		await commitGitHubChanges(env, changes, {
 			message: `cms: update ${currentSlug}`,
-			sha: input.sha,
 			authorEmail,
 		});
 	} else {
-		await writeGitHubFile(env, nextPath, renderPost(normalized), {
+		changes.push({ path: currentPath, content: null });
+		await commitGitHubChanges(env, changes, {
 			message: `cms: rename ${currentSlug} to ${nextSlug}`,
 			authorEmail,
 		});
-		await deleteGitHubFile(env, currentPath, input.sha, authorEmail);
 	}
 
-	return getPost(env, nextSlug);
+	return getPost(env, prepared.post.slug);
 }
 
 export async function uploadImage(env: CmsEnv, file: File, authorEmail: string, fileSlug?: string) {
@@ -217,16 +262,41 @@ export async function uploadImage(env: CmsEnv, file: File, authorEmail: string, 
 	const name = fileSlug || file.name.replace(/\.[^.]+$/, "");
 	const safeName = normalizeSlug(name || "image");
 	const filename = `${Date.now()}-${safeName}.${extension}`;
-	const publicPath = `/uploads/blog/${year}/${month}/${filename}`;
+	const publicPath = `/uploads/tmp/blog/${year}/${month}/${filename}`;
 	const repoPath = `public${publicPath}`;
 	const bytes = new Uint8Array(await file.arrayBuffer());
 
 	await writeGitHubFile(env, repoPath, bytes, {
-		message: `cms: upload ${filename}`,
+		message: `cms: upload temporary ${filename}`,
 		authorEmail,
 	});
 
-	return { path: publicPath };
+	return { path: publicPath, temporary: true };
+}
+
+export async function deletePost(env: CmsEnv, slug: string, authorEmail: string) {
+	const post = await getPost(env, slug);
+	const postImages = collectPostImageRefs([post]);
+	const otherImages = collectPostImageRefs(await listPostsExcept(env, post.path));
+	const deletableImages = [];
+	for (const image of postImages) {
+		if (!isManagedUploadPath(image) || otherImages.has(image)) continue;
+		if (await githubFileExists(env, repoPathFromPublicPath(image))) deletableImages.push(image);
+	}
+
+	await commitGitHubChanges(
+		env,
+		[
+			{ path: post.path, content: null },
+			...deletableImages.map((image) => ({ path: repoPathFromPublicPath(image), content: null })),
+		],
+		{
+			message: `cms: delete post ${post.slug}`,
+			authorEmail,
+		},
+	);
+
+	return { deleted: true, slug: post.slug, removedImages: deletableImages.length };
 }
 
 export async function listRedirects(env: CmsEnv): Promise<CmsRedirectState> {
@@ -465,6 +535,165 @@ function extractFirstImageSrc(body: string) {
 	return "";
 }
 
+async function preparePostMedia(
+	env: CmsEnv,
+	input: CmsPostInput,
+	sessionTemporaryUploads: string[],
+	previousPostImages: Set<string>,
+	currentPostPath?: string,
+) {
+	const tempCandidates = new Set([
+		...sessionTemporaryUploads.filter(isTemporaryUploadPath),
+		...collectPostImageRefs([input]).values(),
+	].filter(isTemporaryUploadPath));
+	const tempToFinal = new Map<string, string>();
+	const changes: GitHubTreeChange[] = [];
+
+	for (const tempPath of tempCandidates) {
+		const finalPath = permanentPathFromTemporaryPath(tempPath);
+		tempToFinal.set(tempPath, finalPath);
+		let tempFile: { bytes: Uint8Array } | null = null;
+		try {
+			tempFile = await readGitHubFileBytes(env, repoPathFromPublicPath(tempPath));
+		} catch (error) {
+			if (!(error instanceof CmsError) || error.status !== 404) throw error;
+		}
+
+		if (isPostInputUsingImage(input, tempPath)) {
+			if (!tempFile) throw new CmsError(404, "Temporary image tidak ditemukan. Upload ulang gambar sebelum menyimpan.");
+			changes.push({ path: repoPathFromPublicPath(finalPath), content: tempFile.bytes });
+		}
+
+		if (tempFile) changes.push({ path: repoPathFromPublicPath(tempPath), content: null });
+	}
+
+	let post = replacePostImagePaths(input, tempToFinal);
+	const nextImages = collectPostImageRefs([post]);
+	const otherImages = collectPostImageRefs(await listPostsExcept(env, currentPostPath));
+	for (const oldImage of previousPostImages) {
+		if (!isManagedUploadPath(oldImage) || nextImages.has(oldImage) || otherImages.has(oldImage)) continue;
+		if (!(await githubFileExists(env, repoPathFromPublicPath(oldImage)))) continue;
+		changes.push({ path: repoPathFromPublicPath(oldImage), content: null });
+	}
+
+	return { post, changes: dedupeGitHubChanges(changes) };
+}
+
+function replacePostImagePaths(input: CmsPostInput, replacements: Map<string, string>): CmsPostInput {
+	let body = input.body;
+	let heroImage = input.heroImage;
+	let seoImage = input.seoImage;
+
+	for (const [from, to] of replacements) {
+		body = replaceAll(body, from, to);
+		if (heroImage === from) heroImage = to;
+		if (seoImage === from) seoImage = to;
+	}
+
+	return { ...input, body, heroImage, seoImage, temporaryUploads: [] };
+}
+
+function replaceAll(value: string, from: string, to: string) {
+	return value.split(from).join(to);
+}
+
+function isPostInputUsingImage(input: Pick<CmsPostInput, "heroImage" | "seoImage" | "body">, imagePath: string) {
+	return collectImageRefs(input).has(imagePath);
+}
+
+function collectPostImageRefs(posts: Array<Pick<CmsPostInput, "heroImage" | "seoImage" | "body">>) {
+	const refs = new Set<string>();
+	for (const post of posts) {
+		for (const ref of collectImageRefs(post)) refs.add(ref);
+	}
+	return refs;
+}
+
+function collectImageRefs(input: Pick<CmsPostInput, "heroImage" | "seoImage" | "body">) {
+	const refs = new Set<string>();
+	for (const value of [input.heroImage, input.seoImage]) {
+		if (value && isLocalUploadPath(value)) refs.add(value.trim());
+	}
+
+	const body = input.body || "";
+	for (const match of body.matchAll(/<img\b[^>]*\bsrc\s*=\s*(["'])(.*?)\1/gi)) {
+		const src = match[2]?.trim();
+		if (src && isLocalUploadPath(src)) refs.add(src);
+	}
+	for (const match of body.matchAll(/!\[[^\]]*]\(([^)\s]+)(?:\s+"[^"]*")?\)/g)) {
+		const src = match[1]?.trim();
+		if (src && isLocalUploadPath(src)) refs.add(src);
+	}
+	return refs;
+}
+
+async function listPostsExcept(env: CmsEnv, excludedPath?: string) {
+	const posts = await listPosts(env);
+	return excludedPath ? posts.filter((post) => post.path !== excludedPath) : posts;
+}
+
+function isLocalUploadPath(value: string) {
+	return isManagedUploadPath(value) || isTemporaryUploadPath(value);
+}
+
+function isManagedUploadPath(value: string) {
+	return value.startsWith(MANAGED_UPLOAD_PREFIX);
+}
+
+function isTemporaryUploadPath(value: string) {
+	return value.startsWith(TEMP_UPLOAD_PREFIX);
+}
+
+function permanentPathFromTemporaryPath(value: string) {
+	if (!isTemporaryUploadPath(value)) return value;
+	return value.replace(TEMP_UPLOAD_PREFIX, MANAGED_UPLOAD_PREFIX);
+}
+
+function repoPathFromPublicPath(value: string) {
+	if (!isLocalUploadPath(value)) throw new CmsError(400, "Path gambar tidak boleh dihapus otomatis.");
+	return `public${value}`;
+}
+
+function publicPathFromRepoPath(value: string) {
+	return value.startsWith("public/") ? value.slice("public".length) : `/${value}`;
+}
+
+function uploadUploadedAt(publicPath: string) {
+	const filename = publicPath.split("/").pop() || "";
+	const timestamp = Number(filename.split("-")[0]);
+	return Number.isFinite(timestamp) ? timestamp : 0;
+}
+
+async function listTemporaryUploadFiles(env: CmsEnv) {
+	return listGitHubFilesRecursive(env, PUBLIC_TEMP_UPLOADS_DIR).catch((error) => {
+		if (error instanceof CmsError && error.status === 404) return [];
+		throw error;
+	});
+}
+
+async function listGitHubFilesRecursive(env: CmsEnv, path: string): Promise<GitHubContentItem[]> {
+	const items = await githubRequest<GitHubContentItem[]>(env, path, {
+		searchParams: { ref: githubBranch(env) },
+	});
+	const files: GitHubContentItem[] = [];
+	for (const item of items) {
+		if (item.type === "file") {
+			files.push(item);
+			continue;
+		}
+		if (item.type === "dir") {
+			files.push(...(await listGitHubFilesRecursive(env, item.path)));
+		}
+	}
+	return files;
+}
+
+function dedupeGitHubChanges(changes: GitHubTreeChange[]) {
+	const map = new Map<string, GitHubTreeChange>();
+	for (const change of changes) map.set(change.path, change);
+	return [...map.values()];
+}
+
 function parseRedirects(content: string) {
 	try {
 		const data = JSON.parse(content) as { redirects?: CmsRedirect[] };
@@ -615,6 +844,29 @@ async function readGitHubFile(env: CmsEnv, path: string) {
 	};
 }
 
+async function readGitHubFileBytes(env: CmsEnv, path: string) {
+	const file = await githubRequest<GitHubFileContent>(env, path, {
+		searchParams: { ref: githubBranch(env) },
+	});
+	if (!file.content || !file.sha) {
+		throw new CmsError(404, "File tidak ditemukan.");
+	}
+	return {
+		sha: file.sha,
+		bytes: bytesFromBase64(file.content),
+	};
+}
+
+async function githubFileExists(env: CmsEnv, path: string) {
+	try {
+		await readGitHubFileBytes(env, path);
+		return true;
+	} catch (error) {
+		if (error instanceof CmsError && error.status === 404) return false;
+		throw error;
+	}
+}
+
 async function writeGitHubFile(
 	env: CmsEnv,
 	path: string,
@@ -658,6 +910,119 @@ async function githubRequest<T>(
 	const url = new URL(
 		`https://api.github.com/repos/${githubOwner(env)}/${githubRepo(env)}/contents/${encodedPath}`,
 	);
+	for (const [key, value] of Object.entries(options.searchParams || {})) {
+		url.searchParams.set(key, value);
+	}
+
+	const response = await fetch(url, {
+		method: options.method || "GET",
+		headers: {
+			accept: "application/vnd.github+json",
+			authorization: `Bearer ${token}`,
+			"user-agent": "arunajr-cms",
+			"x-github-api-version": "2022-11-28",
+			...(options.body ? { "content-type": "application/json" } : {}),
+		},
+		body: options.body ? JSON.stringify(options.body) : undefined,
+	});
+
+	if (!response.ok) {
+		if (response.status === 404) throw new CmsError(404, "Data GitHub tidak ditemukan.");
+		if (response.status === 409) throw new CmsError(409, "Konten berubah. Muat ulang sebelum menyimpan.");
+		const message = await response.text();
+		throw new CmsError(response.status, `GitHub API gagal: ${message}`);
+	}
+
+	return response.json() as Promise<T>;
+}
+
+async function commitGitHubChanges(
+	env: CmsEnv,
+	changes: GitHubTreeChange[],
+	options: { message: string; authorEmail: string },
+) {
+	const cleanChanges = dedupeGitHubChanges(changes);
+	if (cleanChanges.length === 0) return;
+
+	const branch = githubBranch(env);
+	const ref = await githubApiRequest<GitHubRef>(env, `/git/ref/heads/${branch}`);
+	const baseCommit = await githubApiRequest<GitHubCommit>(env, `/git/commits/${ref.object.sha}`);
+
+	const tree: GitHubTreeEntry[] = [];
+	for (const change of cleanChanges) {
+		if (change.content === null) {
+			tree.push({
+				path: change.path,
+				mode: "100644",
+				type: "blob",
+				sha: null,
+			});
+			continue;
+		}
+
+		const blob = await githubApiRequest<GitHubBlob>(env, "/git/blobs", {
+			method: "POST",
+			body: {
+				content: typeof change.content === "string" ? change.content : base64FromBytes(change.content),
+				encoding: typeof change.content === "string" ? "utf-8" : "base64",
+			},
+		});
+		tree.push({
+			path: change.path,
+			mode: "100644",
+			type: "blob",
+			sha: blob.sha,
+		});
+	}
+
+	const nextTree = await githubApiRequest<GitHubTree>(env, "/git/trees", {
+		method: "POST",
+		body: {
+			base_tree: baseCommit.tree.sha,
+			tree,
+		},
+	});
+	const nextCommit = await githubApiRequest<GitHubCommit>(env, "/git/commits", {
+		method: "POST",
+		body: {
+			message: options.message,
+			tree: nextTree.sha,
+			parents: [ref.object.sha],
+			committer: {
+				name: "Aruna JR CMS",
+				email: options.authorEmail,
+			},
+			author: {
+				name: "Aruna JR CMS",
+				email: options.authorEmail,
+			},
+		},
+	});
+
+	await githubApiRequest(env, `/git/refs/heads/${branch}`, {
+		method: "PATCH",
+		body: {
+			sha: nextCommit.sha,
+			force: false,
+		},
+	});
+}
+
+async function githubApiRequest<T>(
+	env: CmsEnv,
+	path: string,
+	options: {
+		method?: string;
+		body?: unknown;
+		searchParams?: Record<string, string>;
+	} = {},
+): Promise<T> {
+	const token = env.GITHUB_TOKEN;
+	if (!token) {
+		throw new CmsError(500, "GITHUB_TOKEN belum dikonfigurasi.");
+	}
+
+	const url = new URL(`https://api.github.com/repos/${githubOwner(env)}/${githubRepo(env)}${path}`);
 	for (const [key, value] of Object.entries(options.searchParams || {})) {
 		url.searchParams.set(key, value);
 	}
@@ -729,12 +1094,17 @@ function base64FromBytes(bytes: Uint8Array) {
 }
 
 function utf8FromBase64(value: string) {
+	const bytes = bytesFromBase64(value);
+	return new TextDecoder().decode(bytes);
+}
+
+function bytesFromBase64(value: string) {
 	const binary = atob(value.replace(/\s/g, ""));
 	const bytes = new Uint8Array(binary.length);
 	for (let i = 0; i < binary.length; i += 1) {
 		bytes[i] = binary.charCodeAt(i);
 	}
-	return new TextDecoder().decode(bytes);
+	return bytes;
 }
 
 type GitHubContentItem = {
@@ -747,4 +1117,37 @@ type GitHubContentItem = {
 type GitHubFileContent = {
 	content?: string;
 	sha?: string;
+};
+
+type GitHubTreeChange = {
+	path: string;
+	content: string | Uint8Array | null;
+};
+
+type GitHubRef = {
+	object: {
+		sha: string;
+	};
+};
+
+type GitHubCommit = {
+	sha: string;
+	tree: {
+		sha: string;
+	};
+};
+
+type GitHubBlob = {
+	sha: string;
+};
+
+type GitHubTree = {
+	sha: string;
+};
+
+type GitHubTreeEntry = {
+	path: string;
+	mode: "100644";
+	type: "blob";
+	sha: string | null;
 };

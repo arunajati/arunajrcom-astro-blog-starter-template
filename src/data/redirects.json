@@ -7,6 +7,14 @@
       "statusCode": 301,
       "enabled": true,
       "updatedAt": "2026-07-03T11:37:00.000Z"
+    },
+    {
+      "id": "dfbd2fd2-d6fc-4e23-903f-62ec8f87e548",
+      "from": "/cara-mencatat-pengeluaran-harian-otomatis-dari-iphone-ke-google-sheets/",
+      "to": "https://arunajr.com/blog/cara-mencatat-pengeluaran-harian-otomatis-dari-iphone-ke-google-sheets/",
+      "statusCode": 301,
+      "enabled": false,
+      "updatedAt": "2026-07-03T12:15:36.691Z"
     }
   ]
 }

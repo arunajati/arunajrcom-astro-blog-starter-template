@@ -60,6 +60,7 @@ export class CmsError extends Error {
 
 const BLOG_DIR = "src/content/blog";
 const REDIRECTS_FILE = "src/data/redirects.json";
+const SITE_HOSTS = new Set(["arunajr.com", "www.arunajr.com"]);
 const DEFAULT_OWNER = "arunajati";
 const DEFAULT_REPO = "arunajrcom-astro-blog-starter-template";
 const DEFAULT_BRANCH = "main";
@@ -506,7 +507,7 @@ function normalizeRedirectInput(
 }
 
 function normalizeRedirectFrom(value: string) {
-	const path = normalizeInternalPath(value, "From URL");
+	const path = normalizeInternalSourceUrl(value, "From URL");
 	if (path.includes("?")) {
 		throw new CmsError(400, "From URL tidak boleh memakai query string.");
 	}
@@ -532,11 +533,33 @@ function normalizeRedirectTo(value: string) {
 	return normalizeInternalPath(trimmed, "To URL");
 }
 
+function normalizeInternalSourceUrl(value: string, label: string) {
+	const trimmed = value?.trim();
+	if (!trimmed) throw new CmsError(400, `${label} wajib diisi.`);
+
+	if (/^https?:\/\//i.test(trimmed)) {
+		let url: URL;
+		try {
+			url = new URL(trimmed);
+		} catch {
+			throw new CmsError(400, `${label} tidak valid.`);
+		}
+
+		if (!SITE_HOSTS.has(url.hostname.toLowerCase())) {
+			throw new CmsError(400, `${label} harus memakai domain arunajr.com.`);
+		}
+
+		return normalizeInternalPath(`${url.pathname}${url.search}`, label);
+	}
+
+	return normalizeInternalPath(trimmed, label);
+}
+
 function normalizeInternalPath(value: string, label: string) {
 	const trimmed = value?.trim();
 	if (!trimmed) throw new CmsError(400, `${label} wajib diisi.`);
 	if (!trimmed.startsWith("/") || trimmed.startsWith("//")) {
-		throw new CmsError(400, `${label} harus berupa path internal, contoh /blog/url-lama/.`);
+		throw new CmsError(400, `${label} harus berupa path internal atau URL arunajr.com.`);
 	}
 	if (trimmed.includes("#")) {
 		throw new CmsError(400, `${label} tidak boleh memakai anchor #.`);

@@ -23,6 +23,7 @@ status: "published"
 <a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.9-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
+</div>
 
 <nav class="iatur-toc" aria-labelledby="daftar-isi-title">
 <strong id="daftar-isi-title">Daftar Isi</strong>
@@ -200,7 +201,6 @@ status: "published"
 <div class="iatur-download-actions">
 <a class="iatur-download-button" href="/downloads/iAtur-v0.4.9-direct.pkg" download>Download iAtur v0.4.9</a>
 <a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.9-direct.pkg.sha256" download>Download checksum</a>
-</div>
 </div>
 </div>
 </div>

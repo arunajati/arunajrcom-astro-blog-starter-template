@@ -27,31 +27,36 @@ status: "published"
 </div>
 
 <nav class="iatur-toc" aria-labelledby="daftar-isi-title">
-<strong id="daftar-isi-title">Daftar Isi</strong>
+<h2 id="daftar-isi-title">Daftar Isi</h2>
+<p class="iatur-toc-intro">Pilih bagian yang ingin dibaca atau ikuti panduan secara berurutan.</p>
 <ol>
 <li><a href="#apa-itu-iatur">Apa itu iAtur?</a></li>
 <li><a href="#kenapa-pakai-iatur">Kenapa memakai iAtur?</a></li>
 <li><a href="#mulai-menggunakan-iatur">Cara mulai menggunakan iAtur</a></li>
 <li><a href="#fitur-iatur">Semua fitur dan cara menggunakannya</a></li>
-<li><a href="#pengaturan-dan-pemulihan">Pengaturan dan pemulihan</a></li>
 <li><a href="#version-changes-log">Version changes log</a></li>
 <li><a href="#faq-iatur">FAQ</a></li>
 </ol>
 </nav>
 
-<h2 id="apa-itu-iatur">Apa Itu iAtur?</h2>
+<section class="iatur-guide-section" aria-labelledby="apa-itu-iatur">
+<div class="iatur-section-heading"><span aria-hidden="true">01</span><h2 id="apa-itu-iatur">Apa Itu iAtur?</h2></div>
 <p>iAtur adalah pusat kontrol sederhana untuk berbagai kenyamanan macOS yang biasanya tersebar, tersembunyi, atau membutuhkan langkah tambahan. Aplikasi ini dibuat khusus untuk Mac menggunakan teknologi native Apple sehingga tampilannya menyatu dengan macOS dan tidak membutuhkan layanan pihak ketiga.</p>
 <p>Fokus iAtur bukan mengubah macOS secara ekstrem. Setiap fitur dibuat agar aman, mudah dimatikan, dan sebisa mungkin memakai perilaku standar Finder atau macOS. File yang dipindahkan dengan iAtur, misalnya, tetap memakai mekanisme Finder sehingga perlindungan, konflik nama, dan fitur Undo bawaan tetap berlaku.</p>
+</section>
 
-<h2 id="kenapa-pakai-iatur">Kenapa Memakai iAtur?</h2>
+<section class="iatur-guide-section" aria-labelledby="kenapa-pakai-iatur">
+<div class="iatur-section-heading"><span aria-hidden="true">02</span><h2 id="kenapa-pakai-iatur">Kenapa Memakai iAtur?</h2></div>
 <div class="iatur-feature-grid">
 <div class="iatur-feature"><h3>Satu tempat untuk banyak kontrol</h3><p>Tidak perlu mengingat banyak menu dan kombinasi tombol untuk pekerjaan kecil sehari-hari.</p></div>
 <div class="iatur-feature"><h3>Native dan ringan</h3><p>Dibuat khusus untuk macOS, tanpa Electron, WebView, daemon, atau paket pihak ketiga.</p></div>
 <div class="iatur-feature"><h3>Aman dan bisa dibatalkan</h3><p>Fitur sementara tidak aktif otomatis dan setiap tweak dapat dimatikan kembali.</p></div>
 <div class="iatur-feature"><h3>Bisa disesuaikan</h3><p>Aktifkan hanya fitur yang dibutuhkan dan rekam shortcut keyboard sesuai kebiasaan Anda.</p></div>
 </div>
+</section>
 
-<h2 id="mulai-menggunakan-iatur">Bagaimana Mulai Menggunakan iAtur?</h2>
+<section class="iatur-guide-section" aria-labelledby="mulai-menggunakan-iatur">
+<div class="iatur-section-heading"><span aria-hidden="true">03</span><h2 id="mulai-menggunakan-iatur">Bagaimana Mulai Menggunakan iAtur?</h2></div>
 <h3>Persyaratan</h3>
 <ul>
 <li>Mac Intel atau Apple silicon.</li>
@@ -71,8 +76,10 @@ status: "published"
 
 <h3>Izin macOS</h3>
 <p>Cleaning Mode, Cat Mode, Finder Cut &amp; Paste, dan Backspace to Trash membutuhkan izin <strong>Accessibility</strong> dan <strong>Input Monitoring</strong>. iAtur akan membuka bagian pengaturan yang diperlukan ketika fitur diaktifkan. Nyalakan izin untuk iAtur, kembali ke aplikasi, lalu ikuti konfirmasi yang tampil. Pada kondisi tertentu macOS meminta aplikasi ditutup dan dibuka kembali.</p>
+</section>
 
-<h2 id="fitur-iatur">Semua Fitur iAtur dan Cara Menggunakannya</h2>
+<section class="iatur-guide-section iatur-feature-catalog" aria-labelledby="fitur-iatur">
+<div class="iatur-section-heading"><span aria-hidden="true">04</span><h2 id="fitur-iatur">Semua Fitur iAtur dan Cara Menggunakannya</h2></div>
 
 <h3>Cleaning Mode</h3>
 <p>Cleaning Mode menutup semua layar dengan tampilan hitam sekaligus memblokir input keyboard, mouse, dan trackpad untuk sementara. Fitur ini cocok saat membersihkan layar dan perangkat input tanpa menekan tombol atau menggerakkan aplikasi secara tidak sengaja.</p>
@@ -150,7 +157,7 @@ status: "published"
 <ol class="iatur-steps"><li>Klik <strong>Record Shortcut</strong> di samping tindakan.</li><li>Tekan kombinasi yang memakai tombol modifier seperti Command, Option, Control, atau Shift.</li><li>Gunakan shortcut tersebut selama iAtur berjalan.</li><li>Tekan Escape saat merekam untuk batal, atau klik tombol reset untuk menghapus shortcut.</li></ol>
 <p>Jika kombinasi sudah dipakai macOS atau aplikasi lain, iAtur menolaknya dan mempertahankan shortcut lama yang masih bekerja.</p>
 
-<h2 id="pengaturan-dan-pemulihan">Pengaturan dan Pemulihan</h2>
+<h3 id="pengaturan-dan-pemulihan">Pengaturan dan Pemulihan</h3>
 <ul>
 <li><strong>Launch at Login:</strong> membuka iAtur setelah masuk ke Mac dan memulihkan hanya tweak Finder yang sebelumnya disetujui.</li>
 <li><strong>Run in Background:</strong> menjaga tweak tetap berjalan setelah jendela ditutup.</li>
@@ -163,8 +170,10 @@ status: "published"
 <li><strong>Reset iAtur:</strong> mengembalikan seluruh pengaturan ke kondisi awal.</li>
 </ul>
 <p>Cleaning Mode, Cat Mode, Keep Awake, dan kontrol sementara lainnya tidak pernah dinyalakan otomatis oleh iAtur.</p>
+</section>
 
-<h2 id="version-changes-log">Version Changes Log</h2>
+<section class="iatur-guide-section" aria-labelledby="version-changes-log">
+<div class="iatur-section-heading"><span aria-hidden="true">05</span><h2 id="version-changes-log">Version Changes Log</h2></div>
 <ul class="iatur-version-list">
 <li><strong>v0.4.9 — 2 Oktober 2026:</strong> menambahkan Remove Image Metadata dan shortcut global yang dapat direkam untuk seluruh tindakan pada halaman Shortcuts.</li>
 <li><strong>v0.4.8 — 1 Oktober 2026:</strong> menambahkan perekam shortcut global untuk tiga tindakan layar.</li>
@@ -180,8 +189,10 @@ status: "published"
 <li><strong>v0.1.0–v0.1.6:</strong> fondasi iAtur dengan Cleaning Mode, auto exit, penyembunyian pointer, dan berbagai perbaikan keamanan aktivasi.</li>
 </ul>
 <p>Setiap rilis baru akan ditambahkan ke artikel ini setelah installer melewati pemeriksaan build, identitas aplikasi, isi paket, dan checksum.</p>
+</section>
 
-<h2 id="faq-iatur">FAQ</h2>
+<section class="iatur-guide-section" aria-labelledby="faq-iatur">
+<div class="iatur-section-heading"><span aria-hidden="true">06</span><h2 id="faq-iatur">FAQ</h2></div>
 <div class="iatur-faq">
 <details><summary>Apakah iAtur gratis?</summary><p>Ya. Installer iAtur dapat diunduh gratis langsung dari artikel ini.</p></details>
 <details><summary>macOS versi berapa yang didukung?</summary><p>iAtur memerlukan macOS 14 Sonoma atau versi yang lebih baru serta dapat berjalan pada Mac Intel maupun Apple silicon.</p></details>
@@ -193,6 +204,7 @@ status: "published"
 <details><summary>Bagaimana cara keluar dari Cleaning Mode atau Cat Mode?</summary><p>Tekan tombol Command kiri atau kanan sebanyak enam kali dengan jeda tidak lebih dari satu detik, atau tunggu waktu auto exit yang sudah dipilih.</p></details>
 <details><summary>Bagaimana mendapatkan versi terbaru?</summary><p>Gunakan tombol Download di artikel ini. Nomor versi terbaru ditampilkan langsung pada tombol dan setiap installer disertai checksum SHA-256.</p></details>
 </div>
+</section>
 
 <div class="iatur-download-card">
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon iAtur untuk macOS" width="144" height="144" loading="lazy" />

@@ -36,25 +36,34 @@ const resolvedHeroImage = resolvePostHeroImage({ heroImage, body: body || '' });
 				width: 100%;
 				max-width: 100%;
 				margin: auto;
-				padding: 1em 0;
+				padding: 1.25rem 0 2rem;
 				box-sizing: border-box;
 				color: rgb(var(--gray-dark));
 			}
 			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
+				margin-bottom: 1.75rem;
+				padding: 1.5rem 0 1rem;
 				text-align: center;
-				line-height: 1;
 			}
 			.title h1 {
-				margin: 0 0 0.5em 0;
+				margin: 0 auto 0.75rem;
+				max-width: 18ch;
+				line-height: 1.08;
 			}
 			.date {
-				margin-bottom: 0.5em;
+				margin-bottom: 0.65rem;
 				color: rgb(var(--gray));
+				font-size: 0.92rem;
+				line-height: 1.45;
 			}
 			.last-updated-on {
 				font-style: italic;
+			}
+			@media (max-width: 620px) {
+				.title {
+					margin-bottom: 1.25rem;
+					padding-top: 1rem;
+				}
 			}
 		</style>
 	</head>

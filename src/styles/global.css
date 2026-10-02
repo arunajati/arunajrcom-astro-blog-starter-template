@@ -331,6 +331,22 @@ hr {
 .iatur-toc li {
 	margin: 0.35rem 0;
 }
+.prose > ul,
+.prose > ol {
+	margin: 0.8rem 0 1.8rem;
+	padding-inline-start: 1.75rem;
+	text-align: left;
+}
+.prose > ul > li,
+.prose > ol > li {
+	margin-bottom: 0.65rem;
+	padding-inline-start: 0.3rem;
+	text-align: left;
+}
+.prose > h2,
+.prose > h3 {
+	text-align: left;
+}
 .iatur-feature-grid {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -376,6 +392,10 @@ hr {
 	margin-top: 2.6rem;
 }
 @media (max-width: 620px) {
+	.prose > ul,
+	.prose > ol {
+		padding-inline-start: 1.4rem;
+	}
 	.iatur-download-card {
 		grid-template-columns: 1fr;
 		text-align: center;

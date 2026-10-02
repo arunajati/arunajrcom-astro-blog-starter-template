@@ -16,11 +16,11 @@ status: "published"
 <div class="iatur-download-card">
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon resmi aplikasi iAtur" width="144" height="144" loading="eager" />
 <div>
-<strong>iAtur v0.4.9 untuk macOS</strong>
+<strong>iAtur v0.4.10 untuk macOS</strong>
 <p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 2,4 MB.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.9-direct.pkg" download>Download iAtur v0.4.9</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.9-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.10-direct.pkg" download>Download iAtur v0.4.10</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.10-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 
@@ -66,16 +66,16 @@ status: "published"
 
 <h3>Download dan instal</h3>
 <ol class="iatur-steps">
-<li>Klik tombol <strong>Download iAtur v0.4.9</strong> di atas.</li>
+<li>Klik tombol <strong>Download iAtur v0.4.10</strong> di atas.</li>
 <li>Setelah file selesai diunduh, buka Finder lalu masuk ke folder Downloads.</li>
-<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.9-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
+<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.10-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
 <li>Selesaikan petunjuk installer. iAtur akan dipasang di folder Applications.</li>
 <li>Buka iAtur dari Applications.</li>
 </ol>
 <div class="iatur-note"><strong>Kenapa perlu Control-klik lalu Open?</strong><br />Versi ini memakai kanal kompatibilitas Apple Development dan bukan rilis Mac App Store atau installer yang dinotariskan untuk distribusi publik. macOS dapat meminta konfirmasi tambahan pada pemasangan pertama. Unduh hanya melalui tombol resmi di artikel ini.</div>
 
 <h3>Izin macOS</h3>
-<p>Cleaning Mode, Cat Mode, Finder Cut &amp; Paste, dan Backspace to Trash membutuhkan izin <strong>Accessibility</strong> dan <strong>Input Monitoring</strong>. iAtur akan membuka bagian pengaturan yang diperlukan ketika fitur diaktifkan. Nyalakan izin untuk iAtur, kembali ke aplikasi, lalu ikuti konfirmasi yang tampil. Pada kondisi tertentu macOS meminta aplikasi ditutup dan dibuka kembali.</p>
+<p>Cleaning Mode, Cat Mode, Finder Cut &amp; Paste, dan Delete Key to Trash membutuhkan izin <strong>Accessibility</strong> dan <strong>Input Monitoring</strong>. iAtur akan membuka bagian pengaturan yang diperlukan ketika fitur diaktifkan. Nyalakan izin untuk iAtur, kembali ke aplikasi, lalu ikuti konfirmasi yang tampil. Pada kondisi tertentu macOS meminta aplikasi ditutup dan dibuka kembali.</p>
 </section>
 
 <section class="iatur-guide-section iatur-feature-catalog" aria-labelledby="fitur-iatur">
@@ -99,8 +99,8 @@ status: "published"
 <h3>Finder Cut &amp; Paste</h3>
 <p>Fitur ini menghadirkan alur Cut dan Paste yang terasa familiar di Finder. Nyalakan <strong>Finder Cut &amp; Paste</strong>, pilih satu atau beberapa file, tekan <strong>Command-X</strong>, buka folder tujuan, lalu tekan <strong>Command-V</strong>. Finder yang melakukan pemindahan sehingga mekanisme izin, konflik file, dan Undo tetap mengikuti macOS.</p>
 
-<h3>Backspace to Trash</h3>
-<p>Nyalakan fitur ini, pilih file atau beberapa file di Finder, lalu tekan Backspace tanpa tombol tambahan. File akan dipindahkan ke Trash, bukan dihapus permanen. Fitur tidak bekerja saat Anda sedang mengetik, mencari, atau mengganti nama file.</p>
+<h3>Delete Key to Trash</h3>
+<p>Nyalakan fitur ini, pilih satu atau beberapa file di Finder, lalu tekan tombol Delete tanpa tombol tambahan. File akan dipindahkan ke Trash, bukan dihapus permanen. Fitur tidak bekerja saat Anda sedang mengetik, mencari, mengganti nama file, menahan tombol modifier, atau memakai key repeat. Perubahan nama ini tidak mengubah perilaku fitur maupun pengaturan pengguna yang sudah ada.</p>
 
 <h3>Menu Klik Kanan Finder</h3>
 <p>Buka <strong>Tweaks → Finder Extension</strong>, klik <strong>Open Settings…</strong>, lalu pastikan iAtur Finder Extension aktif. Setelah itu nyalakan tindakan yang ingin ditampilkan pada menu klik kanan Finder:</p>
@@ -175,6 +175,7 @@ status: "published"
 <section class="iatur-guide-section" aria-labelledby="version-changes-log">
 <div class="iatur-section-heading"><span aria-hidden="true">05</span><h2 id="version-changes-log">Version Changes Log</h2></div>
 <ul class="iatur-version-list">
+<li><strong>v0.4.10 — 2 Oktober 2026:</strong> mengganti nama Backspace to Trash menjadi Delete Key to Trash agar sesuai dengan istilah keyboard Apple, tanpa mengubah perilaku fitur atau preferensi pengguna.</li>
 <li><strong>v0.4.9 — 2 Oktober 2026:</strong> menambahkan Remove Image Metadata dan shortcut global yang dapat direkam untuk seluruh tindakan pada halaman Shortcuts.</li>
 <li><strong>v0.4.8 — 1 Oktober 2026:</strong> menambahkan perekam shortcut global untuk tiga tindakan layar.</li>
 <li><strong>v0.4.7 — 1 Oktober 2026:</strong> memperluas pendaftaran folder Finder dan mendokumentasikan batasan OneDrive/File Provider.</li>
@@ -185,7 +186,7 @@ status: "published"
 <li><strong>v0.4.0 — 30 September 2026:</strong> menghadirkan kumpulan utilitas besar untuk clipboard, layar, pointer, window, warna, audio, Finder, Cat Mode, dan Keep Awake.</li>
 <li><strong>v0.3.6–v0.3.7:</strong> menambahkan pengaturan lifecycle aplikasi, menu bar, backup/recovery, ikon produksi, serta struktur navigasi baru.</li>
 <li><strong>v0.3.0–v0.3.5:</strong> menambahkan Finder Cut &amp; Paste sekaligus memperkuat proses installer, identitas aplikasi, izin, dan validasi rilis.</li>
-<li><strong>v0.2.0:</strong> menambahkan Backspace to Trash.</li>
+<li><strong>v0.2.0:</strong> menambahkan fitur yang kini bernama Delete Key to Trash.</li>
 <li><strong>v0.1.0–v0.1.6:</strong> fondasi iAtur dengan Cleaning Mode, auto exit, penyembunyian pointer, dan berbagai perbaikan keamanan aktivasi.</li>
 </ul>
 <p>Setiap rilis baru akan ditambahkan ke artikel ini setelah installer melewati pemeriksaan build, identitas aplikasi, isi paket, dan checksum.</p>
@@ -210,10 +211,10 @@ status: "published"
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon iAtur untuk macOS" width="144" height="144" loading="lazy" />
 <div>
 <strong>Siap mencoba iAtur?</strong>
-<p>Download installer resmi v0.4.9 untuk macOS 14 atau lebih baru.</p>
+<p>Download installer resmi v0.4.10 untuk macOS 14 atau lebih baru.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.9-direct.pkg" download>Download iAtur v0.4.9</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.9-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.10-direct.pkg" download>Download iAtur v0.4.10</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.10-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 </div>

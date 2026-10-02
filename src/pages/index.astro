@@ -39,7 +39,7 @@ const posts = (await getCollection('blog'))
 				{
 					posts.map((post) => (
 						<li class="update-item">
-							<a href={`/blog/${post.id}/`} class="update-link">
+							<a href={post.data.permalink || `/blog/${post.id}/`} class="update-link">
                                 <!-- Anda bisa mengganti emoji 📄 ini dengan gambar/ikon spesifik nantinya -->
 								<span class="update-icon">📄</span> 
 								<h3><span class="update-title">{post.data.title}</span></h3>

@@ -4,7 +4,9 @@ import BlogPost from '../../layouts/BlogPost.astro';
 import { render } from 'astro:content';
 
 export async function getStaticPaths() {
-	const posts = (await getCollection('blog')).filter((post) => post.data.status !== 'draft');
+	const posts = (await getCollection('blog')).filter(
+		(post) => post.data.status !== 'draft' && !post.data.permalink,
+	);
 	return posts.map((post) => ({
 		params: { slug: post.id },
 		props: post,

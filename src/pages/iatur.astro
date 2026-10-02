@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import { render } from 'astro:content';
+import BlogPost from '../layouts/BlogPost.astro';
+
+const post = (await getCollection('blog')).find((entry) => entry.id === 'iatur');
+
+if (!post || post.data.status === 'draft') {
+	return Astro.redirect('/404', 302);
+}
+
+const { Content } = await render(post);
+---
+
+<BlogPost {...post.data} body={post.body}>
+	<Content />
+</BlogPost>

@@ -95,7 +95,7 @@ const posts = (await getCollection('blog'))
 					{
 						posts.map((post) => (
 							<li>
-								<a href={`/blog/${post.id}/`}>
+								<a href={post.data.permalink || `/blog/${post.id}/`}>
 									{resolvePostHeroImage({ heroImage: post.data.heroImage, body: post.body }) && (
 										<img
 											width={720}

@@ -15,6 +15,14 @@
       "statusCode": 301,
       "enabled": true,
       "updatedAt": "2026-07-03T12:16:54.684Z"
+    },
+    {
+      "id": "iatur-canonical-url",
+      "from": "/blog/iatur/",
+      "to": "/iatur",
+      "statusCode": 301,
+      "enabled": true,
+      "updatedAt": "2026-10-02T16:30:00.000Z"
     }
   ]
 }

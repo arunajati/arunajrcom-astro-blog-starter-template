@@ -2,7 +2,7 @@
 title: "iAtur macOS App: Atur macOS Sesuka Hati, Cara Menggunakan, dan Fitur Terbaru"
 description: "Panduan lengkap iAtur, aplikasi native macOS untuk Optimizer, Cleaning Mode, Finder Cut & Paste, shortcut, clipboard, audio, window, dan berbagai pengaturan Mac yang praktis."
 seoTitle: "iAtur macOS App: Download, Cara Menggunakan & Fitur Terbaru"
-seoDescription: "Download iAtur v0.4.17 dan pelajari cara memakai Optimizer, Cleaning Mode, Finder Cut & Paste, shortcut global, clipboard, audio, serta fitur macOS lainnya."
+seoDescription: "Download iAtur v0.4.18 dan pelajari cara memakai Optimizer, Cleaning Mode, Finder Cut & Paste, shortcut global, clipboard, audio, serta fitur macOS lainnya."
 pubDate: "2026-10-02"
 updatedDate: "2026-10-03"
 heroImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
@@ -16,11 +16,11 @@ status: "published"
 <div class="iatur-download-card">
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon resmi aplikasi iAtur" width="144" height="144" loading="eager" />
 <div>
-<strong>iAtur v0.4.17 untuk macOS</strong>
-<p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 2,7 MB.</p>
+<strong>iAtur v0.4.18 untuk macOS</strong>
+<p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 2,9 MB.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.17-direct.pkg" download>Download iAtur v0.4.17</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.17-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.18-direct.pkg" download>Download iAtur v0.4.18</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.18-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 
@@ -66,9 +66,9 @@ status: "published"
 
 <h3>Download dan instal</h3>
 <ol class="iatur-steps">
-<li>Klik tombol <strong>Download iAtur v0.4.17</strong> di atas.</li>
+<li>Klik tombol <strong>Download iAtur v0.4.18</strong> di atas.</li>
 <li>Setelah file selesai diunduh, buka Finder lalu masuk ke folder Downloads.</li>
-<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.17-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
+<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.18-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
 <li>Selesaikan petunjuk installer. iAtur akan dipasang di folder Applications.</li>
 <li>Buka iAtur dari Applications.</li>
 </ol>
@@ -89,6 +89,7 @@ status: "published"
 <h3>Optimizer: Optimize System</h3>
 <p><strong>Optimize System</strong> menjalankan alur perawatan konservatif sebanyak 20 tahap. Sebelum dimulai, iAtur mengingatkan Anda untuk menyimpan pekerjaan dan menutup browser, lalu memeriksa ulang aplikasi yang masih aktif. Operasi berisiko tetap dilewati dan dirangkum sebagai area yang dilewati demi keamanan.</p>
 <p>Perawatan dapat mencakup penyegaran layanan ikon pengguna, optimasi database browser yang sudah diverifikasi, serta pembersihan resmi untuk alat seperti npm, pnpm, pip, mise, Nix, Homebrew, dan CoreSimulator apabila syarat amannya terpenuhi. Izin administrator hanya diminta untuk tugas tertentu; aplikasi iAtur sendiri tetap tidak berjalan sebagai root.</p>
+<p>Ketika menjalankan alat pembersihan yang didukung, iAtur menonaktifkan analytics, pemeriksaan update otomatis, audit, funding, dan akses jaringan opsional yang tidak diperlukan. Homebrew analytics serta perilaku auto-update dan jaringan Homebrew juga dinonaktifkan untuk proses pembersihan tersebut.</p>
 
 <h3>Cleaning Mode</h3>
 <p>Cleaning Mode menutup semua layar dengan tampilan hitam sekaligus memblokir input keyboard, mouse, dan trackpad untuk sementara. Fitur ini cocok saat membersihkan layar dan perangkat input tanpa menekan tombol atau menggerakkan aplikasi secara tidak sengaja.</p>
@@ -175,6 +176,7 @@ status: "published"
 <li><strong>Play Sounds:</strong> memberi bunyi setelah Finder Cut &amp; Paste selesai memindahkan file.</li>
 <li><strong>Auto Exit:</strong> pilih 1, 2, 3, 5, 10, atau 15 menit sebagai jalur keluar otomatis Cleaning Mode dan Cat Mode.</li>
 <li><strong>Backup Settings:</strong> menyimpan pengaturan ke file JSON yang bisa dipulihkan kembali.</li>
+<li><strong>Check for Updates:</strong> klik secara manual untuk memeriksa versi terbaru melalui endpoint GitHub Release resmi iAtur. iAtur tidak memeriksa update otomatis di latar belakang.</li>
 <li><strong>Turn Off All Tweaks:</strong> mematikan seluruh tweak aktif dengan aman.</li>
 <li><strong>Reset iAtur:</strong> mengembalikan seluruh pengaturan ke kondisi awal.</li>
 </ul>
@@ -184,6 +186,7 @@ status: "published"
 <section class="iatur-guide-section" aria-labelledby="version-changes-log">
 <div class="iatur-section-heading"><span aria-hidden="true">05</span><h2 id="version-changes-log">Version Changes Log</h2></div>
 <ul class="iatur-version-list">
+<li><strong>v0.4.18 — 3 Oktober 2026:</strong> memperkuat privasi proses pembersihan dengan menonaktifkan analytics dan koneksi opsional dari alat yang dipanggil iAtur, serta menambahkan Check for Updates manual yang hanya menghubungi endpoint GitHub Release resmi saat tombol ditekan. Rilis ini lolos 97 pengujian otomatis dan seluruh validasi paket.</li>
 <li><strong>v0.4.17 — 3 Oktober 2026:</strong> menyempurnakan audit kesetaraan Optimizer dengan pemindaian cache yang terbatas dan tidak mengikuti symlink, pembersihan cache/log sistem yang lebih tepat sasaran, perawatan resmi untuk sejumlah alat developer, perbaikan kondisional pada alur Optimize System 20 tahap, serta ringkasan keamanan yang lebih jelas. Rilis ini lolos 94 pengujian otomatis dan seluruh validasi paket.</li>
 <li><strong>v0.4.16 — 3 Oktober 2026:</strong> memperluas Clean Up dan menghadirkan Optimize System konservatif 20 tahap dengan allowlist ketat, perlindungan aplikasi aktif, pemeriksaan ulang identitas file, serta izin administrator yang dibatasi untuk tugas CoreSimulator terverifikasi.</li>
 <li><strong>v0.4.15 — 3 Oktober 2026:</strong> menambahkan pembersihan aman untuk cache besar dari aplikasi kreatif, browser, aplikasi Electron, media, game, Xcode, dan alat developer, sambil melindungi project, media sumber, preset, sesi, dan dokumen pengguna.</li>
@@ -216,10 +219,12 @@ status: "published"
 <details><summary>Apakah iAtur tersedia di Mac App Store?</summary><p>Belum. Versi saat ini didistribusikan melalui installer resmi di GitHub Release.</p></details>
 <details><summary>Apakah aman memberi izin Accessibility dan Input Monitoring?</summary><p>Izin tersebut diperlukan hanya untuk fitur yang mengendalikan atau membaca input, seperti Cleaning Mode dan tweak Finder. iAtur memakai API publik macOS dan tidak memasang daemon, kernel extension, atau helper dengan akses root.</p></details>
 <details><summary>Apakah update menghapus izin macOS?</summary><p>Pembaruan rutin dengan identitas aplikasi yang sama dirancang untuk mempertahankan izin. Jika berasal dari build lama dengan identitas berbeda, izin lama mungkin perlu dihapus lalu ditambahkan kembali satu kali.</p></details>
+<details><summary>Apakah iAtur mengirim analytics atau data penggunaan?</summary><p>Tidak. iAtur tidak berisi SDK analytics, iklan, atau pelaporan crash. Saat menjalankan alat pembersihan yang didukung, iAtur juga menekan analytics, audit, funding, pemeriksaan update, dan koneksi opsional yang tidak diperlukan.</p></details>
+<details><summary>Apakah iAtur memeriksa update secara otomatis?</summary><p>Tidak. Pemeriksaan hanya dilakukan ketika Anda membuka Settings dan menekan <strong>Check for Updates</strong>. Permintaan sementara tanpa cookie dan cache hanya menghubungi endpoint GitHub Release resmi iAtur, lalu alamat rilis divalidasi sebelum dapat dibuka.</p></details>
 <details><summary>Kenapa menu iAtur tidak muncul di OneDrive?</summary><p>Folder OneDrive modern dimiliki oleh File Provider dan macOS dapat menolak menu Finder Sync dari aplikasi lain. Gunakan tindakan iAtur pada folder Finder lokal biasa.</p></details>
 <details><summary>Apakah Cleaning Mode bisa memblokir tombol power atau Touch ID?</summary><p>Tidak sepenuhnya. Tombol power, Touch ID, forced shutdown, dan Lock Screen berada di tingkat sistem dan tidak aman untuk diblokir oleh aplikasi biasa. Cleaning Mode ditujukan untuk membersihkan Mac setelah pengguna masuk.</p></details>
 <details><summary>Bagaimana cara keluar dari Cleaning Mode atau Cat Mode?</summary><p>Tekan tombol Command kiri atau kanan sebanyak enam kali dengan jeda tidak lebih dari satu detik, atau tunggu waktu auto exit yang sudah dipilih.</p></details>
-<details><summary>Bagaimana mendapatkan versi terbaru?</summary><p>Gunakan tombol Download di artikel ini. Nomor versi terbaru ditampilkan langsung pada tombol dan setiap installer disertai checksum SHA-256.</p></details>
+<details><summary>Bagaimana mendapatkan versi terbaru?</summary><p>Gunakan tombol Download di artikel ini atau klik <strong>Check for Updates</strong> di Settings iAtur. Nomor versi terbaru ditampilkan langsung pada tombol dan setiap installer disertai checksum SHA-256.</p></details>
 </div>
 </section>
 
@@ -227,10 +232,10 @@ status: "published"
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon iAtur untuk macOS" width="144" height="144" loading="lazy" />
 <div>
 <strong>Siap mencoba iAtur?</strong>
-<p>Download installer resmi v0.4.17 untuk macOS 14 atau lebih baru.</p>
+<p>Download installer resmi v0.4.18 untuk macOS 14 atau lebih baru.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.17-direct.pkg" download>Download iAtur v0.4.17</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.17-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.18-direct.pkg" download>Download iAtur v0.4.18</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.18-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 </div>

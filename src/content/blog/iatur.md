@@ -1,10 +1,10 @@
 ---
 title: "iAtur macOS App: Atur macOS Sesuka Hati, Cara Menggunakan, dan Fitur Terbaru"
-description: "Panduan lengkap iAtur, aplikasi native macOS untuk Cleaning Mode, Finder Cut & Paste, shortcut, clipboard, audio, window, dan berbagai pengaturan Mac yang praktis."
+description: "Panduan lengkap iAtur, aplikasi native macOS untuk Optimizer, Cleaning Mode, Finder Cut & Paste, shortcut, clipboard, audio, window, dan berbagai pengaturan Mac yang praktis."
 seoTitle: "iAtur macOS App: Download, Cara Menggunakan & Fitur Terbaru"
-seoDescription: "Download iAtur versi terbaru dan pelajari cara memakai Cleaning Mode, Cat Mode, Finder Cut & Paste, shortcut global, clipboard, audio, serta fitur macOS lainnya."
+seoDescription: "Download iAtur v0.4.17 dan pelajari cara memakai Optimizer, Cleaning Mode, Finder Cut & Paste, shortcut global, clipboard, audio, serta fitur macOS lainnya."
 pubDate: "2026-10-02"
-updatedDate: "2026-10-02"
+updatedDate: "2026-10-03"
 heroImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
 seoImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
 permalink: "/iatur"
@@ -16,11 +16,11 @@ status: "published"
 <div class="iatur-download-card">
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon resmi aplikasi iAtur" width="144" height="144" loading="eager" />
 <div>
-<strong>iAtur v0.4.10 untuk macOS</strong>
-<p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 2,4 MB.</p>
+<strong>iAtur v0.4.17 untuk macOS</strong>
+<p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 2,7 MB.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.10-direct.pkg" download>Download iAtur v0.4.10</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.10-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.17-direct.pkg" download>Download iAtur v0.4.17</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.17-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 
@@ -66,9 +66,9 @@ status: "published"
 
 <h3>Download dan instal</h3>
 <ol class="iatur-steps">
-<li>Klik tombol <strong>Download iAtur v0.4.10</strong> di atas.</li>
+<li>Klik tombol <strong>Download iAtur v0.4.17</strong> di atas.</li>
 <li>Setelah file selesai diunduh, buka Finder lalu masuk ke folder Downloads.</li>
-<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.10-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
+<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.17-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
 <li>Selesaikan petunjuk installer. iAtur akan dipasang di folder Applications.</li>
 <li>Buka iAtur dari Applications.</li>
 </ol>
@@ -80,6 +80,15 @@ status: "published"
 
 <section class="iatur-guide-section iatur-feature-catalog" aria-labelledby="fitur-iatur">
 <div class="iatur-section-heading"><span aria-hidden="true">04</span><h2 id="fitur-iatur">Semua Fitur iAtur dan Cara Menggunakannya</h2></div>
+
+<h3>Optimizer: Clean Up</h3>
+<p><strong>Clean Up</strong> memindai lebih dahulu lalu membersihkan cache dan file sementara yang sudah diverifikasi aman. Cakupannya meliputi browser, aplikasi komunikasi dan desain, alat developer, aplikasi media, game, virtualisasi, serta cache pengguna dan sistem tertentu.</p>
+<ol class="iatur-steps"><li>Buka halaman <strong>Optimizer</strong>.</li><li>Klik <strong>Clean Up</strong> dan tunggu pemindaian selesai.</li><li>Periksa ringkasan area yang dapat dibersihkan dan area yang dilewati demi keamanan.</li><li>Lanjutkan pembersihan dan biarkan progress selesai.</li></ol>
+<p>iAtur melewati aplikasi yang sedang aktif serta memeriksa kembali lokasi dan identitas file tepat sebelum penghapusan. Symlink, hardlink, dokumen pengguna, project, source media, password, sesi, pengaturan, plug-in, model AI, dependency, dan data penting lain tetap dilindungi. Pemindaian juga dibatasi agar lokasi cache yang macet tidak membuat proses berhenti.</p>
+
+<h3>Optimizer: Optimize System</h3>
+<p><strong>Optimize System</strong> menjalankan alur perawatan konservatif sebanyak 20 tahap. Sebelum dimulai, iAtur mengingatkan Anda untuk menyimpan pekerjaan dan menutup browser, lalu memeriksa ulang aplikasi yang masih aktif. Operasi berisiko tetap dilewati dan dirangkum sebagai area yang dilewati demi keamanan.</p>
+<p>Perawatan dapat mencakup penyegaran layanan ikon pengguna, optimasi database browser yang sudah diverifikasi, serta pembersihan resmi untuk alat seperti npm, pnpm, pip, mise, Nix, Homebrew, dan CoreSimulator apabila syarat amannya terpenuhi. Izin administrator hanya diminta untuk tugas tertentu; aplikasi iAtur sendiri tetap tidak berjalan sebagai root.</p>
 
 <h3>Cleaning Mode</h3>
 <p>Cleaning Mode menutup semua layar dengan tampilan hitam sekaligus memblokir input keyboard, mouse, dan trackpad untuk sementara. Fitur ini cocok saat membersihkan layar dan perangkat input tanpa menekan tombol atau menggerakkan aplikasi secara tidak sengaja.</p>
@@ -118,7 +127,7 @@ status: "published"
 <li><strong>Show/Hide Hidden Files:</strong> menampilkan atau menyembunyikan file tersembunyi.</li>
 <li><strong>Lock/Unlock Files:</strong> mengubah status Locked pada file terpilih.</li>
 </ul>
-<p><strong>Compare Files</strong> tersedia sebagai tombol Choose. Pilih dua file atau lebih untuk memeriksa apakah isinya sama secara byte-per-byte.</p>
+<p><strong>Compare Files</strong> tersedia melalui tombol Choose pada halaman Shortcuts. Pilih minimal dua file; iAtur memakai file pertama sebagai acuan lalu membandingkan isi setiap file secara byte-per-byte tanpa mengubahnya. Ringkasan hasil otomatis disalin ke clipboard agar mudah dibagikan. Fitur ini bukan bagian dari menu klik kanan Finder.</p>
 <div class="iatur-note"><strong>Catatan OneDrive:</strong> macOS tidak selalu mengizinkan menu Finder Sync milik aplikasi lain muncul di folder OneDrive atau lokasi File Provider. Menu iAtur tetap dapat digunakan pada folder Finder lokal biasa.</div>
 
 <h3>Clipboard</h3>
@@ -155,7 +164,7 @@ status: "published"
 <h3>Merekam Shortcut Global</h3>
 <p>Setiap tindakan di halaman Shortcuts dapat dijalankan lewat tombol langsung atau kombinasi keyboard global.</p>
 <ol class="iatur-steps"><li>Klik <strong>Record Shortcut</strong> di samping tindakan.</li><li>Tekan kombinasi yang memakai tombol modifier seperti Command, Option, Control, atau Shift.</li><li>Gunakan shortcut tersebut selama iAtur berjalan.</li><li>Tekan Escape saat merekam untuk batal, atau klik tombol reset untuk menghapus shortcut.</li></ol>
-<p>Jika kombinasi sudah dipakai macOS atau aplikasi lain, iAtur menolaknya dan mempertahankan shortcut lama yang masih bekerja.</p>
+<p>Shortcut tersimpan dan digunakan kembali setelah iAtur atau Mac dimulai ulang. Jika kombinasi sudah dipakai fitur iAtur lain, macOS, atau aplikasi lain, iAtur menolaknya dan mempertahankan shortcut lama yang masih bekerja. Jika shortcut tersimpan tidak dapat diaktifkan saat aplikasi mulai, pengaturannya tetap disimpan tetapi shortcut tersebut tidak aktif sampai direkam kembali.</p>
 
 <h3 id="pengaturan-dan-pemulihan">Pengaturan dan Pemulihan</h3>
 <ul>
@@ -175,8 +184,15 @@ status: "published"
 <section class="iatur-guide-section" aria-labelledby="version-changes-log">
 <div class="iatur-section-heading"><span aria-hidden="true">05</span><h2 id="version-changes-log">Version Changes Log</h2></div>
 <ul class="iatur-version-list">
-<li><strong>v0.4.10 — 2 Oktober 2026:</strong> mengganti nama Backspace to Trash menjadi Delete Key to Trash agar sesuai dengan istilah keyboard Apple, tanpa mengubah perilaku fitur atau preferensi pengguna.</li>
-<li><strong>v0.4.9 — 2 Oktober 2026:</strong> menambahkan Remove Image Metadata dan shortcut global yang dapat direkam untuk seluruh tindakan pada halaman Shortcuts.</li>
+<li><strong>v0.4.17 — 3 Oktober 2026:</strong> menyempurnakan audit kesetaraan Optimizer dengan pemindaian cache yang terbatas dan tidak mengikuti symlink, pembersihan cache/log sistem yang lebih tepat sasaran, perawatan resmi untuk sejumlah alat developer, perbaikan kondisional pada alur Optimize System 20 tahap, serta ringkasan keamanan yang lebih jelas. Rilis ini lolos 94 pengujian otomatis dan seluruh validasi paket.</li>
+<li><strong>v0.4.16 — 3 Oktober 2026:</strong> memperluas Clean Up dan menghadirkan Optimize System konservatif 20 tahap dengan allowlist ketat, perlindungan aplikasi aktif, pemeriksaan ulang identitas file, serta izin administrator yang dibatasi untuk tugas CoreSimulator terverifikasi.</li>
+<li><strong>v0.4.15 — 3 Oktober 2026:</strong> menambahkan pembersihan aman untuk cache besar dari aplikasi kreatif, browser, aplikasi Electron, media, game, Xcode, dan alat developer, sambil melindungi project, media sumber, preset, sesi, dan dokumen pengguna.</li>
+<li><strong>v0.4.14 — 2 Oktober 2026:</strong> memperluas cakupan Clean Up ke browser, aplikasi, alat developer dan AI, komunikasi, desain, file sementara, log lama, Trash, dan cache sisa berkeyakinan tinggi.</li>
+<li><strong>v0.4.13 — 2 Oktober 2026:</strong> menambahkan peringatan untuk menyimpan pekerjaan dan menutup browser sebelum Optimize System, termasuk pemeriksaan ulang browser aktif sebelum proses dilanjutkan.</li>
+<li><strong>v0.4.12 — 2 Oktober 2026:</strong> menambahkan perawatan kondisional untuk layanan ikon pengguna dan database Safari, Chrome, Edge, Brave, serta Firefox ketika browser sudah ditutup.</li>
+<li><strong>v0.4.11 — 2 Oktober 2026:</strong> memperkenalkan Optimizer dengan Clean Up berbasis pemindaian dan Optimize System yang konservatif, progress nyata, log pembersihan, serta perlindungan aplikasi aktif, symlink, dan perubahan file.</li>
+<li><strong>v0.4.10 — 2 Oktober 2026:</strong> mengganti nama Backspace to Trash menjadi Delete Key to Trash agar sesuai dengan istilah keyboard Apple, tanpa mengubah perilaku fitur atau preferensi pengguna. Rilis universal ini telah melewati 67 pengujian, pemeriksaan build, signature, Finder Extension, installer, dan checksum.</li>
+<li><strong>v0.4.9 — 2 Oktober 2026:</strong> menambahkan Compare Files, Remove Image Metadata yang menjaga gambar asli, serta Record Shortcut dan tombol tindakan yang sesuai untuk seluruh fitur pada halaman Shortcuts.</li>
 <li><strong>v0.4.8 — 1 Oktober 2026:</strong> menambahkan perekam shortcut global untuk tiga tindakan layar.</li>
 <li><strong>v0.4.7 — 1 Oktober 2026:</strong> memperluas pendaftaran folder Finder dan mendokumentasikan batasan OneDrive/File Provider.</li>
 <li><strong>v0.4.6 — 1 Oktober 2026:</strong> memperbaiki menu klik kanan Finder agar pilihan file dan setiap perintah diproses dengan benar.</li>
@@ -211,10 +227,10 @@ status: "published"
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon iAtur untuk macOS" width="144" height="144" loading="lazy" />
 <div>
 <strong>Siap mencoba iAtur?</strong>
-<p>Download installer resmi v0.4.10 untuk macOS 14 atau lebih baru.</p>
+<p>Download installer resmi v0.4.17 untuk macOS 14 atau lebih baru.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.10-direct.pkg" download>Download iAtur v0.4.10</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.10-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.17-direct.pkg" download>Download iAtur v0.4.17</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.17-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 </div>

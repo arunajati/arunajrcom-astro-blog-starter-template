@@ -81,38 +81,69 @@ status: "published"
 <section class="iatur-guide-section iatur-feature-catalog" aria-labelledby="fitur-iatur">
 <div class="iatur-section-heading"><span aria-hidden="true">04</span><h2 id="fitur-iatur">Semua Fitur iAtur dan Cara Menggunakannya</h2></div>
 
-<h3>Optimizer: Clean Up</h3>
+<div class="iatur-feature-accordions">
+<details class="iatur-feature-accordion" name="iatur-features" open>
+<summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Optimizer: Clean Up</span></summary>
+<div class="iatur-accordion-content">
 <p><strong>Clean Up</strong> memindai lebih dahulu lalu membersihkan cache dan file sementara yang sudah diverifikasi aman. Cakupannya meliputi browser, aplikasi komunikasi dan desain, alat developer, aplikasi media, game, virtualisasi, serta cache pengguna dan sistem tertentu.</p>
 <ol class="iatur-steps"><li>Buka halaman <strong>Optimizer</strong>.</li><li>Klik <strong>Clean Up</strong> dan tunggu pemindaian selesai.</li><li>Periksa ringkasan area yang dapat dibersihkan dan area yang dilewati demi keamanan.</li><li>Lanjutkan pembersihan dan biarkan progress selesai.</li></ol>
 <p>iAtur melewati aplikasi yang sedang aktif serta memeriksa kembali lokasi dan identitas file tepat sebelum penghapusan. Symlink, hardlink, dokumen pengguna, project, source media, password, sesi, pengaturan, plug-in, model AI, dependency, dan data penting lain tetap dilindungi. Pemindaian juga dibatasi agar lokasi cache yang macet tidak membuat proses berhenti.</p>
+</div>
+</details>
 
-<h3>Optimizer: Optimize System</h3>
+<details class="iatur-feature-accordion" name="iatur-features">
+<summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Optimizer: Optimize System</span></summary>
+<div class="iatur-accordion-content">
 <p><strong>Optimize System</strong> menjalankan alur perawatan konservatif sebanyak 20 tahap. Sebelum dimulai, iAtur mengingatkan Anda untuk menyimpan pekerjaan dan menutup browser, lalu memeriksa ulang aplikasi yang masih aktif. Operasi berisiko tetap dilewati dan dirangkum sebagai area yang dilewati demi keamanan.</p>
 <p>Perawatan dapat mencakup penyegaran layanan ikon pengguna, optimasi database browser yang sudah diverifikasi, serta pembersihan resmi untuk alat seperti npm, pnpm, pip, mise, Nix, Homebrew, dan CoreSimulator apabila syarat amannya terpenuhi. Izin administrator hanya diminta untuk tugas tertentu; aplikasi iAtur sendiri tetap tidak berjalan sebagai root.</p>
 <p>Ketika menjalankan alat pembersihan yang didukung, iAtur menonaktifkan analytics, pemeriksaan update otomatis, audit, funding, dan akses jaringan opsional yang tidak diperlukan. Homebrew analytics serta perilaku auto-update dan jaringan Homebrew juga dinonaktifkan untuk proses pembersihan tersebut.</p>
+</div>
+</details>
 
-<h3>Cleaning Mode</h3>
+<details class="iatur-feature-accordion" name="iatur-features">
+<summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Cleaning Mode</span></summary>
+<div class="iatur-accordion-content">
 <p>Cleaning Mode menutup semua layar dengan tampilan hitam sekaligus memblokir input keyboard, mouse, dan trackpad untuk sementara. Fitur ini cocok saat membersihkan layar dan perangkat input tanpa menekan tombol atau menggerakkan aplikasi secara tidak sengaja.</p>
 <ol class="iatur-steps"><li>Buka <strong>Tweaks → System</strong>.</li><li>Nyalakan <strong>Cleaning Mode</strong>.</li><li>Berikan izin macOS bila diminta, lalu pilih <strong>Iya</strong>.</li><li>Untuk keluar, tekan tombol Command kiri atau kanan sebanyak enam kali. Anda juga dapat menunggu waktu keluar otomatis.</li></ol>
+</div>
+</details>
 
-<h3>Cat Mode</h3>
+<details class="iatur-feature-accordion" name="iatur-features">
+<summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Cat Mode</span></summary>
+<div class="iatur-accordion-content">
 <p>Cat Mode mengunci keyboard, mouse, dan trackpad tanpa membuat layar menjadi hitam. Ini berguna ketika ingin mencegah input tidak sengaja—termasuk saat kucing berjalan di atas keyboard—sambil tetap melihat layar.</p>
 <p>Nyalakan <strong>Cat Mode</strong> di bagian Tweaks, konfirmasi aktivasi, lalu tekan Command enam kali untuk keluar.</p>
+</div>
+</details>
 
-<h3>Keep Awake, Hide Mouse Cursor, dan Center Mouse Pointer</h3>
+<details class="iatur-feature-accordion" name="iatur-features">
+<summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Keep Awake, Hide Mouse Cursor, dan Center Mouse Pointer</span></summary>
+<div class="iatur-accordion-content">
 <ul>
 <li><strong>Keep Awake:</strong> nyalakan toggle untuk mencegah Mac tidur selama fitur aktif.</li>
 <li><strong>Hide Mouse Cursor:</strong> pointer disembunyikan setelah lima detik tidak bergerak dan muncul kembali saat mouse digerakkan.</li>
 <li><strong>Center Mouse Pointer:</strong> pointer otomatis dipindahkan ke tengah layar utama setelah Mac bangun atau dibuka dari kondisi terkunci.</li>
 </ul>
+</div>
+</details>
 
-<h3>Finder Cut &amp; Paste</h3>
+<details class="iatur-feature-accordion" name="iatur-features">
+<summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Finder Cut &amp; Paste</span></summary>
+<div class="iatur-accordion-content">
 <p>Fitur ini menghadirkan alur Cut dan Paste yang terasa familiar di Finder. Nyalakan <strong>Finder Cut &amp; Paste</strong>, pilih satu atau beberapa file, tekan <strong>Command-X</strong>, buka folder tujuan, lalu tekan <strong>Command-V</strong>. Finder yang melakukan pemindahan sehingga mekanisme izin, konflik file, dan Undo tetap mengikuti macOS.</p>
+</div>
+</details>
 
-<h3>Delete Key to Trash</h3>
+<details class="iatur-feature-accordion" name="iatur-features">
+<summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Delete Key to Trash</span></summary>
+<div class="iatur-accordion-content">
 <p>Nyalakan fitur ini, pilih satu atau beberapa file di Finder, lalu tekan tombol Delete tanpa tombol tambahan. File akan dipindahkan ke Trash, bukan dihapus permanen. Fitur tidak bekerja saat Anda sedang mengetik, mencari, mengganti nama file, menahan tombol modifier, atau memakai key repeat. Perubahan nama ini tidak mengubah perilaku fitur maupun pengaturan pengguna yang sudah ada.</p>
+</div>
+</details>
 
-<h3>Menu Klik Kanan Finder</h3>
+<details class="iatur-feature-accordion" name="iatur-features">
+<summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Menu Klik Kanan Finder</span></summary>
+<div class="iatur-accordion-content">
 <p>Buka <strong>Tweaks → Finder Extension</strong>, klik <strong>Open Settings…</strong>, lalu pastikan iAtur Finder Extension aktif. Setelah itu nyalakan tindakan yang ingin ditampilkan pada menu klik kanan Finder:</p>
 <ul>
 <li><strong>Copy Path:</strong> menyalin lokasi lengkap file.</li>
@@ -130,44 +161,72 @@ status: "published"
 </ul>
 <p><strong>Compare Files</strong> tersedia melalui tombol Choose pada halaman Shortcuts. Pilih minimal dua file; iAtur memakai file pertama sebagai acuan lalu membandingkan isi setiap file secara byte-per-byte tanpa mengubahnya. Ringkasan hasil otomatis disalin ke clipboard agar mudah dibagikan. Fitur ini bukan bagian dari menu klik kanan Finder.</p>
 <div class="iatur-note"><strong>Catatan OneDrive:</strong> macOS tidak selalu mengizinkan menu Finder Sync milik aplikasi lain muncul di folder OneDrive atau lokasi File Provider. Menu iAtur tetap dapat digunakan pada folder Finder lokal biasa.</div>
+</div>
+</details>
 
-<h3>Clipboard</h3>
+<details class="iatur-feature-accordion" name="iatur-features">
+<summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Clipboard</span></summary>
+<div class="iatur-accordion-content">
 <ul>
 <li><strong>Clear Clipboard:</strong> klik Clear untuk langsung mengosongkan clipboard.</li>
 <li><strong>Auto Clear Clipboard:</strong> aktifkan untuk menghapus isi clipboard sekitar satu menit setelah ada salinan baru. Clipboard juga dibersihkan ketika Mac tidur atau layar dikunci.</li>
 </ul>
+</div>
+</details>
 
-<h3>Screen</h3>
+<details class="iatur-feature-accordion" name="iatur-features">
+<summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Screen</span></summary>
+<div class="iatur-accordion-content">
 <ul>
 <li><strong>Start Screen Saver:</strong> menjalankan screen saver.</li>
 <li><strong>Sleep Displays:</strong> mematikan layar tanpa membuat seluruh Mac masuk mode tidur.</li>
 <li><strong>Show Desktop:</strong> menyembunyikan jendela agar desktop terlihat.</li>
 </ul>
+</div>
+</details>
 
-<h3>Windows</h3>
+<details class="iatur-feature-accordion" name="iatur-features">
+<summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Windows</span></summary>
+<div class="iatur-accordion-content">
 <ul>
 <li><strong>Center All Windows:</strong> mengembalikan jendela yang berada di luar posisi layar ke tengah layar utama.</li>
 <li><strong>Minimize All:</strong> mengecilkan semua jendela aplikasi.</li>
 <li><strong>Minimize All Except Active:</strong> mempertahankan jendela aktif dan mengecilkan sisanya.</li>
 <li><strong>Isolate Window:</strong> mempertahankan jendela terdepan dan menyembunyikan atau mengecilkan jendela lain.</li>
 </ul>
+</div>
+</details>
 
-<h3>Pick Color</h3>
+<details class="iatur-feature-accordion" name="iatur-features">
+<summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Pick Color</span></summary>
+<div class="iatur-accordion-content">
 <p>Klik <strong>Pick</strong>, pilih warna di layar, lalu iAtur menyalin nilai Hex dan RGB ke clipboard.</p>
+</div>
+</details>
 
-<h3>Audio</h3>
+<details class="iatur-feature-accordion" name="iatur-features">
+<summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Audio</span></summary>
+<div class="iatur-accordion-content">
 <ul>
 <li><strong>Mute Sound:</strong> menyalakan atau mematikan suara perangkat output aktif.</li>
 <li><strong>Mute Microphone:</strong> menyalakan atau mematikan mikrofon aktif jika perangkat mendukungnya.</li>
 <li><strong>Cycle Audio Output:</strong> klik Switch untuk berpindah ke perangkat output berikutnya.</li>
 </ul>
+</div>
+</details>
 
-<h3>Merekam Shortcut Global</h3>
+<details class="iatur-feature-accordion" name="iatur-features">
+<summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Merekam Shortcut Global</span></summary>
+<div class="iatur-accordion-content">
 <p>Setiap tindakan di halaman Shortcuts dapat dijalankan lewat tombol langsung atau kombinasi keyboard global.</p>
 <ol class="iatur-steps"><li>Klik <strong>Record Shortcut</strong> di samping tindakan.</li><li>Tekan kombinasi yang memakai tombol modifier seperti Command, Option, Control, atau Shift.</li><li>Gunakan shortcut tersebut selama iAtur berjalan.</li><li>Tekan Escape saat merekam untuk batal, atau klik tombol reset untuk menghapus shortcut.</li></ol>
 <p>Shortcut tersimpan dan digunakan kembali setelah iAtur atau Mac dimulai ulang. Jika kombinasi sudah dipakai fitur iAtur lain, macOS, atau aplikasi lain, iAtur menolaknya dan mempertahankan shortcut lama yang masih bekerja. Jika shortcut tersimpan tidak dapat diaktifkan saat aplikasi mulai, pengaturannya tetap disimpan tetapi shortcut tersebut tidak aktif sampai direkam kembali.</p>
+</div>
+</details>
 
-<h3 id="pengaturan-dan-pemulihan">Pengaturan dan Pemulihan</h3>
+<details class="iatur-feature-accordion" name="iatur-features">
+<summary id="pengaturan-dan-pemulihan"><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Pengaturan dan Pemulihan</span></summary>
+<div class="iatur-accordion-content">
 <ul>
 <li><strong>Launch at Login:</strong> membuka iAtur setelah masuk ke Mac dan memulihkan hanya tweak Finder yang sebelumnya disetujui.</li>
 <li><strong>Run in Background:</strong> menjaga tweak tetap berjalan setelah jendela ditutup.</li>
@@ -181,6 +240,9 @@ status: "published"
 <li><strong>Reset iAtur:</strong> mengembalikan seluruh pengaturan ke kondisi awal.</li>
 </ul>
 <p>Cleaning Mode, Cat Mode, Keep Awake, dan kontrol sementara lainnya tidak pernah dinyalakan otomatis oleh iAtur.</p>
+</div>
+</details>
+</div>
 </section>
 
 <section class="iatur-guide-section" aria-labelledby="version-changes-log">

@@ -1,6 +1,6 @@
 {
 	"name": "arunajrcom-astro-blog-starter-template",
-	"version": "2.99.31",
+	"version": "2.99.32",
 	"description": "Build a personal website, blog, or portfolio with Astro.",
 	"cloudflare": {
 		"label": "Astro Framework Starter",
@@ -33,7 +33,9 @@
 		"build": "astro build",
 		"cf-typegen": "wrangler types",
 		"check": "astro build && tsc && wrangler deploy --dry-run",
+		"check:chat": "wrangler deploy --config workers/chat-redirect/wrangler.jsonc --dry-run",
 		"deploy": "wrangler deploy",
+		"deploy:chat": "wrangler deploy --config workers/chat-redirect/wrangler.jsonc",
 		"dev": "astro dev",
 		"preview": "astro build && wrangler dev"
 	},

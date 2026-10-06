@@ -1,46 +1,48 @@
-# Design QA — iAtur Feature Accordions
+# Design QA — Header Alignment
 
-- Source visual truth: `/Users/aruna/Library/Application Support/CleanShot/media/media_h2mrrMIDo9/CleanShot 2026-10-03 at 08.53.05@2x.png`
-- Source pixels: 1176 × 616 at 2× density; used as a visual-pattern reference rather than a full-page layout specification.
-- Implementation: `/iatur#fitur-iatur` rendered in the Codex in-app Browser; browser screenshot evidence was captured inline during this task (the browser API did not expose a persistent local screenshot path).
-- Viewports checked: 900 × 700 desktop and 390 × 844 mobile at devicePixelRatio 1.
-- States checked: first panel open, alternate panel open, remaining panels closed, one-open-at-a-time behavior, keyboard-accessible native disclosure controls.
-- Primary interactions tested: opening a collapsed feature, closing the previous feature automatically, plus/minus state change, and responsive wrapping.
+- Source visual truth: `/tmp/codex-remote-attachments/01a10020-ee0e-7781-a7a5-3b57ddeb6ebb/1791DB80-EC3E-4223-9FB0-11BB156078C5/1-Photo-1.jpg`, used only as the issue reference; the final decision was based on live responsive rendering as requested.
+- Source pixels: 1170 × 853; browser chrome is excluded from the implementation judgment.
+- Implementation: `/` rendered in Codex In-app Browser tab 1. Browser screenshot evidence was captured inline during this task; the browser API did not expose a persistent local screenshot path.
+- Viewports checked: 390 × 844 mobile, 768 × 1024 tablet, and 1440 × 900 desktop at devicePixelRatio 1.
+- State: home page with Home active; About and Blog active states were also tested through real navigation.
+- Primary interactions tested: Aruna JR → Home, About, and Blog links; active menu state on all three destinations.
 - Console errors checked: none.
 
 ## Full-view comparison evidence
 
-The implementation follows the reference hierarchy: square toggle at the left, bold feature title, thin separators, open content below the active title, and compact collapsed rows. The active control uses the existing iAtur blue/indigo palette instead of the reference red, which is an intentional product-brand adaptation.
+The original screenshot showed “Aruna JR” sitting above the menu text. Live rendering confirmed that the global paragraph bottom margin displaced the title, while the plain title link used a different inline box than the menu links. After both causes were removed, the mobile, tablet, and desktop captures show one consistent header line with no horizontal overflow.
 
 ## Focused region comparison evidence
 
-The feature-list region was inspected at desktop and mobile widths. Bootstrap Icons provide the plus/minus symbols; no placeholder or hand-drawn icon is used. Long Indonesian labels wrap without overlapping the icon or viewport. Open content retains the original article typography, lists, notes, and links.
+The header was measured directly in the browser at all three viewports. The title and every menu link now have the same element center (`33.62px`) and the same text center (`31.50px`). Their top position, total height, text top, and text height also match exactly. Focused measurement was necessary because the reported defect was a small vertical-alignment error.
 
 ## Required fidelity surfaces
 
-- Fonts and typography: existing site font and weight hierarchy preserved; titles are bold and content remains readable.
-- Spacing and layout rhythm: compact rows, consistent separators, and reference-like left alignment; mobile content removes desktop indentation to maximize readable width.
-- Colors and visual tokens: black closed controls and branded blue/indigo open control, with accessible focus styling.
-- Image and icon quality: official Bootstrap Icons SVG assets remain sharp at all tested sizes.
-- Copy and content: all original feature titles, instructions, lists, and notes are preserved.
+- Fonts and typography: the existing Atkinson font, weights, sizes, line height, and labels are unchanged; title and menu glyph centers now match exactly.
+- Spacing and layout rhythm: only the title paragraph's unintended bottom margin and link display mode were corrected. Header width, padding, menu spacing, shadow, and active underline remain unchanged.
+- Colors and visual tokens: unchanged from the existing site design.
+- Image and icon quality: no image assets were changed; the existing Home emoji remains unchanged.
+- Copy and content: all labels and links are unchanged.
 
 ## Findings
 
-No actionable P0, P1, or P2 differences remain. The wider article column and iAtur brand color are intentional adaptations to the existing production design system.
+No actionable P0, P1, or P2 differences remain. There is no horizontal overflow at 390px, 768px, or 1440px, and all navigation states work.
 
 ## Comparison history
 
-- Initial mobile pass confirmed the compact closed-row layout and exposed the need to verify grouped behavior explicitly.
-- Added the native shared `name="iatur-features"` group so opening one feature closes the previous feature.
-- Post-fix desktop and mobile passes confirmed the grouped interaction, responsive wrapping, active-state icon, and content layout.
+- Initial live pass: removing the paragraph margin corrected the obvious upward displacement, but focused measurement still found a 2px text-center difference because the title link remained inline.
+- Fix: made the title link an inline block, matching the menu-link box model.
+- Post-fix live pass: title and menu centers match exactly across mobile, tablet, and desktop; navigation works and the console is clean.
 
 ## Implementation checklist
 
-- [x] Native accessible accordion controls
-- [x] One open feature at a time
-- [x] Plus/minus icon states
-- [x] Desktop and mobile layout
-- [x] Original content preserved
+- [x] Title margin normalized
+- [x] Title and menu link box models aligned
+- [x] Mobile layout verified at 390 × 844
+- [x] Tablet layout verified at 768 × 1024
+- [x] Desktop layout verified at 1440 × 900
+- [x] Header navigation tested
+- [x] No horizontal overflow
 - [x] No browser console errors
 - [x] Production build passes
 

@@ -2,7 +2,7 @@
 title: "iAtur macOS App: Atur macOS Sesuka Hati, Cara Menggunakan, dan Fitur Terbaru"
 description: "Panduan lengkap iAtur, aplikasi native macOS untuk Optimizer, Clean Uninstall, Finder, shortcut, audio, window, pembaruan aman, dan berbagai pengaturan Mac yang praktis."
 seoTitle: "iAtur macOS App: Download, Cara Menggunakan & Fitur Terbaru"
-seoDescription: "Download iAtur v0.4.46 dan pelajari cara memakai Optimizer, Clean Uninstall, Cleaning Mode, Finder, shortcut global, audio, serta pembaruan aman."
+seoDescription: "Download iAtur v0.4.47 dan pelajari cara memakai Optimizer, Clean Uninstall, Cleaning Mode, Finder, shortcut global, audio, serta pembaruan aman."
 pubDate: "2026-10-02"
 updatedDate: "2026-10-15"
 heroImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
@@ -16,11 +16,11 @@ status: "published"
 <div class="iatur-download-card">
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon resmi aplikasi iAtur" width="144" height="144" loading="eager" />
 <div>
-<strong>iAtur v0.4.46 untuk macOS</strong>
-<p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 3,4 MB.</p>
+<strong>iAtur v0.4.47 untuk macOS</strong>
+<p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 3,5 MB.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.46-direct.pkg" download>Download iAtur v0.4.46</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.46-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.47-direct.pkg" download>Download iAtur v0.4.47</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.47-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 
@@ -36,6 +36,7 @@ status: "published"
 <li><a href="#fitur-iatur">Semua fitur dan cara menggunakannya</a></li>
 <li><a href="#version-changes-log">Version changes log</a></li>
 <li><a href="#faq-iatur">FAQ</a></li>
+<li><a href="#donate">Dukung iAtur</a></li>
 </ol>
 </nav>
 
@@ -66,9 +67,9 @@ status: "published"
 
 <h3>Download dan instal</h3>
 <ol class="iatur-steps">
-<li>Klik tombol <strong>Download iAtur v0.4.46</strong> di atas.</li>
+<li>Klik tombol <strong>Download iAtur v0.4.47</strong> di atas.</li>
 <li>Setelah file selesai diunduh, buka Finder lalu masuk ke folder Downloads.</li>
-<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.46-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
+<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.47-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
 <li>Selesaikan petunjuk installer. iAtur akan dipasang di folder Applications.</li>
 <li>Buka iAtur dari Applications.</li>
 </ol>
@@ -166,7 +167,7 @@ status: "published"
 <details class="iatur-feature-accordion" name="iatur-features">
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Menu Klik Kanan Finder</span></summary>
 <div class="iatur-accordion-content">
-<p>Buka <strong>Tweaks → Finder Extension</strong>, klik <strong>Open Settings…</strong>, lalu pastikan iAtur Finder Extension aktif. Setelah itu nyalakan tindakan yang diinginkan. Seluruh tindakan yang valid tampil rapi di dalam satu submenu <strong>iAtur</strong> pada menu klik kanan Finder:</p>
+<p>Semua tindakan menu klik kanan Finder kini dalam kondisi <strong>OFF</strong> saat pertama dipasang. Aktifkan iAtur Finder Extension di pengaturan ekstensi macOS terlebih dahulu, lalu nyalakan hanya tindakan yang dibutuhkan di <strong>Tweaks → Finder</strong>. Jika ekstensi belum aktif, pilihan tindakan akan tampak tidak tersedia; klik barisnya untuk langsung membuka pengaturan ekstensi macOS. Seluruh tindakan yang valid tampil rapi di dalam satu submenu <strong>iAtur</strong> pada menu klik kanan Finder:</p>
 <ul>
 <li><strong>Copy Path:</strong> menyalin lokasi lengkap file.</li>
 <li><strong>Copy Filename:</strong> menyalin nama file.</li>
@@ -179,12 +180,13 @@ status: "published"
 <li><strong>New Markdown File:</strong> membuat file <code>Untitled.md</code>.</li>
 <li><strong>New Word Document:</strong> membuat dokumen Word kosong yang valid.</li>
 <li><strong>New Excel Spreadsheet:</strong> membuat spreadsheet Excel kosong yang valid.</li>
+<li><strong>New PowerPoint Presentation:</strong> membuat presentasi PowerPoint kosong yang valid.</li>
 <li><strong>Open in Terminal:</strong> membuka folder terpilih di Terminal.</li>
 <li><strong>Show/Hide Hidden Files:</strong> memakai perintah native Finder untuk menampilkan atau menyembunyikan file tersembunyi tanpa menutup Finder atau menghilangkan jendela dan tab.</li>
 <li><strong>Lock/Unlock Files:</strong> mengubah status Locked pada file terpilih.</li>
 </ul>
 <p><strong>Compare Files</strong> tersedia melalui tombol Choose pada halaman Shortcuts. Pilih minimal dua file; iAtur memakai file pertama sebagai acuan lalu membandingkan isi setiap file secara byte-per-byte tanpa mengubahnya. Ringkasan hasil otomatis disalin ke clipboard agar mudah dibagikan. Fitur ini bukan bagian dari menu klik kanan Finder.</p>
-<div class="iatur-note"><strong>Catatan OneDrive:</strong> macOS dapat menolak menu Finder Sync milik aplikasi lain di folder OneDrive atau File Provider. Gunakan tombol <strong>Choose…</strong> di iAtur untuk New Text File, New Markdown File, New Word Document, New Excel Spreadsheet, dan Open in Terminal. Pemilih folder native mendukung lokasi cloud yang dipilih pengguna.</div>
+<div class="iatur-note"><strong>Catatan OneDrive:</strong> macOS dapat menolak menu Finder Sync milik aplikasi lain di folder OneDrive atau File Provider. Gunakan tombol <strong>Choose…</strong> di iAtur untuk New Text File, New Markdown File, New Word Document, New Excel Spreadsheet, New PowerPoint Presentation, dan Open in Terminal. Pemilih folder native mendukung lokasi cloud yang dipilih pengguna.</div>
 </div>
 </details>
 
@@ -218,7 +220,7 @@ status: "published"
 <li><strong>Minimize All Except Active:</strong> mempertahankan jendela aktif dan mengecilkan sisanya.</li>
 <li><strong>Isolate Window:</strong> mempertahankan jendela terdepan dan menyembunyikan atau mengecilkan jendela lain.</li>
 <li><strong>Close All Finder Windows:</strong> menutup seluruh jendela Finder standar melalui tombol Close native macOS tanpa menutup iAtur, aplikasi lain, atau memaksa Finder berhenti. Tersedia juga melalui menu bar <strong>iAtur → Finder</strong>.</li>
-<li><strong>Undo Window Changes:</strong> memulihkan posisi, status minimize, dan aplikasi yang disembunyikan oleh tindakan window terakhir.</li>
+<li><strong>Undo Window Changes:</strong> memulihkan posisi, status minimize, dan aplikasi yang disembunyikan oleh tindakan window terakhir. Sejak v0.4.47, iAtur mengingat objek window yang tepat sehingga pemulihan tetap benar meskipun urutan window berubah setelah minimize atau hide.</li>
 </ul>
 </div>
 </details>
@@ -267,7 +269,7 @@ status: "published"
 <li><strong>Run in Background:</strong> menjaga tweak tetap berjalan setelah jendela ditutup.</li>
 <li><strong>Show Menu Bar Icon:</strong> menyediakan menu kontrol cepat lengkap saat jendela utama ditutup.</li>
 <li><strong>Hide Dock Icon on Window Close:</strong> menyembunyikan ikon Dock setelah jendela ditutup, selama mode background dan menu bar aktif.</li>
-<li><strong>Auto Exit:</strong> pilih 1, 2, 3, 5, 10, atau 15 menit sebagai jalur keluar otomatis Cleaning Mode dan Cat Mode.</li>
+<li><strong>Auto Exit:</strong> pilih 1, 2, 3, 5, 10, atau 15 menit sebagai jalur keluar otomatis Cleaning Mode dan Cat Mode. Nilai awalnya kini 3 menit.</li>
 <li><strong>Backup Settings dan Restore Settings:</strong> menyimpan pengaturan ke file JSON dan memulihkannya kembali. Backup berukuran berlebihan, berupa symlink, atau tidak aman akan ditolak.</li>
 <li><strong>Automatic Updates:</strong> aktif secara default dan memeriksa kanal rilis biner publik resmi maksimal sekali sehari. Paket hanya diteruskan jika checksum, struktur paket, script installer, versi, Apple Team ID, dan identitas tanda tangan cocok.</li>
 <li><strong>Update iAtur:</strong> klik untuk memeriksa, mengunduh, dan memverifikasi installer resmi secara manual. Dialog menampilkan versi, progress unduhan nyata, dan petunjuk koneksi; macOS Installer tetap meminta konfirmasi sebelum pemasangan.</li>
@@ -283,6 +285,7 @@ status: "published"
 <section class="iatur-guide-section" aria-labelledby="version-changes-log">
 <div class="iatur-section-heading"><span aria-hidden="true">05</span><h2 id="version-changes-log">Version Changes Log</h2></div>
 <ul class="iatur-version-list">
+<li><strong>v0.4.47 — 15 Oktober 2026:</strong> menambahkan tautan QRIS resmi serta Instagram, Threads, dan LinkedIn di halaman Donate; menyegarkan teks dan tombol pada Settings, Optimizer, Shortcuts, dan Tweaks; mengubah waktu awal Auto Exit menjadi 3 menit; membuat semua tindakan menu klik kanan Finder default OFF dan baru dapat diaktifkan setelah Finder Extension aktif; memperbaiki aktivasi dokumen Word/Excel; menambahkan New PowerPoint Presentation; serta memperbaiki Undo Window Changes agar memulihkan window yang tepat meskipun urutannya berubah.</li>
 <li><strong>v0.4.46 — 14 Oktober 2026:</strong> menambahkan Close All Finder Windows dengan tombol langsung, shortcut global yang tersimpan dan dicek konflik, serta akses melalui submenu Finder pada ikon menu bar. Hanya jendela Finder standar yang ditutup secara native.</li>
 <li><strong>v0.4.45 — 14 Oktober 2026:</strong> menambahkan Clean Uninstall yang melindungi file pribadi, serta dialog Update iAtur dengan konfirmasi versi, progress unduhan nyata, verifikasi paket, pembukaan ulang versi baru, dan konfirmasi update berhasil.</li>
 <li><strong>v0.4.44 — 14 Oktober 2026:</strong> memindahkan Mute Sound, Mute Microphone, dan Cycle Audio Output ke Shortcuts, menambahkan shortcut global untuk ketiganya, serta submenu Audio dengan status mute aktual pada menu bar.</li>
@@ -359,10 +362,30 @@ status: "published"
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon iAtur untuk macOS" width="144" height="144" loading="lazy" />
 <div>
 <strong>Siap mencoba iAtur?</strong>
-<p>Download installer resmi v0.4.46 untuk macOS 14 atau lebih baru.</p>
+<p>Download installer resmi v0.4.47 untuk macOS 14 atau lebih baru.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.46-direct.pkg" download>Download iAtur v0.4.46</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.46-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.47-direct.pkg" download>Download iAtur v0.4.47</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.47-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 </div>
+
+<section class="iatur-guide-section iatur-donate-section" id="donate" aria-labelledby="donate-title">
+<div class="iatur-section-heading"><span aria-hidden="true">07</span><h2 id="donate-title">Dukung iAtur</h2></div>
+<div class="iatur-donate-card">
+<h3>Traktir Kopi</h3>
+<p>Terima kasih telah mencoba iAtur, kalo kamu mau mendukung pengembangannya untuk bisa lebih membantu kamu, bisa loh traktir kopi di sini. Sekali lagi, terima kasih buat dukungannya!</p>
+<button class="iatur-donate-button" type="button" data-iatur-donate-open>Traktir Kopi</button>
+</div>
+</section>
+
+<dialog class="iatur-donate-dialog" data-iatur-donate-dialog aria-labelledby="iatur-donate-dialog-title">
+<div class="iatur-donate-dialog-card">
+<div class="iatur-donate-dialog-header">
+<div><span class="iatur-donate-eyebrow">Dukung pengembangan iAtur</span><h2 id="iatur-donate-dialog-title">Traktir Kopi</h2></div>
+<button class="iatur-donate-close" type="button" data-iatur-donate-close aria-label="Tutup popup QRIS">Tutup</button>
+</div>
+<p>Scan kode QRIS berikut menggunakan aplikasi pembayaran yang mendukung QRIS.</p>
+<img src="/uploads/iatur/qris-traktir-kopi.jpeg" alt="Kode QRIS untuk traktir kopi dan mendukung pengembangan iAtur" width="1135" height="1600" loading="lazy" />
+</div>
+</dialog>

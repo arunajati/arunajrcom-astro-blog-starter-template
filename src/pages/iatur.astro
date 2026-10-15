@@ -15,3 +15,15 @@ const { Content } = await render(post);
 <BlogPost {...post.data} body={post.body}>
 	<Content />
 </BlogPost>
+
+<script>
+	const donateDialog = document.querySelector<HTMLDialogElement>('[data-iatur-donate-dialog]');
+	const donateOpenButton = document.querySelector<HTMLButtonElement>('[data-iatur-donate-open]');
+	const donateCloseButton = document.querySelector<HTMLButtonElement>('[data-iatur-donate-close]');
+
+	donateOpenButton?.addEventListener('click', () => donateDialog?.showModal());
+	donateCloseButton?.addEventListener('click', () => donateDialog?.close());
+	donateDialog?.addEventListener('click', (event) => {
+		if (event.target === donateDialog) donateDialog.close();
+	});
+</script>

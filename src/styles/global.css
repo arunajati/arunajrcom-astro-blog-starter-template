@@ -321,6 +321,112 @@ hr {
 	background: white;
 	border: 1px solid #cfd5f5;
 }
+.iatur-donate-section {
+	scroll-margin-top: 1.5rem;
+}
+.iatur-donate-card {
+	padding: clamp(1.25rem, 4vw, 2rem);
+	background: linear-gradient(145deg, #f8faff, #f3f1ff);
+	border: 1px solid #d9defa;
+	border-radius: 18px;
+	box-shadow: 0 12px 34px rgba(73, 83, 170, 0.1);
+}
+.iatur-donate-card h3 {
+	margin: 0 0 0.65rem;
+	font-size: clamp(1.3rem, 3vw, 1.55rem);
+}
+.iatur-donate-card p {
+	margin: 0 0 1.25rem;
+}
+.iatur-donate-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 2.75rem;
+	padding: 0.7rem 1.15rem;
+	border: 0;
+	border-radius: 10px;
+	color: white;
+	background: linear-gradient(135deg, var(--iatur-blue), var(--iatur-indigo));
+	box-shadow: 0 5px 14px rgba(67, 70, 205, 0.28);
+	cursor: pointer;
+	font: inherit;
+	font-weight: 700;
+	line-height: 1.2;
+}
+.iatur-donate-button:hover {
+	transform: translateY(-1px);
+}
+.iatur-donate-button:focus-visible,
+.iatur-donate-close:focus-visible {
+	outline: 3px solid rgba(52, 87, 241, 0.32);
+	outline-offset: 3px;
+}
+.iatur-donate-dialog {
+	width: min(92vw, 540px);
+	max-height: 90vh;
+	margin: auto;
+	padding: 0;
+	overflow: hidden;
+	border: 0;
+	border-radius: 20px;
+	background: white;
+	box-shadow: 0 24px 70px rgba(20, 28, 73, 0.3);
+}
+.iatur-donate-dialog::backdrop {
+	background: rgba(16, 20, 38, 0.72);
+	backdrop-filter: blur(4px);
+}
+.iatur-donate-dialog-card {
+	max-height: 90vh;
+	padding: clamp(1rem, 3vw, 1.4rem);
+	overflow: auto;
+}
+.iatur-donate-dialog-header {
+	display: flex;
+	gap: 1rem;
+	align-items: flex-start;
+	justify-content: space-between;
+	margin-bottom: 0.5rem;
+}
+.iatur-donate-dialog-header h2 {
+	margin: 0.15rem 0 0;
+	font-size: clamp(1.35rem, 4vw, 1.7rem);
+}
+.iatur-donate-eyebrow {
+	color: #59627a;
+	font-size: 0.82rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+.iatur-donate-close {
+	min-height: 2.5rem;
+	padding: 0.55rem 0.8rem;
+	border: 1px solid #cfd5f5;
+	border-radius: 9px;
+	color: #3f49a6;
+	background: #f8faff;
+	cursor: pointer;
+	font: inherit;
+	font-size: 0.9rem;
+	font-weight: 700;
+}
+.iatur-donate-dialog-card > p {
+	margin: 0 0 1rem;
+	color: #4f586f;
+}
+.iatur-donate-dialog-card > img {
+	display: block;
+	width: auto;
+	max-width: 100%;
+	height: auto;
+	max-height: 65vh;
+	margin: 0 auto;
+	border: 1px solid #e1e5f2;
+	border-radius: 14px;
+	object-fit: contain;
+}
 .iatur-note {
 	margin: 1.5rem 0;
 	padding: 1rem 1.1rem;
@@ -586,6 +692,20 @@ hr {
 	}
 	.iatur-download-actions {
 		justify-content: center;
+	}
+	.iatur-donate-button {
+		width: 100%;
+	}
+	.iatur-donate-dialog {
+		width: min(94vw, 540px);
+		max-height: 92vh;
+		border-radius: 16px;
+	}
+	.iatur-donate-dialog-card {
+		max-height: 92vh;
+	}
+	.iatur-donate-dialog-card > img {
+		max-height: 67vh;
 	}
 	.iatur-feature-grid {
 		grid-template-columns: 1fr;

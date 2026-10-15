@@ -1,26 +1,26 @@
 ---
 title: "iAtur macOS App: Atur macOS Sesuka Hati, Cara Menggunakan, dan Fitur Terbaru"
-description: "Panduan lengkap iAtur, aplikasi native macOS untuk Optimizer, Cleaning Mode, Finder Cut & Paste, shortcut, clipboard, audio, window, dan berbagai pengaturan Mac yang praktis."
+description: "Panduan lengkap iAtur, aplikasi native macOS untuk Optimizer, Clean Uninstall, Finder, shortcut, audio, window, pembaruan aman, dan berbagai pengaturan Mac yang praktis."
 seoTitle: "iAtur macOS App: Download, Cara Menggunakan & Fitur Terbaru"
-seoDescription: "Download iAtur v0.4.18 dan pelajari cara memakai Optimizer, Cleaning Mode, Finder Cut & Paste, shortcut global, clipboard, audio, serta fitur macOS lainnya."
+seoDescription: "Download iAtur v0.4.46 dan pelajari cara memakai Optimizer, Clean Uninstall, Cleaning Mode, Finder, shortcut global, audio, serta pembaruan aman."
 pubDate: "2026-10-02"
-updatedDate: "2026-10-03"
+updatedDate: "2026-10-15"
 heroImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
 seoImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
 permalink: "/iatur"
 status: "published"
 ---
 
-<p class="iatur-lead"><strong>iAtur</strong> adalah aplikasi native untuk macOS yang saya buat agar berbagai pengaturan dan tindakan kecil di Mac terasa lebih cepat, praktis, dan mudah ditemukan. Dari mengunci keyboard saat dibersihkan, memakai <em>Cut &amp; Paste</em> di Finder, sampai membuat shortcut global, semuanya dikumpulkan dalam satu aplikasi ringan.</p>
+<p class="iatur-lead"><strong>iAtur</strong> adalah aplikasi native untuk macOS yang saya buat agar berbagai pengaturan dan tindakan kecil di Mac terasa lebih cepat, praktis, dan mudah ditemukan. Dari membersihkan cache dengan perlindungan berlapis, menghapus aplikasi beserta file terkait, mengunci keyboard saat dibersihkan, mengatur Finder, sampai membuat shortcut global, semuanya dikumpulkan dalam satu aplikasi ringan.</p>
 
 <div class="iatur-download-card">
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon resmi aplikasi iAtur" width="144" height="144" loading="eager" />
 <div>
-<strong>iAtur v0.4.18 untuk macOS</strong>
-<p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 2,9 MB.</p>
+<strong>iAtur v0.4.46 untuk macOS</strong>
+<p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 3,4 MB.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.18-direct.pkg" download>Download iAtur v0.4.18</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.18-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.46-direct.pkg" download>Download iAtur v0.4.46</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.46-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 
@@ -41,7 +41,7 @@ status: "published"
 
 <section class="iatur-guide-section" aria-labelledby="apa-itu-iatur">
 <div class="iatur-section-heading"><span aria-hidden="true">01</span><h2 id="apa-itu-iatur">Apa Itu iAtur?</h2></div>
-<p>iAtur adalah pusat kontrol sederhana untuk berbagai kenyamanan macOS yang biasanya tersebar, tersembunyi, atau membutuhkan langkah tambahan. Aplikasi ini dibuat khusus untuk Mac menggunakan teknologi native Apple sehingga tampilannya menyatu dengan macOS dan tidak membutuhkan layanan pihak ketiga.</p>
+<p>iAtur adalah pusat kontrol sederhana untuk berbagai kenyamanan macOS yang biasanya tersebar, tersembunyi, atau membutuhkan langkah tambahan. Aplikasi ini dibuat khusus untuk Mac menggunakan teknologi native Apple sehingga tampilannya menyatu dengan macOS. Fitur utama berjalan lokal; koneksi ke GitHub hanya digunakan untuk pemeriksaan dan pengunduhan pembaruan resmi.</p>
 <p>Fokus iAtur bukan mengubah macOS secara ekstrem. Setiap fitur dibuat agar aman, mudah dimatikan, dan sebisa mungkin memakai perilaku standar Finder atau macOS. File yang dipindahkan dengan iAtur, misalnya, tetap memakai mekanisme Finder sehingga perlindungan, konflik nama, dan fitur Undo bawaan tetap berlaku.</p>
 </section>
 
@@ -66,9 +66,9 @@ status: "published"
 
 <h3>Download dan instal</h3>
 <ol class="iatur-steps">
-<li>Klik tombol <strong>Download iAtur v0.4.18</strong> di atas.</li>
+<li>Klik tombol <strong>Download iAtur v0.4.46</strong> di atas.</li>
 <li>Setelah file selesai diunduh, buka Finder lalu masuk ke folder Downloads.</li>
-<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.18-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
+<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.46-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
 <li>Selesaikan petunjuk installer. iAtur akan dipasang di folder Applications.</li>
 <li>Buka iAtur dari Applications.</li>
 </ol>
@@ -85,9 +85,9 @@ status: "published"
 <details class="iatur-feature-accordion" name="iatur-features" open>
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Optimizer: Clean Up</span></summary>
 <div class="iatur-accordion-content">
-<p><strong>Clean Up</strong> memindai lebih dahulu lalu membersihkan cache dan file sementara yang sudah diverifikasi aman. Cakupannya meliputi browser, aplikasi komunikasi dan desain, alat developer, aplikasi media, game, virtualisasi, serta cache pengguna dan sistem tertentu.</p>
-<ol class="iatur-steps"><li>Buka halaman <strong>Optimizer</strong>.</li><li>Klik <strong>Clean Up</strong> dan tunggu pemindaian selesai.</li><li>Periksa ringkasan area yang dapat dibersihkan dan area yang dilewati demi keamanan.</li><li>Lanjutkan pembersihan dan biarkan progress selesai.</li></ol>
-<p>iAtur melewati aplikasi yang sedang aktif serta memeriksa kembali lokasi dan identitas file tepat sebelum penghapusan. Symlink, hardlink, dokumen pengguna, project, source media, password, sesi, pengaturan, plug-in, model AI, dependency, dan data penting lain tetap dilindungi. Pemindaian juga dibatasi agar lokasi cache yang macet tidak membuat proses berhenti.</p>
+<p><strong>Clean Up</strong> memindai lebih dahulu lalu menawarkan kategori cache dan file sementara yang sudah diverifikasi aman. Cakupannya meliputi browser, aplikasi komunikasi dan desain, alat developer, aplikasi media, game, virtualisasi, serta cache pengguna tertentu.</p>
+<ol class="iatur-steps"><li>Buka halaman <strong>Optimizer</strong>.</li><li>Klik <strong>Clean Up</strong> dan tunggu pemindaian selesai.</li><li>Pilih kategori yang ingin dibersihkan. Cache aplikasi, browser, aplikasi kreatif, file sementara, dan log lama dipilih secara default; cache developer, package manager, dan Trash harus dipilih sendiri.</li><li>Periksa estimasi ruang dan area yang dilewati demi keamanan, lalu lanjutkan pembersihan.</li></ol>
+<p>Clean Up tidak lagi meminta password administrator. iAtur melewati aplikasi yang sedang aktif serta memeriksa ulang lokasi dan identitas file tepat sebelum penghapusan. Symlink, hardlink, dokumen, project, source media, password, sesi, pengaturan, plug-in, model AI, dependency, dan data penting lain tetap dilindungi.</p>
 </div>
 </details>
 
@@ -95,8 +95,18 @@ status: "published"
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Optimizer: Optimize System</span></summary>
 <div class="iatur-accordion-content">
 <p><strong>Optimize System</strong> menjalankan alur perawatan konservatif sebanyak 20 tahap. Sebelum dimulai, iAtur mengingatkan Anda untuk menyimpan pekerjaan dan menutup browser, lalu memeriksa ulang aplikasi yang masih aktif. Operasi berisiko tetap dilewati dan dirangkum sebagai area yang dilewati demi keamanan.</p>
-<p>Perawatan dapat mencakup penyegaran layanan ikon pengguna, optimasi database browser yang sudah diverifikasi, serta pembersihan resmi untuk alat seperti npm, pnpm, pip, mise, Nix, Homebrew, dan CoreSimulator apabila syarat amannya terpenuhi. Izin administrator hanya diminta untuk tugas tertentu; aplikasi iAtur sendiri tetap tidak berjalan sebagai root.</p>
+<p>Tahap awal dapat memulihkan akses pemilik yang hilang pada Desktop, Documents, Downloads, Movies, Music, Pictures, Public, dan Library. Folder OneDrive atau File Provider hanya diproses jika target akhirnya tetap berada di dalam Home pengguna. ACL, flags, extended attributes, serta izin group dan pengguna lain dipertahankan.</p>
+<p>Perawatan lain dapat mencakup penyegaran layanan ikon pengguna, pemeriksaan database browser yang sudah diverifikasi, DNS, Spotlight, Quick Look, login item, LaunchAgent, dan kesehatan layanan terkait. Tindakan berisiko, target eksternal, dan file milik akun lain ditolak.</p>
 <p>Ketika menjalankan alat pembersihan yang didukung, iAtur menonaktifkan analytics, pemeriksaan update otomatis, audit, funding, dan akses jaringan opsional yang tidak diperlukan. Homebrew analytics serta perilaku auto-update dan jaringan Homebrew juga dinonaktifkan untuk proses pembersihan tersebut.</p>
+</div>
+</details>
+
+<details class="iatur-feature-accordion" name="iatur-features">
+<summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Optimizer: Clean Uninstall</span></summary>
+<div class="iatur-accordion-content">
+<p><strong>Clean Uninstall</strong> menghapus aplikasi pilihan beserta file terkait yang cocok, seperti konfigurasi, cache, log, saved state, penyimpanan web, application scripts, launch agent, dan data sementara yang dapat dibuat ulang.</p>
+<ol class="iatur-steps"><li>Buka <strong>Optimizer → Applications</strong>.</li><li>Klik <strong>Uninstall</strong> pada Clean Uninstall.</li><li>Pilih aplikasi, periksa peringatan, lalu pilih <strong>Uninstall</strong> untuk melanjutkan atau <strong>Cancel</strong> untuk batal.</li><li>Tunggu progress selesai dan periksa ringkasan ukuran yang dibersihkan.</li></ol>
+<p>iAtur menolak aplikasi Apple, aplikasi sistem, dan iAtur sendiri. Dokumen, media, project pribadi, cloud storage, volume eksternal, serta dokumen di dalam container dilindungi. Aplikasi aktif dihentikan secara normal dan identitas setiap target diperiksa kembali sebelum dihapus.</p>
 </div>
 </details>
 
@@ -105,6 +115,7 @@ status: "published"
 <div class="iatur-accordion-content">
 <p>Cleaning Mode menutup semua layar dengan tampilan hitam sekaligus memblokir input keyboard, mouse, dan trackpad untuk sementara. Fitur ini cocok saat membersihkan layar dan perangkat input tanpa menekan tombol atau menggerakkan aplikasi secara tidak sengaja.</p>
 <ol class="iatur-steps"><li>Buka <strong>Tweaks → System</strong>.</li><li>Nyalakan <strong>Cleaning Mode</strong>.</li><li>Berikan izin macOS bila diminta, lalu pilih <strong>Iya</strong>.</li><li>Untuk keluar, tekan tombol Command kiri atau kanan sebanyak enam kali. Anda juga dapat menunggu waktu keluar otomatis.</li></ol>
+<p>Tombol fungsi F1–F12 untuk kecerahan, volume, pemutaran, dan fungsi media lain ikut diblokir. Tombol Power/Touch ID tetap berada di bawah kendali macOS dan tidak diblokir.</p>
 </div>
 </details>
 
@@ -120,10 +131,21 @@ status: "published"
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Keep Awake, Hide Mouse Cursor, dan Center Mouse Pointer</span></summary>
 <div class="iatur-accordion-content">
 <ul>
-<li><strong>Keep Awake:</strong> nyalakan toggle untuk mencegah Mac tidur selama fitur aktif.</li>
+<li><strong>Keep Awake:</strong> cegah Mac tidur untuk durasi yang dipilih atau selama fitur aktif; tersedia juga melalui menu bar.</li>
 <li><strong>Hide Mouse Cursor:</strong> pointer disembunyikan setelah lima detik tidak bergerak dan muncul kembali saat mouse digerakkan.</li>
 <li><strong>Center Mouse Pointer:</strong> pointer otomatis dipindahkan ke tengah layar utama setelah Mac bangun atau dibuka dari kondisi terkunci.</li>
 </ul>
+</div>
+</details>
+
+<details class="iatur-feature-accordion" name="iatur-features">
+<summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Fine Volume &amp; Brightness dan Open Files with Return</span></summary>
+<div class="iatur-accordion-content">
+<ul>
+<li><strong>Fine Volume &amp; Brightness:</strong> aktifkan melalui <strong>Tweaks → System</strong> agar tombol volume dan kecerahan biasa memakai langkah native macOS yang lebih kecil. Kombinasi tombol dengan modifier tetap bekerja seperti semula.</li>
+<li><strong>Open Files with Return:</strong> aktifkan melalui <strong>Tweaks → Finder</strong>, pilih file atau folder di Finder, lalu tekan Return untuk membukanya. Return tetap normal ketika mengganti nama, mencari, mengetik, memakai aplikasi lain, atau saat key repeat.</li>
+</ul>
+<p>Kedua fitur membutuhkan Accessibility dan Input Monitoring, serta dapat dipulihkan setelah login hanya jika sebelumnya disetujui dan izin masih tersedia.</p>
 </div>
 </details>
 
@@ -144,7 +166,7 @@ status: "published"
 <details class="iatur-feature-accordion" name="iatur-features">
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Menu Klik Kanan Finder</span></summary>
 <div class="iatur-accordion-content">
-<p>Buka <strong>Tweaks → Finder Extension</strong>, klik <strong>Open Settings…</strong>, lalu pastikan iAtur Finder Extension aktif. Setelah itu nyalakan tindakan yang ingin ditampilkan pada menu klik kanan Finder:</p>
+<p>Buka <strong>Tweaks → Finder Extension</strong>, klik <strong>Open Settings…</strong>, lalu pastikan iAtur Finder Extension aktif. Setelah itu nyalakan tindakan yang diinginkan. Seluruh tindakan yang valid tampil rapi di dalam satu submenu <strong>iAtur</strong> pada menu klik kanan Finder:</p>
 <ul>
 <li><strong>Copy Path:</strong> menyalin lokasi lengkap file.</li>
 <li><strong>Copy Filename:</strong> menyalin nama file.</li>
@@ -155,12 +177,14 @@ status: "published"
 <li><strong>Remove Image Metadata:</strong> membuat salinan gambar baru dengan awalan <code>meta-removed-</code> tanpa mengubah gambar asli.</li>
 <li><strong>New Text File:</strong> membuat file <code>Untitled.txt</code>.</li>
 <li><strong>New Markdown File:</strong> membuat file <code>Untitled.md</code>.</li>
+<li><strong>New Word Document:</strong> membuat dokumen Word kosong yang valid.</li>
+<li><strong>New Excel Spreadsheet:</strong> membuat spreadsheet Excel kosong yang valid.</li>
 <li><strong>Open in Terminal:</strong> membuka folder terpilih di Terminal.</li>
-<li><strong>Show/Hide Hidden Files:</strong> menampilkan atau menyembunyikan file tersembunyi.</li>
+<li><strong>Show/Hide Hidden Files:</strong> memakai perintah native Finder untuk menampilkan atau menyembunyikan file tersembunyi tanpa menutup Finder atau menghilangkan jendela dan tab.</li>
 <li><strong>Lock/Unlock Files:</strong> mengubah status Locked pada file terpilih.</li>
 </ul>
 <p><strong>Compare Files</strong> tersedia melalui tombol Choose pada halaman Shortcuts. Pilih minimal dua file; iAtur memakai file pertama sebagai acuan lalu membandingkan isi setiap file secara byte-per-byte tanpa mengubahnya. Ringkasan hasil otomatis disalin ke clipboard agar mudah dibagikan. Fitur ini bukan bagian dari menu klik kanan Finder.</p>
-<div class="iatur-note"><strong>Catatan OneDrive:</strong> macOS tidak selalu mengizinkan menu Finder Sync milik aplikasi lain muncul di folder OneDrive atau lokasi File Provider. Menu iAtur tetap dapat digunakan pada folder Finder lokal biasa.</div>
+<div class="iatur-note"><strong>Catatan OneDrive:</strong> macOS dapat menolak menu Finder Sync milik aplikasi lain di folder OneDrive atau File Provider. Gunakan tombol <strong>Choose…</strong> di iAtur untuk New Text File, New Markdown File, New Word Document, New Excel Spreadsheet, dan Open in Terminal. Pemilih folder native mendukung lokasi cloud yang dipilih pengguna.</div>
 </div>
 </details>
 
@@ -193,6 +217,8 @@ status: "published"
 <li><strong>Minimize All:</strong> mengecilkan semua jendela aplikasi.</li>
 <li><strong>Minimize All Except Active:</strong> mempertahankan jendela aktif dan mengecilkan sisanya.</li>
 <li><strong>Isolate Window:</strong> mempertahankan jendela terdepan dan menyembunyikan atau mengecilkan jendela lain.</li>
+<li><strong>Close All Finder Windows:</strong> menutup seluruh jendela Finder standar melalui tombol Close native macOS tanpa menutup iAtur, aplikasi lain, atau memaksa Finder berhenti. Tersedia juga melalui menu bar <strong>iAtur → Finder</strong>.</li>
+<li><strong>Undo Window Changes:</strong> memulihkan posisi, status minimize, dan aplikasi yang disembunyikan oleh tindakan window terakhir.</li>
 </ul>
 </div>
 </details>
@@ -207,11 +233,20 @@ status: "published"
 <details class="iatur-feature-accordion" name="iatur-features">
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Audio</span></summary>
 <div class="iatur-accordion-content">
+<p>Ketiga tindakan audio berada di halaman <strong>Shortcuts → Audio</strong>, masing-masing memiliki tombol langsung, shortcut global yang dapat direkam, dan tombol reset. Tindakan yang sama tersedia di submenu Audio pada ikon menu bar dengan status mute aktual.</p>
 <ul>
 <li><strong>Mute Sound:</strong> menyalakan atau mematikan suara perangkat output aktif.</li>
 <li><strong>Mute Microphone:</strong> menyalakan atau mematikan mikrofon aktif jika perangkat mendukungnya.</li>
 <li><strong>Cycle Audio Output:</strong> klik Switch untuk berpindah ke perangkat output berikutnya.</li>
 </ul>
+</div>
+</details>
+
+<details class="iatur-feature-accordion" name="iatur-features">
+<summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Kontrol Cepat dari Menu Bar</span></summary>
+<div class="iatur-accordion-content">
+<p>Aktifkan <strong>Show Menu Bar Icon</strong> di Settings untuk menampilkan ikon iA yang mengikuti tampilan macOS. Menu ini tetap dapat digunakan ketika jendela utama ditutup.</p>
+<p>Dari menu bar Anda dapat menjalankan Cleaning Mode dengan pilihan waktu dan countdown, tindakan Finder, Clear Clipboard, screenshot native, kontrol audio, Keep Awake, Optimizer, Close All Finder Windows, melihat status fitur, memeriksa update, membuka Settings atau About, dan keluar dari iAtur.</p>
 </div>
 </details>
 
@@ -230,12 +265,12 @@ status: "published"
 <ul>
 <li><strong>Launch at Login:</strong> membuka iAtur setelah masuk ke Mac dan memulihkan hanya tweak Finder yang sebelumnya disetujui.</li>
 <li><strong>Run in Background:</strong> menjaga tweak tetap berjalan setelah jendela ditutup.</li>
-<li><strong>Show Menu Bar Icon:</strong> menyediakan akses Buka iAtur dan Keluar dari iAtur melalui menu bar.</li>
+<li><strong>Show Menu Bar Icon:</strong> menyediakan menu kontrol cepat lengkap saat jendela utama ditutup.</li>
 <li><strong>Hide Dock Icon on Window Close:</strong> menyembunyikan ikon Dock setelah jendela ditutup, selama mode background dan menu bar aktif.</li>
-<li><strong>Play Sounds:</strong> memberi bunyi setelah Finder Cut &amp; Paste selesai memindahkan file.</li>
 <li><strong>Auto Exit:</strong> pilih 1, 2, 3, 5, 10, atau 15 menit sebagai jalur keluar otomatis Cleaning Mode dan Cat Mode.</li>
-<li><strong>Backup Settings:</strong> menyimpan pengaturan ke file JSON yang bisa dipulihkan kembali.</li>
-<li><strong>Check for Updates:</strong> klik secara manual untuk memeriksa versi terbaru melalui endpoint GitHub Release resmi iAtur. iAtur tidak memeriksa update otomatis di latar belakang.</li>
+<li><strong>Backup Settings dan Restore Settings:</strong> menyimpan pengaturan ke file JSON dan memulihkannya kembali. Backup berukuran berlebihan, berupa symlink, atau tidak aman akan ditolak.</li>
+<li><strong>Automatic Updates:</strong> aktif secara default dan memeriksa kanal rilis biner publik resmi maksimal sekali sehari. Paket hanya diteruskan jika checksum, struktur paket, script installer, versi, Apple Team ID, dan identitas tanda tangan cocok.</li>
+<li><strong>Update iAtur:</strong> klik untuk memeriksa, mengunduh, dan memverifikasi installer resmi secara manual. Dialog menampilkan versi, progress unduhan nyata, dan petunjuk koneksi; macOS Installer tetap meminta konfirmasi sebelum pemasangan.</li>
 <li><strong>Turn Off All Tweaks:</strong> mematikan seluruh tweak aktif dengan aman.</li>
 <li><strong>Reset iAtur:</strong> mengembalikan seluruh pengaturan ke kondisi awal.</li>
 </ul>
@@ -248,6 +283,34 @@ status: "published"
 <section class="iatur-guide-section" aria-labelledby="version-changes-log">
 <div class="iatur-section-heading"><span aria-hidden="true">05</span><h2 id="version-changes-log">Version Changes Log</h2></div>
 <ul class="iatur-version-list">
+<li><strong>v0.4.46 — 14 Oktober 2026:</strong> menambahkan Close All Finder Windows dengan tombol langsung, shortcut global yang tersimpan dan dicek konflik, serta akses melalui submenu Finder pada ikon menu bar. Hanya jendela Finder standar yang ditutup secara native.</li>
+<li><strong>v0.4.45 — 14 Oktober 2026:</strong> menambahkan Clean Uninstall yang melindungi file pribadi, serta dialog Update iAtur dengan konfirmasi versi, progress unduhan nyata, verifikasi paket, pembukaan ulang versi baru, dan konfirmasi update berhasil.</li>
+<li><strong>v0.4.44 — 14 Oktober 2026:</strong> memindahkan Mute Sound, Mute Microphone, dan Cycle Audio Output ke Shortcuts, menambahkan shortcut global untuk ketiganya, serta submenu Audio dengan status mute aktual pada menu bar.</li>
+<li><strong>v0.4.43 — 13 Oktober 2026:</strong> menambahkan Fine Volume &amp; Brightness dan Open Files with Return, memperbaiki perilaku About, serta menghapus seluruh suara tambahan iAtur dari Finder Cut &amp; Paste agar feedback kembali sepenuhnya ke Finder/macOS.</li>
+<li><strong>v0.4.42 — 13 Oktober 2026:</strong> membatasi bunyi Tink hanya setelah Finder menerima Command-X dan menghentikan bunyi iAtur pada Command-V.</li>
+<li><strong>v0.4.41 — 13 Oktober 2026:</strong> menambahkan feedback suara bawaan macOS setelah Cut berhasil diterima Finder, tanpa bunyi pada Cut yang gagal atau tidak ditangani.</li>
+<li><strong>v0.4.40 — 13 Oktober 2026:</strong> memindahkan pemeriksaan update ke kanal rilis biner publik resmi agar tidak membutuhkan login GitHub, menambahkan retry jaringan, pesan kesalahan yang lebih tepat, dan mempertahankan verifikasi paket berlapis.</li>
+<li><strong>v0.4.39 — 13 Oktober 2026:</strong> menyederhanakan penjelasan Optimizer, menampilkan alasan setiap tahap yang dilewati, serta menambahkan pemeriksaan harian, Automatic Updates, dan tombol Update yang mengunduh serta memverifikasi installer resmi.</li>
+<li><strong>v0.4.38 — 7 Oktober 2026:</strong> memperkuat keamanan Optimizer dengan kategori Clean Up yang dapat dipilih, menghapus seluruh pembersihan yang meminta password administrator, memprioritaskan pemulihan folder standar yang terblokir, serta menghapus perawatan berisiko terhadap data pengguna.</li>
+<li><strong>v0.4.37 — 7 Oktober 2026:</strong> menambahkan pemulihan aman untuk akses Desktop, Documents, Downloads, Movies, Music, Pictures, Public, dan Library, termasuk target OneDrive/File Provider yang tetap berada di dalam Home pengguna.</li>
+<li><strong>v0.4.36 — 7 Oktober 2026:</strong> mengganti reset izin Home yang terlalu luas dengan audit akses read-only dan mengenali folder standar yang dialihkan melalui File Provider.</li>
+<li><strong>v0.4.35 — 7 Oktober 2026:</strong> menghadirkan ikon serta menu bar lengkap, pilihan Cleaning Mode bertimer, kontrol cepat, dan pembuatan dokumen Word/Excel valid melalui pemilih folder yang mendukung OneDrive/File Provider.</li>
+<li><strong>v0.4.34 — 6 Oktober 2026:</strong> mengelompokkan seluruh tindakan kontekstual Finder di bawah satu submenu iAtur dengan isi yang menyesuaikan jenis item terpilih.</li>
+<li><strong>v0.4.33 — 6 Oktober 2026:</strong> memproses tindakan Finder melalui antrean berurutan agar aksi yang dijalankan cepat tidak saling menimpa.</li>
+<li><strong>v0.4.32 — 5 Oktober 2026:</strong> memperbaiki Copy File Contents melalui aplikasi utama, membatasi menu pada file teks hingga 10 MB, dan mendukung encoding teks umum.</li>
+<li><strong>v0.4.31 — 5 Oktober 2026:</strong> membuat Cleaning Mode turut memblokir tombol media F1–F12 sambil mempertahankan tombol Power/Touch ID dan jalur keluar enam kali Command.</li>
+<li><strong>v0.4.30 — 4 Oktober 2026:</strong> menulis ulang seluruh deskripsi Tweaks dengan bahasa Indonesia yang lebih praktis dan mudah dipahami tanpa mengubah perilaku fitur.</li>
+<li><strong>v0.4.29 — 4 Oktober 2026:</strong> mengganti Show/Hide Hidden Files dengan perintah native Finder Command-Shift-Period sehingga Finder tidak lagi ditutup atau dimuat ulang dan seluruh jendela, tab, pilihan, serta posisi tetap terjaga.</li>
+<li><strong>v0.4.28 — 4 Oktober 2026:</strong> memperbaiki pemulihan beberapa jendela Finder pada alur Show/Hide Hidden Files lama dan membatalkan aksi bila seluruh jendela tidak dapat dicatat dengan aman.</li>
+<li><strong>v0.4.27 — 3 Oktober 2026:</strong> memperbaiki pemulihan folder OneDrive/File Provider agar tidak macet; rilis ini menggantikan v0.4.26.</li>
+<li><strong>v0.4.26 — 3 Oktober 2026:</strong> memperkenalkan restart Finder terkontrol dan pemulihan folder untuk Show/Hide Hidden Files, tetapi telah digantikan v0.4.27 dan tidak boleh dipasang.</li>
+<li><strong>v0.4.25 — 3 Oktober 2026:</strong> menambahkan fallback aplikasi untuk antrean tindakan Finder ketika notifikasi macOS terlewat, termasuk New Text/Markdown dan Open in Terminal saat jendela utama tertutup.</li>
+<li><strong>v0.4.24 — 3 Oktober 2026:</strong> memperbaiki Open in Terminal menggunakan perintah sistem macOS dan Apple Terminal pada folder tujuan.</li>
+<li><strong>v0.4.23 — 3 Oktober 2026:</strong> memindahkan runtime background dari jendela SwiftUI ke aplikasi sehingga relay Finder, shortcut, dan layanan tetap hidup setelah jendela ditutup.</li>
+<li><strong>v0.4.22 — 3 Oktober 2026:</strong> mencegah Finder Extension membuka ulang jendela iAtur saat aplikasi sudah berjalan di background, sambil tetap menampilkan pesan jika tindakan gagal.</li>
+<li><strong>v0.4.21 — 3 Oktober 2026:</strong> menjalankan tindakan Finder di background tanpa menampilkan jendela utama, namun tetap membedakan pembukaan normal iAtur.</li>
+<li><strong>v0.4.20 — 3 Oktober 2026:</strong> menghapus dialog sukses yang mengganggu setelah membuat file atau membuka Terminal, tetapi tetap menampilkan kesalahan.</li>
+<li><strong>v0.4.19 — 3 Oktober 2026:</strong> memperbaiki New Text File, New Markdown File, dan Open in Terminal melalui relay aman ke aplikasi utama serta menambahkan tombol Choose sebagai jalur OneDrive/File Provider.</li>
 <li><strong>v0.4.18 — 3 Oktober 2026:</strong> memperkuat privasi proses pembersihan dengan menonaktifkan analytics dan koneksi opsional dari alat yang dipanggil iAtur, serta menambahkan Check for Updates manual yang hanya menghubungi endpoint GitHub Release resmi saat tombol ditekan. Rilis ini lolos 97 pengujian otomatis dan seluruh validasi paket.</li>
 <li><strong>v0.4.17 — 3 Oktober 2026:</strong> menyempurnakan audit kesetaraan Optimizer dengan pemindaian cache yang terbatas dan tidak mengikuti symlink, pembersihan cache/log sistem yang lebih tepat sasaran, perawatan resmi untuk sejumlah alat developer, perbaikan kondisional pada alur Optimize System 20 tahap, serta ringkasan keamanan yang lebih jelas. Rilis ini lolos 94 pengujian otomatis dan seluruh validasi paket.</li>
 <li><strong>v0.4.16 — 3 Oktober 2026:</strong> memperluas Clean Up dan menghadirkan Optimize System konservatif 20 tahap dengan allowlist ketat, perlindungan aplikasi aktif, pemeriksaan ulang identitas file, serta izin administrator yang dibatasi untuk tugas CoreSimulator terverifikasi.</li>
@@ -282,11 +345,13 @@ status: "published"
 <details><summary>Apakah aman memberi izin Accessibility dan Input Monitoring?</summary><p>Izin tersebut diperlukan hanya untuk fitur yang mengendalikan atau membaca input, seperti Cleaning Mode dan tweak Finder. iAtur memakai API publik macOS dan tidak memasang daemon, kernel extension, atau helper dengan akses root.</p></details>
 <details><summary>Apakah update menghapus izin macOS?</summary><p>Pembaruan rutin dengan identitas aplikasi yang sama dirancang untuk mempertahankan izin. Jika berasal dari build lama dengan identitas berbeda, izin lama mungkin perlu dihapus lalu ditambahkan kembali satu kali.</p></details>
 <details><summary>Apakah iAtur mengirim analytics atau data penggunaan?</summary><p>Tidak. iAtur tidak berisi SDK analytics, iklan, atau pelaporan crash. Saat menjalankan alat pembersihan yang didukung, iAtur juga menekan analytics, audit, funding, pemeriksaan update, dan koneksi opsional yang tidak diperlukan.</p></details>
-<details><summary>Apakah iAtur memeriksa update secara otomatis?</summary><p>Tidak. Pemeriksaan hanya dilakukan ketika Anda membuka Settings dan menekan <strong>Check for Updates</strong>. Permintaan sementara tanpa cookie dan cache hanya menghubungi endpoint GitHub Release resmi iAtur, lalu alamat rilis divalidasi sebelum dapat dibuka.</p></details>
-<details><summary>Kenapa menu iAtur tidak muncul di OneDrive?</summary><p>Folder OneDrive modern dimiliki oleh File Provider dan macOS dapat menolak menu Finder Sync dari aplikasi lain. Gunakan tindakan iAtur pada folder Finder lokal biasa.</p></details>
+<details><summary>Apakah iAtur memeriksa dan memasang update secara otomatis?</summary><p>Automatic Updates aktif secara default dan memeriksa kanal rilis biner publik resmi maksimal sekali sehari. Jika versi baru ditemukan, iAtur dapat mengunduh dan memverifikasi paket secara otomatis, tetapi macOS Installer tetap meminta persetujuan Anda sebelum memasang. Matikan Automatic Updates bila ingin tetap mendapat pemeriksaan harian tetapi mengunduh lewat tombol <strong>Update iAtur</strong> secara manual.</p></details>
+<details><summary>Bagaimana iAtur memastikan installer update aman?</summary><p>Sebelum macOS Installer dibuka, iAtur memeriksa sumber rilis resmi, kecocokan dua checksum, struktur paket, script installer, versi aplikasi, Apple Team ID, dan identitas tanda tangan aplikasi. Paket yang tidak cocok akan ditolak.</p></details>
+<details><summary>Apakah Clean Uninstall menghapus dokumen pribadi?</summary><p>Tidak. Clean Uninstall membatasi penghapusan pada aplikasi dan file terkait yang identitasnya cocok. Dokumen, media, project pribadi, cloud storage, volume eksternal, container documents, aplikasi Apple/sistem, dan iAtur sendiri dilindungi.</p></details>
+<details><summary>Kenapa menu iAtur tidak muncul di OneDrive?</summary><p>Folder OneDrive modern dimiliki oleh File Provider dan macOS dapat menolak menu Finder Sync dari aplikasi lain. Untuk membuat file baru atau membuka Terminal di lokasi tersebut, gunakan tombol <strong>Choose…</strong> di iAtur dan pilih folder OneDrive melalui pemilih folder native.</p></details>
 <details><summary>Apakah Cleaning Mode bisa memblokir tombol power atau Touch ID?</summary><p>Tidak sepenuhnya. Tombol power, Touch ID, forced shutdown, dan Lock Screen berada di tingkat sistem dan tidak aman untuk diblokir oleh aplikasi biasa. Cleaning Mode ditujukan untuk membersihkan Mac setelah pengguna masuk.</p></details>
 <details><summary>Bagaimana cara keluar dari Cleaning Mode atau Cat Mode?</summary><p>Tekan tombol Command kiri atau kanan sebanyak enam kali dengan jeda tidak lebih dari satu detik, atau tunggu waktu auto exit yang sudah dipilih.</p></details>
-<details><summary>Bagaimana mendapatkan versi terbaru?</summary><p>Gunakan tombol Download di artikel ini atau klik <strong>Check for Updates</strong> di Settings iAtur. Nomor versi terbaru ditampilkan langsung pada tombol dan setiap installer disertai checksum SHA-256.</p></details>
+<details><summary>Bagaimana mendapatkan versi terbaru?</summary><p>Gunakan tombol Download di artikel ini atau klik <strong>Update iAtur</strong> di Settings. Nomor versi terbaru ditampilkan langsung pada tombol dan setiap installer disertai checksum SHA-256.</p></details>
 </div>
 </section>
 
@@ -294,10 +359,10 @@ status: "published"
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon iAtur untuk macOS" width="144" height="144" loading="lazy" />
 <div>
 <strong>Siap mencoba iAtur?</strong>
-<p>Download installer resmi v0.4.18 untuk macOS 14 atau lebih baru.</p>
+<p>Download installer resmi v0.4.46 untuk macOS 14 atau lebih baru.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.18-direct.pkg" download>Download iAtur v0.4.18</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.18-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.46-direct.pkg" download>Download iAtur v0.4.46</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.46-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 </div>

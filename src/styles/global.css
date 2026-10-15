@@ -427,6 +427,51 @@ hr {
 	border-radius: 14px;
 	object-fit: contain;
 }
+.iatur-policy-section {
+	scroll-margin-top: 1.5rem;
+}
+.iatur-policy-updated {
+	margin: -0.6rem 0 1.25rem;
+	color: #697188;
+	font-size: 0.92rem;
+}
+.iatur-policy-intro {
+	margin-bottom: 1.25rem;
+	padding: 1.1rem 1.2rem;
+	background: linear-gradient(145deg, #f8faff, #f3f1ff);
+	border: 1px solid #d9defa;
+	border-radius: 14px;
+	color: #303a72;
+}
+.iatur-policy-block {
+	margin-top: 1rem;
+	padding: clamp(1.15rem, 3vw, 1.5rem);
+	background: white;
+	border: 1px solid #e1e5f2;
+	border-radius: 14px;
+}
+.iatur-policy-block h3 {
+	margin: 0 0 0.75rem;
+	font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+}
+.iatur-policy-block p {
+	margin: 0.75rem 0;
+}
+.iatur-policy-block ul {
+	margin: 0.9rem 0 0;
+	padding-inline-start: 1.4rem;
+}
+.iatur-policy-block li {
+	margin-bottom: 0.7rem;
+}
+.iatur-policy-block > :last-child,
+.iatur-policy-block li:last-child {
+	margin-bottom: 0;
+}
+.iatur-policy-warning {
+	border-left: 4px solid #e7ad35;
+	background: #fffdf7;
+}
 .iatur-note {
 	margin: 1.5rem 0;
 	padding: 1rem 1.1rem;

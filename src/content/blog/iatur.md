@@ -2,7 +2,7 @@
 title: "iAtur macOS App: Atur macOS Sesuka Hati, Cara Menggunakan, dan Fitur Terbaru"
 description: "Panduan lengkap iAtur, aplikasi native macOS untuk Optimizer, Clean Uninstall, Finder, shortcut, audio, window, pembaruan aman, dan berbagai pengaturan Mac yang praktis."
 seoTitle: "iAtur macOS App: Download, Cara Menggunakan & Fitur Terbaru"
-seoDescription: "Download iAtur v0.4.47 dan pelajari cara memakai Optimizer, Clean Uninstall, Cleaning Mode, Finder, shortcut global, audio, serta pembaruan aman."
+seoDescription: "Download iAtur v0.4.48 dan pelajari cara memakai Optimizer, Clean Uninstall, Cleaning Mode, Finder, shortcut global, audio, serta pembaruan aman."
 pubDate: "2026-10-02"
 updatedDate: "2026-10-15"
 heroImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
@@ -16,11 +16,11 @@ status: "published"
 <div class="iatur-download-card">
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon resmi aplikasi iAtur" width="144" height="144" loading="eager" />
 <div>
-<strong>iAtur v0.4.47 untuk macOS</strong>
+<strong>iAtur v0.4.48 untuk macOS</strong>
 <p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 3,5 MB.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.47-direct.pkg" download>Download iAtur v0.4.47</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.47-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.48-direct.pkg" download>Download iAtur v0.4.48</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.48-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 
@@ -37,6 +37,7 @@ status: "published"
 <li><a href="#version-changes-log">Version changes log</a></li>
 <li><a href="#faq-iatur">FAQ</a></li>
 <li><a href="#donate">Dukung iAtur</a></li>
+<li><a href="#agreement-disclaimer-and-privacy-policy">Agreement, Disclaimer, dan Privacy Policy</a></li>
 </ol>
 </nav>
 
@@ -67,9 +68,9 @@ status: "published"
 
 <h3>Download dan instal</h3>
 <ol class="iatur-steps">
-<li>Klik tombol <strong>Download iAtur v0.4.47</strong> di atas.</li>
+<li>Klik tombol <strong>Download iAtur v0.4.48</strong> di atas.</li>
 <li>Setelah file selesai diunduh, buka Finder lalu masuk ke folder Downloads.</li>
-<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.47-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
+<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.48-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
 <li>Selesaikan petunjuk installer. iAtur akan dipasang di folder Applications.</li>
 <li>Buka iAtur dari Applications.</li>
 </ol>
@@ -114,7 +115,7 @@ status: "published"
 <details class="iatur-feature-accordion" name="iatur-features">
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Cleaning Mode</span></summary>
 <div class="iatur-accordion-content">
-<p>Cleaning Mode menutup semua layar dengan tampilan hitam sekaligus memblokir input keyboard, mouse, dan trackpad untuk sementara. Fitur ini cocok saat membersihkan layar dan perangkat input tanpa menekan tombol atau menggerakkan aplikasi secara tidak sengaja.</p>
+<p>Cleaning Mode menutup semua layar dengan lapisan hitam—bukan mematikan display—sekaligus memblokir input keyboard, mouse, dan trackpad untuk sementara. Fitur ini cocok saat membersihkan layar dan perangkat input tanpa menekan tombol atau menggerakkan aplikasi secara tidak sengaja.</p>
 <ol class="iatur-steps"><li>Buka <strong>Tweaks → System</strong>.</li><li>Nyalakan <strong>Cleaning Mode</strong>.</li><li>Berikan izin macOS bila diminta, lalu pilih <strong>Iya</strong>.</li><li>Untuk keluar, tekan tombol Command kiri atau kanan sebanyak enam kali. Anda juga dapat menunggu waktu keluar otomatis.</li></ol>
 <p>Tombol fungsi F1–F12 untuk kecerahan, volume, pemutaran, dan fungsi media lain ikut diblokir. Tombol Power/Touch ID tetap berada di bawah kendali macOS dan tidak diblokir.</p>
 </div>
@@ -123,8 +124,8 @@ status: "published"
 <details class="iatur-feature-accordion" name="iatur-features">
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Cat Mode</span></summary>
 <div class="iatur-accordion-content">
-<p>Cat Mode mengunci keyboard, mouse, dan trackpad tanpa membuat layar menjadi hitam. Ini berguna ketika ingin mencegah input tidak sengaja—termasuk saat kucing berjalan di atas keyboard—sambil tetap melihat layar.</p>
-<p>Nyalakan <strong>Cat Mode</strong> di bagian Tweaks, konfirmasi aktivasi, lalu tekan Command enam kali untuk keluar.</p>
+<p>Cat Mode mengunci keyboard, mouse, dan trackpad tanpa membuat layar menjadi hitam atau mematikan display. Ini berguna ketika ingin mencegah input tidak sengaja—termasuk saat kucing berjalan di atas keyboard—sambil tetap melihat layar.</p>
+<p>Nyalakan <strong>Cat Mode</strong> di bagian Tweaks, konfirmasi aktivasi, lalu tekan tombol Command kiri atau kanan enam kali untuk keluar.</p>
 </div>
 </details>
 
@@ -285,6 +286,7 @@ status: "published"
 <section class="iatur-guide-section" aria-labelledby="version-changes-log">
 <div class="iatur-section-heading"><span aria-hidden="true">05</span><h2 id="version-changes-log">Version Changes Log</h2></div>
 <ul class="iatur-version-list">
+<li><strong>v0.4.48 — 15 Oktober 2026:</strong> memperjelas bahwa Cleaning Mode menampilkan lapisan hitam sedangkan Cat Mode membiarkan layar tetap terlihat, sekaligus menegaskan jalur pemulihan dengan enam kali menekan Command; menyederhanakan teks dukungan dan masukan pada halaman Donate; mengganti nama tombol QRIS menjadi Traktir Kopi; serta menambahkan disclaimer penggunaan dengan tautan langsung ke Agreement, Disclaimer, dan Privacy Policy lengkap.</li>
 <li><strong>v0.4.47 — 15 Oktober 2026:</strong> menambahkan tautan QRIS resmi serta Instagram, Threads, dan LinkedIn di halaman Donate; menyegarkan teks dan tombol pada Settings, Optimizer, Shortcuts, dan Tweaks; mengubah waktu awal Auto Exit menjadi 3 menit; membuat semua tindakan menu klik kanan Finder default OFF dan baru dapat diaktifkan setelah Finder Extension aktif; memperbaiki aktivasi dokumen Word/Excel; menambahkan New PowerPoint Presentation; serta memperbaiki Undo Window Changes agar memulihkan window yang tepat meskipun urutannya berubah.</li>
 <li><strong>v0.4.46 — 14 Oktober 2026:</strong> menambahkan Close All Finder Windows dengan tombol langsung, shortcut global yang tersimpan dan dicek konflik, serta akses melalui submenu Finder pada ikon menu bar. Hanya jendela Finder standar yang ditutup secara native.</li>
 <li><strong>v0.4.45 — 14 Oktober 2026:</strong> menambahkan Clean Uninstall yang melindungi file pribadi, serta dialog Update iAtur dengan konfirmasi versi, progress unduhan nyata, verifikasi paket, pembukaan ulang versi baru, dan konfirmasi update berhasil.</li>
@@ -362,10 +364,10 @@ status: "published"
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon iAtur untuk macOS" width="144" height="144" loading="lazy" />
 <div>
 <strong>Siap mencoba iAtur?</strong>
-<p>Download installer resmi v0.4.47 untuk macOS 14 atau lebih baru.</p>
+<p>Download installer resmi v0.4.48 untuk macOS 14 atau lebih baru.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.47-direct.pkg" download>Download iAtur v0.4.47</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.47-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.48-direct.pkg" download>Download iAtur v0.4.48</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.48-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 </div>
@@ -389,3 +391,41 @@ status: "published"
 <img src="/uploads/iatur/qris-traktir-kopi.jpeg" alt="Kode QRIS untuk traktir kopi dan mendukung pengembangan iAtur" width="1135" height="1600" loading="lazy" />
 </div>
 </dialog>
+
+<section class="iatur-guide-section iatur-policy-section" id="agreement-disclaimer-and-privacy-policy" aria-labelledby="agreement-disclaimer-and-privacy-policy-title">
+<div class="iatur-section-heading"><span aria-hidden="true">08</span><h2 id="agreement-disclaimer-and-privacy-policy-title">Agreement, Disclaimer, dan Privacy Policy.</h2></div>
+<p class="iatur-policy-updated">Berlaku sejak: 15 Oktober 2026</p>
+<div class="iatur-policy-intro"><strong>Ringkasan:</strong> dengan mengunduh, memasang, mencoba, atau menggunakan iAtur, Anda menyatakan telah membaca dan menyetujui ketentuan berikut. Gunakan iAtur secara bertanggung jawab, periksa setiap tindakan sebelum dijalankan, dan simpan backup data penting.</div>
+
+<div class="iatur-policy-block">
+<h3>Agreement</h3>
+<p>iAtur adalah utilitas macOS yang membantu pengguna menjalankan pengaturan, shortcut, tindakan Finder, pengelolaan window dan input, Optimizer, Clean Uninstall, serta fitur kenyamanan lainnya. Dengan mengunduh, memasang, mengakses, mencoba, atau menggunakan iAtur, Anda dianggap memahami fungsi yang dipilih dan menyetujui Agreement, Disclaimer, dan Privacy Policy ini.</p>
+<ul>
+<li>Anda hanya akan menggunakan iAtur pada Mac yang Anda miliki atau yang secara sah boleh Anda kelola, untuk tujuan yang sah dan tidak merugikan pihak lain.</li>
+<li>Anda bertanggung jawab memilih fitur, memeriksa peringatan dan hasil pemindaian, menjaga backup data penting, serta memastikan aplikasi, dokumen, dan pekerjaan aktif sudah disimpan sebelum menjalankan tindakan yang dapat mengubah file, aplikasi, pengaturan, input, atau kondisi sistem.</li>
+<li>Beberapa fitur membutuhkan izin macOS seperti Accessibility dan Input Monitoring. Pemberian, penolakan, dan pencabutan izin tetap berada dalam kendali Anda melalui System Settings.</li>
+<li>Gunakan hanya installer resmi iAtur. Jangan mengubah, menyamarkan, mendistribusikan ulang sebagai produk sendiri, atau mencoba melewati pemeriksaan keamanan dan identitas paket.</li>
+<li>Fitur, persyaratan sistem, dan ketentuan ini dapat diperbarui untuk mengikuti perkembangan iAtur dan macOS. Tanggal berlaku akan diperbarui apabila terdapat perubahan material.</li>
+</ul>
+</div>
+
+<div class="iatur-policy-block iatur-policy-warning">
+<h3>Disclaimer dan Batas Tanggung Jawab</h3>
+<p><strong>iAtur disediakan “sebagaimana adanya” dan “sebagaimana tersedia”, tanpa jaminan bahwa seluruh fitur selalu bebas kesalahan, tanpa gangguan, sesuai untuk setiap konfigurasi, atau menghasilkan akibat tertentu.</strong> Perlindungan dan validasi di dalam iAtur dirancang untuk mengurangi risiko, tetapi tidak dapat menghilangkan seluruh risiko yang berasal dari perbedaan versi macOS, izin, kondisi perangkat, ruang penyimpanan, konfigurasi pengguna, aplikasi pihak ketiga, layanan cloud/File Provider, maupun perubahan di luar kendali pengembang.</p>
+<p>Dengan mencoba, memasang, menggunakan, menyalahgunakan, atau tidak dapat menggunakan iAtur, Anda memahami dan menyetujui bahwa seluruh manfaat, keputusan, tindakan, dan risikonya menjadi tanggung jawab Anda. Sejauh diizinkan oleh hukum yang berlaku, pengembang iAtur tidak bertanggung jawab atas kerugian langsung maupun tidak langsung, kehilangan atau perubahan data dan pengaturan, gangguan kerja, downtime, kehilangan keuntungan, kerusakan perangkat lunak atau perangkat keras, masalah keamanan, maupun tuntutan pihak ketiga yang timbul dari atau berkaitan dengan penggunaan iAtur.</p>
+<p>Anda tetap bertanggung jawab untuk membaca konfirmasi yang ditampilkan, menjaga backup, dan menghentikan tindakan apabila hasil atau targetnya tidak sesuai harapan. Ketentuan ini tidak membatasi hak pengguna atau tanggung jawab yang secara hukum tidak dapat dikesampingkan.</p>
+</div>
+
+<div class="iatur-policy-block">
+<h3>Privacy Policy</h3>
+<p>iAtur dirancang dengan pemrosesan lokal sebagai prinsip utama. iAtur tidak mewajibkan akun, tidak menyertakan SDK analytics, iklan, pelacakan, atau pelaporan crash, serta tidak mengirim telemetry penggunaan kepada pengembang.</p>
+<ul>
+<li><strong>Data dan file lokal:</strong> pengaturan, shortcut, serta pilihan fitur disimpan pada Mac Anda. File yang dipilih untuk dibandingkan, dibuat, dipindahkan, dibersihkan metadatanya, atau diproses oleh Optimizer dan Clean Uninstall ditangani secara lokal sesuai tindakan yang Anda minta. File backup pengaturan hanya dibuat di lokasi yang Anda pilih.</li>
+<li><strong>Izin input dan aksesibilitas:</strong> Accessibility dan Input Monitoring digunakan secara lokal untuk fitur yang memerlukan pengendalian atau pengamatan input, seperti Cleaning Mode, Cat Mode, dan tweak keyboard/Finder. iAtur tidak mengunggah isi input tersebut kepada pengembang.</li>
+<li><strong>Koneksi pembaruan:</strong> iAtur dapat menghubungi kanal GitHub Release resmi untuk pemeriksaan dan pengunduhan update. Automatic Updates aktif secara default dan pemeriksaan dijadwalkan paling banyak sekali sehari; Anda dapat mematikannya di Settings. Seperti koneksi internet pada umumnya, GitHub dan penyedia jaringan dapat menerima data teknis standar seperti alamat IP, waktu permintaan, dan informasi koneksi sesuai kebijakan mereka sendiri.</li>
+<li><strong>Tautan dan layanan pihak ketiga:</strong> tautan QRIS, Instagram, Threads, LinkedIn, GitHub, atau situs lain akan membuka layanan di luar iAtur. Pembayaran donasi diproses oleh aplikasi pembayaran, bank, atau penyelenggara QRIS yang Anda gunakan, bukan oleh iAtur. Penggunaan layanan tersebut tunduk pada ketentuan dan kebijakan privasi masing-masing penyedia.</li>
+<li><strong>Penyimpanan oleh pengembang:</strong> karena iAtur tidak mengirim analytics, telemetry, atau file pribadi kepada pengembang, pengembang tidak menyimpan data penggunaan atau isi file Anda melalui aplikasi. Data lokal dapat Anda kelola dengan Reset iAtur, menghapus backup yang dibuat, mencabut izin di System Settings, atau menghapus aplikasi.</li>
+</ul>
+<p>Jika praktik data iAtur berubah pada versi mendatang, bagian ini akan diperbarui sebelum atau bersamaan dengan perubahan tersebut. Pertanyaan mengenai ketentuan atau privasi dapat disampaikan melalui kanal kontak resmi yang tercantum di iAtur atau arunajr.com.</p>
+</div>
+</section>

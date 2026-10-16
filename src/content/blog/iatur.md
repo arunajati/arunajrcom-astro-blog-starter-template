@@ -2,9 +2,9 @@
 title: "iAtur macOS App: Atur macOS Sesuka Hati, Cara Menggunakan, dan Fitur Terbaru"
 description: "Panduan lengkap iAtur, aplikasi native macOS untuk Optimizer, Clean Uninstall, Finder, shortcut, audio, window, pembaruan aman, dan berbagai pengaturan Mac yang praktis."
 seoTitle: "iAtur macOS App: Download, Cara Menggunakan & Fitur Terbaru"
-seoDescription: "Download iAtur v0.4.48 dan pelajari cara memakai Optimizer, Clean Uninstall, Cleaning Mode, Finder, shortcut global, audio, serta pembaruan aman."
+seoDescription: "Download iAtur v0.4.49 dan pelajari cara memakai Clipboard History, Finder, Optimizer, shortcut global, audio, serta pembaruan aman."
 pubDate: "2026-10-02"
-updatedDate: "2026-10-15"
+updatedDate: "2026-10-16"
 heroImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
 seoImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
 permalink: "/iatur"
@@ -16,11 +16,11 @@ status: "published"
 <div class="iatur-download-card">
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon resmi aplikasi iAtur" width="144" height="144" loading="eager" />
 <div>
-<strong>iAtur v0.4.48 untuk macOS</strong>
-<p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 3,5 MB.</p>
+<strong>iAtur v0.4.49 untuk macOS</strong>
+<p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 3,7 MB.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.48-direct.pkg" download>Download iAtur v0.4.48</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.48-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.49-direct.pkg" download>Download iAtur v0.4.49</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.49-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 
@@ -68,9 +68,9 @@ status: "published"
 
 <h3>Download dan instal</h3>
 <ol class="iatur-steps">
-<li>Klik tombol <strong>Download iAtur v0.4.48</strong> di atas.</li>
+<li>Klik tombol <strong>Download iAtur v0.4.49</strong> di atas.</li>
 <li>Setelah file selesai diunduh, buka Finder lalu masuk ke folder Downloads.</li>
-<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.48-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
+<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.49-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
 <li>Selesaikan petunjuk installer. iAtur akan dipasang di folder Applications.</li>
 <li>Buka iAtur dari Applications.</li>
 </ol>
@@ -168,8 +168,10 @@ status: "published"
 <details class="iatur-feature-accordion" name="iatur-features">
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Menu Klik Kanan Finder</span></summary>
 <div class="iatur-accordion-content">
-<p>Semua tindakan menu klik kanan Finder kini dalam kondisi <strong>OFF</strong> saat pertama dipasang. Aktifkan iAtur Finder Extension di pengaturan ekstensi macOS terlebih dahulu, lalu nyalakan hanya tindakan yang dibutuhkan di <strong>Tweaks → Finder</strong>. Jika ekstensi belum aktif, pilihan tindakan akan tampak tidak tersedia; klik barisnya untuk langsung membuka pengaturan ekstensi macOS. Seluruh tindakan yang valid tampil rapi di dalam satu submenu <strong>iAtur</strong> pada menu klik kanan Finder:</p>
+<p>Semua tindakan menu klik kanan Finder berada dalam kondisi <strong>OFF</strong> saat pertama dipasang. Aktifkan iAtur Finder Extension di pengaturan ekstensi macOS terlebih dahulu, lalu nyalakan hanya tindakan yang dibutuhkan di <strong>Tweaks → Finder</strong>. Jika ekstensi belum aktif, pilihan tindakan akan tampak tidak tersedia; klik barisnya untuk langsung membuka pengaturan ekstensi macOS. Sejak v0.4.49, setiap tindakan yang diaktifkan muncul langsung di area ekstensi menu klik kanan Finder tanpa submenu iAtur:</p>
 <ul>
+<li><strong>Cut:</strong> menandai file atau folder terpilih untuk dipindahkan, seperti Cut pada Windows.</li>
+<li><strong>Paste:</strong> hanya muncul ketika clipboard berisi file atau folder yang dapat ditempel. Hasil Copy akan disalin, sedangkan hasil Cut akan dipindahkan.</li>
 <li><strong>Copy Path:</strong> menyalin lokasi lengkap file.</li>
 <li><strong>Copy Filename:</strong> menyalin nama file.</li>
 <li><strong>Copy File URL:</strong> menyalin alamat lokal dalam format <code>file://</code>.</li>
@@ -195,9 +197,13 @@ status: "published"
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Clipboard</span></summary>
 <div class="iatur-accordion-content">
 <ul>
+<li><strong>Clipboard History:</strong> fitur opsional untuk menyimpan teks, tautan, dan referensi file yang pernah disalin. Riwayat disimpan lokal dan terenkripsi, maksimal 100 item selama tujuh hari, serta melewati isi clipboard yang ditandai private oleh aplikasi sumber.</li>
+<li><strong>Open Clipboard History:</strong> membuka popup untuk mencari item lama. Klik item untuk menyalinnya kembali, lalu gunakan Command-V di aplikasi tujuan. Anda dapat merekam shortcut global sendiri atau membukanya melalui menu bar iAtur.</li>
+<li><strong>Clear History:</strong> menghapus seluruh riwayat dari Mac sekaligus menghancurkan kunci enkripsi lokalnya.</li>
 <li><strong>Clear Clipboard:</strong> klik Clear untuk langsung mengosongkan clipboard.</li>
 <li><strong>Auto Clear Clipboard:</strong> aktifkan untuk menghapus isi clipboard sekitar satu menit setelah ada salinan baru. Clipboard juga dibersihkan ketika Mac tidur atau layar dikunci.</li>
 </ul>
+<div class="iatur-note"><strong>Privasi clipboard:</strong> Clipboard History nonaktif secara default dan tidak dapat aktif bersamaan dengan Auto Clear Clipboard. Mengaktifkan Auto Clear akan mematikan serta membersihkan Clipboard History; mengaktifkan Clipboard History akan mematikan Auto Clear.</div>
 </div>
 </details>
 
@@ -249,7 +255,7 @@ status: "published"
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Kontrol Cepat dari Menu Bar</span></summary>
 <div class="iatur-accordion-content">
 <p>Aktifkan <strong>Show Menu Bar Icon</strong> di Settings untuk menampilkan ikon iA yang mengikuti tampilan macOS. Menu ini tetap dapat digunakan ketika jendela utama ditutup.</p>
-<p>Dari menu bar Anda dapat menjalankan Cleaning Mode dengan pilihan waktu dan countdown, tindakan Finder, Clear Clipboard, screenshot native, kontrol audio, Keep Awake, Optimizer, Close All Finder Windows, melihat status fitur, memeriksa update, membuka Settings atau About, dan keluar dari iAtur.</p>
+<p>Dari menu bar Anda dapat menjalankan Cleaning Mode dengan pilihan waktu dan countdown, tindakan Finder, membuka atau menjeda Clipboard History, menghapus clipboard, mengambil screenshot native, mengontrol audio, menjalankan Keep Awake dan Optimizer, menutup semua jendela Finder, melihat status fitur, memeriksa update, membuka Settings atau About, dan keluar dari iAtur.</p>
 </div>
 </details>
 
@@ -286,6 +292,7 @@ status: "published"
 <section class="iatur-guide-section" aria-labelledby="version-changes-log">
 <div class="iatur-section-heading"><span aria-hidden="true">05</span><h2 id="version-changes-log">Version Changes Log</h2></div>
 <ul class="iatur-version-list">
+<li><strong>v0.4.49 — 16 Oktober 2026:</strong> menampilkan setiap tindakan Finder yang aktif langsung di area ekstensi menu klik kanan tanpa submenu iAtur; menambahkan tindakan Cut bergaya Windows dan Paste yang hanya muncul ketika clipboard berisi file atau folder yang dapat ditempel; serta menghadirkan Clipboard History opsional dengan pencarian, shortcut global, kontrol menu bar, penyimpanan lokal terenkripsi, batas 100 item selama tujuh hari, dan pengecualian isi clipboard private. Clipboard History nonaktif secara default, tidak dapat aktif bersama Auto Clear Clipboard, dan penghapusan riwayat turut menghancurkan kunci enkripsinya.</li>
 <li><strong>v0.4.48 — 15 Oktober 2026:</strong> memperjelas bahwa Cleaning Mode menampilkan lapisan hitam sedangkan Cat Mode membiarkan layar tetap terlihat, sekaligus menegaskan jalur pemulihan dengan enam kali menekan Command; menyederhanakan teks dukungan dan masukan pada halaman Donate; mengganti nama tombol QRIS menjadi Traktir Kopi; serta menambahkan disclaimer penggunaan dengan tautan langsung ke Agreement, Disclaimer, dan Privacy Policy lengkap.</li>
 <li><strong>v0.4.47 — 15 Oktober 2026:</strong> menambahkan tautan QRIS resmi serta Instagram, Threads, dan LinkedIn di halaman Donate; menyegarkan teks dan tombol pada Settings, Optimizer, Shortcuts, dan Tweaks; mengubah waktu awal Auto Exit menjadi 3 menit; membuat semua tindakan menu klik kanan Finder default OFF dan baru dapat diaktifkan setelah Finder Extension aktif; memperbaiki aktivasi dokumen Word/Excel; menambahkan New PowerPoint Presentation; serta memperbaiki Undo Window Changes agar memulihkan window yang tepat meskipun urutannya berubah.</li>
 <li><strong>v0.4.46 — 14 Oktober 2026:</strong> menambahkan Close All Finder Windows dengan tombol langsung, shortcut global yang tersimpan dan dicek konflik, serta akses melalui submenu Finder pada ikon menu bar. Hanya jendela Finder standar yang ditutup secara native.</li>
@@ -350,6 +357,7 @@ status: "published"
 <details><summary>Apakah aman memberi izin Accessibility dan Input Monitoring?</summary><p>Izin tersebut diperlukan hanya untuk fitur yang mengendalikan atau membaca input, seperti Cleaning Mode dan tweak Finder. iAtur memakai API publik macOS dan tidak memasang daemon, kernel extension, atau helper dengan akses root.</p></details>
 <details><summary>Apakah update menghapus izin macOS?</summary><p>Pembaruan rutin dengan identitas aplikasi yang sama dirancang untuk mempertahankan izin. Jika berasal dari build lama dengan identitas berbeda, izin lama mungkin perlu dihapus lalu ditambahkan kembali satu kali.</p></details>
 <details><summary>Apakah iAtur mengirim analytics atau data penggunaan?</summary><p>Tidak. iAtur tidak berisi SDK analytics, iklan, atau pelaporan crash. Saat menjalankan alat pembersihan yang didukung, iAtur juga menekan analytics, audit, funding, pemeriksaan update, dan koneksi opsional yang tidak diperlukan.</p></details>
+<details><summary>Apakah Clipboard History aman dan bisa dimatikan?</summary><p>Clipboard History nonaktif secara default. Jika Anda mengaktifkannya, teks, tautan, dan referensi file yang disalin disimpan hanya di Mac dalam bentuk terenkripsi, maksimal 100 item selama tujuh hari. Isi clipboard yang ditandai private dilewati. Anda dapat menjeda fitur atau memilih <strong>Clear History</strong> untuk menghapus riwayat sekaligus kunci enkripsinya. Clipboard History tidak dapat aktif bersamaan dengan Auto Clear Clipboard.</p></details>
 <details><summary>Apakah iAtur memeriksa dan memasang update secara otomatis?</summary><p>Automatic Updates aktif secara default dan memeriksa kanal rilis biner publik resmi maksimal sekali sehari. Jika versi baru ditemukan, iAtur dapat mengunduh dan memverifikasi paket secara otomatis, tetapi macOS Installer tetap meminta persetujuan Anda sebelum memasang. Matikan Automatic Updates bila ingin tetap mendapat pemeriksaan harian tetapi mengunduh lewat tombol <strong>Update iAtur</strong> secara manual.</p></details>
 <details><summary>Bagaimana iAtur memastikan installer update aman?</summary><p>Sebelum macOS Installer dibuka, iAtur memeriksa sumber rilis resmi, kecocokan dua checksum, struktur paket, script installer, versi aplikasi, Apple Team ID, dan identitas tanda tangan aplikasi. Paket yang tidak cocok akan ditolak.</p></details>
 <details><summary>Apakah Clean Uninstall menghapus dokumen pribadi?</summary><p>Tidak. Clean Uninstall membatasi penghapusan pada aplikasi dan file terkait yang identitasnya cocok. Dokumen, media, project pribadi, cloud storage, volume eksternal, container documents, aplikasi Apple/sistem, dan iAtur sendiri dilindungi.</p></details>
@@ -364,17 +372,17 @@ status: "published"
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon iAtur untuk macOS" width="144" height="144" loading="lazy" />
 <div>
 <strong>Siap mencoba iAtur?</strong>
-<p>Download installer resmi v0.4.48 untuk macOS 14 atau lebih baru.</p>
+<p>Download installer resmi v0.4.49 untuk macOS 14 atau lebih baru.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.48-direct.pkg" download>Download iAtur v0.4.48</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.48-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.49-direct.pkg" download>Download iAtur v0.4.49</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.49-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 </div>
 
 <section class="iatur-guide-section iatur-policy-section" id="agreement-disclaimer-and-privacy-policy" aria-labelledby="agreement-disclaimer-and-privacy-policy-title">
 <div class="iatur-section-heading"><span aria-hidden="true">07</span><h2 id="agreement-disclaimer-and-privacy-policy-title">Agreement, Disclaimer, dan Privacy Policy.</h2></div>
-<p class="iatur-policy-updated">Berlaku sejak: 15 Oktober 2026</p>
+<p class="iatur-policy-updated">Berlaku sejak: 16 Oktober 2026</p>
 <div class="iatur-policy-intro"><strong>Ringkasan:</strong> dengan mengunduh, memasang, mencoba, atau menggunakan iAtur, Anda menyatakan telah membaca dan menyetujui ketentuan berikut. Gunakan iAtur secara bertanggung jawab, periksa setiap tindakan sebelum dijalankan, dan simpan backup data penting.</div>
 
 <div class="iatur-policy-block">
@@ -401,10 +409,11 @@ status: "published"
 <p>iAtur dirancang dengan pemrosesan lokal sebagai prinsip utama. iAtur tidak mewajibkan akun, tidak menyertakan SDK analytics, iklan, pelacakan, atau pelaporan crash, serta tidak mengirim telemetry penggunaan kepada pengembang.</p>
 <ul>
 <li><strong>Data dan file lokal:</strong> pengaturan, shortcut, serta pilihan fitur disimpan pada Mac Anda. File yang dipilih untuk dibandingkan, dibuat, dipindahkan, dibersihkan metadatanya, atau diproses oleh Optimizer dan Clean Uninstall ditangani secara lokal sesuai tindakan yang Anda minta. File backup pengaturan hanya dibuat di lokasi yang Anda pilih.</li>
+<li><strong>Clipboard History:</strong> fitur ini nonaktif secara default. Jika diaktifkan, iAtur menyimpan teks, tautan, dan referensi file clipboard secara lokal dalam bentuk terenkripsi, maksimal 100 item selama tujuh hari, dan melewati isi yang ditandai private oleh aplikasi sumber. Clear History menghapus data riwayat beserta kunci enkripsi lokal. Isi Clipboard History tidak dikirim kepada pengembang.</li>
 <li><strong>Izin input dan aksesibilitas:</strong> Accessibility dan Input Monitoring digunakan secara lokal untuk fitur yang memerlukan pengendalian atau pengamatan input, seperti Cleaning Mode, Cat Mode, dan tweak keyboard/Finder. iAtur tidak mengunggah isi input tersebut kepada pengembang.</li>
 <li><strong>Koneksi pembaruan:</strong> iAtur dapat menghubungi kanal GitHub Release resmi untuk pemeriksaan dan pengunduhan update. Automatic Updates aktif secara default dan pemeriksaan dijadwalkan paling banyak sekali sehari; Anda dapat mematikannya di Settings. Seperti koneksi internet pada umumnya, GitHub dan penyedia jaringan dapat menerima data teknis standar seperti alamat IP, waktu permintaan, dan informasi koneksi sesuai kebijakan mereka sendiri.</li>
 <li><strong>Tautan dan layanan pihak ketiga:</strong> tautan QRIS, Instagram, Threads, LinkedIn, GitHub, atau situs lain akan membuka layanan di luar iAtur. Pembayaran donasi diproses oleh aplikasi pembayaran, bank, atau penyelenggara QRIS yang Anda gunakan, bukan oleh iAtur. Penggunaan layanan tersebut tunduk pada ketentuan dan kebijakan privasi masing-masing penyedia.</li>
-<li><strong>Penyimpanan oleh pengembang:</strong> karena iAtur tidak mengirim analytics, telemetry, atau file pribadi kepada pengembang, pengembang tidak menyimpan data penggunaan atau isi file Anda melalui aplikasi. Data lokal dapat Anda kelola dengan Reset iAtur, menghapus backup yang dibuat, mencabut izin di System Settings, atau menghapus aplikasi.</li>
+<li><strong>Penyimpanan oleh pengembang:</strong> karena iAtur tidak mengirim analytics, telemetry, Clipboard History, atau file pribadi kepada pengembang, pengembang tidak menyimpan data penggunaan atau isi file Anda melalui aplikasi. Data lokal dapat Anda kelola dengan Clear History, Reset iAtur, menghapus backup yang dibuat, mencabut izin di System Settings, atau menghapus aplikasi.</li>
 </ul>
 <p>Jika praktik data iAtur berubah pada versi mendatang, bagian ini akan diperbarui sebelum atau bersamaan dengan perubahan tersebut. Pertanyaan mengenai ketentuan atau privasi dapat disampaikan melalui kanal kontak resmi yang tercantum di iAtur atau arunajr.com.</p>
 </div>

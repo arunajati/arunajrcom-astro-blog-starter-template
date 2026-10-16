@@ -36,8 +36,8 @@ status: "published"
 <li><a href="#fitur-iatur">Semua fitur dan cara menggunakannya</a></li>
 <li><a href="#version-changes-log">Version changes log</a></li>
 <li><a href="#faq-iatur">FAQ</a></li>
-<li><a href="#donate">Dukung iAtur</a></li>
 <li><a href="#agreement-disclaimer-and-privacy-policy">Agreement, Disclaimer, dan Privacy Policy</a></li>
+<li><a href="#donate">Dukung iAtur</a></li>
 </ol>
 </nav>
 
@@ -372,28 +372,8 @@ status: "published"
 </div>
 </div>
 
-<section class="iatur-guide-section iatur-donate-section" id="donate" aria-labelledby="donate-title">
-<div class="iatur-section-heading"><span aria-hidden="true">07</span><h2 id="donate-title">Dukung iAtur</h2></div>
-<div class="iatur-donate-card">
-<h3>Traktir Kopi</h3>
-<p>Terima kasih telah mencoba iAtur, kalo kamu mau mendukung pengembangannya untuk bisa lebih membantu kamu, bisa loh traktir kopi di sini. Sekali lagi, terima kasih buat dukungannya!</p>
-<button class="iatur-donate-button" type="button" data-iatur-donate-open>Traktir Kopi</button>
-</div>
-</section>
-
-<dialog class="iatur-donate-dialog" data-iatur-donate-dialog aria-labelledby="iatur-donate-dialog-title">
-<div class="iatur-donate-dialog-card">
-<div class="iatur-donate-dialog-header">
-<div><span class="iatur-donate-eyebrow">Dukung pengembangan iAtur</span><h2 id="iatur-donate-dialog-title">Traktir Kopi</h2></div>
-<button class="iatur-donate-close" type="button" data-iatur-donate-close aria-label="Tutup popup QRIS">Tutup</button>
-</div>
-<p>Scan kode QRIS berikut menggunakan aplikasi pembayaran yang mendukung QRIS.</p>
-<img src="/uploads/iatur/qris-traktir-kopi.jpeg" alt="Kode QRIS untuk traktir kopi dan mendukung pengembangan iAtur" width="1135" height="1600" loading="lazy" />
-</div>
-</dialog>
-
 <section class="iatur-guide-section iatur-policy-section" id="agreement-disclaimer-and-privacy-policy" aria-labelledby="agreement-disclaimer-and-privacy-policy-title">
-<div class="iatur-section-heading"><span aria-hidden="true">08</span><h2 id="agreement-disclaimer-and-privacy-policy-title">Agreement, Disclaimer, dan Privacy Policy.</h2></div>
+<div class="iatur-section-heading"><span aria-hidden="true">07</span><h2 id="agreement-disclaimer-and-privacy-policy-title">Agreement, Disclaimer, dan Privacy Policy.</h2></div>
 <p class="iatur-policy-updated">Berlaku sejak: 15 Oktober 2026</p>
 <div class="iatur-policy-intro"><strong>Ringkasan:</strong> dengan mengunduh, memasang, mencoba, atau menggunakan iAtur, Anda menyatakan telah membaca dan menyetujui ketentuan berikut. Gunakan iAtur secara bertanggung jawab, periksa setiap tindakan sebelum dijalankan, dan simpan backup data penting.</div>
 
@@ -429,3 +409,23 @@ status: "published"
 <p>Jika praktik data iAtur berubah pada versi mendatang, bagian ini akan diperbarui sebelum atau bersamaan dengan perubahan tersebut. Pertanyaan mengenai ketentuan atau privasi dapat disampaikan melalui kanal kontak resmi yang tercantum di iAtur atau arunajr.com.</p>
 </div>
 </section>
+
+<section class="iatur-guide-section iatur-donate-section" id="donate" aria-labelledby="donate-title">
+<div class="iatur-section-heading"><span aria-hidden="true">08</span><h2 id="donate-title">Dukung iAtur</h2></div>
+<div class="iatur-donate-card">
+<h3>Traktir Kopi</h3>
+<p>Terima kasih telah mencoba iAtur, kalo kamu mau mendukung pengembangannya untuk bisa lebih membantu kamu, bisa loh traktir kopi di sini. Sekali lagi, terima kasih buat dukungannya!</p>
+<button class="iatur-donate-button" type="button" data-iatur-donate-open>Traktir Kopi</button>
+</div>
+</section>
+
+<dialog class="iatur-donate-dialog" data-iatur-donate-dialog aria-labelledby="iatur-donate-dialog-title">
+<div class="iatur-donate-dialog-card">
+<div class="iatur-donate-dialog-header">
+<div><span class="iatur-donate-eyebrow">Dukung pengembangan iAtur</span><h2 id="iatur-donate-dialog-title">Traktir Kopi</h2></div>
+<button class="iatur-donate-close" type="button" data-iatur-donate-close aria-label="Tutup popup QRIS">Tutup</button>
+</div>
+<p>Scan kode QRIS berikut menggunakan aplikasi pembayaran yang mendukung QRIS.</p>
+<img src="/uploads/iatur/qris-traktir-kopi.jpeg" alt="Kode QRIS untuk traktir kopi dan mendukung pengembangan iAtur" width="1135" height="1600" loading="lazy" />
+</div>
+</dialog>

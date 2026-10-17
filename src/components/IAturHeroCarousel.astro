@@ -49,16 +49,28 @@ const slides = [
 			{
 				slides.map((slide, index) => (
 					<figure class="iatur-hero-slide" data-iatur-hero-slide aria-hidden={index === 0 ? 'false' : 'true'}>
-						<img
-							src={slide.src}
-							alt={slide.alt}
-							width={slide.width}
-							height={slide.height}
-							class:list={{ 'is-cover': slide.fit === 'cover' }}
-							loading={index === 0 ? 'eager' : 'lazy'}
-							fetchpriority={index === 0 ? 'high' : 'auto'}
-							decoding="async"
-						/>
+						<button
+							class="iatur-hero-open"
+							type="button"
+							data-iatur-hero-open
+							data-slide-index={index}
+							aria-label={`Perbesar: ${slide.alt}`}
+							tabindex={index === 0 ? 0 : -1}
+						>
+							<img
+								src={slide.src}
+								alt={slide.alt}
+								width={slide.width}
+								height={slide.height}
+								class:list={{ 'is-cover': slide.fit === 'cover' }}
+								loading={index === 0 ? 'eager' : 'lazy'}
+								fetchpriority={index === 0 ? 'high' : 'auto'}
+								decoding="async"
+							/>
+							<span class="iatur-hero-zoom" aria-hidden="true">
+								<svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5" /><path d="m15 15 5 5M10.5 8v5M8 10.5h5" /></svg>
+							</span>
+						</button>
 					</figure>
 				))
 			}
@@ -90,6 +102,50 @@ const slides = [
 	</div>
 </div>
 
+<dialog class="iatur-hero-lightbox" data-iatur-hero-lightbox aria-labelledby="iatur-hero-lightbox-caption">
+	<div class="iatur-hero-lightbox-shell" data-iatur-lightbox-stage>
+		<button class="iatur-lightbox-close" type="button" data-iatur-lightbox-close aria-label="Tutup tampilan layar penuh">
+			<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+		</button>
+
+		<button class="iatur-lightbox-arrow is-previous" type="button" data-iatur-lightbox-previous aria-label="Gambar sebelumnya">
+			<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7" /></svg>
+		</button>
+
+		<figure class="iatur-lightbox-figure">
+			<img
+				src={slides[0].src}
+				alt={slides[0].alt}
+				width={slides[0].width}
+				height={slides[0].height}
+				data-iatur-lightbox-image
+			/>
+			<figcaption id="iatur-hero-lightbox-caption" data-iatur-lightbox-caption>{slides[0].alt}</figcaption>
+		</figure>
+
+		<button class="iatur-lightbox-arrow is-next" type="button" data-iatur-lightbox-next aria-label="Gambar berikutnya">
+			<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 5 7 7-7 7" /></svg>
+		</button>
+
+		<div class="iatur-lightbox-navigation">
+			<p class="iatur-lightbox-count" aria-live="polite"><span data-iatur-lightbox-current>1</span> / {slides.length}</p>
+			<div class="iatur-lightbox-dots" aria-label="Pilih gambar layar penuh">
+				{
+					slides.map((slide, index) => (
+						<button
+							type="button"
+							data-iatur-lightbox-dot
+							aria-label={`Tampilkan: ${slide.alt}`}
+							aria-current={index === 0 ? 'true' : 'false'}
+						/>
+					))
+				}
+			</div>
+			<p class="iatur-lightbox-hint">Gunakan panah atau geser</p>
+		</div>
+	</div>
+</dialog>
+
 <script>
 	document.querySelectorAll<HTMLElement>('[data-iatur-hero-carousel]').forEach((carousel) => {
 		const track = carousel.querySelector<HTMLElement>('[data-iatur-hero-track]');
@@ -98,16 +154,33 @@ const slides = [
 		const currentLabel = carousel.querySelector<HTMLElement>('[data-iatur-hero-current]');
 		const previousButton = carousel.querySelector<HTMLButtonElement>('[data-iatur-hero-previous]');
 		const nextButton = carousel.querySelector<HTMLButtonElement>('[data-iatur-hero-next]');
+		const openButtons = Array.from(carousel.querySelectorAll<HTMLButtonElement>('[data-iatur-hero-open]'));
+		const lightbox = carousel.nextElementSibling instanceof HTMLDialogElement ? carousel.nextElementSibling : null;
+		const lightboxImage = lightbox?.querySelector<HTMLImageElement>('[data-iatur-lightbox-image]');
+		const lightboxCaption = lightbox?.querySelector<HTMLElement>('[data-iatur-lightbox-caption]');
+		const lightboxCurrent = lightbox?.querySelector<HTMLElement>('[data-iatur-lightbox-current]');
+		const lightboxDots = Array.from(lightbox?.querySelectorAll<HTMLButtonElement>('[data-iatur-lightbox-dot]') ?? []);
+		const lightboxPrevious = lightbox?.querySelector<HTMLButtonElement>('[data-iatur-lightbox-previous]');
+		const lightboxNext = lightbox?.querySelector<HTMLButtonElement>('[data-iatur-lightbox-next]');
+		const lightboxClose = lightbox?.querySelector<HTMLButtonElement>('[data-iatur-lightbox-close]');
+		const lightboxStage = lightbox?.querySelector<HTMLElement>('[data-iatur-lightbox-stage]');
 
 		if (!track || slides.length === 0) return;
 
 		let currentIndex = 0;
+		let lightboxIndex = 0;
 		let scrollFrame = 0;
+		let pointerStartX: number | null = null;
+		let lastOpenButton: HTMLButtonElement | null = null;
 
 		const updateNavigation = (index: number) => {
-			currentIndex = Math.max(0, Math.min(index, slides.length - 1));
+			const nextIndex = Math.max(0, Math.min(index, slides.length - 1));
+			const focusFollowsSlide = slides[currentIndex]?.contains(document.activeElement);
+			if (focusFollowsSlide && nextIndex !== currentIndex) openButtons[nextIndex]?.focus({ preventScroll: true });
+			currentIndex = nextIndex;
 			slides.forEach((slide, slideIndex) => slide.setAttribute('aria-hidden', String(slideIndex !== currentIndex)));
 			dots.forEach((dot, dotIndex) => dot.setAttribute('aria-current', String(dotIndex === currentIndex)));
+			openButtons.forEach((button, buttonIndex) => (button.tabIndex = buttonIndex === currentIndex ? 0 : -1));
 			if (currentLabel) currentLabel.textContent = String(currentIndex + 1);
 		};
 
@@ -120,6 +193,87 @@ const slides = [
 		previousButton?.addEventListener('click', () => showSlide(currentIndex - 1));
 		nextButton?.addEventListener('click', () => showSlide(currentIndex + 1));
 		dots.forEach((dot, index) => dot.addEventListener('click', () => showSlide(index)));
+
+		const updateLightbox = (index: number) => {
+			lightboxIndex = (index + slides.length) % slides.length;
+			const sourceImage = slides[lightboxIndex]?.querySelector<HTMLImageElement>('img');
+			if (!sourceImage || !lightboxImage) return;
+
+			lightboxImage.src = sourceImage.currentSrc || sourceImage.src;
+			lightboxImage.alt = sourceImage.alt;
+			lightboxImage.width = sourceImage.naturalWidth || Number(sourceImage.getAttribute('width')) || 2024;
+			lightboxImage.height = sourceImage.naturalHeight || Number(sourceImage.getAttribute('height')) || 1448;
+			if (lightboxCaption) lightboxCaption.textContent = sourceImage.alt;
+			if (lightboxCurrent) lightboxCurrent.textContent = String(lightboxIndex + 1);
+			lightboxDots.forEach((dot, dotIndex) => dot.setAttribute('aria-current', String(dotIndex === lightboxIndex)));
+		};
+
+		const openLightbox = (index: number, opener: HTMLButtonElement) => {
+			if (!lightbox) return;
+			lastOpenButton = opener;
+			updateLightbox(index);
+			lightbox.showModal();
+			document.body.classList.add('iatur-lightbox-open');
+			lightboxClose?.focus();
+		};
+
+		openButtons.forEach((button, index) => button.addEventListener('click', () => openLightbox(index, button)));
+		lightboxPrevious?.addEventListener('click', () => updateLightbox(lightboxIndex - 1));
+		lightboxNext?.addEventListener('click', () => updateLightbox(lightboxIndex + 1));
+		lightboxDots.forEach((dot, index) => dot.addEventListener('click', () => updateLightbox(index)));
+		lightboxClose?.addEventListener('click', () => lightbox?.close());
+
+		lightbox?.addEventListener('click', (event) => {
+			if (event.target === lightbox) lightbox.close();
+		});
+
+		lightbox?.addEventListener('close', () => {
+			document.body.classList.remove('iatur-lightbox-open');
+			lastOpenButton?.focus();
+		});
+
+		lightbox?.addEventListener('keydown', (event) => {
+			if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+				event.preventDefault();
+				updateLightbox(lightboxIndex + (event.key === 'ArrowRight' ? 1 : -1));
+				return;
+			}
+
+			if (event.key === 'Home' || event.key === 'End') {
+				event.preventDefault();
+				updateLightbox(event.key === 'Home' ? 0 : slides.length - 1);
+				return;
+			}
+
+			if (event.key !== 'Tab') return;
+			const focusable = Array.from(lightbox.querySelectorAll<HTMLElement>('button:not([disabled])'));
+			const first = focusable[0];
+			const last = focusable[focusable.length - 1];
+			if (!first || !last) return;
+			if (event.shiftKey && document.activeElement === first) {
+				event.preventDefault();
+				last.focus();
+			} else if (!event.shiftKey && document.activeElement === last) {
+				event.preventDefault();
+				first.focus();
+			}
+		});
+
+		lightboxStage?.addEventListener('pointerdown', (event) => {
+			if ((event.target as HTMLElement).closest('button')) return;
+			pointerStartX = event.clientX;
+		});
+
+		lightboxStage?.addEventListener('pointerup', (event) => {
+			if (pointerStartX === null) return;
+			const distance = event.clientX - pointerStartX;
+			pointerStartX = null;
+			if (Math.abs(distance) >= 50) updateLightbox(lightboxIndex + (distance < 0 ? 1 : -1));
+		});
+
+		lightboxStage?.addEventListener('pointercancel', () => {
+			pointerStartX = null;
+		});
 
 		track.addEventListener('keydown', (event) => {
 			if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
@@ -188,17 +342,60 @@ const slides = [
 		scroll-snap-stop: always;
 	}
 
+	.iatur-hero-open {
+		position: relative;
+		display: block;
+		width: 100%;
+		height: 100%;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		cursor: zoom-in;
+	}
+
+	.iatur-hero-open:focus-visible {
+		outline: 3px solid rgba(255, 255, 255, 0.92);
+		outline-offset: -5px;
+	}
+
 	.iatur-hero-slide img {
 		display: block;
 		width: 100%;
 		height: 100%;
 		margin: 0;
 		border-radius: 0;
+		box-shadow: none;
 		object-fit: contain;
 	}
 
 	.iatur-hero-slide img.is-cover {
 		object-fit: cover;
+	}
+
+	.iatur-hero-zoom {
+		position: absolute;
+		right: 0.8rem;
+		bottom: 0.8rem;
+		display: grid;
+		place-items: center;
+		width: 2.35rem;
+		height: 2.35rem;
+		border: 1px solid rgba(255, 255, 255, 0.72);
+		border-radius: 999px;
+		color: #202742;
+		background: rgba(255, 255, 255, 0.88);
+		box-shadow: 0 6px 18px rgba(8, 12, 30, 0.2);
+		backdrop-filter: blur(8px);
+	}
+
+	.iatur-hero-zoom svg {
+		width: 1.15rem;
+		height: 1.15rem;
+		fill: none;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 1.9;
 	}
 
 	.iatur-hero-arrow {
@@ -308,6 +505,186 @@ const slides = [
 		outline-offset: 3px;
 	}
 
+	.iatur-hero-lightbox {
+		width: 100vw;
+		height: 100dvh;
+		max-width: none;
+		max-height: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		border: 0;
+		background: rgba(4, 6, 14, 0.96);
+	}
+
+	.iatur-hero-lightbox::backdrop {
+		background: rgba(4, 6, 14, 0.96);
+		backdrop-filter: blur(10px);
+	}
+
+	.iatur-hero-lightbox-shell {
+		position: relative;
+		display: grid;
+		grid-template-rows: minmax(0, 1fr) auto;
+		width: 100%;
+		height: 100%;
+		padding: clamp(1rem, 3vw, 2rem);
+		box-sizing: border-box;
+		touch-action: pan-y;
+	}
+
+	.iatur-lightbox-figure {
+		display: grid;
+		grid-template-rows: minmax(0, 1fr) auto;
+		min-width: 0;
+		min-height: 0;
+		margin: 0;
+		padding: 0 clamp(2.8rem, 6vw, 5rem);
+	}
+
+	.iatur-lightbox-figure img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		min-height: 0;
+		margin: 0 auto;
+		border-radius: 8px;
+		box-shadow: none;
+		object-fit: contain;
+	}
+
+	.iatur-lightbox-figure figcaption {
+		margin: 0;
+		padding: 0.75rem 0 0;
+		color: rgba(255, 255, 255, 0.88);
+		font-size: clamp(0.88rem, 2vw, 1rem);
+		line-height: 1.3;
+		text-align: center;
+	}
+
+	.iatur-lightbox-close,
+	.iatur-lightbox-arrow {
+		z-index: 4;
+		display: grid;
+		place-items: center;
+		padding: 0;
+		border: 1px solid rgba(255, 255, 255, 0.34);
+		border-radius: 999px;
+		color: white;
+		background: rgba(27, 32, 48, 0.78);
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32);
+		cursor: pointer;
+		backdrop-filter: blur(10px);
+	}
+
+	.iatur-lightbox-close:hover,
+	.iatur-lightbox-arrow:hover {
+		background: rgba(55, 64, 91, 0.92);
+	}
+
+	.iatur-lightbox-close:focus-visible,
+	.iatur-lightbox-arrow:focus-visible,
+	.iatur-lightbox-dots button:focus-visible {
+		outline: 3px solid rgba(137, 157, 255, 0.95);
+		outline-offset: 3px;
+	}
+
+	.iatur-lightbox-close {
+		position: absolute;
+		top: clamp(0.75rem, 2vw, 1.4rem);
+		right: clamp(0.75rem, 2vw, 1.4rem);
+		width: 2.8rem;
+		height: 2.8rem;
+	}
+
+	.iatur-lightbox-arrow {
+		position: absolute;
+		top: 50%;
+		width: 3.15rem;
+		height: 3.15rem;
+		transform: translateY(-50%);
+	}
+
+	.iatur-lightbox-arrow.is-previous {
+		left: clamp(0.75rem, 2vw, 1.5rem);
+	}
+
+	.iatur-lightbox-arrow.is-next {
+		right: clamp(0.75rem, 2vw, 1.5rem);
+	}
+
+	.iatur-lightbox-close svg,
+	.iatur-lightbox-arrow svg {
+		width: 1.4rem;
+		height: 1.4rem;
+		fill: none;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 2.1;
+	}
+
+	.iatur-lightbox-navigation {
+		display: grid;
+		grid-template-columns: minmax(3rem, 1fr) auto minmax(3rem, 1fr);
+		gap: 1rem;
+		align-items: center;
+		padding-top: 0.85rem;
+		color: rgba(255, 255, 255, 0.78);
+	}
+
+	.iatur-lightbox-count,
+	.iatur-lightbox-hint {
+		margin: 0;
+		font-size: 0.88rem;
+		line-height: 1.25;
+	}
+
+	.iatur-lightbox-count {
+		font-variant-numeric: tabular-nums;
+	}
+
+	.iatur-lightbox-hint {
+		text-align: right;
+	}
+
+	.iatur-lightbox-dots {
+		display: flex;
+		gap: 0.25rem;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.iatur-lightbox-dots button {
+		display: grid;
+		place-items: center;
+		width: 1.65rem;
+		height: 1.65rem;
+		padding: 0;
+		border: 0;
+		border-radius: 999px;
+		background: transparent;
+		cursor: pointer;
+	}
+
+	.iatur-lightbox-dots button::before {
+		content: '';
+		width: 0.55rem;
+		height: 0.55rem;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.42);
+		transition: width 160ms ease, background-color 160ms ease;
+	}
+
+	.iatur-lightbox-dots button[aria-current='true']::before {
+		width: 1.45rem;
+		background: #8fa0ff;
+	}
+
+	:global(body.iatur-lightbox-open) {
+		overflow: hidden;
+	}
+
 	@media (max-width: 620px) {
 		.iatur-hero-viewport {
 			border-radius: 12px;
@@ -326,12 +703,52 @@ const slides = [
 			right: 0.5rem;
 		}
 
+		.iatur-hero-zoom {
+			right: 0.55rem;
+			bottom: 0.55rem;
+			width: 2rem;
+			height: 2rem;
+		}
+
 		.iatur-hero-hint {
 			display: none;
 		}
 
 		.iatur-hero-navigation {
 			grid-template-columns: auto 1fr auto;
+		}
+
+		.iatur-hero-lightbox-shell {
+			padding: 0.75rem;
+		}
+
+		.iatur-lightbox-figure {
+			padding: 2.8rem 0 0;
+		}
+
+		.iatur-lightbox-arrow {
+			top: auto;
+			bottom: 0.65rem;
+			width: 2.65rem;
+			height: 2.65rem;
+			transform: none;
+		}
+
+		.iatur-lightbox-arrow.is-previous {
+			left: 0.75rem;
+		}
+
+		.iatur-lightbox-arrow.is-next {
+			right: 0.75rem;
+		}
+
+		.iatur-lightbox-navigation {
+			grid-template-columns: 1fr auto 1fr;
+			padding: 0.65rem 3rem 0;
+		}
+
+		.iatur-lightbox-hint {
+			display: none;
 		}
 	}
 
@@ -341,7 +758,8 @@ const slides = [
 		}
 
 		.iatur-hero-arrow,
-		.iatur-hero-dots button::before {
+		.iatur-hero-dots button::before,
+		.iatur-lightbox-dots button::before {
 			transition: none;
 		}
 	}

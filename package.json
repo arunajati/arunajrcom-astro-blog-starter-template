@@ -1,6 +1,6 @@
 {
 	"name": "arunajrcom-astro-blog-starter-template",
-	"version": "2.99.39",
+	"version": "2.99.40",
 	"description": "Build a personal website, blog, or portfolio with Astro.",
 	"cloudflare": {
 		"label": "Astro Framework Starter",

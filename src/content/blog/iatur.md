@@ -2,7 +2,7 @@
 title: "iAtur macOS App: Atur macOS Sesuka Hati, Cara Menggunakan, dan Fitur Terbaru"
 description: "Panduan lengkap iAtur, aplikasi native macOS untuk Optimizer, Clean Uninstall, Finder, shortcut, audio, window, pembaruan aman, dan berbagai pengaturan Mac yang praktis."
 seoTitle: "iAtur macOS App: Download, Cara Menggunakan & Fitur Terbaru"
-seoDescription: "Download iAtur v0.4.52 dan pelajari cara memakai Clipboard History, Finder, Optimizer, shortcut global, audio, serta pembaruan aman."
+seoDescription: "Download iAtur v0.4.53 dan pelajari cara memakai Clipboard History, Finder, Optimizer, shortcut global, audio, serta pembaruan aman."
 pubDate: "2026-10-02"
 updatedDate: "2026-10-17"
 heroImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
@@ -16,11 +16,11 @@ status: "published"
 <div class="iatur-download-card">
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon resmi aplikasi iAtur" width="144" height="144" loading="eager" />
 <div>
-<strong>iAtur v0.4.52 untuk macOS</strong>
+<strong>iAtur v0.4.53 untuk macOS</strong>
 <p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 3,7 MB.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.52-direct.pkg" download>Download iAtur v0.4.52</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.52-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.53-direct.pkg" download>Download iAtur v0.4.53</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.53-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 
@@ -68,9 +68,9 @@ status: "published"
 
 <h3>Download dan instal</h3>
 <ol class="iatur-steps">
-<li>Klik tombol <strong>Download iAtur v0.4.52</strong> di atas.</li>
+<li>Klik tombol <strong>Download iAtur v0.4.53</strong> di atas.</li>
 <li>Setelah file selesai diunduh, buka Finder lalu masuk ke folder Downloads.</li>
-<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.52-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
+<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.53-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
 <li>Selesaikan petunjuk installer. iAtur akan dipasang di folder Applications.</li>
 <li>Buka iAtur dari Applications.</li>
 </ol>
@@ -117,7 +117,7 @@ status: "published"
 <div class="iatur-accordion-content">
 <p>Cleaning Mode menutup semua layar dengan lapisan hitam—bukan mematikan display—sekaligus memblokir input keyboard, mouse, dan trackpad untuk sementara. Fitur ini cocok saat membersihkan layar dan perangkat input tanpa menekan tombol atau menggerakkan aplikasi secara tidak sengaja.</p>
 <ol class="iatur-steps"><li>Buka <strong>Tweaks → System</strong>.</li><li>Nyalakan <strong>Cleaning Mode</strong>.</li><li>Berikan izin macOS bila diminta, lalu pilih <strong>Iya</strong>.</li><li>Untuk keluar, tekan tombol Command kiri atau kanan sebanyak enam kali. Anda juga dapat menunggu waktu keluar otomatis.</li></ol>
-<p>Tombol fungsi F1–F12 untuk kecerahan, volume, pemutaran, dan fungsi media lain ikut diblokir. Tombol Power/Touch ID tetap berada di bawah kendali macOS dan tidak diblokir.</p>
+<p>Tombol fungsi F1–F12 untuk kecerahan, volume, pemutaran, dan fungsi media lain ikut diblokir. Tombol Power/Touch ID tetap berada di bawah kendali macOS dan tidak diblokir. Jika pemblokiran input menjadi tidak sehat, Cleaning Mode langsung berhenti dan mengembalikan input normal sebagai perlindungan fail-safe.</p>
 </div>
 </details>
 
@@ -125,7 +125,7 @@ status: "published"
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Cat Mode</span></summary>
 <div class="iatur-accordion-content">
 <p>Cat Mode mengunci keyboard, mouse, dan trackpad tanpa membuat layar menjadi hitam atau mematikan display. Ini berguna ketika ingin mencegah input tidak sengaja—termasuk saat kucing berjalan di atas keyboard—sambil tetap melihat layar.</p>
-<p>Nyalakan <strong>Cat Mode</strong> di bagian Tweaks, konfirmasi aktivasi, lalu tekan tombol Command kiri atau kanan enam kali untuk keluar.</p>
+<p>Nyalakan <strong>Cat Mode</strong> di bagian Tweaks, konfirmasi aktivasi, lalu tekan tombol Command kiri atau kanan enam kali untuk keluar. Seperti Cleaning Mode, Cat Mode langsung berhenti dan mengembalikan input normal jika pemblokiran input tidak sehat.</p>
 </div>
 </details>
 
@@ -147,7 +147,7 @@ status: "published"
 <li><strong>Fine Volume &amp; Brightness:</strong> aktifkan melalui <strong>Tweaks → System</strong> agar tombol volume dan kecerahan biasa memakai langkah native macOS yang lebih kecil. Kombinasi tombol dengan modifier tetap bekerja seperti semula.</li>
 <li><strong>Open Files with Return:</strong> aktifkan melalui <strong>Tweaks → Finder</strong>, pilih file atau folder di Finder, lalu tekan Return untuk membukanya. Return tetap normal ketika mengganti nama, mencari, mengetik, memakai aplikasi lain, atau saat key repeat.</li>
 </ul>
-<p>Kedua fitur membutuhkan Accessibility dan Input Monitoring, serta dapat dipulihkan setelah login hanya jika sebelumnya disetujui dan izin masih tersedia.</p>
+<p>Kedua fitur membutuhkan Accessibility dan Input Monitoring, serta dapat dipulihkan setelah login hanya jika sebelumnya disetujui dan izin masih tersedia. Selama aktif, iAtur memeriksa kesehatannya secara ringan dan mencoba memulihkan pemantauan input yang dinonaktifkan sementara oleh macOS tanpa membuat switch berkedip mati dan hidup. Jika pemulihan berulang tetap gagal, fitur dihentikan dan iAtur menampilkan petunjuk untuk memeriksa izin.</p>
 </div>
 </details>
 
@@ -155,13 +155,14 @@ status: "published"
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Finder Cut &amp; Paste</span></summary>
 <div class="iatur-accordion-content">
 <p>Fitur ini menghadirkan alur Cut dan Paste yang terasa familiar di Finder. Nyalakan <strong>Finder Cut &amp; Paste</strong>, pilih satu atau beberapa file, tekan <strong>Command-X</strong>, buka folder tujuan, lalu tekan <strong>Command-V</strong>. Finder yang melakukan pemindahan sehingga mekanisme izin, konflik file, dan Undo tetap mengikuti macOS.</p>
+<p>Selama fitur aktif, iAtur memeriksa pemantauan input secara ringan dan otomatis mengaktifkan kembali atau membangunnya ulang jika macOS menonaktifkannya sementara. Switch tetap menyala selama pemulihan berlangsung; pesan kegagalan baru muncul apabila beberapa percobaan pemulihan tetap ditolak.</p>
 </div>
 </details>
 
 <details class="iatur-feature-accordion" name="iatur-features">
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Delete Key to Trash</span></summary>
 <div class="iatur-accordion-content">
-<p>Nyalakan fitur ini, pilih satu atau beberapa file di Finder, lalu tekan tombol Delete tanpa tombol tambahan. File akan dipindahkan ke Trash, bukan dihapus permanen. Fitur tidak bekerja saat Anda sedang mengetik, mencari, mengganti nama file, menahan tombol modifier, atau memakai key repeat. Perubahan nama ini tidak mengubah perilaku fitur maupun pengaturan pengguna yang sudah ada.</p>
+<p>Nyalakan fitur ini, pilih satu atau beberapa file di Finder, lalu tekan tombol Delete tanpa tombol tambahan. File akan dipindahkan ke Trash, bukan dihapus permanen. Fitur tidak bekerja saat Anda sedang mengetik, mencari, mengganti nama file, menahan tombol modifier, atau memakai key repeat. Jika macOS menghentikan pemantauan input sementara, iAtur mencoba memulihkannya otomatis tanpa membuat switch berkedip mati dan hidup. Pesan kegagalan baru ditampilkan setelah beberapa percobaan pemulihan tidak berhasil.</p>
 </div>
 </details>
 
@@ -273,7 +274,7 @@ status: "published"
 <div class="iatur-accordion-content">
 <ul>
 <li><strong>Launch at Login:</strong> membuka iAtur setelah masuk ke Mac dan memulihkan hanya tweak Finder yang sebelumnya disetujui.</li>
-<li><strong>Run in Background:</strong> menjaga tweak tetap berjalan setelah jendela ditutup.</li>
+<li><strong>Run in Background:</strong> menjaga tweak tetap berjalan setelah jendela ditutup. Fine Volume &amp; Brightness, Delete Key to Trash, Finder Cut &amp; Paste, dan Open Files with Return juga menjalankan pemeriksaan kesehatan ringan selama aktif agar pemantauan input yang terputus sementara dapat dipulihkan otomatis.</li>
 <li><strong>Show Menu Bar Icon:</strong> menyediakan menu kontrol cepat lengkap saat jendela utama ditutup.</li>
 <li><strong>Hide Dock Icon on Window Close:</strong> menyembunyikan ikon Dock setelah jendela ditutup, selama mode background dan menu bar aktif.</li>
 <li><strong>Auto Exit:</strong> pilih 1, 2, 3, 5, 10, atau 15 menit sebagai jalur keluar otomatis Cleaning Mode dan Cat Mode. Nilai awalnya kini 3 menit.</li>
@@ -292,6 +293,7 @@ status: "published"
 <section class="iatur-guide-section" aria-labelledby="version-changes-log">
 <div class="iatur-section-heading"><span aria-hidden="true">05</span><h2 id="version-changes-log">Version Changes Log</h2></div>
 <ul class="iatur-version-list">
+<li><strong>v0.4.53 — 17 Oktober 2026:</strong> menjaga Fine Volume &amp; Brightness, Delete Key to Trash, Finder Cut &amp; Paste, dan Open Files with Return tetap sehat di latar belakang dengan pemulihan otomatis ketika macOS menonaktifkan pemantauan input sementara. Pemeriksaan kesehatan ringan dan percobaan pemulihan bertahap berjalan tanpa membuat switch berkedip mati dan hidup; Cleaning Mode dan Cat Mode tetap langsung berhenti demi keamanan apabila pemblokiran input tidak sehat. Lifecycle aplikasi, menu bar, shortcut global, clipboard, Keep Awake, Finder relay, dan proses latar belakang juga diaudit. Rilis ini lolos 143 pengujian dengan satu pengujian operasi langsung dilewati sesuai desain dan tanpa kegagalan.</li>
 <li><strong>v0.4.52 — 16 Oktober 2026:</strong> memperbarui deskripsi dan pesan pendukung ke bahasa Indonesia sehari-hari yang lebih singkat dan mudah dipahami, menyelaraskan teks Optimizer dan Settings, serta memisahkan penyimpanan Clipboard History saat pengujian dari riwayat asli pengguna.</li>
 <li><strong>v0.4.51 — 16 Oktober 2026:</strong> menambahkan fallback Services khusus Finder untuk OneDrive dan lokasi File Provider lain ketika penyedia cloud mengambil alih menu kontekstual Finder.</li>
 <li><strong>v0.4.50 — 16 Oktober 2026:</strong> memperluas pendaftaran tindakan Finder ke folder biasa, volume eksternal, iCloud Drive, OneDrive, Dropbox, Google Drive, dan lokasi File Provider lain; menghapus separator yang tidak diperlukan antara Cut dan Copy Path; serta mempertahankan akses minimum tanpa izin baca-tulis seluruh disk.</li>
@@ -358,6 +360,7 @@ status: "published"
 <details><summary>macOS versi berapa yang didukung?</summary><p>iAtur memerlukan macOS 14 Sonoma atau versi yang lebih baru serta dapat berjalan pada Mac Intel maupun Apple silicon.</p></details>
 <details><summary>Apakah iAtur tersedia di Mac App Store?</summary><p>Belum. Versi saat ini didistribusikan melalui installer resmi di GitHub Release.</p></details>
 <details><summary>Apakah aman memberi izin Accessibility dan Input Monitoring?</summary><p>Izin tersebut diperlukan hanya untuk fitur yang mengendalikan atau membaca input, seperti Cleaning Mode dan tweak Finder. iAtur memakai API publik macOS dan tidak memasang daemon, kernel extension, atau helper dengan akses root.</p></details>
+<details><summary>Apa yang terjadi jika macOS menghentikan pemantauan input sementara?</summary><p>Untuk Fine Volume &amp; Brightness, Delete Key to Trash, Finder Cut &amp; Paste, dan Open Files with Return, iAtur mencoba mengaktifkan kembali pemantauan input atau membangunnya ulang secara otomatis. Switch tetap menyala selama pemulihan. Jika beberapa percobaan tetap gagal, fitur dihentikan dan iAtur meminta Anda memeriksa izin macOS lalu menyalakannya kembali. Cleaning Mode dan Cat Mode memakai aturan lebih ketat: keduanya langsung berhenti dan mengembalikan input normal jika pemblokiran input tidak sehat.</p></details>
 <details><summary>Apakah update menghapus izin macOS?</summary><p>Pembaruan rutin dengan identitas aplikasi yang sama dirancang untuk mempertahankan izin. Jika berasal dari build lama dengan identitas berbeda, izin lama mungkin perlu dihapus lalu ditambahkan kembali satu kali.</p></details>
 <details><summary>Apakah iAtur mengirim analytics atau data penggunaan?</summary><p>Tidak. iAtur tidak berisi SDK analytics, iklan, atau pelaporan crash. Saat menjalankan alat pembersihan yang didukung, iAtur juga menekan analytics, audit, funding, pemeriksaan update, dan koneksi opsional yang tidak diperlukan.</p></details>
 <details><summary>Apakah Clipboard History aman dan bisa dimatikan?</summary><p>Clipboard History nonaktif secara default. Jika Anda mengaktifkannya, teks, tautan, dan referensi file yang disalin disimpan hanya di Mac dalam bentuk terenkripsi, maksimal 100 item selama tujuh hari. Isi clipboard yang ditandai private dilewati. Anda dapat menjeda fitur atau memilih <strong>Clear History</strong> untuk menghapus riwayat sekaligus kunci enkripsinya. Clipboard History tidak dapat aktif bersamaan dengan Auto Clear Clipboard.</p></details>
@@ -375,10 +378,10 @@ status: "published"
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon iAtur untuk macOS" width="144" height="144" loading="lazy" />
 <div>
 <strong>Siap mencoba iAtur?</strong>
-<p>Download installer resmi v0.4.52 untuk macOS 14 atau lebih baru.</p>
+<p>Download installer resmi v0.4.53 untuk macOS 14 atau lebih baru.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.52-direct.pkg" download>Download iAtur v0.4.52</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.52-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.53-direct.pkg" download>Download iAtur v0.4.53</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.53-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 </div>

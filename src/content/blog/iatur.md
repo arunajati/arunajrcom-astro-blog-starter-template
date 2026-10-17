@@ -2,9 +2,9 @@
 title: "iAtur macOS App: Atur macOS Sesuka Hati, Cara Menggunakan, dan Fitur Terbaru"
 description: "Panduan lengkap iAtur, aplikasi native macOS untuk Optimizer, Clean Uninstall, Finder, shortcut, audio, window, pembaruan aman, dan berbagai pengaturan Mac yang praktis."
 seoTitle: "iAtur macOS App: Download, Cara Menggunakan & Fitur Terbaru"
-seoDescription: "Download iAtur v0.4.49 dan pelajari cara memakai Clipboard History, Finder, Optimizer, shortcut global, audio, serta pembaruan aman."
+seoDescription: "Download iAtur v0.4.52 dan pelajari cara memakai Clipboard History, Finder, Optimizer, shortcut global, audio, serta pembaruan aman."
 pubDate: "2026-10-02"
-updatedDate: "2026-10-16"
+updatedDate: "2026-10-17"
 heroImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
 seoImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
 permalink: "/iatur"
@@ -16,11 +16,11 @@ status: "published"
 <div class="iatur-download-card">
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon resmi aplikasi iAtur" width="144" height="144" loading="eager" />
 <div>
-<strong>iAtur v0.4.49 untuk macOS</strong>
+<strong>iAtur v0.4.52 untuk macOS</strong>
 <p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 3,7 MB.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.49-direct.pkg" download>Download iAtur v0.4.49</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.49-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.52-direct.pkg" download>Download iAtur v0.4.52</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.52-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 
@@ -68,9 +68,9 @@ status: "published"
 
 <h3>Download dan instal</h3>
 <ol class="iatur-steps">
-<li>Klik tombol <strong>Download iAtur v0.4.49</strong> di atas.</li>
+<li>Klik tombol <strong>Download iAtur v0.4.52</strong> di atas.</li>
 <li>Setelah file selesai diunduh, buka Finder lalu masuk ke folder Downloads.</li>
-<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.49-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
+<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.52-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
 <li>Selesaikan petunjuk installer. iAtur akan dipasang di folder Applications.</li>
 <li>Buka iAtur dari Applications.</li>
 </ol>
@@ -168,7 +168,7 @@ status: "published"
 <details class="iatur-feature-accordion" name="iatur-features">
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Menu Klik Kanan Finder</span></summary>
 <div class="iatur-accordion-content">
-<p>Semua tindakan menu klik kanan Finder berada dalam kondisi <strong>OFF</strong> saat pertama dipasang. Aktifkan iAtur Finder Extension di pengaturan ekstensi macOS terlebih dahulu, lalu nyalakan hanya tindakan yang dibutuhkan di <strong>Tweaks → Finder</strong>. Jika ekstensi belum aktif, pilihan tindakan akan tampak tidak tersedia; klik barisnya untuk langsung membuka pengaturan ekstensi macOS. Sejak v0.4.49, setiap tindakan yang diaktifkan muncul langsung di area ekstensi menu klik kanan Finder tanpa submenu iAtur:</p>
+<p>Semua tindakan menu klik kanan Finder berada dalam kondisi <strong>OFF</strong> saat pertama dipasang. Aktifkan iAtur Finder Extension di pengaturan ekstensi macOS terlebih dahulu, lalu nyalakan hanya tindakan yang dibutuhkan di <strong>Tweaks → Finder</strong>. Jika ekstensi belum aktif, pilihan tindakan akan tampak tidak tersedia; klik barisnya untuk langsung membuka pengaturan ekstensi macOS. Setiap tindakan yang diaktifkan muncul langsung di area ekstensi menu klik kanan Finder tanpa submenu iAtur:</p>
 <ul>
 <li><strong>Cut:</strong> menandai file atau folder terpilih untuk dipindahkan, seperti Cut pada Windows.</li>
 <li><strong>Paste:</strong> hanya muncul ketika clipboard berisi file atau folder yang dapat ditempel. Hasil Copy akan disalin, sedangkan hasil Cut akan dipindahkan.</li>
@@ -189,7 +189,7 @@ status: "published"
 <li><strong>Lock/Unlock Files:</strong> mengubah status Locked pada file terpilih.</li>
 </ul>
 <p><strong>Compare Files</strong> tersedia melalui tombol Choose pada halaman Shortcuts. Pilih minimal dua file; iAtur memakai file pertama sebagai acuan lalu membandingkan isi setiap file secara byte-per-byte tanpa mengubahnya. Ringkasan hasil otomatis disalin ke clipboard agar mudah dibagikan. Fitur ini bukan bagian dari menu klik kanan Finder.</p>
-<div class="iatur-note"><strong>Catatan OneDrive:</strong> macOS dapat menolak menu Finder Sync milik aplikasi lain di folder OneDrive atau File Provider. Gunakan tombol <strong>Choose…</strong> di iAtur untuk New Text File, New Markdown File, New Word Document, New Excel Spreadsheet, New PowerPoint Presentation, dan Open in Terminal. Pemilih folder native mendukung lokasi cloud yang dipilih pengguna.</div>
+<div class="iatur-note"><strong>Catatan OneDrive dan penyimpanan cloud:</strong> iAtur mendaftarkan tindakan Finder untuk folder biasa, volume eksternal, iCloud Drive, OneDrive, Dropbox, Google Drive, dan lokasi File Provider lain. Jika penyedia cloud mengambil alih menu klik kanan, tindakan iAtur tersedia melalui submenu <strong>Services</strong>. Tombol <strong>Choose…</strong> di iAtur tetap dapat dipakai untuk memilih lokasi cloud melalui pemilih folder native.</div>
 </div>
 </details>
 
@@ -292,6 +292,9 @@ status: "published"
 <section class="iatur-guide-section" aria-labelledby="version-changes-log">
 <div class="iatur-section-heading"><span aria-hidden="true">05</span><h2 id="version-changes-log">Version Changes Log</h2></div>
 <ul class="iatur-version-list">
+<li><strong>v0.4.52 — 16 Oktober 2026:</strong> memperbarui deskripsi dan pesan pendukung ke bahasa Indonesia sehari-hari yang lebih singkat dan mudah dipahami, menyelaraskan teks Optimizer dan Settings, serta memisahkan penyimpanan Clipboard History saat pengujian dari riwayat asli pengguna.</li>
+<li><strong>v0.4.51 — 16 Oktober 2026:</strong> menambahkan fallback Services khusus Finder untuk OneDrive dan lokasi File Provider lain ketika penyedia cloud mengambil alih menu kontekstual Finder.</li>
+<li><strong>v0.4.50 — 16 Oktober 2026:</strong> memperluas pendaftaran tindakan Finder ke folder biasa, volume eksternal, iCloud Drive, OneDrive, Dropbox, Google Drive, dan lokasi File Provider lain; menghapus separator yang tidak diperlukan antara Cut dan Copy Path; serta mempertahankan akses minimum tanpa izin baca-tulis seluruh disk.</li>
 <li><strong>v0.4.49 — 16 Oktober 2026:</strong> menampilkan setiap tindakan Finder yang aktif langsung di area ekstensi menu klik kanan tanpa submenu iAtur; menambahkan tindakan Cut bergaya Windows dan Paste yang hanya muncul ketika clipboard berisi file atau folder yang dapat ditempel; serta menghadirkan Clipboard History opsional dengan pencarian, shortcut global, kontrol menu bar, penyimpanan lokal terenkripsi, batas 100 item selama tujuh hari, dan pengecualian isi clipboard private. Clipboard History nonaktif secara default, tidak dapat aktif bersama Auto Clear Clipboard, dan penghapusan riwayat turut menghancurkan kunci enkripsinya.</li>
 <li><strong>v0.4.48 — 15 Oktober 2026:</strong> memperjelas bahwa Cleaning Mode menampilkan lapisan hitam sedangkan Cat Mode membiarkan layar tetap terlihat, sekaligus menegaskan jalur pemulihan dengan enam kali menekan Command; menyederhanakan teks dukungan dan masukan pada halaman Donate; mengganti nama tombol QRIS menjadi Traktir Kopi; serta menambahkan disclaimer penggunaan dengan tautan langsung ke Agreement, Disclaimer, dan Privacy Policy lengkap.</li>
 <li><strong>v0.4.47 — 15 Oktober 2026:</strong> menambahkan tautan QRIS resmi serta Instagram, Threads, dan LinkedIn di halaman Donate; menyegarkan teks dan tombol pada Settings, Optimizer, Shortcuts, dan Tweaks; mengubah waktu awal Auto Exit menjadi 3 menit; membuat semua tindakan menu klik kanan Finder default OFF dan baru dapat diaktifkan setelah Finder Extension aktif; memperbaiki aktivasi dokumen Word/Excel; menambahkan New PowerPoint Presentation; serta memperbaiki Undo Window Changes agar memulihkan window yang tepat meskipun urutannya berubah.</li>
@@ -361,7 +364,7 @@ status: "published"
 <details><summary>Apakah iAtur memeriksa dan memasang update secara otomatis?</summary><p>Automatic Updates aktif secara default dan memeriksa kanal rilis biner publik resmi maksimal sekali sehari. Jika versi baru ditemukan, iAtur dapat mengunduh dan memverifikasi paket secara otomatis, tetapi macOS Installer tetap meminta persetujuan Anda sebelum memasang. Matikan Automatic Updates bila ingin tetap mendapat pemeriksaan harian tetapi mengunduh lewat tombol <strong>Update iAtur</strong> secara manual.</p></details>
 <details><summary>Bagaimana iAtur memastikan installer update aman?</summary><p>Sebelum macOS Installer dibuka, iAtur memeriksa sumber rilis resmi, kecocokan dua checksum, struktur paket, script installer, versi aplikasi, Apple Team ID, dan identitas tanda tangan aplikasi. Paket yang tidak cocok akan ditolak.</p></details>
 <details><summary>Apakah Clean Uninstall menghapus dokumen pribadi?</summary><p>Tidak. Clean Uninstall membatasi penghapusan pada aplikasi dan file terkait yang identitasnya cocok. Dokumen, media, project pribadi, cloud storage, volume eksternal, container documents, aplikasi Apple/sistem, dan iAtur sendiri dilindungi.</p></details>
-<details><summary>Kenapa menu iAtur tidak muncul di OneDrive?</summary><p>Folder OneDrive modern dimiliki oleh File Provider dan macOS dapat menolak menu Finder Sync dari aplikasi lain. Untuk membuat file baru atau membuka Terminal di lokasi tersebut, gunakan tombol <strong>Choose…</strong> di iAtur dan pilih folder OneDrive melalui pemilih folder native.</p></details>
+<details><summary>Di mana tindakan iAtur pada OneDrive atau penyimpanan cloud?</summary><p>iAtur mendaftarkan tindakan Finder untuk OneDrive, iCloud Drive, Dropbox, Google Drive, dan lokasi File Provider lain. Jika penyedia cloud mengambil alih menu klik kanan, buka submenu <strong>Services</strong> untuk menemukan tindakan iAtur. Tombol <strong>Choose…</strong> di aplikasi juga tersedia untuk memilih folder cloud melalui pemilih folder native.</p></details>
 <details><summary>Apakah Cleaning Mode bisa memblokir tombol power atau Touch ID?</summary><p>Tidak sepenuhnya. Tombol power, Touch ID, forced shutdown, dan Lock Screen berada di tingkat sistem dan tidak aman untuk diblokir oleh aplikasi biasa. Cleaning Mode ditujukan untuk membersihkan Mac setelah pengguna masuk.</p></details>
 <details><summary>Bagaimana cara keluar dari Cleaning Mode atau Cat Mode?</summary><p>Tekan tombol Command kiri atau kanan sebanyak enam kali dengan jeda tidak lebih dari satu detik, atau tunggu waktu auto exit yang sudah dipilih.</p></details>
 <details><summary>Bagaimana mendapatkan versi terbaru?</summary><p>Gunakan tombol Download di artikel ini atau klik <strong>Update iAtur</strong> di Settings. Nomor versi terbaru ditampilkan langsung pada tombol dan setiap installer disertai checksum SHA-256.</p></details>
@@ -372,10 +375,10 @@ status: "published"
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon iAtur untuk macOS" width="144" height="144" loading="lazy" />
 <div>
 <strong>Siap mencoba iAtur?</strong>
-<p>Download installer resmi v0.4.49 untuk macOS 14 atau lebih baru.</p>
+<p>Download installer resmi v0.4.52 untuk macOS 14 atau lebih baru.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.49-direct.pkg" download>Download iAtur v0.4.49</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.49-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.52-direct.pkg" download>Download iAtur v0.4.52</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.52-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 </div>

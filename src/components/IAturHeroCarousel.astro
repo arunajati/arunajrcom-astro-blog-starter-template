@@ -1,0 +1,348 @@
+---
+const slides = [
+	{
+		src: '/uploads/blog/2026/10/iatur-macos-app-hero.png',
+		alt: 'Banner aplikasi iAtur untuk macOS',
+		width: 1672,
+		height: 941,
+		fit: 'cover',
+	},
+	{
+		src: '/uploads/iatur/iatur-settings-v0.4.52.webp',
+		alt: 'Tampilan halaman Settings aplikasi iAtur v0.4.52',
+		width: 2024,
+		height: 1448,
+		fit: 'contain',
+	},
+	{
+		src: '/uploads/iatur/iatur-optimizer-v0.4.52.webp',
+		alt: 'Tampilan halaman Optimizer aplikasi iAtur v0.4.52',
+		width: 2024,
+		height: 1448,
+		fit: 'contain',
+	},
+	{
+		src: '/uploads/iatur/iatur-shortcuts-v0.4.52.webp',
+		alt: 'Tampilan halaman Shortcuts aplikasi iAtur v0.4.52',
+		width: 2024,
+		height: 1448,
+		fit: 'contain',
+	},
+	{
+		src: '/uploads/iatur/iatur-tweaks-v0.4.52.webp',
+		alt: 'Tampilan halaman Tweaks aplikasi iAtur v0.4.52',
+		width: 2024,
+		height: 1448,
+		fit: 'contain',
+	},
+] as const;
+---
+
+<div
+	class="iatur-hero-carousel"
+	data-iatur-hero-carousel
+	aria-label="Galeri tampilan aplikasi iAtur"
+	aria-roledescription="carousel"
+>
+	<div class="iatur-hero-viewport">
+		<div class="iatur-hero-track" data-iatur-hero-track tabindex="0">
+			{
+				slides.map((slide, index) => (
+					<figure class="iatur-hero-slide" data-iatur-hero-slide aria-hidden={index === 0 ? 'false' : 'true'}>
+						<img
+							src={slide.src}
+							alt={slide.alt}
+							width={slide.width}
+							height={slide.height}
+							class:list={{ 'is-cover': slide.fit === 'cover' }}
+							loading={index === 0 ? 'eager' : 'lazy'}
+							fetchpriority={index === 0 ? 'high' : 'auto'}
+							decoding="async"
+						/>
+					</figure>
+				))
+			}
+		</div>
+
+		<button class="iatur-hero-arrow is-previous" type="button" data-iatur-hero-previous aria-label="Screenshot sebelumnya">
+			<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7" /></svg>
+		</button>
+		<button class="iatur-hero-arrow is-next" type="button" data-iatur-hero-next aria-label="Screenshot berikutnya">
+			<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 5 7 7-7 7" /></svg>
+		</button>
+	</div>
+
+	<div class="iatur-hero-navigation">
+		<p class="iatur-hero-count" aria-live="polite"><span data-iatur-hero-current>1</span> / {slides.length}</p>
+		<div class="iatur-hero-dots" aria-label="Pilih screenshot">
+			{
+				slides.map((slide, index) => (
+					<button
+						type="button"
+						data-iatur-hero-dot
+						aria-label={`Tampilkan: ${slide.alt}`}
+						aria-current={index === 0 ? 'true' : 'false'}
+					/>
+				))
+			}
+		</div>
+		<p class="iatur-hero-hint">Geser untuk melihat tampilan iAtur</p>
+	</div>
+</div>
+
+<script>
+	document.querySelectorAll<HTMLElement>('[data-iatur-hero-carousel]').forEach((carousel) => {
+		const track = carousel.querySelector<HTMLElement>('[data-iatur-hero-track]');
+		const slides = Array.from(carousel.querySelectorAll<HTMLElement>('[data-iatur-hero-slide]'));
+		const dots = Array.from(carousel.querySelectorAll<HTMLButtonElement>('[data-iatur-hero-dot]'));
+		const currentLabel = carousel.querySelector<HTMLElement>('[data-iatur-hero-current]');
+		const previousButton = carousel.querySelector<HTMLButtonElement>('[data-iatur-hero-previous]');
+		const nextButton = carousel.querySelector<HTMLButtonElement>('[data-iatur-hero-next]');
+
+		if (!track || slides.length === 0) return;
+
+		let currentIndex = 0;
+		let scrollFrame = 0;
+
+		const updateNavigation = (index: number) => {
+			currentIndex = Math.max(0, Math.min(index, slides.length - 1));
+			slides.forEach((slide, slideIndex) => slide.setAttribute('aria-hidden', String(slideIndex !== currentIndex)));
+			dots.forEach((dot, dotIndex) => dot.setAttribute('aria-current', String(dotIndex === currentIndex)));
+			if (currentLabel) currentLabel.textContent = String(currentIndex + 1);
+		};
+
+		const showSlide = (index: number) => {
+			const wrappedIndex = (index + slides.length) % slides.length;
+			track.scrollTo({ left: wrappedIndex * track.clientWidth, behavior: 'smooth' });
+			updateNavigation(wrappedIndex);
+		};
+
+		previousButton?.addEventListener('click', () => showSlide(currentIndex - 1));
+		nextButton?.addEventListener('click', () => showSlide(currentIndex + 1));
+		dots.forEach((dot, index) => dot.addEventListener('click', () => showSlide(index)));
+
+		track.addEventListener('keydown', (event) => {
+			if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+			event.preventDefault();
+			showSlide(currentIndex + (event.key === 'ArrowRight' ? 1 : -1));
+		});
+
+		track.addEventListener(
+			'scroll',
+			() => {
+				cancelAnimationFrame(scrollFrame);
+				scrollFrame = requestAnimationFrame(() => {
+					if (track.clientWidth > 0) updateNavigation(Math.round(track.scrollLeft / track.clientWidth));
+				});
+			},
+			{ passive: true },
+		);
+
+		window.addEventListener('resize', () => track.scrollTo({ left: currentIndex * track.clientWidth }));
+	});
+</script>
+
+<style>
+	.iatur-hero-carousel {
+		width: 100%;
+	}
+
+	.iatur-hero-viewport {
+		position: relative;
+		isolation: isolate;
+		aspect-ratio: 2024 / 1448;
+		overflow: hidden;
+		border: 1px solid rgba(31, 42, 78, 0.12);
+		border-radius: 16px;
+		background: #050505;
+		box-shadow: var(--box-shadow);
+	}
+
+	.iatur-hero-track {
+		display: flex;
+		width: 100%;
+		height: 100%;
+		overflow-x: auto;
+		overflow-y: hidden;
+		scroll-behavior: smooth;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: none;
+		overscroll-behavior-x: contain;
+	}
+
+	.iatur-hero-track::-webkit-scrollbar {
+		display: none;
+	}
+
+	.iatur-hero-track:focus-visible {
+		outline: 3px solid rgba(52, 87, 241, 0.55);
+		outline-offset: -4px;
+	}
+
+	.iatur-hero-slide {
+		flex: 0 0 100%;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		scroll-snap-align: start;
+		scroll-snap-stop: always;
+	}
+
+	.iatur-hero-slide img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		border-radius: 0;
+		object-fit: contain;
+	}
+
+	.iatur-hero-slide img.is-cover {
+		object-fit: cover;
+	}
+
+	.iatur-hero-arrow {
+		position: absolute;
+		top: 50%;
+		z-index: 2;
+		display: grid;
+		place-items: center;
+		width: 2.8rem;
+		height: 2.8rem;
+		padding: 0;
+		border: 1px solid rgba(255, 255, 255, 0.72);
+		border-radius: 999px;
+		color: #202742;
+		background: rgba(255, 255, 255, 0.88);
+		box-shadow: 0 8px 22px rgba(8, 12, 30, 0.22);
+		cursor: pointer;
+		transform: translateY(-50%);
+		transition: background-color 160ms ease, transform 160ms ease;
+		backdrop-filter: blur(8px);
+	}
+
+	.iatur-hero-arrow:hover {
+		background: white;
+		transform: translateY(-50%) scale(1.05);
+	}
+
+	.iatur-hero-arrow:focus-visible {
+		outline: 3px solid rgba(52, 87, 241, 0.55);
+		outline-offset: 3px;
+	}
+
+	.iatur-hero-arrow.is-previous {
+		left: 0.8rem;
+	}
+
+	.iatur-hero-arrow.is-next {
+		right: 0.8rem;
+	}
+
+	.iatur-hero-arrow svg {
+		width: 1.35rem;
+		height: 1.35rem;
+		fill: none;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 2.2;
+	}
+
+	.iatur-hero-navigation {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		gap: 0.85rem;
+		align-items: center;
+		padding: 0.75rem 0.25rem 0;
+	}
+
+	.iatur-hero-count,
+	.iatur-hero-hint {
+		margin: 0;
+		color: #626b82;
+		font-size: 0.82rem;
+		line-height: 1.25;
+	}
+
+	.iatur-hero-count {
+		min-width: 2.5rem;
+		font-variant-numeric: tabular-nums;
+	}
+
+	.iatur-hero-dots {
+		display: flex;
+		gap: 0.45rem;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.iatur-hero-dots button {
+		display: grid;
+		place-items: center;
+		width: 1.5rem;
+		height: 1.5rem;
+		padding: 0;
+		border: 0;
+		border-radius: 999px;
+		background: transparent;
+		cursor: pointer;
+	}
+
+	.iatur-hero-dots button::before {
+		content: '';
+		width: 0.55rem;
+		height: 0.55rem;
+		border-radius: 999px;
+		background: #c6cce2;
+		transition: width 160ms ease, background-color 160ms ease;
+	}
+
+	.iatur-hero-dots button[aria-current='true']::before {
+		width: 1.45rem;
+		background: #3457f1;
+	}
+
+	.iatur-hero-dots button:focus-visible {
+		outline: 3px solid rgba(52, 87, 241, 0.38);
+		outline-offset: 3px;
+	}
+
+	@media (max-width: 620px) {
+		.iatur-hero-viewport {
+			border-radius: 12px;
+		}
+
+		.iatur-hero-arrow {
+			width: 2.35rem;
+			height: 2.35rem;
+		}
+
+		.iatur-hero-arrow.is-previous {
+			left: 0.5rem;
+		}
+
+		.iatur-hero-arrow.is-next {
+			right: 0.5rem;
+		}
+
+		.iatur-hero-hint {
+			display: none;
+		}
+
+		.iatur-hero-navigation {
+			grid-template-columns: auto 1fr auto;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.iatur-hero-track {
+			scroll-behavior: auto;
+		}
+
+		.iatur-hero-arrow,
+		.iatur-hero-dots button::before {
+			transition: none;
+		}
+	}
+</style>

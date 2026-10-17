@@ -73,7 +73,9 @@ const resolvedHeroImage = resolvePostHeroImage({ heroImage, body: body || '' });
 		<main>
 			<article>
 				<div class="hero-image">
-					{resolvedHeroImage && <img width={1020} height={510} src={resolvedHeroImage} alt={heroAlt} />}
+					<slot name="hero">
+						{resolvedHeroImage && <img width={1020} height={510} src={resolvedHeroImage} alt={heroAlt} />}
+					</slot>
 				</div>
 				<div class="prose">
 					<div class="title">

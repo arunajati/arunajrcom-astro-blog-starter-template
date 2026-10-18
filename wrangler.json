@@ -1,4 +1,5 @@
 {
+	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "arunajrcom-astro-blog-starter-template",
 	"compatibility_date": "2025-10-08",
 	"compatibility_flags": ["nodejs_compat"],
@@ -7,6 +8,14 @@
 		"directory": "./dist",
 		"binding": "ASSETS"
 	},
+	"d1_databases": [
+		{
+			"binding": "IATUR_STATS",
+			"database_name": "arunajrcom-iatur-stats",
+			"database_id": "6a5fd153-1ead-4a8c-987e-6a92af4492e4",
+			"migrations_dir": "migrations/iatur-stats"
+		}
+	],
 	"vars": {
 		"CMS_GITHUB_OWNER": "arunajati",
 		"CMS_GITHUB_REPO": "arunajrcom-astro-blog-starter-template",

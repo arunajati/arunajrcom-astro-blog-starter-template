@@ -19,6 +19,10 @@ const { Content } = await render(post);
 </BlogPost>
 
 <script>
+	type IAturStats = {
+		total: number;
+	};
+
 	const donateDialog = document.querySelector<HTMLDialogElement>('[data-iatur-donate-dialog]');
 	const donateOpenButton = document.querySelector<HTMLButtonElement>('[data-iatur-donate-open]');
 	const donateCloseButton = document.querySelector<HTMLButtonElement>('[data-iatur-donate-close]');
@@ -27,5 +31,68 @@ const { Content } = await render(post);
 	donateCloseButton?.addEventListener('click', () => donateDialog?.close());
 	donateDialog?.addEventListener('click', (event) => {
 		if (event.target === donateDialog) donateDialog.close();
+	});
+
+	const interactionCounters = document.querySelectorAll<HTMLElement>('[data-iatur-interaction-count]');
+	let latestInteractionCount = 428;
+
+	const renderInteractionCount = (total: number) => {
+		if (!Number.isFinite(total) || total < latestInteractionCount) return;
+		latestInteractionCount = total;
+		const formattedTotal = new Intl.NumberFormat('id-ID').format(total);
+		interactionCounters.forEach((counter) => {
+			counter.textContent = `${formattedTotal}+`;
+		});
+	};
+
+	const requestStats = async (event?: 'visit' | 'download') => {
+		const response = await fetch('/api/iatur-stats', {
+			method: event ? 'POST' : 'GET',
+			headers: event ? { 'Content-Type': 'application/json' } : undefined,
+			body: event ? JSON.stringify({ event }) : undefined,
+			cache: 'no-store',
+			credentials: 'same-origin',
+			keepalive: event === 'download',
+		});
+
+		if (!response.ok) throw new Error('Statistik iAtur belum tersedia.');
+		const stats = (await response.json()) as IAturStats;
+		renderInteractionCount(stats.total);
+	};
+
+	let visitAlreadyCounted = false;
+	try {
+		visitAlreadyCounted = sessionStorage.getItem('iatur-visit-counted-v1') === 'yes';
+		if (!visitAlreadyCounted) sessionStorage.setItem('iatur-visit-counted-v1', 'pending');
+	} catch {
+		// Privacy-restricted browsers can still use the counter without session deduplication.
+	}
+
+	requestStats(visitAlreadyCounted ? undefined : 'visit')
+		.then(() => {
+			if (!visitAlreadyCounted) {
+				try {
+					sessionStorage.setItem('iatur-visit-counted-v1', 'yes');
+				} catch {
+					// The counter remains usable when sessionStorage is unavailable.
+				}
+			}
+		})
+		.catch(() => {
+			if (!visitAlreadyCounted) {
+				try {
+					sessionStorage.removeItem('iatur-visit-counted-v1');
+				} catch {
+					// Keep the static fallback count when storage is unavailable.
+				}
+			}
+		});
+
+	document.querySelectorAll<HTMLAnchorElement>('a.iatur-download-button[href$=".pkg"]').forEach((button) => {
+		button.addEventListener('click', () => {
+			void requestStats('download').catch(() => {
+				// Download tetap berjalan walaupun pencatatan statistik gagal.
+			});
+		});
 	});
 </script>

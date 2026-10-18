@@ -4,7 +4,7 @@ description: "Panduan lengkap iAtur, aplikasi native macOS untuk Optimizer, Clea
 seoTitle: "iAtur macOS App: Download, Cara Menggunakan & Fitur Terbaru"
 seoDescription: "Download iAtur v0.4.53 dan pelajari cara memakai Clipboard History, Finder, Optimizer, shortcut global, audio, serta pembaruan aman."
 pubDate: "2026-10-02"
-updatedDate: "2026-10-17"
+updatedDate: "2026-10-18"
 heroImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
 seoImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
 permalink: "/iatur"
@@ -12,6 +12,12 @@ status: "published"
 ---
 
 <p class="iatur-lead"><strong>iAtur</strong> adalah aplikasi native untuk macOS yang saya buat agar berbagai pengaturan dan tindakan kecil di Mac terasa lebih cepat, praktis, dan mudah ditemukan. Dari membersihkan cache dengan perlindungan berlapis, menghapus aplikasi beserta file terkait, mengunci keyboard saat dibersihkan, mengatur Finder, sampai membuat shortcut global, semuanya dikumpulkan dalam satu aplikasi ringan.</p>
+
+<div class="iatur-social-proof" data-iatur-social-proof>
+<span class="iatur-social-proof-icon" aria-hidden="true">&#10024;</span>
+<p><strong><span data-iatur-interaction-count>428+</span> interaksi tercatat</strong><br />Sekarang giliran kamu mencoba iAtur!</p>
+<small>Kunjungan artikel dan permintaan download.</small>
+</div>
 
 <div class="iatur-download-card">
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon resmi aplikasi iAtur" width="144" height="144" loading="eager" />
@@ -373,6 +379,12 @@ status: "published"
 <details><summary>Bagaimana mendapatkan versi terbaru?</summary><p>Gunakan tombol Download di artikel ini atau klik <strong>Update iAtur</strong> di Settings. Nomor versi terbaru ditampilkan langsung pada tombol dan setiap installer disertai checksum SHA-256.</p></details>
 </div>
 </section>
+
+<div class="iatur-social-proof" data-iatur-social-proof>
+<span class="iatur-social-proof-icon" aria-hidden="true">&#10024;</span>
+<p><strong><span data-iatur-interaction-count>428+</span> interaksi tercatat</strong><br />Sekarang giliran kamu mencoba iAtur!</p>
+<small>Kunjungan artikel dan permintaan download.</small>
+</div>
 
 <div class="iatur-download-card">
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon iAtur untuk macOS" width="144" height="144" loading="lazy" />

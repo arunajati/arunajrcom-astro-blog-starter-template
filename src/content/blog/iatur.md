@@ -15,8 +15,7 @@ status: "published"
 
 <div class="iatur-social-proof" data-iatur-social-proof>
 <span class="iatur-social-proof-icon" aria-hidden="true">&#10024;</span>
-<p><strong><span data-iatur-interaction-count>428+</span> interaksi tercatat</strong><br />Sekarang giliran kamu mencoba iAtur!</p>
-<small>Kunjungan artikel dan permintaan download.</small>
+<p><strong><span data-iatur-interaction-count>428+</span></strong><br />Sekarang giliran kamu mencoba iAtur!</p>
 </div>
 
 <div class="iatur-download-card">
@@ -382,8 +381,7 @@ status: "published"
 
 <div class="iatur-social-proof" data-iatur-social-proof>
 <span class="iatur-social-proof-icon" aria-hidden="true">&#10024;</span>
-<p><strong><span data-iatur-interaction-count>428+</span> interaksi tercatat</strong><br />Sekarang giliran kamu mencoba iAtur!</p>
-<small>Kunjungan artikel dan permintaan download.</small>
+<p><strong><span data-iatur-interaction-count>428+</span></strong><br />Sekarang giliran kamu mencoba iAtur!</p>
 </div>
 
 <div class="iatur-download-card">

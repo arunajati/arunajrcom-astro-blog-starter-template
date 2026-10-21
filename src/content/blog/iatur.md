@@ -1,8 +1,8 @@
 ---
 title: "iAtur macOS App: Atur macOS Sesuka Hati, Cara Menggunakan, dan Fitur Terbaru"
-description: "Panduan lengkap iAtur, aplikasi native macOS untuk Optimizer, Clean Uninstall, Finder, shortcut, audio, window, pembaruan aman, dan berbagai pengaturan Mac yang praktis."
+description: "Panduan lengkap iAtur, aplikasi native macOS untuk Optimizer, Finder, shortcut, audio, window, Asisten Setup, uninstall aman, dan berbagai pengaturan Mac yang praktis."
 seoTitle: "iAtur macOS App: Download, Cara Menggunakan & Fitur Terbaru"
-seoDescription: "Download iAtur v0.4.56 dan pelajari cara memakai Clipboard History, Finder, Optimizer, shortcut global, audio, serta pembaruan aman."
+seoDescription: "Download iAtur v0.4.59 dan pelajari Asisten Setup, uninstall aman, Clipboard History, Finder, Optimizer, shortcut global, audio, serta pembaruan resmi."
 pubDate: "2026-10-02"
 updatedDate: "2026-10-21"
 heroImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
@@ -21,11 +21,11 @@ status: "published"
 <div class="iatur-download-card">
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon resmi aplikasi iAtur" width="144" height="144" loading="eager" />
 <div>
-<strong>iAtur v0.4.56 untuk macOS</strong>
-<p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 3,7 MB.</p>
+<strong>iAtur v0.4.59 untuk macOS</strong>
+<p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 3,8 MB.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.56-direct.pkg" download>Download iAtur v0.4.56</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.56-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.59-direct.pkg" download>Download iAtur v0.4.59</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.59-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 
@@ -73,16 +73,17 @@ status: "published"
 
 <h3>Download dan instal</h3>
 <ol class="iatur-steps">
-<li>Klik tombol <strong>Download iAtur v0.4.56</strong> di atas.</li>
+<li>Klik tombol <strong>Download iAtur v0.4.59</strong> di atas.</li>
 <li>Setelah file selesai diunduh, buka Finder lalu masuk ke folder Downloads.</li>
-<li>Klik kanan atau Control-klik file <strong>iAtur-v0.4.56-direct.pkg</strong>, pilih <strong>Open</strong>, lalu setujui pemasangan.</li>
-<li>Selesaikan petunjuk installer. iAtur akan dipasang di folder Applications.</li>
-<li>Buka iAtur dari Applications.</li>
+<li>Tekan dan tahan Control, klik file <strong>iAtur-v0.4.59-direct.pkg</strong>, pilih <strong>Open</strong>, lalu pilih <strong>Open</strong> sekali lagi.</li>
+<li>Jika masih diblokir, buka <strong>System Settings → Privacy &amp; Security → Open Anyway</strong>, lalu buka kembali paketnya.</li>
+<li>Selesaikan petunjuk Installer. iAtur akan dipasang di folder Applications.</li>
+<li>Buka iAtur dari Applications dan ikuti Asisten Setup.</li>
 </ol>
-<div class="iatur-note"><strong>Kenapa perlu Control-klik lalu Open?</strong><br />Versi ini memakai kanal kompatibilitas Apple Development dan bukan rilis Mac App Store atau installer yang dinotariskan untuk distribusi publik. macOS dapat meminta konfirmasi tambahan pada pemasangan pertama. Unduh hanya melalui tombol resmi di artikel ini.</div>
+<div class="iatur-note"><strong>Kenapa perlu Control-klik lalu Open?</strong><br />Versi ini memakai kanal kompatibilitas Apple Development dan bukan rilis Mac App Store atau installer yang dinotariskan untuk distribusi publik. macOS dapat meminta konfirmasi tambahan pada pemasangan pertama. Unduh hanya melalui tombol resmi di artikel ini. Jangan mematikan Gatekeeper dan jangan memakai perintah Terminal untuk memasang iAtur.</div>
 
 <h3>Izin macOS</h3>
-<p>Cleaning Mode, Cat Mode, Finder Cut &amp; Paste, dan Delete Key to Trash membutuhkan izin <strong>Accessibility</strong> dan <strong>Input Monitoring</strong>. iAtur akan membuka bagian pengaturan yang diperlukan ketika fitur diaktifkan. Nyalakan izin untuk iAtur, kembali ke aplikasi, lalu ikuti konfirmasi yang tampil. Pada kondisi tertentu macOS meminta aplikasi ditutup dan dibuka kembali.</p>
+<p>Pada instalasi baru, Asisten Setup menawarkan permintaan <strong>Accessibility</strong> dan <strong>Input Monitoring</strong> melalui dialog resmi macOS serta akses langsung ke pengaturan Finder Extension. Setiap izin bersifat opsional sampai fitur terkait digunakan, statusnya diperbarui otomatis saat Anda kembali ke iAtur, dan panduan dapat dibuka lagi melalui <strong>Settings → Panduan Setup</strong>. Cleaning Mode, Cat Mode, Finder Cut &amp; Paste, dan Delete Key to Trash termasuk fitur yang memerlukan izin tersebut.</p>
 </section>
 
 <section class="iatur-guide-section iatur-feature-catalog" aria-labelledby="fitur-iatur">
@@ -261,7 +262,7 @@ status: "published"
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Kontrol Cepat dari Menu Bar</span></summary>
 <div class="iatur-accordion-content">
 <p>Aktifkan <strong>Show Menu Bar Icon</strong> di Settings untuk menampilkan ikon iA yang mengikuti tampilan macOS. Menu ini tetap dapat digunakan ketika jendela utama ditutup.</p>
-<p>Dari menu bar Anda dapat menjalankan Cleaning Mode dengan pilihan waktu dan countdown, tindakan Finder, membuka atau menjeda Clipboard History, menghapus clipboard, mengambil screenshot native, mengontrol audio, menjalankan Keep Awake dan Optimizer, menutup semua jendela Finder, melihat status fitur, memeriksa update, membuka Settings atau About, dan keluar dari iAtur.</p>
+<p>Dari menu bar Anda dapat menjalankan Cleaning Mode dengan pilihan waktu dan countdown; tindakan Finder termasuk New Markdown File; Clipboard History dan Auto Clear Clipboard; screenshot, Show Desktop, Start Screen Saver, dan Sleep Displays; Color Picker yang menyalin HEX serta RGB; pengaturan window Center, Minimize, Isolate, dan Undo; kontrol audio; Keep Awake; Optimizer; status fitur; update; Settings; About; dan Quit.</p>
 </div>
 </details>
 
@@ -286,8 +287,10 @@ status: "published"
 <li><strong>Backup Settings dan Restore Settings:</strong> menyimpan pengaturan ke file JSON dan memulihkannya kembali. Backup berukuran berlebihan, berupa symlink, atau tidak aman akan ditolak.</li>
 <li><strong>Automatic Updates:</strong> aktif secara default dan memeriksa kanal rilis biner publik resmi maksimal sekali sehari. Paket hanya diteruskan jika checksum, struktur paket, script installer, versi, Apple Team ID, dan identitas tanda tangan cocok.</li>
 <li><strong>Update iAtur:</strong> klik untuk memeriksa, mengunduh, dan memverifikasi installer resmi secara manual. Dialog menampilkan versi, progress unduhan nyata, dan petunjuk koneksi; macOS Installer tetap meminta konfirmasi sebelum pemasangan.</li>
+<li><strong>Panduan Setup:</strong> buka kembali Asisten Setup untuk memeriksa status Accessibility, Input Monitoring, dan Finder Extension serta membuka pengaturan macOS yang diperlukan.</li>
 <li><strong>Turn Off All Tweaks:</strong> mematikan seluruh tweak aktif dengan aman.</li>
 <li><strong>Reset iAtur:</strong> mengembalikan seluruh pengaturan ke kondisi awal.</li>
+<li><strong>Uninstall iAtur:</strong> buka <strong>Settings → Uninstall iAtur</strong>, matikan Finder Extension melalui pengaturan yang dibuka, lalu pilih <strong>Bersihkan &amp; Uninstall</strong>. iAtur mematikan tweak dan Launch at Login, membersihkan pengaturan, cache, paket updater lama, dan Clipboard History miliknya, lalu memindahkan aplikasi resmi ke Trash. File pribadi serta izin Accessibility dan Input Monitoring tidak disentuh.</li>
 </ul>
 <p>Cleaning Mode, Cat Mode, Keep Awake, dan kontrol sementara lainnya tidak pernah dinyalakan otomatis oleh iAtur.</p>
 </div>
@@ -298,6 +301,9 @@ status: "published"
 <section class="iatur-guide-section" aria-labelledby="version-changes-log">
 <div class="iatur-section-heading"><span aria-hidden="true">05</span><h2 id="version-changes-log">Version Changes Log</h2></div>
 <ul class="iatur-version-list">
+<li><strong>v0.4.59 — 21 Oktober 2026:</strong> menambahkan <strong>Settings → Uninstall iAtur</strong> dengan alur terpandu yang memastikan Finder Extension dimatikan, menonaktifkan tweak dan Launch at Login, membersihkan hanya pengaturan, cache, paket updater, serta Clipboard History milik iAtur, lalu memindahkan aplikasi resmi ke Trash. File pribadi dan izin macOS tidak direset. Rilis ini juga membersihkan paket updater lama secara otomatis serta membatasi pembersihan development hanya pada bundle dan lokasi debug milik iAtur tanpa menyentuh extension resmi di Applications.</li>
+<li><strong>v0.4.58 — 21 Oktober 2026:</strong> menghadirkan Asisten Setup otomatis untuk instalasi baru tanpa mengganggu pengguna lama saat update. Asisten meminta Accessibility dan Input Monitoring melalui dialog resmi macOS, membuka pengaturan Finder Extension, memperbarui status izin ketika pengguna kembali, mengizinkan setiap langkah ditunda, dan dapat dibuka kembali melalui Settings → Panduan Setup.</li>
+<li><strong>v0.4.57 — 21 Oktober 2026:</strong> melengkapi menu bar dengan Color Picker berformat HEX dan RGB; Show Desktop, Start Screen Saver, dan Sleep Displays; submenu Windows untuk Center, Minimize, Isolate, dan Undo Window Changes; Auto Clear Clipboard; serta New Markdown File. Penanda selesai-update juga disesuaikan untuk filesystem macOS terbaru dengan penulisan atomik dan izin hanya untuk pemilik.</li>
 <li><strong>v0.4.56 — 21 Oktober 2026:</strong> mengganti tebakan nama aplikasi pengontrol monitor dengan status kompatibilitas Fine Volume &amp; Brightness yang umum dan lebih akurat. Status menyesuaikan otomatis saat monitor eksternal tersambung atau dilepas, memastikan kontrol native macOS dilaporkan dengan pasti, dan menjelaskan secara hati-hati bahwa hasil pada monitor eksternal dapat mengikuti aplikasi pengontrolnya. Jika konfigurasi layar tidak dapat dibaca, iAtur tidak menjanjikan kontrol yang belum terverifikasi. Observer perubahan layar juga dibersihkan mengikuti lifecycle fitur agar listener lama tidak tertinggal.</li>
 <li><strong>v0.4.55 — 21 Oktober 2026:</strong> menambahkan deteksi monitor eksternal dan aplikasi pengontrol layar untuk menjelaskan kepemilikan tombol media. Pendekatan penyebutan aplikasi tertentu ini kemudian diganti oleh status kompatibilitas umum yang lebih akurat pada v0.4.56.</li>
 <li><strong>v0.4.54 — 19 Oktober 2026:</strong> memperbaiki Launch at Login dan operasi background agar runtime, menu bar, serta pemulihan tweak tersimpan dimulai langsung dari siklus aplikasi walaupun macOS membuka iAtur tanpa jendela. Menu bar diperiksa dan dipulihkan secara mandiri, sedangkan Fine Volume &amp; Brightness, Delete Key to Trash, Finder Cut &amp; Paste, dan Open Files with Return mencoba pulih bertahap hingga 30 detik setelah login tanpa mengulang fitur yang sudah aktif. Cleaning Mode dan Cat Mode tetap tidak pernah aktif otomatis.</li>
@@ -367,7 +373,7 @@ status: "published"
 <details><summary>Apakah iAtur gratis?</summary><p>Ya. Installer iAtur dapat diunduh gratis langsung dari artikel ini.</p></details>
 <details><summary>macOS versi berapa yang didukung?</summary><p>iAtur memerlukan macOS 14 Sonoma atau versi yang lebih baru serta dapat berjalan pada Mac Intel maupun Apple silicon.</p></details>
 <details><summary>Apakah iAtur tersedia di Mac App Store?</summary><p>Belum. Versi saat ini didistribusikan melalui installer resmi di GitHub Release.</p></details>
-<details><summary>Apakah aman memberi izin Accessibility dan Input Monitoring?</summary><p>Izin tersebut diperlukan hanya untuk fitur yang mengendalikan atau membaca input, seperti Cleaning Mode dan tweak Finder. iAtur memakai API publik macOS dan tidak memasang daemon, kernel extension, atau helper dengan akses root.</p></details>
+<details><summary>Apakah aman memberi izin Accessibility dan Input Monitoring?</summary><p>Izin tersebut diperlukan hanya untuk fitur yang mengendalikan atau membaca input, seperti Cleaning Mode dan tweak Finder. Pada instalasi baru, Asisten Setup meminta izin melalui dialog resmi macOS dan setiap langkah dapat ditunda. iAtur memakai API publik macOS dan tidak memasang daemon, kernel extension, atau helper dengan akses root.</p></details>
 <details><summary>Apa yang terjadi jika macOS menghentikan pemantauan input sementara?</summary><p>Untuk Fine Volume &amp; Brightness, Delete Key to Trash, Finder Cut &amp; Paste, dan Open Files with Return, iAtur mencoba mengaktifkan kembali pemantauan input atau membangunnya ulang secara otomatis. Switch tetap menyala selama pemulihan. Setelah login, tweak tersimpan juga diberi waktu hingga 30 detik agar layanan macOS siap. Jika beberapa percobaan tetap gagal, fitur dihentikan dan iAtur meminta Anda memeriksa izin macOS lalu menyalakannya kembali. Cleaning Mode dan Cat Mode memakai aturan lebih ketat: keduanya langsung berhenti dan mengembalikan input normal jika pemblokiran input tidak sehat.</p></details>
 <details><summary>Apakah Fine Volume &amp; Brightness bekerja pada monitor eksternal?</summary><p>iAtur memastikan langkah halus untuk kontrol native macOS. Saat monitor eksternal tersambung, status fitur menyesuaikan otomatis. Hasil tombol volume atau kecerahan pada monitor eksternal dapat mengikuti aplikasi pengontrol monitor yang Anda gunakan, sehingga iAtur tidak menjanjikan kontrol eksternal yang tidak dapat diverifikasi.</p></details>
 <details><summary>Apakah update menghapus izin macOS?</summary><p>Pembaruan rutin dengan identitas aplikasi yang sama dirancang untuk mempertahankan izin. Jika berasal dari build lama dengan identitas berbeda, izin lama mungkin perlu dihapus lalu ditambahkan kembali satu kali.</p></details>
@@ -376,6 +382,7 @@ status: "published"
 <details><summary>Apakah iAtur memeriksa dan memasang update secara otomatis?</summary><p>Automatic Updates aktif secara default dan memeriksa kanal rilis biner publik resmi maksimal sekali sehari. Jika versi baru ditemukan, iAtur dapat mengunduh dan memverifikasi paket secara otomatis, tetapi macOS Installer tetap meminta persetujuan Anda sebelum memasang. Matikan Automatic Updates bila ingin tetap mendapat pemeriksaan harian tetapi mengunduh lewat tombol <strong>Update iAtur</strong> secara manual.</p></details>
 <details><summary>Bagaimana iAtur memastikan installer update aman?</summary><p>Sebelum macOS Installer dibuka, iAtur memeriksa sumber rilis resmi, kecocokan dua checksum, struktur paket, script installer, versi aplikasi, Apple Team ID, dan identitas tanda tangan aplikasi. Paket yang tidak cocok akan ditolak.</p></details>
 <details><summary>Apakah Clean Uninstall menghapus dokumen pribadi?</summary><p>Tidak. Clean Uninstall membatasi penghapusan pada aplikasi dan file terkait yang identitasnya cocok. Dokumen, media, project pribadi, cloud storage, volume eksternal, container documents, aplikasi Apple/sistem, dan iAtur sendiri dilindungi.</p></details>
+<details><summary>Bagaimana cara menghapus iAtur sampai bersih?</summary><p>Buka <strong>Settings → Uninstall iAtur</strong>. Ikuti panduan untuk mematikan Finder Extension, lalu pilih <strong>Bersihkan &amp; Uninstall</strong>. iAtur akan mematikan tweak dan Launch at Login, menghapus pengaturan, cache, paket updater, serta Clipboard History miliknya, memindahkan aplikasi resmi ke Trash, lalu menutup. File pribadi tidak disentuh dan izin Accessibility maupun Input Monitoring sengaja tidak direset agar instalasi ulang tidak menyulitkan.</p></details>
 <details><summary>Di mana tindakan iAtur pada OneDrive atau penyimpanan cloud?</summary><p>iAtur mendaftarkan tindakan Finder untuk OneDrive, iCloud Drive, Dropbox, Google Drive, dan lokasi File Provider lain. Jika penyedia cloud mengambil alih menu klik kanan, buka submenu <strong>Services</strong> untuk menemukan tindakan iAtur. Tombol <strong>Choose…</strong> di aplikasi juga tersedia untuk memilih folder cloud melalui pemilih folder native.</p></details>
 <details><summary>Apakah Cleaning Mode bisa memblokir tombol power atau Touch ID?</summary><p>Tidak sepenuhnya. Tombol power, Touch ID, forced shutdown, dan Lock Screen berada di tingkat sistem dan tidak aman untuk diblokir oleh aplikasi biasa. Cleaning Mode ditujukan untuk membersihkan Mac setelah pengguna masuk.</p></details>
 <details><summary>Bagaimana cara keluar dari Cleaning Mode atau Cat Mode?</summary><p>Tekan tombol Command kiri atau kanan sebanyak enam kali dengan jeda tidak lebih dari satu detik, atau tunggu waktu auto exit yang sudah dipilih.</p></details>
@@ -392,22 +399,22 @@ status: "published"
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon iAtur untuk macOS" width="144" height="144" loading="lazy" />
 <div>
 <strong>Siap mencoba iAtur?</strong>
-<p>Download installer resmi v0.4.56 untuk macOS 14 atau lebih baru.</p>
+<p>Download installer resmi v0.4.59 untuk macOS 14 atau lebih baru.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.56-direct.pkg" download>Download iAtur v0.4.56</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.56-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.59-direct.pkg" download>Download iAtur v0.4.59</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.59-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 </div>
 
 <section class="iatur-guide-section iatur-policy-section" id="agreement-disclaimer-and-privacy-policy" aria-labelledby="agreement-disclaimer-and-privacy-policy-title">
 <div class="iatur-section-heading"><span aria-hidden="true">07</span><h2 id="agreement-disclaimer-and-privacy-policy-title">Agreement, Disclaimer, dan Privacy Policy.</h2></div>
-<p class="iatur-policy-updated">Berlaku sejak: 16 Oktober 2026</p>
+<p class="iatur-policy-updated">Berlaku sejak: 21 Oktober 2026</p>
 <div class="iatur-policy-intro"><strong>Ringkasan:</strong> dengan mengunduh, memasang, mencoba, atau menggunakan iAtur, Anda menyatakan telah membaca dan menyetujui ketentuan berikut. Gunakan iAtur secara bertanggung jawab, periksa setiap tindakan sebelum dijalankan, dan simpan backup data penting.</div>
 
 <div class="iatur-policy-block">
 <h3>Agreement</h3>
-<p>iAtur adalah utilitas macOS yang membantu pengguna menjalankan pengaturan, shortcut, tindakan Finder, pengelolaan window dan input, Optimizer, Clean Uninstall, serta fitur kenyamanan lainnya. Dengan mengunduh, memasang, mengakses, mencoba, atau menggunakan iAtur, Anda dianggap memahami fungsi yang dipilih dan menyetujui Agreement, Disclaimer, dan Privacy Policy ini.</p>
+<p>iAtur adalah utilitas macOS yang membantu pengguna menjalankan pengaturan, shortcut, tindakan Finder, pengelolaan window dan input, Optimizer, Clean Uninstall, self-uninstall terpandu, serta fitur kenyamanan lainnya. Dengan mengunduh, memasang, mengakses, mencoba, atau menggunakan iAtur, Anda dianggap memahami fungsi yang dipilih dan menyetujui Agreement, Disclaimer, dan Privacy Policy ini.</p>
 <ul>
 <li>Anda hanya akan menggunakan iAtur pada Mac yang Anda miliki atau yang secara sah boleh Anda kelola, untuk tujuan yang sah dan tidak merugikan pihak lain.</li>
 <li>Anda bertanggung jawab memilih fitur, memeriksa peringatan dan hasil pemindaian, menjaga backup data penting, serta memastikan aplikasi, dokumen, dan pekerjaan aktif sudah disimpan sebelum menjalankan tindakan yang dapat mengubah file, aplikasi, pengaturan, input, atau kondisi sistem.</li>
@@ -428,12 +435,12 @@ status: "published"
 <h3>Privacy Policy</h3>
 <p>iAtur dirancang dengan pemrosesan lokal sebagai prinsip utama. iAtur tidak mewajibkan akun, tidak menyertakan SDK analytics, iklan, pelacakan, atau pelaporan crash, serta tidak mengirim telemetry penggunaan kepada pengembang.</p>
 <ul>
-<li><strong>Data dan file lokal:</strong> pengaturan, shortcut, serta pilihan fitur disimpan pada Mac Anda. File yang dipilih untuk dibandingkan, dibuat, dipindahkan, dibersihkan metadatanya, atau diproses oleh Optimizer dan Clean Uninstall ditangani secara lokal sesuai tindakan yang Anda minta. File backup pengaturan hanya dibuat di lokasi yang Anda pilih.</li>
+<li><strong>Data dan file lokal:</strong> pengaturan, shortcut, serta pilihan fitur disimpan pada Mac Anda. File yang dipilih untuk dibandingkan, dibuat, dipindahkan, dibersihkan metadatanya, atau diproses oleh Optimizer dan Clean Uninstall ditangani secara lokal sesuai tindakan yang Anda minta. File backup pengaturan hanya dibuat di lokasi yang Anda pilih. Fitur Uninstall iAtur menghapus hanya data aplikasi milik iAtur dan tidak menyentuh file pribadi atau mereset izin privasi macOS.</li>
 <li><strong>Clipboard History:</strong> fitur ini nonaktif secara default. Jika diaktifkan, iAtur menyimpan teks, tautan, dan referensi file clipboard secara lokal dalam bentuk terenkripsi, maksimal 100 item selama tujuh hari, dan melewati isi yang ditandai private oleh aplikasi sumber. Clear History menghapus data riwayat beserta kunci enkripsi lokal. Isi Clipboard History tidak dikirim kepada pengembang.</li>
 <li><strong>Izin input dan aksesibilitas:</strong> Accessibility dan Input Monitoring digunakan secara lokal untuk fitur yang memerlukan pengendalian atau pengamatan input, seperti Cleaning Mode, Cat Mode, dan tweak keyboard/Finder. iAtur tidak mengunggah isi input tersebut kepada pengembang.</li>
 <li><strong>Koneksi pembaruan:</strong> iAtur dapat menghubungi kanal GitHub Release resmi untuk pemeriksaan dan pengunduhan update. Automatic Updates aktif secara default dan pemeriksaan dijadwalkan paling banyak sekali sehari; Anda dapat mematikannya di Settings. Seperti koneksi internet pada umumnya, GitHub dan penyedia jaringan dapat menerima data teknis standar seperti alamat IP, waktu permintaan, dan informasi koneksi sesuai kebijakan mereka sendiri.</li>
 <li><strong>Tautan dan layanan pihak ketiga:</strong> tautan QRIS, Instagram, Threads, LinkedIn, GitHub, atau situs lain akan membuka layanan di luar iAtur. Pembayaran donasi diproses oleh aplikasi pembayaran, bank, atau penyelenggara QRIS yang Anda gunakan, bukan oleh iAtur. Penggunaan layanan tersebut tunduk pada ketentuan dan kebijakan privasi masing-masing penyedia.</li>
-<li><strong>Penyimpanan oleh pengembang:</strong> karena iAtur tidak mengirim analytics, telemetry, Clipboard History, atau file pribadi kepada pengembang, pengembang tidak menyimpan data penggunaan atau isi file Anda melalui aplikasi. Data lokal dapat Anda kelola dengan Clear History, Reset iAtur, menghapus backup yang dibuat, mencabut izin di System Settings, atau menghapus aplikasi.</li>
+<li><strong>Penyimpanan oleh pengembang:</strong> karena iAtur tidak mengirim analytics, telemetry, Clipboard History, atau file pribadi kepada pengembang, pengembang tidak menyimpan data penggunaan atau isi file Anda melalui aplikasi. Data lokal dapat Anda kelola dengan Clear History, Reset iAtur, menghapus backup yang dibuat, mencabut izin di System Settings, atau memakai Settings → Uninstall iAtur.</li>
 </ul>
 <p>Jika praktik data iAtur berubah pada versi mendatang, bagian ini akan diperbarui sebelum atau bersamaan dengan perubahan tersebut. Pertanyaan mengenai ketentuan atau privasi dapat disampaikan melalui kanal kontak resmi yang tercantum di iAtur atau arunajr.com.</p>
 </div>

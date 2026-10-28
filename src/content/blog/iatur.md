@@ -2,9 +2,9 @@
 title: "iAtur macOS App: Atur macOS Sesuka Hati, Cara Menggunakan, dan Fitur Terbaru"
 description: "Panduan lengkap iAtur, aplikasi native macOS untuk Optimizer, Finder, shortcut, audio, window, Asisten Setup, uninstall aman, dan berbagai pengaturan Mac yang praktis."
 seoTitle: "iAtur macOS App: Download, Cara Menggunakan & Fitur Terbaru"
-seoDescription: "Download iAtur v0.4.59 dan pelajari Asisten Setup, uninstall aman, Clipboard History, Finder, Optimizer, shortcut global, audio, serta pembaruan resmi."
+seoDescription: "Download iAtur v0.4.61 dan pelajari Menu Bar Access, Asisten Setup, uninstall aman, Clipboard History, Finder, Optimizer, shortcut global, serta pembaruan resmi."
 pubDate: "2026-10-02"
-updatedDate: "2026-10-21"
+updatedDate: "2026-10-28"
 heroImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
 seoImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
 permalink: "/iatur"
@@ -21,11 +21,11 @@ status: "published"
 <div class="iatur-download-card">
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon resmi aplikasi iAtur" width="144" height="144" loading="eager" />
 <div>
-<strong>iAtur v0.4.59 untuk macOS</strong>
-<p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 3,8 MB.</p>
+<strong>iAtur v0.4.61 untuk macOS</strong>
+<p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 3,9 MB.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.59-direct.pkg" download>Download iAtur v0.4.59</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.59-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.61-direct.pkg" download>Download iAtur v0.4.61</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.61-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 
@@ -73,9 +73,9 @@ status: "published"
 
 <h3>Download dan instal</h3>
 <ol class="iatur-steps">
-<li>Klik tombol <strong>Download iAtur v0.4.59</strong> di atas.</li>
+<li>Klik tombol <strong>Download iAtur v0.4.61</strong> di atas.</li>
 <li>Setelah file selesai diunduh, buka Finder lalu masuk ke folder Downloads.</li>
-<li>Tekan dan tahan Control, klik file <strong>iAtur-v0.4.59-direct.pkg</strong>, pilih <strong>Open</strong>, lalu pilih <strong>Open</strong> sekali lagi.</li>
+<li>Tekan dan tahan Control, klik file <strong>iAtur-v0.4.61-direct.pkg</strong>, pilih <strong>Open</strong>, lalu pilih <strong>Open</strong> sekali lagi.</li>
 <li>Jika masih diblokir, buka <strong>System Settings → Privacy &amp; Security → Open Anyway</strong>, lalu buka kembali paketnya.</li>
 <li>Selesaikan petunjuk Installer. iAtur akan dipasang di folder Applications.</li>
 <li>Buka iAtur dari Applications dan ikuti Asisten Setup.</li>
@@ -201,6 +201,15 @@ status: "published"
 </details>
 
 <details class="iatur-feature-accordion" name="iatur-features">
+<summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Menu Bar Access</span></summary>
+<div class="iatur-accordion-content">
+<p><strong>Menu Bar Access</strong> membantu membuka ikon aplikasi pihak ketiga yang tertutup notch atau tidak muat di menu bar, tanpa memindahkan pointer, mengubah susunan ikon, atau meminta izin Screen Recording. Fitur ini memakai izin Accessibility yang sudah digunakan iAtur.</p>
+<ol class="iatur-steps"><li>Klik ikon iAtur di menu bar.</li><li>Buka submenu <strong>Menu Bar Access</strong>.</li><li>Pilih nama aplikasi untuk membuka ikon menu bar-nya. Jika satu aplikasi mempunyai beberapa ikon, pilih ikon yang diinginkan dari submenu aplikasi tersebut.</li><li>Pilih <strong>Cari Semua…</strong> untuk membuka panel pencarian, atau <strong>Segarkan Daftar</strong> setelah aplikasi baru dijalankan.</li></ol>
+<p>Daftar langsung hanya menampilkan aplikasi pihak ketiga. Clock, Control Center, Spotlight, Siri, indikator lokasi, dan komponen macOS lain sengaja dikecualikan. Panel <strong>Cari Semua</strong> dapat dibuka juga dari <strong>Shortcuts → Menu Bar</strong>, tombol Open, atau shortcut global yang Anda rekam sendiri; panel tetap berjalan terpisah ketika jendela utama iAtur ditutup.</p>
+</div>
+</details>
+
+<details class="iatur-feature-accordion" name="iatur-features">
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Clipboard</span></summary>
 <div class="iatur-accordion-content">
 <ul>
@@ -262,7 +271,7 @@ status: "published"
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Kontrol Cepat dari Menu Bar</span></summary>
 <div class="iatur-accordion-content">
 <p>Aktifkan <strong>Show Menu Bar Icon</strong> di Settings untuk menampilkan ikon iA yang mengikuti tampilan macOS. Menu ini tetap dapat digunakan ketika jendela utama ditutup.</p>
-<p>Dari menu bar Anda dapat menjalankan Cleaning Mode dengan pilihan waktu dan countdown; tindakan Finder termasuk New Markdown File; Clipboard History dan Auto Clear Clipboard; screenshot, Show Desktop, Start Screen Saver, dan Sleep Displays; Color Picker yang menyalin HEX serta RGB; pengaturan window Center, Minimize, Isolate, dan Undo; kontrol audio; Keep Awake; Optimizer; status fitur; update; Settings; About; dan Quit.</p>
+<p>Dari menu bar Anda dapat membuka submenu Menu Bar Access untuk aplikasi pihak ketiga; menjalankan Cleaning Mode dengan pilihan waktu dan countdown; tindakan Finder termasuk New Markdown File; Clipboard History dan Auto Clear Clipboard; screenshot, Show Desktop, Start Screen Saver, dan Sleep Displays; Color Picker yang menyalin HEX serta RGB; pengaturan window Center, Minimize, Isolate, dan Undo; kontrol audio; Keep Awake; Optimizer; status fitur; update; Settings; About; dan Quit.</p>
 </div>
 </details>
 
@@ -301,6 +310,8 @@ status: "published"
 <section class="iatur-guide-section" aria-labelledby="version-changes-log">
 <div class="iatur-section-heading"><span aria-hidden="true">05</span><h2 id="version-changes-log">Version Changes Log</h2></div>
 <ul class="iatur-version-list">
+<li><strong>v0.4.61 — 26 Oktober 2026:</strong> memindahkan Menu Bar Access menjadi submenu native langsung di menu iAtur, menampilkan hanya aplikasi pihak ketiga, dan mengecualikan Clock, Control Center, Spotlight, Siri, indikator lokasi, serta komponen macOS lain. Beberapa ikon milik aplikasi yang sama dikelompokkan tanpa kehilangan akses ke setiap ikon. Cari Semua tetap tersedia sebagai panel pencarian independen yang stabil saat jendela utama ditutup, sedangkan Segarkan Daftar memperbarui aplikasi yang sedang berjalan.</li>
+<li><strong>v0.4.60 — 26 Oktober 2026:</strong> memperkenalkan Menu Bar Access untuk mencari dan membuka ikon yang tertutup notch atau kehabisan ruang tanpa memindahkan pointer maupun mengubah susunan ikon. Fitur tersedia dari menu iAtur dan Shortcuts → Menu Bar, mendukung shortcut global, memakai Accessibility yang sudah ada, serta tidak memerlukan Screen Recording.</li>
 <li><strong>v0.4.59 — 21 Oktober 2026:</strong> menambahkan <strong>Settings → Uninstall iAtur</strong> dengan alur terpandu yang memastikan Finder Extension dimatikan, menonaktifkan tweak dan Launch at Login, membersihkan hanya pengaturan, cache, paket updater, serta Clipboard History milik iAtur, lalu memindahkan aplikasi resmi ke Trash. File pribadi dan izin macOS tidak direset. Rilis ini juga membersihkan paket updater lama secara otomatis serta membatasi pembersihan development hanya pada bundle dan lokasi debug milik iAtur tanpa menyentuh extension resmi di Applications.</li>
 <li><strong>v0.4.58 — 21 Oktober 2026:</strong> menghadirkan Asisten Setup otomatis untuk instalasi baru tanpa mengganggu pengguna lama saat update. Asisten meminta Accessibility dan Input Monitoring melalui dialog resmi macOS, membuka pengaturan Finder Extension, memperbarui status izin ketika pengguna kembali, mengizinkan setiap langkah ditunda, dan dapat dibuka kembali melalui Settings → Panduan Setup.</li>
 <li><strong>v0.4.57 — 21 Oktober 2026:</strong> melengkapi menu bar dengan Color Picker berformat HEX dan RGB; Show Desktop, Start Screen Saver, dan Sleep Displays; submenu Windows untuk Center, Minimize, Isolate, dan Undo Window Changes; Auto Clear Clipboard; serta New Markdown File. Penanda selesai-update juga disesuaikan untuk filesystem macOS terbaru dengan penulisan atomik dan izin hanya untuk pemilik.</li>
@@ -374,6 +385,7 @@ status: "published"
 <details><summary>macOS versi berapa yang didukung?</summary><p>iAtur memerlukan macOS 14 Sonoma atau versi yang lebih baru serta dapat berjalan pada Mac Intel maupun Apple silicon.</p></details>
 <details><summary>Apakah iAtur tersedia di Mac App Store?</summary><p>Belum. Versi saat ini didistribusikan melalui installer resmi di GitHub Release.</p></details>
 <details><summary>Apakah aman memberi izin Accessibility dan Input Monitoring?</summary><p>Izin tersebut diperlukan hanya untuk fitur yang mengendalikan atau membaca input, seperti Cleaning Mode dan tweak Finder. Pada instalasi baru, Asisten Setup meminta izin melalui dialog resmi macOS dan setiap langkah dapat ditunda. iAtur memakai API publik macOS dan tidak memasang daemon, kernel extension, atau helper dengan akses root.</p></details>
+<details><summary>Bagaimana membuka ikon aplikasi yang tertutup notch atau tidak muat di menu bar?</summary><p>Klik ikon iAtur, buka <strong>Menu Bar Access</strong>, lalu pilih aplikasi yang diinginkan. Daftar ini hanya berisi aplikasi pihak ketiga. Gunakan <strong>Cari Semua…</strong> bila daftarnya panjang atau <strong>Segarkan Daftar</strong> setelah membuka aplikasi baru. Fitur memerlukan Accessibility, tetapi tidak memerlukan Screen Recording dan tidak memindahkan pointer atau susunan ikon.</p></details>
 <details><summary>Apa yang terjadi jika macOS menghentikan pemantauan input sementara?</summary><p>Untuk Fine Volume &amp; Brightness, Delete Key to Trash, Finder Cut &amp; Paste, dan Open Files with Return, iAtur mencoba mengaktifkan kembali pemantauan input atau membangunnya ulang secara otomatis. Switch tetap menyala selama pemulihan. Setelah login, tweak tersimpan juga diberi waktu hingga 30 detik agar layanan macOS siap. Jika beberapa percobaan tetap gagal, fitur dihentikan dan iAtur meminta Anda memeriksa izin macOS lalu menyalakannya kembali. Cleaning Mode dan Cat Mode memakai aturan lebih ketat: keduanya langsung berhenti dan mengembalikan input normal jika pemblokiran input tidak sehat.</p></details>
 <details><summary>Apakah Fine Volume &amp; Brightness bekerja pada monitor eksternal?</summary><p>iAtur memastikan langkah halus untuk kontrol native macOS. Saat monitor eksternal tersambung, status fitur menyesuaikan otomatis. Hasil tombol volume atau kecerahan pada monitor eksternal dapat mengikuti aplikasi pengontrol monitor yang Anda gunakan, sehingga iAtur tidak menjanjikan kontrol eksternal yang tidak dapat diverifikasi.</p></details>
 <details><summary>Apakah update menghapus izin macOS?</summary><p>Pembaruan rutin dengan identitas aplikasi yang sama dirancang untuk mempertahankan izin. Jika berasal dari build lama dengan identitas berbeda, izin lama mungkin perlu dihapus lalu ditambahkan kembali satu kali.</p></details>
@@ -399,17 +411,17 @@ status: "published"
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon iAtur untuk macOS" width="144" height="144" loading="lazy" />
 <div>
 <strong>Siap mencoba iAtur?</strong>
-<p>Download installer resmi v0.4.59 untuk macOS 14 atau lebih baru.</p>
+<p>Download installer resmi v0.4.61 untuk macOS 14 atau lebih baru.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.59-direct.pkg" download>Download iAtur v0.4.59</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.59-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.61-direct.pkg" download>Download iAtur v0.4.61</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.61-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 </div>
 
 <section class="iatur-guide-section iatur-policy-section" id="agreement-disclaimer-and-privacy-policy" aria-labelledby="agreement-disclaimer-and-privacy-policy-title">
 <div class="iatur-section-heading"><span aria-hidden="true">07</span><h2 id="agreement-disclaimer-and-privacy-policy-title">Agreement, Disclaimer, dan Privacy Policy.</h2></div>
-<p class="iatur-policy-updated">Berlaku sejak: 21 Oktober 2026</p>
+<p class="iatur-policy-updated">Berlaku sejak: 28 Oktober 2026</p>
 <div class="iatur-policy-intro"><strong>Ringkasan:</strong> dengan mengunduh, memasang, mencoba, atau menggunakan iAtur, Anda menyatakan telah membaca dan menyetujui ketentuan berikut. Gunakan iAtur secara bertanggung jawab, periksa setiap tindakan sebelum dijalankan, dan simpan backup data penting.</div>
 
 <div class="iatur-policy-block">
@@ -438,6 +450,7 @@ status: "published"
 <li><strong>Data dan file lokal:</strong> pengaturan, shortcut, serta pilihan fitur disimpan pada Mac Anda. File yang dipilih untuk dibandingkan, dibuat, dipindahkan, dibersihkan metadatanya, atau diproses oleh Optimizer dan Clean Uninstall ditangani secara lokal sesuai tindakan yang Anda minta. File backup pengaturan hanya dibuat di lokasi yang Anda pilih. Fitur Uninstall iAtur menghapus hanya data aplikasi milik iAtur dan tidak menyentuh file pribadi atau mereset izin privasi macOS.</li>
 <li><strong>Clipboard History:</strong> fitur ini nonaktif secara default. Jika diaktifkan, iAtur menyimpan teks, tautan, dan referensi file clipboard secara lokal dalam bentuk terenkripsi, maksimal 100 item selama tujuh hari, dan melewati isi yang ditandai private oleh aplikasi sumber. Clear History menghapus data riwayat beserta kunci enkripsi lokal. Isi Clipboard History tidak dikirim kepada pengembang.</li>
 <li><strong>Izin input dan aksesibilitas:</strong> Accessibility dan Input Monitoring digunakan secara lokal untuk fitur yang memerlukan pengendalian atau pengamatan input, seperti Cleaning Mode, Cat Mode, dan tweak keyboard/Finder. iAtur tidak mengunggah isi input tersebut kepada pengembang.</li>
+<li><strong>Menu Bar Access:</strong> ketika digunakan, iAtur membaca secara lokal ikon menu bar yang dapat dideteksi beserta nama aplikasi asalnya agar Anda dapat membuka ikon aplikasi pihak ketiga yang tertutup notch atau kehabisan ruang. Data tersebut tidak memerlukan Screen Recording, tidak dikirim kepada pengembang, dan diperbarui ketika Anda memilih Segarkan Daftar.</li>
 <li><strong>Koneksi pembaruan:</strong> iAtur dapat menghubungi kanal GitHub Release resmi untuk pemeriksaan dan pengunduhan update. Automatic Updates aktif secara default dan pemeriksaan dijadwalkan paling banyak sekali sehari; Anda dapat mematikannya di Settings. Seperti koneksi internet pada umumnya, GitHub dan penyedia jaringan dapat menerima data teknis standar seperti alamat IP, waktu permintaan, dan informasi koneksi sesuai kebijakan mereka sendiri.</li>
 <li><strong>Tautan dan layanan pihak ketiga:</strong> tautan QRIS, Instagram, Threads, LinkedIn, GitHub, atau situs lain akan membuka layanan di luar iAtur. Pembayaran donasi diproses oleh aplikasi pembayaran, bank, atau penyelenggara QRIS yang Anda gunakan, bukan oleh iAtur. Penggunaan layanan tersebut tunduk pada ketentuan dan kebijakan privasi masing-masing penyedia.</li>
 <li><strong>Penyimpanan oleh pengembang:</strong> karena iAtur tidak mengirim analytics, telemetry, Clipboard History, atau file pribadi kepada pengembang, pengembang tidak menyimpan data penggunaan atau isi file Anda melalui aplikasi. Data lokal dapat Anda kelola dengan Clear History, Reset iAtur, menghapus backup yang dibuat, mencabut izin di System Settings, atau memakai Settings → Uninstall iAtur.</li>

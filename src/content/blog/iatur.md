@@ -2,7 +2,7 @@
 title: "iAtur macOS App: Atur macOS Sesuka Hati, Cara Menggunakan, dan Fitur Terbaru"
 description: "Panduan lengkap iAtur, aplikasi native macOS untuk Optimizer, Finder, scrolling mouse, shortcut, audio, window, Asisten Setup, uninstall aman, dan berbagai pengaturan Mac yang praktis."
 seoTitle: "iAtur macOS App: Download, Cara Menggunakan & Fitur Terbaru"
-seoDescription: "Download iAtur v0.4.62 dan pelajari Smooth Scrolling, Reverse Scroll, Menu Bar Access, Clipboard History, Finder, Optimizer, serta pembaruan resmi."
+seoDescription: "Download iAtur v0.4.63 dan pelajari Fine Volume & Brightness, Smooth Scrolling, Reverse Scroll, Menu Bar Access, Finder, Optimizer, serta pembaruan resmi."
 pubDate: "2026-10-02"
 updatedDate: "2026-10-30"
 heroImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
@@ -21,11 +21,11 @@ status: "published"
 <div class="iatur-download-card">
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon resmi aplikasi iAtur" width="144" height="144" loading="eager" />
 <div>
-<strong>iAtur v0.4.62 untuk macOS</strong>
+<strong>iAtur v0.4.63 untuk macOS</strong>
 <p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 4 MB.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.62-direct.pkg" download>Download iAtur v0.4.62</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.62-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.63-direct.pkg" download>Download iAtur v0.4.63</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.63-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 
@@ -73,9 +73,9 @@ status: "published"
 
 <h3>Download dan instal</h3>
 <ol class="iatur-steps">
-<li>Klik tombol <strong>Download iAtur v0.4.62</strong> di atas.</li>
+<li>Klik tombol <strong>Download iAtur v0.4.63</strong> di atas.</li>
 <li>Setelah file selesai diunduh, buka Finder lalu masuk ke folder Downloads.</li>
-<li>Tekan dan tahan Control, klik file <strong>iAtur-v0.4.62-direct.pkg</strong>, pilih <strong>Open</strong>, lalu pilih <strong>Open</strong> sekali lagi.</li>
+<li>Tekan dan tahan Control, klik file <strong>iAtur-v0.4.63-direct.pkg</strong>, pilih <strong>Open</strong>, lalu pilih <strong>Open</strong> sekali lagi.</li>
 <li>Jika masih diblokir, buka <strong>System Settings → Privacy &amp; Security → Open Anyway</strong>, lalu buka kembali paketnya.</li>
 <li>Selesaikan petunjuk Installer. iAtur akan dipasang di folder Applications.</li>
 <li>Buka iAtur dari Applications dan ikuti Asisten Setup.</li>
@@ -150,7 +150,7 @@ status: "published"
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Fine Volume &amp; Brightness dan Open Files with Return</span></summary>
 <div class="iatur-accordion-content">
 <ul>
-<li><strong>Fine Volume &amp; Brightness:</strong> aktifkan melalui <strong>Tweaks → System</strong> agar tombol volume dan kecerahan biasa memakai langkah native macOS yang lebih kecil. Kombinasi tombol dengan modifier tetap bekerja seperti semula. Status kompatibilitas menyesuaikan otomatis saat monitor eksternal disambungkan atau dilepas. Pada monitor eksternal, hasil tombol media dapat mengikuti aplikasi pengontrol monitor yang digunakan.</li>
+<li><strong>Fine Volume &amp; Brightness:</strong> ditampilkan dengan deskripsi sederhana <em>“Atur volume dan brightness lebih halus, nggak lompat-lompat.”</em> Aktifkan melalui <strong>Tweaks → System</strong> agar tombol volume dan kecerahan biasa memakai langkah native macOS yang lebih kecil. Kombinasi tombol dengan modifier tetap bekerja seperti semula. Keterangan teknis mengenai monitor eksternal hanya ditampilkan pada konfirmasi aktivasi; hasil tombol media pada monitor eksternal dapat mengikuti aplikasi pengontrol monitor yang digunakan.</li>
 <li><strong>Open Files with Return:</strong> aktifkan melalui <strong>Tweaks → Finder</strong>, pilih file atau folder di Finder, lalu tekan Return untuk membukanya. Return tetap normal ketika mengganti nama, mencari, mengetik, memakai aplikasi lain, atau saat key repeat.</li>
 </ul>
 <p>Kedua fitur membutuhkan Accessibility dan Input Monitoring, serta dapat dipulihkan setelah login hanya jika sebelumnya disetujui dan izin masih tersedia. Selama aktif, iAtur memeriksa kesehatannya secara ringan dan mencoba memulihkan pemantauan input yang dinonaktifkan sementara oleh macOS tanpa membuat switch berkedip mati dan hidup. Jika pemulihan berulang tetap gagal, fitur dihentikan dan iAtur menampilkan petunjuk untuk memeriksa izin.</p>
@@ -323,6 +323,7 @@ status: "published"
 <section class="iatur-guide-section" aria-labelledby="version-changes-log">
 <div class="iatur-section-heading"><span aria-hidden="true">05</span><h2 id="version-changes-log">Version Changes Log</h2></div>
 <ul class="iatur-version-list">
+<li><strong>v0.4.63 — 30 Oktober 2026:</strong> mengembalikan deskripsi pendek Fine Volume &amp; Brightness menjadi <em>“Atur volume dan brightness lebih halus, nggak lompat-lompat.”</em> Deskripsi tetap sama pada layar bawaan maupun monitor eksternal, sedangkan keterangan teknis monitor eksternal dipindahkan ke konfirmasi aktivasi. Seluruh deskripsi pendek di Tweaks, Shortcuts, Optimizer, Settings, Donate, Asisten Setup, Clipboard History, Menu Bar Access, dan alur uninstall turut diaudit. Aturan project dan pengujian regresi ditambahkan agar perubahan fitur, perbaikan, refactor, build, atau rilis tidak diam-diam mengganti teks pendek yang telah disetujui.</li>
 <li><strong>v0.4.62 — 30 Oktober 2026:</strong> menambahkan switch Smooth Scrolling dan Reverse Scroll yang dapat dipakai sendiri-sendiri atau bersamaan untuk roda mouse fisik, tanpa mengubah scrolling native trackpad dan Magic Mouse. Gerakan roda diskret dapat dibuat lebih halus dengan animasi terbatas 60 Hz, arah vertikal maupun horizontal dapat dibalik, dan tombol modifier tetap dipertahankan. Kedua fitur meminta izin lebih dahulu, memulihkan pemantauan input setelah gangguan sementara, berhenti aman jika akses terus ditolak, tampil pada status menu bar, tersimpan dalam backup, serta hanya dipulihkan setelah login ketika Launch at Login aktif.</li>
 <li><strong>v0.4.61 — 26 Oktober 2026:</strong> memindahkan Menu Bar Access menjadi submenu native langsung di menu iAtur, menampilkan hanya aplikasi pihak ketiga, dan mengecualikan Clock, Control Center, Spotlight, Siri, indikator lokasi, serta komponen macOS lain. Beberapa ikon milik aplikasi yang sama dikelompokkan tanpa kehilangan akses ke setiap ikon. Cari Semua tetap tersedia sebagai panel pencarian independen yang stabil saat jendela utama ditutup, sedangkan Segarkan Daftar memperbarui aplikasi yang sedang berjalan.</li>
 <li><strong>v0.4.60 — 26 Oktober 2026:</strong> memperkenalkan Menu Bar Access untuk mencari dan membuka ikon yang tertutup notch atau kehabisan ruang tanpa memindahkan pointer maupun mengubah susunan ikon. Fitur tersedia dari menu iAtur dan Shortcuts → Menu Bar, mendukung shortcut global, memakai Accessibility yang sudah ada, serta tidak memerlukan Screen Recording.</li>
@@ -402,7 +403,7 @@ status: "published"
 <details><summary>Apakah Reverse Scroll juga membalik arah trackpad atau Magic Mouse?</summary><p>Tidak. Smooth Scrolling dan Reverse Scroll hanya memproses gerakan roda mouse fisik yang diskret. Trackpad dan Magic Mouse tetap memakai scrolling native macOS. Kedua fitur dapat diaktifkan sendiri-sendiri atau bersamaan melalui <strong>Tweaks → System</strong>.</p></details>
 <details><summary>Bagaimana membuka ikon aplikasi yang tertutup notch atau tidak muat di menu bar?</summary><p>Klik ikon iAtur, buka <strong>Menu Bar Access</strong>, lalu pilih aplikasi yang diinginkan. Daftar ini hanya berisi aplikasi pihak ketiga. Gunakan <strong>Cari Semua…</strong> bila daftarnya panjang atau <strong>Segarkan Daftar</strong> setelah membuka aplikasi baru. Fitur memerlukan Accessibility, tetapi tidak memerlukan Screen Recording dan tidak memindahkan pointer atau susunan ikon.</p></details>
 <details><summary>Apa yang terjadi jika macOS menghentikan pemantauan input sementara?</summary><p>Untuk Fine Volume &amp; Brightness, Smooth Scrolling, Reverse Scroll, Delete Key to Trash, Finder Cut &amp; Paste, dan Open Files with Return, iAtur mencoba mengaktifkan kembali pemantauan input atau membangunnya ulang secara otomatis. Switch tetap menyala selama pemulihan. Setelah login, tweak tersimpan juga diberi waktu hingga 30 detik agar layanan macOS siap. Jika beberapa percobaan tetap gagal, fitur dihentikan dan iAtur meminta Anda memeriksa izin macOS lalu menyalakannya kembali. Cleaning Mode dan Cat Mode memakai aturan lebih ketat: keduanya langsung berhenti dan mengembalikan input normal jika pemblokiran input tidak sehat.</p></details>
-<details><summary>Apakah Fine Volume &amp; Brightness bekerja pada monitor eksternal?</summary><p>iAtur memastikan langkah halus untuk kontrol native macOS. Saat monitor eksternal tersambung, status fitur menyesuaikan otomatis. Hasil tombol volume atau kecerahan pada monitor eksternal dapat mengikuti aplikasi pengontrol monitor yang Anda gunakan, sehingga iAtur tidak menjanjikan kontrol eksternal yang tidak dapat diverifikasi.</p></details>
+<details><summary>Apakah Fine Volume &amp; Brightness bekerja pada monitor eksternal?</summary><p>iAtur memastikan langkah halus untuk kontrol native macOS. Deskripsi pendek fitur tetap sederhana dan tidak berubah berdasarkan layar yang tersambung. Saat Anda mengaktifkannya, konfirmasi menjelaskan bahwa hasil tombol volume atau kecerahan pada monitor eksternal dapat mengikuti aplikasi pengontrol monitor yang digunakan, sehingga iAtur tidak menjanjikan kontrol eksternal yang tidak dapat diverifikasi.</p></details>
 <details><summary>Apakah update menghapus izin macOS?</summary><p>Pembaruan rutin dengan identitas aplikasi yang sama dirancang untuk mempertahankan izin. Jika berasal dari build lama dengan identitas berbeda, izin lama mungkin perlu dihapus lalu ditambahkan kembali satu kali.</p></details>
 <details><summary>Apakah iAtur mengirim analytics atau data penggunaan?</summary><p>Tidak. iAtur tidak berisi SDK analytics, iklan, atau pelaporan crash. Saat menjalankan alat pembersihan yang didukung, iAtur juga menekan analytics, audit, funding, pemeriksaan update, dan koneksi opsional yang tidak diperlukan.</p></details>
 <details><summary>Apakah Clipboard History aman dan bisa dimatikan?</summary><p>Clipboard History nonaktif secara default. Jika Anda mengaktifkannya, teks, tautan, dan referensi file yang disalin disimpan hanya di Mac dalam bentuk terenkripsi, maksimal 100 item selama tujuh hari. Isi clipboard yang ditandai private dilewati. Anda dapat menjeda fitur atau memilih <strong>Clear History</strong> untuk menghapus riwayat sekaligus kunci enkripsinya. Clipboard History tidak dapat aktif bersamaan dengan Auto Clear Clipboard.</p></details>
@@ -426,10 +427,10 @@ status: "published"
 <img src="/uploads/blog/2026/10/iatur-app-icon.png" alt="Ikon iAtur untuk macOS" width="144" height="144" loading="lazy" />
 <div>
 <strong>Siap mencoba iAtur?</strong>
-<p>Download installer resmi v0.4.62 untuk macOS 14 atau lebih baru.</p>
+<p>Download installer resmi v0.4.63 untuk macOS 14 atau lebih baru.</p>
 <div class="iatur-download-actions">
-<a class="iatur-download-button" href="/downloads/iAtur-v0.4.62-direct.pkg" download>Download iAtur v0.4.62</a>
-<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.62-direct.pkg.sha256" download>Download checksum</a>
+<a class="iatur-download-button" href="/downloads/iAtur-v0.4.63-direct.pkg" download>Download iAtur v0.4.63</a>
+<a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.63-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
 </div>

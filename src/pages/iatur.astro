@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import { render } from 'astro:content';
 import BlogPost from '../layouts/BlogPost.astro';
-import IAturHeroCarousel from '../components/IAturHeroCarousel.astro';
+import IAturHeroImage from '../components/IAturHeroImage.astro';
 
 const post = (await getCollection('blog')).find((entry) => entry.id === 'iatur');
 
@@ -14,8 +14,33 @@ const { Content } = await render(post);
 ---
 
 <BlogPost {...post.data} body={post.body}>
-	<IAturHeroCarousel slot="hero" />
+	<IAturHeroImage slot="hero" />
 	<Content />
+	<dialog class="iatur-screenshot-dialog" data-iatur-screenshot-dialog aria-labelledby="iatur-screenshot-caption">
+		<div class="iatur-screenshot-dialog-shell" data-iatur-screenshot-stage>
+			<button class="iatur-screenshot-dialog-close" type="button" data-iatur-screenshot-close aria-label="Tutup gambar">
+				<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+			</button>
+			<button class="iatur-screenshot-dialog-arrow is-previous" type="button" data-iatur-screenshot-previous aria-label="Gambar sebelumnya">
+				<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7" /></svg>
+			</button>
+			<figure class="iatur-screenshot-dialog-figure">
+				<img
+					src="/uploads/iatur/iatur-macos-app-featured-1672.webp"
+					alt="iAtur, aplikasi pengaturan dan optimizer native untuk macOS"
+					width="1672"
+					height="941"
+					data-iatur-screenshot-image
+					decoding="async"
+				/>
+				<figcaption id="iatur-screenshot-caption" data-iatur-screenshot-caption>iAtur, aplikasi pengaturan dan optimizer native untuk macOS</figcaption>
+			</figure>
+			<button class="iatur-screenshot-dialog-arrow is-next" type="button" data-iatur-screenshot-next aria-label="Gambar berikutnya">
+				<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 5 7 7-7 7" /></svg>
+			</button>
+			<p class="iatur-screenshot-dialog-count" aria-live="polite"><span data-iatur-screenshot-current>1</span> / <span data-iatur-screenshot-total>1</span></p>
+		</div>
+	</dialog>
 </BlogPost>
 
 <script>
@@ -31,6 +56,75 @@ const { Content } = await render(post);
 	donateCloseButton?.addEventListener('click', () => donateDialog?.close());
 	donateDialog?.addEventListener('click', (event) => {
 		if (event.target === donateDialog) donateDialog.close();
+	});
+
+	const screenshotButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-iatur-screenshot-open]'));
+	const screenshotDialog = document.querySelector<HTMLDialogElement>('[data-iatur-screenshot-dialog]');
+	const screenshotImage = screenshotDialog?.querySelector<HTMLImageElement>('[data-iatur-screenshot-image]');
+	const screenshotCaption = screenshotDialog?.querySelector<HTMLElement>('[data-iatur-screenshot-caption]');
+	const screenshotCurrent = screenshotDialog?.querySelector<HTMLElement>('[data-iatur-screenshot-current]');
+	const screenshotTotal = screenshotDialog?.querySelector<HTMLElement>('[data-iatur-screenshot-total]');
+	const screenshotPrevious = screenshotDialog?.querySelector<HTMLButtonElement>('[data-iatur-screenshot-previous]');
+	const screenshotNext = screenshotDialog?.querySelector<HTMLButtonElement>('[data-iatur-screenshot-next]');
+	const screenshotClose = screenshotDialog?.querySelector<HTMLButtonElement>('[data-iatur-screenshot-close]');
+	const screenshotStage = screenshotDialog?.querySelector<HTMLElement>('[data-iatur-screenshot-stage]');
+	let screenshotIndex = 0;
+	let screenshotTrigger: HTMLButtonElement | null = null;
+	let screenshotPointerStart: number | null = null;
+
+	if (screenshotTotal) screenshotTotal.textContent = String(screenshotButtons.length);
+
+	const showScreenshot = (index: number, direction: 'next' | 'previous' = 'next') => {
+		if (!screenshotImage || screenshotButtons.length === 0) return;
+		screenshotIndex = (index + screenshotButtons.length) % screenshotButtons.length;
+		const button = screenshotButtons[screenshotIndex];
+		const source = button.dataset.full;
+		const alt = button.dataset.alt || button.querySelector('img')?.alt || 'Tampilan aplikasi iAtur';
+		if (!source) return;
+
+		screenshotImage.classList.remove('is-next', 'is-previous');
+		void screenshotImage.offsetWidth;
+		screenshotImage.src = source;
+		screenshotImage.alt = alt;
+		screenshotImage.classList.add(direction === 'next' ? 'is-next' : 'is-previous');
+		if (screenshotCaption) screenshotCaption.textContent = alt;
+		if (screenshotCurrent) screenshotCurrent.textContent = String(screenshotIndex + 1);
+	};
+
+	screenshotButtons.forEach((button, index) => {
+		button.addEventListener('click', () => {
+			screenshotTrigger = button;
+			showScreenshot(index);
+			screenshotDialog?.showModal();
+			document.body.classList.add('iatur-lightbox-open');
+			screenshotClose?.focus();
+		});
+	});
+
+	screenshotPrevious?.addEventListener('click', () => showScreenshot(screenshotIndex - 1, 'previous'));
+	screenshotNext?.addEventListener('click', () => showScreenshot(screenshotIndex + 1, 'next'));
+	screenshotClose?.addEventListener('click', () => screenshotDialog?.close());
+	screenshotDialog?.addEventListener('click', (event) => {
+		if (event.target === screenshotDialog) screenshotDialog.close();
+	});
+	screenshotDialog?.addEventListener('close', () => {
+		document.body.classList.remove('iatur-lightbox-open');
+		screenshotTrigger?.focus();
+	});
+	screenshotDialog?.addEventListener('keydown', (event) => {
+		if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+			event.preventDefault();
+			showScreenshot(screenshotIndex + (event.key === 'ArrowRight' ? 1 : -1), event.key === 'ArrowRight' ? 'next' : 'previous');
+		}
+	});
+	screenshotStage?.addEventListener('pointerdown', (event) => {
+		screenshotPointerStart = event.clientX;
+	});
+	screenshotStage?.addEventListener('pointerup', (event) => {
+		if (screenshotPointerStart === null) return;
+		const distance = event.clientX - screenshotPointerStart;
+		screenshotPointerStart = null;
+		if (Math.abs(distance) >= 50) showScreenshot(screenshotIndex + (distance < 0 ? 1 : -1), distance < 0 ? 'next' : 'previous');
 	});
 
 	const interactionCounters = document.querySelectorAll<HTMLElement>('[data-iatur-interaction-count]');

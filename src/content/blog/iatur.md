@@ -94,6 +94,13 @@ status: "published"
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Optimizer: Clean Up</span></summary>
 <div class="iatur-accordion-content">
 <p><strong>Clean Up</strong> memindai lebih dahulu lalu menawarkan kategori cache dan file sementara yang sudah diverifikasi aman. Cakupannya meliputi browser, aplikasi komunikasi dan desain, alat developer, aplikasi media, game, virtualisasi, serta cache pengguna tertentu.</p>
+<figure class="iatur-context-screenshot">
+<button type="button" data-iatur-screenshot-open data-full="/uploads/iatur/v0.4.63/iatur-optimizer-macos-v0.4.63-1800.webp" data-alt="Halaman Optimizer iAtur v0.4.63 di macOS dengan Clean Up, Optimize System, dan Clean Uninstall" aria-label="Perbesar screenshot halaman Optimizer iAtur">
+<img src="/uploads/iatur/v0.4.63/iatur-optimizer-macos-v0.4.63-900.webp" srcset="/uploads/iatur/v0.4.63/iatur-optimizer-macos-v0.4.63-900.webp 900w, /uploads/iatur/v0.4.63/iatur-optimizer-macos-v0.4.63-1800.webp 1800w" sizes="(max-width: 752px) calc(100vw - 2rem), 654px" alt="Halaman Optimizer iAtur v0.4.63 di macOS dengan Clean Up, Optimize System, dan Clean Uninstall" width="1800" height="1224" loading="lazy" decoding="async" />
+<span class="iatur-screenshot-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5" /><path d="m15 15 5 5M10.5 8v5M8 10.5h5" /></svg></span>
+</button>
+<figcaption>Tampilan Optimizer untuk membersihkan, merawat sistem, dan menghapus aplikasi sampai bersih.</figcaption>
+</figure>
 <ol class="iatur-steps"><li>Buka halaman <strong>Optimizer</strong>.</li><li>Klik <strong>Clean Up</strong> dan tunggu pemindaian selesai.</li><li>Pilih kategori yang ingin dibersihkan. Cache aplikasi, browser, aplikasi kreatif, file sementara, dan log lama dipilih secara default; cache developer, package manager, dan Trash harus dipilih sendiri.</li><li>Periksa estimasi ruang dan area yang dilewati demi keamanan, lalu lanjutkan pembersihan.</li></ol>
 <p>Clean Up tidak lagi meminta password administrator. iAtur melewati aplikasi yang sedang aktif serta memeriksa ulang lokasi dan identitas file tepat sebelum penghapusan. Symlink, hardlink, dokumen, project, source media, password, sesi, pengaturan, plug-in, model AI, dependency, dan data penting lain tetap dilindungi.</p>
 </div>
@@ -122,6 +129,13 @@ status: "published"
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Cleaning Mode</span></summary>
 <div class="iatur-accordion-content">
 <p>Cleaning Mode menutup semua layar dengan lapisan hitam—bukan mematikan display—sekaligus memblokir input keyboard, mouse, dan trackpad untuk sementara. Fitur ini cocok saat membersihkan layar dan perangkat input tanpa menekan tombol atau menggerakkan aplikasi secara tidak sengaja.</p>
+<figure class="iatur-context-screenshot">
+<button type="button" data-iatur-screenshot-open data-full="/uploads/iatur/v0.4.63/iatur-tweaks-macos-v0.4.63-1800.webp" data-alt="Halaman Tweaks iAtur v0.4.63 di macOS dengan Cleaning Mode, Cat Mode, Fine Volume, Smooth Scrolling, dan Keep Awake" aria-label="Perbesar screenshot halaman Tweaks iAtur">
+<img src="/uploads/iatur/v0.4.63/iatur-tweaks-macos-v0.4.63-900.webp" srcset="/uploads/iatur/v0.4.63/iatur-tweaks-macos-v0.4.63-900.webp 900w, /uploads/iatur/v0.4.63/iatur-tweaks-macos-v0.4.63-1800.webp 1800w" sizes="(max-width: 752px) calc(100vw - 2rem), 654px" alt="Halaman Tweaks iAtur v0.4.63 di macOS dengan Cleaning Mode, Cat Mode, Fine Volume, Smooth Scrolling, dan Keep Awake" width="1800" height="1224" loading="lazy" decoding="async" />
+<span class="iatur-screenshot-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5" /><path d="m15 15 5 5M10.5 8v5M8 10.5h5" /></svg></span>
+</button>
+<figcaption>Kontrol Tweaks utama iAtur untuk input, scrolling, volume, kecerahan, dan daya.</figcaption>
+</figure>
 <ol class="iatur-steps"><li>Buka <strong>Tweaks → System</strong>.</li><li>Nyalakan <strong>Cleaning Mode</strong>.</li><li>Berikan izin macOS bila diminta, lalu pilih <strong>Iya</strong>.</li><li>Untuk keluar, tekan tombol Command kiri atau kanan sebanyak enam kali. Anda juga dapat menunggu waktu keluar otomatis.</li></ol>
 <p>Tombol fungsi F1–F12 untuk kecerahan, volume, pemutaran, dan fungsi media lain ikut diblokir. Tombol Power/Touch ID tetap berada di bawah kendali macOS dan tidak diblokir. Jika pemblokiran input menjadi tidak sehat, Cleaning Mode langsung berhenti dan mengembalikan input normal sebagai perlindungan fail-safe.</p>
 </div>
@@ -217,6 +231,13 @@ status: "published"
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Menu Bar Access</span></summary>
 <div class="iatur-accordion-content">
 <p><strong>Menu Bar Access</strong> membantu membuka ikon aplikasi pihak ketiga yang tertutup notch atau tidak muat di menu bar, tanpa memindahkan pointer, mengubah susunan ikon, atau meminta izin Screen Recording. Fitur ini memakai izin Accessibility yang sudah digunakan iAtur.</p>
+<figure class="iatur-context-screenshot iatur-context-screenshot-portrait">
+<button type="button" data-iatur-screenshot-open data-full="/uploads/iatur/v0.4.63/iatur-menu-bar-access-macos-v0.4.63-960.webp" data-alt="Panel Menu Bar Access iAtur v0.4.63 untuk mencari ikon aplikasi yang tertutup notch macOS" aria-label="Perbesar screenshot Menu Bar Access iAtur">
+<img src="/uploads/iatur/v0.4.63/iatur-menu-bar-access-macos-v0.4.63-480.webp" srcset="/uploads/iatur/v0.4.63/iatur-menu-bar-access-macos-v0.4.63-480.webp 480w, /uploads/iatur/v0.4.63/iatur-menu-bar-access-macos-v0.4.63-960.webp 960w" sizes="(max-width: 620px) calc(100vw - 2rem), 480px" alt="Panel Menu Bar Access iAtur v0.4.63 untuk mencari ikon aplikasi yang tertutup notch macOS" width="960" height="1040" loading="lazy" decoding="async" />
+<span class="iatur-screenshot-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5" /><path d="m15 15 5 5M10.5 8v5M8 10.5h5" /></svg></span>
+</button>
+<figcaption>Panel pencarian Menu Bar Access untuk menemukan dan membuka ikon aplikasi pihak ketiga.</figcaption>
+</figure>
 <ol class="iatur-steps"><li>Klik ikon iAtur di menu bar.</li><li>Buka submenu <strong>Menu Bar Access</strong>.</li><li>Pilih nama aplikasi untuk membuka ikon menu bar-nya. Jika satu aplikasi mempunyai beberapa ikon, pilih ikon yang diinginkan dari submenu aplikasi tersebut.</li><li>Pilih <strong>Cari Semua…</strong> untuk membuka panel pencarian, atau <strong>Segarkan Daftar</strong> setelah aplikasi baru dijalankan.</li></ol>
 <p>Daftar langsung hanya menampilkan aplikasi pihak ketiga. Clock, Control Center, Spotlight, Siri, indikator lokasi, dan komponen macOS lain sengaja dikecualikan. Panel <strong>Cari Semua</strong> dapat dibuka juga dari <strong>Shortcuts → Menu Bar</strong>, tombol Open, atau shortcut global yang Anda rekam sendiri; panel tetap berjalan terpisah ketika jendela utama iAtur ditutup.</p>
 </div>
@@ -225,6 +246,13 @@ status: "published"
 <details class="iatur-feature-accordion" name="iatur-features">
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Clipboard</span></summary>
 <div class="iatur-accordion-content">
+<figure class="iatur-context-screenshot iatur-context-screenshot-portrait">
+<button type="button" data-iatur-screenshot-open data-full="/uploads/iatur/v0.4.63/iatur-clipboard-history-macos-v0.4.63-1080.webp" data-alt="Jendela Clipboard History iAtur v0.4.63 di macOS dengan pencarian dan kontrol riwayat salinan" aria-label="Perbesar screenshot Clipboard History iAtur">
+<img src="/uploads/iatur/v0.4.63/iatur-clipboard-history-macos-v0.4.63-540.webp" srcset="/uploads/iatur/v0.4.63/iatur-clipboard-history-macos-v0.4.63-540.webp 540w, /uploads/iatur/v0.4.63/iatur-clipboard-history-macos-v0.4.63-1080.webp 1080w" sizes="(max-width: 620px) calc(100vw - 2rem), 540px" alt="Jendela Clipboard History iAtur v0.4.63 di macOS dengan pencarian dan kontrol riwayat salinan" width="1080" height="880" loading="lazy" decoding="async" />
+<span class="iatur-screenshot-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5" /><path d="m15 15 5 5M10.5 8v5M8 10.5h5" /></svg></span>
+</button>
+<figcaption>Clipboard History dapat dibuka, dicari, dijeda, dan dibersihkan langsung dari iAtur.</figcaption>
+</figure>
 <ul>
 <li><strong>Clipboard History:</strong> fitur opsional untuk menyimpan teks, tautan, dan referensi file yang pernah disalin. Riwayat disimpan lokal dan terenkripsi, maksimal 100 item selama tujuh hari, serta melewati isi clipboard yang ditandai private oleh aplikasi sumber.</li>
 <li><strong>Open Clipboard History:</strong> membuka popup untuk mencari item lama. Klik item untuk menyalinnya kembali, lalu gunakan Command-V di aplikasi tujuan. Anda dapat merekam shortcut global sendiri atau membukanya melalui menu bar iAtur.</li>
@@ -292,6 +320,13 @@ status: "published"
 <summary><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Merekam Shortcut Global</span></summary>
 <div class="iatur-accordion-content">
 <p>Setiap tindakan di halaman Shortcuts dapat dijalankan lewat tombol langsung atau kombinasi keyboard global.</p>
+<figure class="iatur-context-screenshot">
+<button type="button" data-iatur-screenshot-open data-full="/uploads/iatur/v0.4.63/iatur-shortcuts-macos-v0.4.63-1800.webp" data-alt="Halaman Shortcuts iAtur v0.4.63 di macOS untuk Menu Bar Access, Clipboard, layar, window, warna, dan audio" aria-label="Perbesar screenshot halaman Shortcuts iAtur">
+<img src="/uploads/iatur/v0.4.63/iatur-shortcuts-macos-v0.4.63-900.webp" srcset="/uploads/iatur/v0.4.63/iatur-shortcuts-macos-v0.4.63-900.webp 900w, /uploads/iatur/v0.4.63/iatur-shortcuts-macos-v0.4.63-1800.webp 1800w" sizes="(max-width: 752px) calc(100vw - 2rem), 654px" alt="Halaman Shortcuts iAtur v0.4.63 di macOS untuk Menu Bar Access, Clipboard, layar, window, warna, dan audio" width="1800" height="1224" loading="lazy" decoding="async" />
+<span class="iatur-screenshot-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5" /><path d="m15 15 5 5M10.5 8v5M8 10.5h5" /></svg></span>
+</button>
+<figcaption>Halaman Shortcuts mengumpulkan tindakan cepat dan perekaman shortcut global.</figcaption>
+</figure>
 <ol class="iatur-steps"><li>Klik <strong>Record Shortcut</strong> di samping tindakan.</li><li>Tekan kombinasi yang memakai tombol modifier seperti Command, Option, Control, atau Shift.</li><li>Gunakan shortcut tersebut selama iAtur berjalan.</li><li>Tekan Escape saat merekam untuk batal, atau klik tombol reset untuk menghapus shortcut.</li></ol>
 <p>Shortcut tersimpan dan digunakan kembali setelah iAtur atau Mac dimulai ulang. Jika kombinasi sudah dipakai fitur iAtur lain, macOS, atau aplikasi lain, iAtur menolaknya dan mempertahankan shortcut lama yang masih bekerja. Jika shortcut tersimpan tidak dapat diaktifkan saat aplikasi mulai, pengaturannya tetap disimpan tetapi shortcut tersebut tidak aktif sampai direkam kembali.</p>
 </div>
@@ -300,6 +335,13 @@ status: "published"
 <details class="iatur-feature-accordion" name="iatur-features">
 <summary id="pengaturan-dan-pemulihan"><span class="iatur-accordion-icon" aria-hidden="true"><img class="iatur-icon-closed" src="/icons/iatur-accordion-plus.svg" alt="" /><img class="iatur-icon-open" src="/icons/iatur-accordion-minus.svg" alt="" /></span><span>Pengaturan dan Pemulihan</span></summary>
 <div class="iatur-accordion-content">
+<figure class="iatur-context-screenshot">
+<button type="button" data-iatur-screenshot-open data-full="/uploads/iatur/v0.4.63/iatur-settings-macos-v0.4.63-1800.webp" data-alt="Halaman Settings iAtur v0.4.63 di macOS dengan pengaturan login, background, update, setup, backup, dan uninstall" aria-label="Perbesar screenshot halaman Settings iAtur">
+<img src="/uploads/iatur/v0.4.63/iatur-settings-macos-v0.4.63-900.webp" srcset="/uploads/iatur/v0.4.63/iatur-settings-macos-v0.4.63-900.webp 900w, /uploads/iatur/v0.4.63/iatur-settings-macos-v0.4.63-1800.webp 1800w" sizes="(max-width: 752px) calc(100vw - 2rem), 654px" alt="Halaman Settings iAtur v0.4.63 di macOS dengan pengaturan login, background, update, setup, backup, dan uninstall" width="1800" height="1224" loading="lazy" decoding="async" />
+<span class="iatur-screenshot-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5" /><path d="m15 15 5 5M10.5 8v5M8 10.5h5" /></svg></span>
+</button>
+<figcaption>Pengaturan aplikasi, update, panduan izin, backup, pemulihan, dan uninstall iAtur.</figcaption>
+</figure>
 <ul>
 <li><strong>Launch at Login:</strong> memulai runtime iAtur langsung setelah masuk ke Mac, termasuk ketika macOS membukanya tanpa jendela. Fine Volume &amp; Brightness, Smooth Scrolling, Reverse Scroll, Delete Key to Trash, Finder Cut &amp; Paste, dan Open Files with Return yang sebelumnya disetujui dipulihkan dengan percobaan bertahap hingga 30 detik sambil menunggu layanan macOS siap.</li>
 <li><strong>Run in Background:</strong> menjaga tweak tetap berjalan setelah jendela ditutup. Fine Volume &amp; Brightness, Smooth Scrolling, Reverse Scroll, Delete Key to Trash, Finder Cut &amp; Paste, dan Open Files with Return juga menjalankan pemeriksaan kesehatan ringan selama aktif agar pemantauan input yang terputus sementara dapat dipulihkan otomatis.</li>

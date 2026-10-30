@@ -940,6 +940,89 @@ body.iatur-lightbox-open {
 .iatur-faq details p {
 	margin: 0.75rem 0 0;
 }
+.iatur-changelog-disclosure {
+	overflow: hidden;
+	border: 1px solid #d7ddf6;
+	border-radius: 14px;
+	background: linear-gradient(145deg, #f8faff, #f3f1ff);
+	box-shadow: 0 8px 24px rgba(73, 83, 170, 0.08);
+}
+.iatur-changelog-disclosure summary {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 2.5rem;
+	gap: 1rem;
+	align-items: center;
+	padding: 1.1rem 1.2rem;
+	color: #303a72;
+	cursor: pointer;
+	list-style: none;
+}
+.iatur-changelog-disclosure summary::-webkit-details-marker {
+	display: none;
+}
+.iatur-changelog-disclosure summary:hover {
+	color: #263cc5;
+	background: rgba(255, 255, 255, 0.48);
+}
+.iatur-changelog-disclosure summary:focus-visible {
+	outline: 3px solid rgba(52, 87, 241, 0.32);
+	outline-offset: -3px;
+}
+.iatur-changelog-copy {
+	display: grid;
+	gap: 0.2rem;
+}
+.iatur-changelog-copy strong {
+	font-size: 1.05rem;
+	line-height: 1.35;
+}
+.iatur-changelog-copy small {
+	color: #636b84;
+	font-size: 0.84rem;
+}
+.iatur-changelog-label-open {
+	display: none;
+}
+.iatur-changelog-disclosure[open] .iatur-changelog-label-closed {
+	display: none;
+}
+.iatur-changelog-disclosure[open] .iatur-changelog-label-open {
+	display: inline;
+}
+.iatur-changelog-toggle {
+	position: relative;
+	display: grid;
+	place-items: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 10px;
+	background: linear-gradient(135deg, var(--iatur-blue), var(--iatur-indigo));
+	box-shadow: 0 5px 14px rgba(67, 70, 205, 0.2);
+}
+.iatur-changelog-toggle::before,
+.iatur-changelog-toggle::after {
+	position: absolute;
+	width: 0.9rem;
+	height: 2px;
+	border-radius: 2px;
+	background: white;
+	content: '';
+}
+.iatur-changelog-toggle::after {
+	transform: rotate(90deg);
+	transition: transform 160ms ease;
+}
+.iatur-changelog-disclosure[open] .iatur-changelog-toggle::after {
+	transform: rotate(0deg);
+}
+.iatur-changelog-content {
+	padding: 0.25rem 1.2rem 1.2rem;
+	border-top: 1px solid #dfe4f7;
+	background: rgba(255, 255, 255, 0.68);
+}
+.iatur-changelog-content > p:last-child {
+	margin-bottom: 0;
+}
 .iatur-version-list li {
 	margin-bottom: 0.6rem;
 }
@@ -1013,6 +1096,12 @@ body.iatur-lightbox-open {
 	}
 	.iatur-feature-grid {
 		grid-template-columns: 1fr;
+	}
+	.iatur-changelog-disclosure summary {
+		padding: 1rem;
+	}
+	.iatur-changelog-content {
+		padding: 0.2rem 1rem 1rem;
 	}
 	.iatur-toc {
 		margin-bottom: 3.25rem;

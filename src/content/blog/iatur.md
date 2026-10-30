@@ -364,6 +364,12 @@ status: "published"
 
 <section class="iatur-guide-section" aria-labelledby="version-changes-log">
 <div class="iatur-section-heading"><span aria-hidden="true">05</span><h2 id="version-changes-log">Version Changes Log</h2></div>
+<details class="iatur-changelog-disclosure">
+<summary>
+<span class="iatur-changelog-copy"><strong class="iatur-changelog-label-closed">Tampilkan seluruh riwayat pembaruan</strong><strong class="iatur-changelog-label-open">Sembunyikan riwayat pembaruan</strong><small>Dari versi awal hingga iAtur v0.4.63</small></span>
+<span class="iatur-changelog-toggle" aria-hidden="true"></span>
+</summary>
+<div class="iatur-changelog-content">
 <ul class="iatur-version-list">
 <li><strong>v0.4.63 — 30 Oktober 2026:</strong> mengembalikan deskripsi pendek Fine Volume &amp; Brightness menjadi <em>“Atur volume dan brightness lebih halus, nggak lompat-lompat.”</em> Deskripsi tetap sama pada layar bawaan maupun monitor eksternal, sedangkan keterangan teknis monitor eksternal dipindahkan ke konfirmasi aktivasi. Seluruh deskripsi pendek di Tweaks, Shortcuts, Optimizer, Settings, Donate, Asisten Setup, Clipboard History, Menu Bar Access, dan alur uninstall turut diaudit. Aturan project dan pengujian regresi ditambahkan agar perubahan fitur, perbaikan, refactor, build, atau rilis tidak diam-diam mengganti teks pendek yang telah disetujui.</li>
 <li><strong>v0.4.62 — 30 Oktober 2026:</strong> menambahkan switch Smooth Scrolling dan Reverse Scroll yang dapat dipakai sendiri-sendiri atau bersamaan untuk roda mouse fisik, tanpa mengubah scrolling native trackpad dan Magic Mouse. Gerakan roda diskret dapat dibuat lebih halus dengan animasi terbatas 60 Hz, arah vertikal maupun horizontal dapat dibalik, dan tombol modifier tetap dipertahankan. Kedua fitur meminta izin lebih dahulu, memulihkan pemantauan input setelah gangguan sementara, berhenti aman jika akses terus ditolak, tampil pada status menu bar, tersimpan dalam backup, serta hanya dipulihkan setelah login ketika Launch at Login aktif.</li>
@@ -433,6 +439,8 @@ status: "published"
 <li><strong>v0.1.0–v0.1.6:</strong> fondasi iAtur dengan Cleaning Mode, auto exit, penyembunyian pointer, dan berbagai perbaikan keamanan aktivasi.</li>
 </ul>
 <p>Setiap rilis baru akan ditambahkan ke artikel ini setelah installer melewati pemeriksaan build, identitas aplikasi, isi paket, dan checksum.</p>
+</div>
+</details>
 </section>
 
 <section class="iatur-guide-section" aria-labelledby="faq-iatur">

@@ -4,7 +4,7 @@ description: "Panduan lengkap iAtur, aplikasi native macOS untuk Optimizer, Find
 seoTitle: "iAtur macOS App: Download, Cara Menggunakan & Fitur Terbaru"
 seoDescription: "Download iAtur v0.4.63 dan pelajari Fine Volume & Brightness, Smooth Scrolling, Reverse Scroll, Menu Bar Access, Finder, Optimizer, serta pembaruan resmi."
 pubDate: "2026-10-02"
-updatedDate: "2026-10-30"
+updatedDate: "2026-11-03"
 heroImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
 seoImage: "/uploads/blog/2026/10/iatur-macos-app-hero.png"
 permalink: "/iatur"
@@ -25,6 +25,7 @@ status: "published"
 <p>Installer resmi untuk Mac Intel dan Apple silicon dengan macOS 14 atau lebih baru. Ukuran sekitar 4 MB.</p>
 <div class="iatur-download-actions">
 <a class="iatur-download-button" href="/downloads/iAtur-v0.4.63-direct.pkg" download>Download iAtur v0.4.63</a>
+<a class="iatur-install-button" href="https://arunajr.com/iatur/#mulai-menggunakan-iatur">Cara Install</a>
 <a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.63-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>
@@ -480,6 +481,7 @@ status: "published"
 <p>Download installer resmi v0.4.63 untuk macOS 14 atau lebih baru.</p>
 <div class="iatur-download-actions">
 <a class="iatur-download-button" href="/downloads/iAtur-v0.4.63-direct.pkg" download>Download iAtur v0.4.63</a>
+<a class="iatur-install-button" href="https://arunajr.com/iatur/#mulai-menggunakan-iatur">Cara Install</a>
 <a class="iatur-secondary-button" href="/downloads/iAtur-v0.4.63-direct.pkg.sha256" download>Download checksum</a>
 </div>
 </div>

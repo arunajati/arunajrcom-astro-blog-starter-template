@@ -521,6 +521,7 @@ body.iatur-lightbox-open {
 	gap: 0.65rem;
 }
 .iatur-download-button,
+.iatur-install-button,
 .iatur-secondary-button {
 	display: inline-flex;
 	align-items: center;
@@ -538,6 +539,16 @@ body.iatur-lightbox-open {
 }
 .iatur-download-button:hover {
 	color: white;
+	transform: translateY(-1px);
+}
+.iatur-install-button {
+	color: #3344b7;
+	background: #e9edff;
+	border: 1px solid #c8d0fb;
+}
+.iatur-install-button:hover {
+	color: #2637a6;
+	background: #dfe5ff;
 	transform: translateY(-1px);
 }
 .iatur-secondary-button {
